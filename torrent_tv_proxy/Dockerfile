@@ -1,7 +1,7 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/base:latest
 FROM ${BUILD_FROM}
 
-RUN apk add --no-cache nodejs npm ffmpeg
+RUN apk add --no-cache nodejs npm ffmpeg python3 make g++
 
 # BUILD_VERSION is injected automatically by the HA supervisor from config.yaml.
 # Declaring it here ensures the npm install layer is invalidated whenever
