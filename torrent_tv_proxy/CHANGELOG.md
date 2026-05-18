@@ -1,3 +1,12 @@
+## 0.2.8
+
+- **Fix**: ICE candidate filtering in proxy 2.5.6 — PNA permission dialog no longer appears when connecting from HTTPS pages. Requires proxy 2.5.6+.
+- **Chore**: Bumped addon version to force Docker layer cache invalidation and install the updated proxy package.
+
+## 0.2.7
+
+- **Fix**: Tunnel keepalive — proxy 2.5.5 prevents Cloudflare from dropping the WebSocket tunnel after ~100 s of inactivity. Bump to pull in the fix.
+
 ## 0.2.5
 
 - Fix Docker layer caching: addon version now automatically busts the npm install cache on every rebuild, ensuring the latest proxy package is always installed.
