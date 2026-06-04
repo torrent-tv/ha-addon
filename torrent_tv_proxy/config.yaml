@@ -1,11 +1,16 @@
 name: "Torrent TV Proxy"
 description: "Run Torrent TV proxy and connect it to your server."
-version: "0.2.20"
+version: "0.2.21"
 slug: "torrent_tv_proxy"
 init: false
 startup: services
 boot: auto
 host_network: true
+# Map all available video devices (GPU /dev/dri for VAAPI/QSV, /dev/video* for
+# V4L2) into the container so the proxy can use hardware-accelerated transcoding
+# when present. Host-agnostic: only devices that actually exist are mapped, and
+# the proxy auto-detects/falls back to software encoding if none work.
+video: true
 arch:
   - aarch64
   - amd64
