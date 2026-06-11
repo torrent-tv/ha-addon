@@ -1,3 +1,11 @@
+## 0.2.45
+
+- **New**: Bump to pull proxy 2.9.24 — IPv6-first. Adds a second IPv6-capable STUN server so a proxy with global IPv6 gathers a v6 candidate, allowing a direct (NAT-free) connection to v6-native viewers (e.g. on cellular). Candidate logs now tag address scope (`v6-global`/`v6-ula`/`v4-public`/…) for field diagnosis. No behaviour change for IPv4-only proxies.
+
+## 0.2.44
+
+- **New**: Bump to pull proxy 2.9.23 — symmetric-NAT port prediction for WebRTC. On a symmetric NAT the proxy now offers predicted external ports (base + delta·k) alongside its real srflx candidate, so a viewer can reach it without manual port forwarding when the NAT increments ports predictably. No effect on cone NATs. Diagnostic logging included.
+
 ## 0.2.43
 
 - **Fix**: Bump to pull proxy 2.9.22 — fixes a proxy crash on repeat/remote WebRTC sessions (an unguarded WebRTC error took down the whole process and restarted the addon). The WebRTC UDP port is now held by one persistent ICE mux listener for the proxy's lifetime, so reconnects and concurrent viewers share the single fixed port without failing to gather ICE candidates.
