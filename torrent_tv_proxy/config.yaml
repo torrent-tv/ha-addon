@@ -1,6 +1,6 @@
 name: "Torrent TV Proxy"
 description: "Run Torrent TV proxy and connect it to your server."
-version: "0.2.38"
+version: "0.2.39"
 slug: "torrent_tv_proxy"
 init: false
 startup: services
@@ -19,8 +19,10 @@ arch:
   - i386
 ports:
   9090/tcp: 9090
+  9090/udp: 9090
 ports_description:
   9090/tcp: "Torrent TV Proxy HTTP API"
+  9090/udp: "Torrent TV Proxy WebRTC (ICE UDP mux)"
 options:
   server_url: "https://webauth.courses"
   token: ""
