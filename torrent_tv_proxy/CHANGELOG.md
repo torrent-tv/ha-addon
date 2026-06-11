@@ -1,10 +1,6 @@
-## 0.2.46
-
-- **Fix**: Bump to pull proxy 2.9.25 — cold-start playback no longer times out. The codec-probe request returns quickly while the file header is still downloading (browser polls instead of one blocking request), so a torrent whose peers are still connecting plays once the header arrives instead of failing after 60 s. Requires server 0.8.24.
-
 ## 0.2.45
 
-- **New**: Bump to pull proxy 2.9.24 — IPv6-first. Adds a second IPv6-capable STUN server so a proxy with global IPv6 gathers a v6 candidate, allowing a direct (NAT-free) connection to v6-native viewers (e.g. on cellular). Candidate logs now tag address scope (`v6-global`/`v6-ula`/`v4-public`/…) for field diagnosis. No behaviour change for IPv4-only proxies.
+- **New**: Bump to pull proxy 2.9.24 — IPv6-first, cold-start fix, and disk hygiene. (1) IPv6: a second IPv6-capable STUN server so a proxy with global IPv6 gathers a v6 candidate, allowing a direct (NAT-free) connection to v6-native viewers (e.g. on cellular); candidate logs now tag address scope. (2) Cold-start: the codec-probe request returns quickly while the file header downloads (browser polls instead of one blocking request), so a torrent whose peers are still connecting plays once the header arrives instead of failing after 60 s (requires server 0.8.24, already live). (3) Disk hygiene: idle torrents are removed with their on-disk store after a 5-min idle TTL, and orphaned data from a previous hard kill is swept at startup — so downloaded files no longer pile up on the host. No behaviour change for IPv4-only proxies.
 
 ## 0.2.44
 
