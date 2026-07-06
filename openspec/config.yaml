@@ -1,0 +1,34 @@
+schema: spec-driven
+
+context: |
+  Home Assistant addon packaging @torrent-tv/proxy (slug torrent_tv_proxy; HA
+  shows b34a1737_torrent_tv_proxy). The ONLY place Home-Assistant-specific
+  concerns belong; the proxy itself stays deployment-agnostic.
+  Constraints (see CLAUDE.md for the full set):
+  - Dockerfile installs the proxy globally from npm with --ignore-scripts plus
+    a targeted npm rebuild of node-datachannel (ip-set ships a hostile
+    preinstall). Keep this if the install flow changes.
+  - Bumping config.yaml version busts the Docker cache and pulls the latest
+    published proxy. Release order: publish the proxy to npm FIRST, then bump
+    this addon; otherwise the rebuild reinstalls the old proxy.
+  - LF line endings are mandatory for run.sh and Dockerfile.
+  - Every release adds a CHANGELOG.md entry matching config.yaml version.
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
