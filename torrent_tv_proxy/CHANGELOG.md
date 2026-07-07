@@ -1,3 +1,7 @@
+## 0.2.49
+
+- **Fix**: Bump to pull proxy 2.9.27 — a magnet whose infoHash matches an already-loaded torrent no longer fails with "Cannot add duplicate torrent"; both source keys now share the one swarm.
+
 ## 0.2.48
 
 - **New**: Bump to pull proxy 2.9.26 — track selection and embedded subtitles. The playback plan lists every audio and subtitle track (language, title, default flag); `POST /api/transcode-sessions` accepts `audioTrackIndex` so the viewer can switch audio languages; new `GET /api/subtitles` extracts embedded text subtitles as WebVTT; new `GET /api/sources/:key/files` lists a source's files (groundwork for magnet input). Announce log lines no longer include the tracker passkey. Pairs with server 0.8.36 (audio menu + embedded subtitles in the captions menu).
