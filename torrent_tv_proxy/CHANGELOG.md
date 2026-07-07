@@ -1,3 +1,7 @@
+## 0.2.48
+
+- **New**: Bump to pull proxy 2.9.26 — track selection and embedded subtitles. The playback plan lists every audio and subtitle track (language, title, default flag); `POST /api/transcode-sessions` accepts `audioTrackIndex` so the viewer can switch audio languages; new `GET /api/subtitles` extracts embedded text subtitles as WebVTT; new `GET /api/sources/:key/files` lists a source's files (groundwork for magnet input). Announce log lines no longer include the tracker passkey. Pairs with server 0.8.36 (audio menu + embedded subtitles in the captions menu).
+
 ## 0.2.47
 
 - **New**: Bump to pull proxy 2.9.25 — observability. `/healthz` and `/health` now report the proxy version (so a stale-proxy delivery like 0.2.45's can be detected remotely); the addon log now explains zero-peer torrents (per-torrent added line with the `private` flag and tracker count, tracker warnings/rejections, and each announce response with the seeder/leecher counts the tracker returned); the `MaxListenersExceededWarning [Ssdp]` log flood from the 10-port WebRTC UDP mapping is fixed.
