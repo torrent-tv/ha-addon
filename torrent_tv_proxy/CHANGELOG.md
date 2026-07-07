@@ -1,3 +1,7 @@
+## 0.2.50
+
+- **New**: Bump to pull proxy 2.9.29 — magnet metadata polling (a magnet whose swarm metadata takes a moment no longer fails on the first paste), transcode output frame rate follows the source instead of a fixed 24 fps (25/30 fps content plays without judder), and a global disk cap with LRU eviction of idle torrents (default min(10 GB, half free disk); protects small hosts from a full disk taking down Home Assistant).
+
 ## 0.2.49
 
 - **Fix**: Bump to pull proxy 2.9.27 — a magnet whose infoHash matches an already-loaded torrent no longer fails with "Cannot add duplicate torrent"; both source keys now share the one swarm.
