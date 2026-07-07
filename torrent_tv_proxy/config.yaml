@@ -1,6 +1,6 @@
 name: "Torrent TV Proxy"
 description: "Run Torrent TV proxy and connect it to your server."
-version: "0.2.53"
+version: "0.2.54"
 slug: "torrent_tv_proxy"
 init: false
 startup: services

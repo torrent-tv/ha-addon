@@ -1,3 +1,7 @@
+## 0.2.54
+
+- **New**: Bump to pull proxy 2.9.33 — HDR / 10-bit tone mapping. HDR sources re-encoded to SDR are now tone-mapped (zscale+tonemap) instead of looking washed-out, when this ffmpeg build has the filters (checked at startup, logged). Whether HA's ffmpeg includes zscale/tonemap shows in the addon log line `hwaccel: HDR tone mapping available/unavailable`. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.53
 
 - **New**: Bump to pull proxy 2.9.32 — manual quality support. The proxy now reports the source resolution in the playback plan and honours a `manualQuality` flag (encode a viewer-forced resolution exactly, budget off). Enables the new player quality menu. No addon-side change; the bump pulls the new proxy.
