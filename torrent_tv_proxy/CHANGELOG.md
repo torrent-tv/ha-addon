@@ -1,3 +1,7 @@
+## 0.2.52
+
+- **New**: Bump to pull proxy 2.9.31 — the realtime transcode budget. At startup it picks the output resolution (not just the libx264 preset) from the benchmark, so a weak host (e.g. this Home Assistant box) encodes at a resolution it can sustain in realtime instead of stalling at full size below 1× speed; capable hosts keep full resolution. At runtime it steps resolution down if the encoder falls behind on a heavy passage — but only when the encoder (not the torrent download) is the limit. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.51
 
 - **New**: Bump to pull proxy 2.9.30 — the proxy now converts external subtitle files (.srt/.ass) to WebVTT itself, decodes their encoding (UTF-8/Windows-1251), and detects the subtitle language from the text with an n-gram model (distinguishes Russian from Ukrainian and other languages), reporting it to the player. Pairs with the matching server release; must be updated before that server version so external subtitles keep loading.
