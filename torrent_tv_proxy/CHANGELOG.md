@@ -1,3 +1,7 @@
+## 0.2.56
+
+- **Fix**: Bump to pull proxy 2.9.35 — large torrents (many seasons/files) no longer fail with "message larger than max-message-size" on picking a file. The proxy now advertises a 16 MB data-channel message size so the browser can send the source registration (the base64 `.torrent`, hundreds of KB for a big pack) in one message. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.55
 
 - **New**: Bump to pull proxy 2.9.34 — cold-start reduction. Transcode sessions start faster: the second redundant ffmpeg probe is gone (the session reuses the planner's probe) and the file-body start is pre-warmed so the first segment doesn't wait on torrent pieces. Startup is now logged per stage (`cold-start …: media-info=… keyframes=… create-total=…`, `first-segment ready +…ms`) — visible in the addon log. No addon-side change; the bump pulls the new proxy.
