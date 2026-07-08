@@ -1,3 +1,7 @@
+## 0.2.55
+
+- **New**: Bump to pull proxy 2.9.34 — cold-start reduction. Transcode sessions start faster: the second redundant ffmpeg probe is gone (the session reuses the planner's probe) and the file-body start is pre-warmed so the first segment doesn't wait on torrent pieces. Startup is now logged per stage (`cold-start …: media-info=… keyframes=… create-total=…`, `first-segment ready +…ms`) — visible in the addon log. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.54
 
 - **New**: Bump to pull proxy 2.9.33 — HDR / 10-bit tone mapping. HDR sources re-encoded to SDR are now tone-mapped (zscale+tonemap) instead of looking washed-out, when this ffmpeg build has the filters (checked at startup, logged). Whether HA's ffmpeg includes zscale/tonemap shows in the addon log line `hwaccel: HDR tone mapping available/unavailable`. No addon-side change; the bump pulls the new proxy.
