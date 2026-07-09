@@ -1,3 +1,7 @@
+## 0.2.57
+
+- **Fix**: Bump to pull proxy 2.9.37 — scrubbing (server-side seek) no longer hangs the player. Scattered post-seek segment requests from native players (notably iOS HLS) are debounced into a single ffmpeg restart at the settled position instead of ping-ponging the encoder. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.56
 
 - **Fix**: Bump to pull proxy 2.9.36 — large torrents (many seasons/files) no longer fail with "message larger than max-message-size" on picking a file. The proxy now accepts request bodies as chunked binary frames (the base64 `.torrent` for a big pack is hundreds of KB) and reassembles them, with a matching 16 MB message-size advertisement covering already-open tabs. No addon-side change; the bump pulls the new proxy.
