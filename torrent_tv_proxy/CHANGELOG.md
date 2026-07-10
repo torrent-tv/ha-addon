@@ -1,3 +1,7 @@
+## 0.2.58
+
+- **New**: Bump to pull proxy 2.9.38 — adaptive bitrate for thin viewer links: per-rung `-maxrate`/`-bufsize` caps on software encodes, plus a viewer link-report route feeding a second budget-downshift trigger (cellular viewers get a stream their link can actually sustain). No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.57
 
 - **Fix**: Bump to pull proxy 2.9.37 — scrubbing (server-side seek) no longer hangs the player. Scattered post-seek segment requests from native players (notably iOS HLS) are debounced into a single ffmpeg restart at the settled position instead of ping-ponging the encoder. No addon-side change; the bump pulls the new proxy.
