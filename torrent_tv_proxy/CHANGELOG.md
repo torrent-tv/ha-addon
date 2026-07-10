@@ -1,3 +1,7 @@
+## 0.2.59
+
+- **Chore**: Bump to pull proxy 2.9.39 — logs the stack of WebTorrent peer-connection warnings to diagnose a mid-file download stall (µTP null-peer NPE). No addon-side change.
+
 ## 0.2.58
 
 - **New**: Bump to pull proxy 2.9.38 — adaptive bitrate for thin viewer links: per-rung `-maxrate`/`-bufsize` caps on software encodes, plus a viewer link-report route feeding a second budget-downshift trigger (cellular viewers get a stream their link can actually sustain). No addon-side change; the bump pulls the new proxy.
