@@ -1,3 +1,7 @@
+## 0.2.61
+
+- **New**: Bump to pull proxy 2.9.41 — longer idle retention (HLS session TTL 2→10 min, torrent-data TTL 5→15 min) so a brief absence (pause, backgrounded tab, phone off for a few minutes) resumes without a cold ffmpeg restart or re-download. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.60
 
 - **New**: Bump to pull proxy 2.9.40 — download-performance work: seek-aware piece prioritization now demotes the pieces behind the playhead so a far seek downloads the seek target first (not the undownloaded gap), and an adaptive upload throttle that defaults seeding to off, keeps a token floor while watching, and boosts only when the download is choke-starved. No addon-side change; the bump pulls the new proxy.
