@@ -1,3 +1,7 @@
+## 0.2.60
+
+- **New**: Bump to pull proxy 2.9.40 — download-performance work: seek-aware piece prioritization now demotes the pieces behind the playhead so a far seek downloads the seek target first (not the undownloaded gap), and an adaptive upload throttle that defaults seeding to off, keeps a token floor while watching, and boosts only when the download is choke-starved. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.59
 
 - **Chore**: Bump to pull proxy 2.9.39 — logs the stack of WebTorrent peer-connection warnings to diagnose a mid-file download stall (µTP null-peer NPE). No addon-side change.
