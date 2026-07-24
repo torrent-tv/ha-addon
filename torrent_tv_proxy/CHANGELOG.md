@@ -1,3 +1,7 @@
+## 0.2.63
+
+- **Fix**: Bump to pull proxy 2.9.43 — fixes torrents stalling at the metadata/download stage on the new WebTorrent 3.x. The adaptive upload throttle no longer drops to 0 (in 3.x `throttleUpload(0)` blocks the whole swarm, not just seeding — it now keeps a minimal 8 KB/s keep-alive), and the disk-cap/stats code no longer throws on WebTorrent's null deselected pieces (null-safe downloaded helpers). No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.62
 
 - **Fix**: Bump to pull proxy 2.9.42 — fixes the crash where no torrent would load (WebTorrent 2.8.5 was incompatible with the newer `uint8-util` the global install pulled; updated WebTorrent to 3.x, the maintainer's own fix). Also removes the misdiagnosed v1-only pre-validation so v1/v2/hybrid all work. No addon-side change; the bump pulls the new proxy.
