@@ -1,3 +1,7 @@
+## 0.2.65
+
+- **New**: Bump to pull proxy 2.9.45 — HLS transcode output switched from MPEG-TS to fMP4/CMAF (`.m4s` + shared `init.mp4`). Puts codec headers (SPS/PPS) once in the init segment, so hardware encoders that don't repeat them (the CM4/Yellow `h264_v4l2m2m`) produce usable segments, plus lower overhead. Verified on hls.js; native iOS still to be confirmed. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.64
 
 - **Fix**: Bump to pull proxy 2.9.44 — rolls WebTorrent back to the known-good 2.8.5 (pinned, with `uint8-util` pinned to 2.2.6). WebTorrent 3.x froze downloads after a seek (its piece picker crashed on pieces our seek prioritization deselected). No addon-side change; the bump pulls the new proxy.
