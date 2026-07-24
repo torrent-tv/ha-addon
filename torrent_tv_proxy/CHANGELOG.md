@@ -1,3 +1,7 @@
+## 0.2.62
+
+- **Fix**: Bump to pull proxy 2.9.42 — fixes the crash where no torrent would load (WebTorrent 2.8.5 was incompatible with the newer `uint8-util` the global install pulled; updated WebTorrent to 3.x, the maintainer's own fix). Also removes the misdiagnosed v1-only pre-validation so v1/v2/hybrid all work. No addon-side change; the bump pulls the new proxy.
+
 ## 0.2.61
 
 - **New**: Bump to pull proxy 2.9.41 — longer idle retention (HLS session TTL 2→10 min, torrent-data TTL 5→15 min) so a brief absence (pause, backgrounded tab, phone off for a few minutes) resumes without a cold ffmpeg restart or re-download. No addon-side change; the bump pulls the new proxy.
