@@ -1,3 +1,7 @@
+## 0.2.66
+
+- **New**: Bump to pull proxy 2.9.46 — the proxy reports resume-window byte progress (`resumeNeededBytes`/`resumeDownloadedBytes`) so the browser can show how much is left to download and the time to resume while buffering. No addon-side change.
+
 ## 0.2.65
 
 - **New**: Bump to pull proxy 2.9.45 — HLS transcode output switched from MPEG-TS to fMP4/CMAF (`.m4s` + shared `init.mp4`). Puts codec headers (SPS/PPS) once in the init segment, so hardware encoders that don't repeat them (the CM4/Yellow `h264_v4l2m2m`) produce usable segments, plus lower overhead. Verified on hls.js; native iOS still to be confirmed. No addon-side change; the bump pulls the new proxy.
