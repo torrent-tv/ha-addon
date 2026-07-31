@@ -1,3 +1,7 @@
+## 0.2.69
+
+- **New**: Bump to pull proxy 2.9.49 — the transcode-session progress endpoint now also reports the observed output bitrate, so the browser can compute a unified download/transcode/delivery playback-start ETA. No addon-side change.
+
 ## 0.2.68
 
 - **Fix**: Bump to pull proxy 2.9.48 — fixes playback getting permanently "stuck" after a rapid sequence of seeks (multiple ffmpeg processes ended up alive concurrently, fighting over CPU and racing each other's file writes, because a seek-restart did not wait for the previous process to actually exit before spawning its replacement). Also fixes the "bytes still needed to resume" figure shown while buffering jumping up mid-poll instead of counting down (it now pins to a fixed target for one buffering episode instead of chasing a live, moving read position). No addon-side change.
