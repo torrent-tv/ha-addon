@@ -1,3 +1,7 @@
+## 0.2.70
+
+- **Fix**: Bump to pull proxy 2.9.50 — fixes seeking getting stuck in an infinite restart loop on some containers (observed: AVI with VBR MP3 audio), which produced nothing for ~90s until the whole session died. Seeks now snap to a real, known-decodable keyframe instead of trusting the container's own on-the-fly seek, and a circuit breaker stops auto-retrying a target that keeps failing instead of looping forever. No addon-side change.
+
 ## 0.2.69
 
 - **New**: Bump to pull proxy 2.9.49 — the transcode-session progress endpoint now also reports the observed output bitrate, so the browser can compute a unified download/transcode/delivery playback-start ETA. No addon-side change.
