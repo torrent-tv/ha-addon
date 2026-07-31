@@ -1,3 +1,7 @@
+## 0.2.67
+
+- **Fix**: Bump to pull proxy 2.9.47 — fixes playback getting permanently stuck (endless manifest/first-segment re-fetch, buffer never advancing) even while the transcode itself encoded fine. Root cause: a read racing ffmpeg's still-in-progress write of the fMP4 init segment could return 0 bytes, and that empty result was cached forever as the session's init segment. No addon-side change.
+
 ## 0.2.66
 
 - **New**: Bump to pull proxy 2.9.46 — the proxy reports resume-window byte progress (`resumeNeededBytes`/`resumeDownloadedBytes`) so the browser can show how much is left to download and the time to resume while buffering. No addon-side change.
