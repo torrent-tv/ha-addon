@@ -1,6 +1,6 @@
 name: "Torrent TV Proxy"
 description: "Run Torrent TV proxy and connect it to your server."
-version: "0.2.73"
+version: "0.2.74"
 slug: "torrent_tv_proxy"
 init: false
 startup: services
@@ -26,6 +26,16 @@ ports_description:
 options:
   server_url: "https://webauth.courses"
   token: ""
+  # HLS output container used when a stream has to be transcoded.
+  #   fmp4   — CMAF segments + a shared init segment. Default. Lower overhead,
+  #            and required for hardware encoders that do not repeat codec
+  #            parameter sets (e.g. the Raspberry Pi / HA Yellow v4l2m2m).
+  #   mpegts — classic self-contained .ts segments. Slightly larger, but each
+  #            segment stands alone. Use it if a player misbehaves on fmp4.
+  # Supervisor persists whatever is chosen here across addon restarts and
+  # updates, so the selection is remembered.
+  segment_format: "fmp4"
 schema:
   server_url: str
   token: str
+  segment_format: "list(fmp4|mpegts)"

@@ -1,3 +1,7 @@
+## 0.2.74
+
+- **New**: The HLS output container is now selectable from the addon's own configuration — **Segment format**: `fmp4` (default) or `mpegts`. Home Assistant persists the choice across restarts and addon updates. `fmp4` has lower overhead and is what makes hardware encoders that do not repeat codec parameter sets (Raspberry Pi / HA Yellow `v4l2m2m`) usable; `mpegts` produces classic self-contained `.ts` segments, each valid on its own, and is the fallback if a player misbehaves on fMP4.
+
 ## 0.2.73
 
 - **Fix**: Bump to pull proxy 2.9.54 — fixes seeking leaving playback permanently frozen. ffmpeg writes every fMP4 segment claiming to start at 0 and records the real offset in the per-run init segment instead, so post-seek segments read against the session-cached init lost their position entirely and the player discarded and re-fetched them indefinitely (buffer stuck at 0s while the transcode itself ran fine). Segments are now stamped with their true timeline position as they are served, which is what CMAF requires of an independently-addressable segment anyway. Also adds a selectable output container (--segment-format fmp4|mpegts, default fmp4); the MPEG-TS path has no init segment at all, so the same class of problem cannot occur there. No addon-side change.
