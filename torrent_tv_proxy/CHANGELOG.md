@@ -1,3 +1,7 @@
+## 0.2.75
+
+- **Fix**: Pulls proxy 2.9.55 — one scrub of the seek bar no longer leaves the encoder ping-ponging between positions with an empty player buffer (several segment requests from a single scrub were each steering the encoder in turn), and the transcode percent no longer sits at 0% for the whole run on video-copy sessions.
+
 ## 0.2.74
 
 - **New**: The HLS output container is now selectable from the addon's own configuration — **Segment format**: `fmp4` (default) or `mpegts`. Home Assistant persists the choice across restarts and addon updates. `fmp4` has lower overhead and is what makes hardware encoders that do not repeat codec parameter sets (Raspberry Pi / HA Yellow `v4l2m2m`) usable; `mpegts` produces classic self-contained `.ts` segments, each valid on its own, and is the fallback if a player misbehaves on fMP4.
