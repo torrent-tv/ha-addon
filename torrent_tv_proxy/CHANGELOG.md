@@ -1,3 +1,7 @@
+## 0.2.76
+
+- **Fix**: Pulls proxy 2.9.56 — reverts the 2.9.55 encoder-steering guard, which made seeking worse (the player could reset to the start of the file).
+
 ## 0.2.75
 
 - **Fix**: Pulls proxy 2.9.55 — one scrub of the seek bar no longer leaves the encoder ping-ponging between positions with an empty player buffer (several segment requests from a single scrub were each steering the encoder in turn), and the transcode percent no longer sits at 0% for the whole run on video-copy sessions.
