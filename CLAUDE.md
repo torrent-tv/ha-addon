@@ -44,9 +44,32 @@ changes, since the addon must be re-released to pull it. See the parent
 - **Release order**: publish the proxy to npm FIRST (`npm run patch` in
   `../proxy`), THEN bump this `config.yaml` version + push + update the addon.
   Otherwise the rebuild reinstalls the OLD proxy.
+- **Triggering the update remotely over SSH (`ssh ha`, verified 2026-08-01):**
+  the standalone `/usr/bin/ha` CLI on the host is UNauthenticated by default —
+  `ha store reload`/`ha apps update ...` fail with `unauthorized: missing or
+  invalid API token` (no `~/.homeassistant.yaml`, no token env var for the SSH
+  user). Supervisor already runs a properly-token-wired `hassio_cli` container
+  for exactly this — run the same commands INSIDE it instead:
+  `sudo docker exec hassio_cli ha store reload` then
+  `sudo docker exec hassio_cli ha apps update b34a1737_torrent_tv_proxy`.
+  The SSH user (`silentimp`) is in `wheel` with passwordless `sudo` but is NOT
+  in the `docker` group, so plain `docker ...` fails with a socket permission
+  error — always prefix `sudo`. If update returns `Error: Another job is
+  running for job group app_b34a1737_torrent_tv_proxy`, an update is already
+  in flight (check with `sudo docker logs app_builder_b34a1737_torrent_tv_proxy
+  --tail 40` — it's a real multi-stage Docker build, ~90s: apk/npm install,
+  native module rebuild, image export); just poll until the builder container
+  disappears rather than re-issuing the update. Verify success with
+  `sudo docker ps --filter name=app_b34a1737_torrent_tv_proxy` (image tag =
+  the new addon version) and
+  `sudo docker exec app_b34a1737_torrent_tv_proxy npm list -g @torrent-tv/proxy`
+  (confirms the actual pulled proxy version, since the addon version and the
+  proxy version it pulled are two different numbers).
 - Refresh the store with `ha store reload` (NOT `ha addons reload`) before the
   UI shows the update; then `ha apps update b34a1737_torrent_tv_proxy` or the UI
-  Update button (reload the page if it looks stale).
+  Update button (reload the page if it looks stale). From the UI/HA-local
+  shell this works directly (a real Supervisor token is present there); the
+  SSH detour above is only needed from an external session like this one.
 - Verify the running encoder in the addon log: `hwaccel: using hardware encoder
   …` or `… failed the HLS keyframe-alignment test; skipping` → `… using
   software libx264`.
