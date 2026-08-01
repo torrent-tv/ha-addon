@@ -1,3 +1,8 @@
+## 0.2.71
+
+- **Fix**: Bump to pull proxy 2.9.51 — the keyframe probe that backs the seek fix (2.9.50) now runs in the background on the video re-encode path with a full 25s budget instead of sharing the copy path's 6s cap, since AVI-class containers need a full packet scan that 6s could never afford — this is the container the seek bug was originally field-diagnosed on. No addon-side change.
+- **Chore**: Bump to pull proxy 2.9.52 — `npm audit` fixes (`@fastify/static` 9→10.1.2, plus three transitive deps). No addon-side change.
+
 ## 0.2.70
 
 - **Fix**: Bump to pull proxy 2.9.50 — fixes seeking getting stuck in an infinite restart loop on some containers (observed: AVI with VBR MP3 audio), which produced nothing for ~90s until the whole session died. Seeks now snap to a real, known-decodable keyframe instead of trusting the container's own on-the-fly seek, and a circuit breaker stops auto-retrying a target that keeps failing instead of looping forever. No addon-side change.
