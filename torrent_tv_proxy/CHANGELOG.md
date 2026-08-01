@@ -1,3 +1,7 @@
+## 0.2.72
+
+- **Fix**: Bump to pull proxy 2.9.53 — fixes a timeline mismatch where the video re-encode branch's `processedSeconds` silently switched from absolute to relative-to-run mid-encode, which pinned the seek look-ahead window at the run's start segment for its whole lifetime (causing repeated unnecessary ffmpeg restarts during/after a seek) and made the buffering pill's transcode percent read as stuck near 0%. No addon-side change.
+
 ## 0.2.71
 
 - **Fix**: Bump to pull proxy 2.9.51 — the keyframe probe that backs the seek fix (2.9.50) now runs in the background on the video re-encode path with a full 25s budget instead of sharing the copy path's 6s cap, since AVI-class containers need a full packet scan that 6s could never afford — this is the container the seek bug was originally field-diagnosed on. No addon-side change.
