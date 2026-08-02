@@ -1,3 +1,7 @@
+## 0.2.78
+
+- **Fix**: Pulls proxy 2.9.58 — a single seek could leave playback stuck forever, because the encoder was restarted before the current run had produced even one segment. Restarts now wait for that first segment, so the player's playlist scan can no longer steer the encoder off target.
+
 ## 0.2.77
 
 - **Fix**: Pulls proxy 2.9.57 — segment requests are no longer held open for up to 30 s. iOS AVPlayer enforces a ~3.5 s response-header deadline and thrashed (cancelling requests, probing other positions, resetting to the start) on every seek because of it; the proxy now answers with a retryable 503 after ~2 s instead.
