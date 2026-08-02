@@ -1,3 +1,7 @@
+## 0.2.80
+
+- **Fix**: Pulls proxy 2.9.60 — a seek no longer restarts the encoder at the position it is already encoding, which used to destroy the work being waited for and made data appear and vanish during a seek.
+
 ## 0.2.79
 
 - **Chore**: Pulls proxy 2.9.59 — logs now carry the proxy version on session start and state why a seek restart was allowed or held, so field reports are diagnosable without host access.
