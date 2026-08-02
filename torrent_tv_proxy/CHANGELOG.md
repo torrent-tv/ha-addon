@@ -1,3 +1,7 @@
+## 0.2.91
+
+- **Chore**: Pulls proxy 2.9.71 — the torrent client now runs on its own thread, so serving a segment no longer queues behind torrent work (measured: 3 MB in 0.05-0.12 s against 12-23 s for 10 MB before).
+
 ## 0.2.90
 
 - **Chore**: Pulls proxy 2.9.70 — transfer and event-loop instrumentation to locate where a slow delivery loses its time.
