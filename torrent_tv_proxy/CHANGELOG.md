@@ -1,3 +1,7 @@
+## 0.2.86
+
+- **Chore**: Pulls proxy 2.9.66 — the keyframe index now covers MP4/MOV and AVI in addition to Matroska.
+
 ## 0.2.85
 
 - **Chore**: Pulls proxy 2.9.65 — segment boundaries now come from the file real keyframe index, fixing audio-without-picture and seek that walked the whole file.
