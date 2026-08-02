@@ -1,3 +1,7 @@
+## 0.2.82
+
+- **Chore**: Pulls proxy 2.9.62 — the seek target now comes explicitly from the browser instead of being guessed from segment requests.
+
 ## 0.2.81
 
 - **Chore**: Pulls proxy 2.9.61 — the measurement build that holds unready segment requests up to 60 s and logs each hold outcome, to observe the iOS player real patience instead of guessing it.
