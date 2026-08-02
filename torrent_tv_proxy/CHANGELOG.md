@@ -1,3 +1,7 @@
+## 0.2.89
+
+- **Chore**: Pulls proxy 2.9.69 — the encoder now starts exactly where the viewer seeked, with nothing able to drag it elsewhere.
+
 ## 0.2.88
 
 - **Chore**: Pulls proxy 2.9.68 — a seek is no longer dragged back to the position the viewer just left.
