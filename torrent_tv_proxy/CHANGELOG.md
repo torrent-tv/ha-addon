@@ -1,3 +1,7 @@
+## 0.2.85
+
+- **Chore**: Pulls proxy 2.9.65 — segment boundaries now come from the file real keyframe index, fixing audio-without-picture and seek that walked the whole file.
+
 ## 0.2.84
 
 - **Chore**: Pulls proxy 2.9.64 — a seek no longer gets dragged back to the previous watch position.
