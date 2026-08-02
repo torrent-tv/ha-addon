@@ -1,3 +1,7 @@
+## 0.2.93
+
+- **Fix**: Pulls proxy 2.9.73 — file stats no longer come back empty, so the loading screen shows peers, speed and progress again.
+
 ## 0.2.92
 
 - **Fix**: Pulls proxy 2.9.72 — the torrent is no longer deleted with its data while still being read, which had left the encoder with an empty input after 2.9.71.
