@@ -1,3 +1,7 @@
+## 0.2.88
+
+- **Chore**: Pulls proxy 2.9.68 — a seek is no longer dragged back to the position the viewer just left.
+
 ## 0.2.87
 
 - **Chore**: Pulls proxy 2.9.67 — seek no longer encodes two minutes of content before reaching the requested position.
