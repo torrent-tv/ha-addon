@@ -1,3 +1,7 @@
+## 0.2.81
+
+- **Chore**: Pulls proxy 2.9.61 — the measurement build that holds unready segment requests up to 60 s and logs each hold outcome, to observe the iOS player real patience instead of guessing it.
+
 ## 0.2.80
 
 - **Fix**: Pulls proxy 2.9.60 — a seek no longer restarts the encoder at the position it is already encoding, which used to destroy the work being waited for and made data appear and vanish during a seek.
