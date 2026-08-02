@@ -1,3 +1,7 @@
+## 0.2.83
+
+- **Chore**: Pulls proxy 2.9.63 — the encoder now starts before the seek target, so the player finds the preceding keyframe it needs.
+
 ## 0.2.82
 
 - **Chore**: Pulls proxy 2.9.62 — the seek target now comes explicitly from the browser instead of being guessed from segment requests.
