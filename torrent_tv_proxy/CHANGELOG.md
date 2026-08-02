@@ -1,3 +1,7 @@
+## 0.2.79
+
+- **Chore**: Pulls proxy 2.9.59 — logs now carry the proxy version on session start and state why a seek restart was allowed or held, so field reports are diagnosable without host access.
+
 ## 0.2.78
 
 - **Fix**: Pulls proxy 2.9.58 — a single seek could leave playback stuck forever, because the encoder was restarted before the current run had produced even one segment. Restarts now wait for that first segment, so the player's playlist scan can no longer steer the encoder off target.
