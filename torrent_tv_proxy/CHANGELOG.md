@@ -1,3 +1,7 @@
+## 0.2.84
+
+- **Chore**: Pulls proxy 2.9.64 — a seek no longer gets dragged back to the previous watch position.
+
 ## 0.2.83
 
 - **Chore**: Pulls proxy 2.9.63 — the encoder now starts before the seek target, so the player finds the preceding keyframe it needs.
