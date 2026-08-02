@@ -1,3 +1,7 @@
+## 0.2.87
+
+- **Chore**: Pulls proxy 2.9.67 — seek no longer encodes two minutes of content before reaching the requested position.
+
 ## 0.2.86
 
 - **Chore**: Pulls proxy 2.9.66 — the keyframe index now covers MP4/MOV and AVI in addition to Matroska.
