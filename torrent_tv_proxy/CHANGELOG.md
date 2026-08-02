@@ -1,3 +1,7 @@
+## 0.2.90
+
+- **Chore**: Pulls proxy 2.9.70 — transfer and event-loop instrumentation to locate where a slow delivery loses its time.
+
 ## 0.2.89
 
 - **Chore**: Pulls proxy 2.9.69 — the encoder now starts exactly where the viewer seeked, with nothing able to drag it elsewhere.
