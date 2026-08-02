@@ -1,3 +1,7 @@
+## 0.2.92
+
+- **Fix**: Pulls proxy 2.9.72 — the torrent is no longer deleted with its data while still being read, which had left the encoder with an empty input after 2.9.71.
+
 ## 0.2.91
 
 - **Chore**: Pulls proxy 2.9.71 — the torrent client now runs on its own thread, so serving a segment no longer queues behind torrent work (measured: 3 MB in 0.05-0.12 s against 12-23 s for 10 MB before).
