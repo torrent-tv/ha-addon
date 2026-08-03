@@ -1,3 +1,7 @@
+## 0.2.99
+
+- **New**: Pulls proxy 2.9.79 — the stream route now writes responses straight out of the torrent's shared memory, with no copy anywhere on the read path. Measured on already-downloaded data: 24 MB delivered in 298 ms instead of 1008 ms (675 Mbit/s against 200), and far steadier.
+
 ## 0.2.98
 
 - **New**: Pulls proxy 2.9.78 — reads now cross the thread boundary as positions in shared memory instead of as bytes, removing a per-read copy (18.84 ms per 10 MB) from the thread that runs the torrent, on the path a viewer waits on.
