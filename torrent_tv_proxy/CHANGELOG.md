@@ -1,3 +1,7 @@
+## 0.2.95
+
+- **New**: Pulls proxy 2.9.75 — the piece store now reports resident pieces, spills and how many reads were served from memory, so its behaviour is visible in the addon log. Memory budget is sized from the host rather than fixed, and taken as needed rather than up front.
+
 ## 0.2.94
 
 - **Fix**: Pulls proxy 2.9.74 — playback works again. Since 2.9.71 every read came back empty and loading stopped at "Preparing HLS transcode"; torrents with a `wss://` tracker, including the site demo, took the whole proxy down.
