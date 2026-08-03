@@ -1,3 +1,7 @@
+## 0.2.98
+
+- **New**: Pulls proxy 2.9.78 — reads now cross the thread boundary as positions in shared memory instead of as bytes, removing a per-read copy (18.84 ms per 10 MB) from the thread that runs the torrent, on the path a viewer waits on.
+
 ## 0.2.97
 
 - **Fix**: Pulls proxy 2.9.77 — commands naming a torrent that is still being added now wait for it instead of failing with "Unknown source" (which showed up as no peers and no progress on the loading screen while a magnet fetched its metadata). File claims are held per reader, so one reader finishing no longer frees the file under the others. HEAD on the stream route answers from headers instead of starting a read of the whole file.
