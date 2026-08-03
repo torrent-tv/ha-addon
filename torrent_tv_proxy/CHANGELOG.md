@@ -1,3 +1,7 @@
+## 0.2.96
+
+- **Fix**: Pulls proxy 2.9.76 — a read that failed inside the torrent thread no longer looks like an empty file or hangs the reader, and request ids can no longer collide between reads and commands (which silently answered a command with another request's result).
+
 ## 0.2.95
 
 - **New**: Pulls proxy 2.9.75 — the piece store now reports resident pieces, spills and how many reads were served from memory, so its behaviour is visible in the addon log. Memory budget is sized from the host rather than fixed, and taken as needed rather than up front.
