@@ -1,3 +1,7 @@
+## 0.2.97
+
+- **Fix**: Pulls proxy 2.9.77 — commands naming a torrent that is still being added now wait for it instead of failing with "Unknown source" (which showed up as no peers and no progress on the loading screen while a magnet fetched its metadata). File claims are held per reader, so one reader finishing no longer frees the file under the others. HEAD on the stream route answers from headers instead of starting a read of the whole file.
+
 ## 0.2.96
 
 - **Fix**: Pulls proxy 2.9.76 — a read that failed inside the torrent thread no longer looks like an empty file or hangs the reader, and request ids can no longer collide between reads and commands (which silently answered a command with another request's result).
