@@ -1,3 +1,7 @@
+## 0.2.94
+
+- **Fix**: Pulls proxy 2.9.74 — playback works again. Since 2.9.71 every read came back empty and loading stopped at "Preparing HLS transcode"; torrents with a `wss://` tracker, including the site demo, took the whole proxy down.
+
 ## 0.2.93
 
 - **Fix**: Pulls proxy 2.9.73 — file stats no longer come back empty, so the loading screen shows peers, speed and progress again.
