@@ -1,3 +1,7 @@
+## 0.3.1
+
+- **Fix**: Pulls proxy 2.9.82 — segments are now cut where the playlist says they are. Previously ffmpeg picked its own cut points from a target duration while the playlist was built from the container index, and the two disagreed: on a real file segment #876 meant 1:26:50 to the player and about minute 58 to ffmpeg, so a seek into the middle landed at the end and the shown duration drifted. Also carries the stream route reporting why a read failed instead of closing the connection silently.
+
 ## 0.3.0
 
 - **Fix**: Pulls proxy 2.9.80 — a seek backward could hang forever, because the pieces behind the previous position had been removed from the download set and nothing put them back. Also fixes two pieces being given the same memory slot under concurrent downloads, which made them fail their hash and download again without end — from outside, indistinguishable from a seek that never completes while the swarm runs at full speed.
