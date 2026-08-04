@@ -1,3 +1,7 @@
+## 0.3.6
+
+- **Fix**: Pulls proxy 2.9.87 — fMP4 playback no longer freezes a few seconds in. A segment holds several fragments, and each was being told it starts where the whole segment starts, so the player kept rejecting and re-requesting the same two segments.
+
 ## 0.3.5
 
 - **Fix**: Pulls proxy 2.9.86 — fMP4 playback starts again. ffmpeg was exiting before it wrote anything because a copied AC-3 track cannot be described until its first packet has been seen, and the muxer was being asked for the header up front; the previous release blamed the segment file names, which turned out not to be the cause.
