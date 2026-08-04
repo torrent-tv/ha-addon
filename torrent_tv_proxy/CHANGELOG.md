@@ -1,3 +1,7 @@
+## 0.3.12
+
+- **Fix**: Pulls proxy 2.9.93 — playback no longer dies after a seek that lands exactly on a keyframe, a session can recover when an encoder run fails instead of answering 500 forever, and the encoder stays held back once it has run too far ahead rather than being released by any passing request.
+
 ## 0.3.11
 
 - **Fix**: Pulls proxy 2.9.92 — a seek no longer waits out delays meant for a problem that no longer exists. About 1.2 s came off every seek, and two seeks in quick succession now cause one encoder restart instead of two.
