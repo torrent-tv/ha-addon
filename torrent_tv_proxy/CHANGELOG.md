@@ -1,3 +1,7 @@
+## 0.3.10
+
+- **Fix**: Pulls proxy 2.9.91 — the encoder no longer races ahead of the viewer. It used to encode to the end of the film at up to 13x, downloading the whole torrent for someone who might watch two minutes and pushing out of memory the very pieces being played. It is now suspended two minutes ahead and released as the viewer catches up.
+
 ## 0.3.9
 
 - **Fix**: Pulls proxy 2.9.90 — a file with MP3 audio plays again. The container is now chosen per playback session by the browser, which is the only side that knows what its decoder accepts; the addon's own segment-format setting stays the default for everything else.
