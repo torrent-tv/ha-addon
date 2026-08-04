@@ -1,3 +1,7 @@
+## 0.3.8
+
+- **Fix**: Pulls proxy 2.9.89 — the two remaining reasons a seek took a minute. What to download is now decided by the readers alone: ffmpeg's opening read used to claim the entire file and never give it back, which outranked everything the previous release added. And a seek now releases the segment requests it made pointless, instead of leaving the player blocked on one of them for the full 60 s hold.
+
 ## 0.3.7
 
 - **Fix**: Pulls proxy 2.9.88 — seeking no longer downloads its way to the target. A seek left the pieces it needed selected by nobody, and every restart of the encoder re-selected the whole file from the beginning, so the swarm walked forward from the first missing piece: measured at 2.47 GB fetched over 93 s for a seek that needed a single 8 MiB piece.
