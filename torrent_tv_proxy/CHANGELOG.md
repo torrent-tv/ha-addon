@@ -1,3 +1,7 @@
+## 0.3.4
+
+- **Fix**: Pulls proxy 2.9.85 — fMP4 playback would not start at all in the previous release; ffmpeg refused the output because the segment muxer picks the container from the file extension and does not recognise `.m4s`.
+
 ## 0.3.3
 
 - **Fix**: Pulls proxy 2.9.84 — fMP4 segments are now cut where the playlist says, closing the gap left in the previous release which covered MPEG-TS only.
