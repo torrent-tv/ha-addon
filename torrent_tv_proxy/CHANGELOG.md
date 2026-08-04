@@ -1,3 +1,7 @@
+## 0.3.9
+
+- **Fix**: Pulls proxy 2.9.90 — a file with MP3 audio plays again. The container is now chosen per playback session by the browser, which is the only side that knows what its decoder accepts; the addon's own segment-format setting stays the default for everything else.
+
 ## 0.3.8
 
 - **Fix**: Pulls proxy 2.9.89 — the two remaining reasons a seek took a minute. What to download is now decided by the readers alone: ffmpeg's opening read used to claim the entire file and never give it back, which outranked everything the previous release added. And a seek now releases the segment requests it made pointless, instead of leaving the player blocked on one of them for the full 60 s hold.
