@@ -1,3 +1,7 @@
+## 0.3.16
+
+- **Fix**: Pulls proxy 2.9.98 — the upload is no longer raised while nobody is waiting for data, a session start no longer registers as a burst of seeks, and the per-run ffmpeg log line no longer carries the full list of cut times (about 7 KB per run on a two-hour film).
+
 ## 0.3.15
 
 - **Fix**: Pulls proxy 2.9.97 — the generous upload added in the previous release did not reach the moment it was meant for. Only torrents with a registered reader were considered, and the head-and-tail read that a new torrent starts with does not register one, so the upload stayed near-silent for the whole of that wait.
