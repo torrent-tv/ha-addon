@@ -1,3 +1,7 @@
+## 0.3.17
+
+- **New**: Pulls proxy 2.9.99 — a torrent can be started as soon as it is opened in the browser, before an episode is chosen, so the trackers, the peer connections and the codec probe's data are already under way by the time the viewer picks.
+
 ## 0.3.16
 
 - **Fix**: Pulls proxy 2.9.98 — the upload is no longer raised while nobody is waiting for data, a session start no longer registers as a burst of seeks, and the per-run ffmpeg log line no longer carries the full list of cut times (about 7 KB per run on a two-hour film).
