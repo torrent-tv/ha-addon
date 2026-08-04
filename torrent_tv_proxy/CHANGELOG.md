@@ -1,3 +1,7 @@
+## 0.3.15
+
+- **Fix**: Pulls proxy 2.9.97 — the generous upload added in the previous release did not reach the moment it was meant for. Only torrents with a registered reader were considered, and the head-and-tail read that a new torrent starts with does not register one, so the upload stayed near-silent for the whole of that wait.
+
 ## 0.3.14
 
 - **Fix**: Pulls proxy 2.9.96 — the proxy now uploads generously for 25 s when a torrent is added and when the viewer seeks, so peers open their slots to it sooner. Measured before the change: a session with 96 peers connected within 2 s still spent 8.36 s of its 11.46 s start waiting for 16 MB. Every encode run also records the exact ffmpeg command line, needed to track down a failure that the message alone did not explain.
