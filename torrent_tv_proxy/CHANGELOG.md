@@ -1,3 +1,7 @@
+## 0.3.11
+
+- **Fix**: Pulls proxy 2.9.92 — a seek no longer waits out delays meant for a problem that no longer exists. About 1.2 s came off every seek, and two seeks in quick succession now cause one encoder restart instead of two.
+
 ## 0.3.10
 
 - **Fix**: Pulls proxy 2.9.91 — the encoder no longer races ahead of the viewer. It used to encode to the end of the film at up to 13x, downloading the whole torrent for someone who might watch two minutes and pushing out of memory the very pieces being played. It is now suspended two minutes ahead and released as the viewer catches up.
