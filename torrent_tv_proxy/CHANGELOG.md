@@ -1,3 +1,7 @@
+## 0.3.5
+
+- **Fix**: Pulls proxy 2.9.86 — fMP4 playback starts again. ffmpeg was exiting before it wrote anything because a copied AC-3 track cannot be described until its first packet has been seen, and the muxer was being asked for the header up front; the previous release blamed the segment file names, which turned out not to be the cause.
+
 ## 0.3.4
 
 - **Fix**: Pulls proxy 2.9.85 — fMP4 playback would not start at all in the previous release; ffmpeg refused the output because the segment muxer picks the container from the file extension and does not recognise `.m4s`.
