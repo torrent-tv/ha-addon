@@ -1,3 +1,8 @@
+## 0.3.13
+
+- **New**: Pulls proxy 2.9.95 — the read-ahead window is now sized in seconds of playback rather than a fixed 32 MB, everything in it is marked urgent instead of just the piece under the read head, and the store keeps it in memory instead of treating it as stale. A seek back into content already downloaded brings the whole window off disk at once. The rest of the file is filled in the background, but only while the viewer's own window needs nothing.
+- **Fix**: Pulls proxy 2.9.95 — a request to `/stream` for a torrent whose metadata has not arrived answers a retryable 503 instead of holding the connection open in silence until the client gives up.
+
 ## 0.3.12
 
 - **Fix**: Pulls proxy 2.9.93 — playback no longer dies after a seek that lands exactly on a keyframe, a session can recover when an encoder run fails instead of answering 500 forever, and the encoder stays held back once it has run too far ahead rather than being released by any passing request.
