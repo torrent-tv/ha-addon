@@ -1,3 +1,7 @@
+## 0.3.3
+
+- **Fix**: Pulls proxy 2.9.84 — fMP4 segments are now cut where the playlist says, closing the gap left in the previous release which covered MPEG-TS only.
+
 ## 0.3.2
 
 - **Fix**: Pulls proxy 2.9.83 — playback no longer dies a few seconds in. The new segment muxer creates a file when it starts writing rather than when it finishes, and the route was serving those half-written segments; readiness is now judged by the next segment having been started.
