@@ -1,3 +1,7 @@
+## 0.3.18
+
+- **New**: Pulls proxy 2.9.100 — a long wait for a piece reports how many peers held it, how many were asked and how much was in flight, which is the missing evidence for why a seek is slow. The keyframe index is read alongside the codec probe rather than after it, and every encoder run is numbered in the log.
+
 ## 0.3.17
 
 - **New**: Pulls proxy 2.9.99 — a torrent can be started as soon as it is opened in the browser, before an episode is chosen, so the trackers, the peer connections and the codec probe's data are already under way by the time the viewer picks.
