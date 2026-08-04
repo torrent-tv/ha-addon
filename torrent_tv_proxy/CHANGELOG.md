@@ -1,3 +1,7 @@
+## 0.3.0
+
+- **Fix**: Pulls proxy 2.9.80 — a seek backward could hang forever, because the pieces behind the previous position had been removed from the download set and nothing put them back. Also fixes two pieces being given the same memory slot under concurrent downloads, which made them fail their hash and download again without end — from outside, indistinguishable from a seek that never completes while the swarm runs at full speed.
+
 ## 0.2.99
 
 - **New**: Pulls proxy 2.9.79 — the stream route now writes responses straight out of the torrent's shared memory, with no copy anywhere on the read path. Measured on already-downloaded data: 24 MB delivered in 298 ms instead of 1008 ms (675 Mbit/s against 200), and far steadier.
