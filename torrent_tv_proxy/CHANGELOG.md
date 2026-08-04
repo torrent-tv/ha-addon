@@ -1,3 +1,7 @@
+## 0.3.7
+
+- **Fix**: Pulls proxy 2.9.88 — seeking no longer downloads its way to the target. A seek left the pieces it needed selected by nobody, and every restart of the encoder re-selected the whole file from the beginning, so the swarm walked forward from the first missing piece: measured at 2.47 GB fetched over 93 s for a seek that needed a single 8 MiB piece.
+
 ## 0.3.6
 
 - **Fix**: Pulls proxy 2.9.87 — fMP4 playback no longer freezes a few seconds in. A segment holds several fragments, and each was being told it starts where the whole segment starts, so the player kept rejecting and re-requesting the same two segments.
