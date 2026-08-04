@@ -1,3 +1,7 @@
+## 0.3.14
+
+- **Fix**: Pulls proxy 2.9.96 — the proxy now uploads generously for 25 s when a torrent is added and when the viewer seeks, so peers open their slots to it sooner. Measured before the change: a session with 96 peers connected within 2 s still spent 8.36 s of its 11.46 s start waiting for 16 MB. Every encode run also records the exact ffmpeg command line, needed to track down a failure that the message alone did not explain.
+
 ## 0.3.13
 
 - **New**: Pulls proxy 2.9.95 — the read-ahead window is now sized in seconds of playback rather than a fixed 32 MB, everything in it is marked urgent instead of just the piece under the read head, and the store keeps it in memory instead of treating it as stale. A seek back into content already downloaded brings the whole window off disk at once. The rest of the file is filled in the background, but only while the viewer's own window needs nothing.
