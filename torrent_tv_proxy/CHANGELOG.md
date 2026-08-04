@@ -1,3 +1,7 @@
+## 0.3.19
+
+- **New**: Pulls proxy 2.9.101 — the playback plan reports what this host takes to produce a session's first segment, which the browser needs to answer "how long until playback" during the gap where nothing else has a measured rate.
+
 ## 0.3.18
 
 - **New**: Pulls proxy 2.9.100 — a long wait for a piece reports how many peers held it, how many were asked and how much was in flight, which is the missing evidence for why a seek is slow. The keyframe index is read alongside the codec probe rather than after it, and every encoder run is numbered in the log.
