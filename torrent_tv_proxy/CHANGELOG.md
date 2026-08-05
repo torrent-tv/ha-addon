@@ -1,3 +1,7 @@
+## 0.3.20
+
+- **New**: Pulls proxy 2.9.102 — the playback plan also reports what this host takes to create a session, the second term of the browser's end-to-end estimate of time until playback.
+
 ## 0.3.19
 
 - **New**: Pulls proxy 2.9.101 — the playback plan reports what this host takes to produce a session's first segment, which the browser needs to answer "how long until playback" during the gap where nothing else has a measured rate.
