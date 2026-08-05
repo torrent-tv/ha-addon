@@ -1,3 +1,7 @@
+## 0.3.22
+
+- **Fix**: Pulls proxy 2.9.104 — a run whose input ran dry is no longer reported as a finished file, which is what left a viewer frozen 32 minutes in after the torrent's download died. A stalled download also reports itself now, with the figures that say whether the swarm was asked for anything at all.
+
 ## 0.3.21
 
 - **Fix**: Pulls proxy 2.9.103 — playback worked in neither 2.9.101 nor 2.9.102. A constant used by both cold-start estimates was never declared, so every request to start a transcode session answered 500 and the browser reported the first segment missing. Update from 0.3.19 or 0.3.20 to play anything at all.
