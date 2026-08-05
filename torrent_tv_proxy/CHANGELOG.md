@@ -1,3 +1,7 @@
+## 0.3.23
+
+- **Fix**: Pulls proxy 2.9.105 — the download no longer stops dead while the encoder is held back. A reader's claim on the pieces it needs was being deleted by the torrent library as soon as those pieces arrived, and nothing put it back while the reader was parked; measured, that left a download at zero for eleven minutes with 150 peers connected.
+
 ## 0.3.22
 
 - **Fix**: Pulls proxy 2.9.104 — a run whose input ran dry is no longer reported as a finished file, which is what left a viewer frozen 32 minutes in after the torrent's download died. A stalled download also reports itself now, with the figures that say whether the swarm was asked for anything at all.
