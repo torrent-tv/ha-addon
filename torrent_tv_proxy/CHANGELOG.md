@@ -1,3 +1,7 @@
+## 0.3.21
+
+- **Fix**: Pulls proxy 2.9.103 — playback worked in neither 2.9.101 nor 2.9.102. A constant used by both cold-start estimates was never declared, so every request to start a transcode session answered 500 and the browser reported the first segment missing. Update from 0.3.19 or 0.3.20 to play anything at all.
+
 ## 0.3.20
 
 - **New**: Pulls proxy 2.9.102 — the playback plan also reports what this host takes to create a session, the second term of the browser's end-to-end estimate of time until playback.
