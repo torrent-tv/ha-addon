@@ -1,3 +1,7 @@
+## 0.3.35
+
+- **Fix**: Pulls proxy 2.9.117 — seeking backwards after seeking forwards no longer freezes playback. The encoder was suspended for being "ahead of the viewer" on the strength of segments the viewer had left behind, 136 ms after starting and before it had made anything.
+
 ## 0.3.34
 
 - **New**: Pulls proxy 2.9.116 — a progress report says which height is being produced, so the player can show what automatic quality has settled on instead of just "Auto".
