@@ -1,3 +1,7 @@
+## 0.3.31
+
+- **New**: Pulls proxy 2.9.113 — the transport's counters are recorded continuously, so the next time data is accepted for sending and never arrives, the log says whether it left the machine.
+
 ## 0.3.30
 
 - **New**: Pulls proxy 2.9.112 — when the data a session is playing goes away, the proxy now downloads it again and carries on, instead of reporting a failure the viewer could do nothing about.
