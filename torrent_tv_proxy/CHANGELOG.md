@@ -1,3 +1,7 @@
+## 0.3.24
+
+- **Fix**: Pulls proxy 2.9.106 — the browser's "time until playback" gets the two figures it needs from this host even on the first file opened after a restart, which is exactly the case it was built for. The stats line also says what is missing when it has nothing to report.
+
 ## 0.3.23
 
 - **Fix**: Pulls proxy 2.9.105 — the download no longer stops dead while the encoder is held back. A reader's claim on the pieces it needs was being deleted by the torrent library as soon as those pieces arrived, and nothing put it back while the reader was parked; measured, that left a download at zero for eleven minutes with 150 peers connected.
