@@ -1,3 +1,7 @@
+## 0.3.25
+
+- **Fix**: Pulls proxy 2.9.107 — 0.3.24 could not play anything: every playback plan failed with `firstSegmentMs is not defined`. Update straight from 0.3.23 or earlier; do not stay on 0.3.24.
+
 ## 0.3.24
 
 - **Fix**: Pulls proxy 2.9.106 — the browser's "time until playback" gets the two figures it needs from this host even on the first file opened after a restart, which is exactly the case it was built for. The stats line also says what is missing when it has nothing to report.
