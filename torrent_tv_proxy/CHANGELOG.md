@@ -1,3 +1,7 @@
+## 0.3.32
+
+- **Fix**: Pulls proxy 2.9.114 — seeking no longer destroys the torrent. Each seek left one piece of memory permanently reserved, and when the store ran out it reported the exhaustion to the torrent client, which closed the store and dropped the torrent; playback then failed with "file not found" until the addon was restarted.
+
 ## 0.3.31
 
 - **New**: Pulls proxy 2.9.113 — the transport's counters are recorded continuously, so the next time data is accepted for sending and never arrives, the log says whether it left the machine.
