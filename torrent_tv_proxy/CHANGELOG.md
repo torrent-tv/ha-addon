@@ -1,3 +1,7 @@
+## 0.3.27
+
+- **Chore**: Pulls proxy 2.9.109 — a transcode session outlives a vanished browser by thirty minutes instead of ten, so a viewer who closed the tab or lost the network comes back to a warm encoder. An open tab never consumes this at all: it re-asserts itself every 30 s.
+
 ## 0.3.26
 
 - **New**: Pulls proxy 2.9.108 — when a data channel stops delivering while still accepting requests, the log now names the cause instead of only showing that bytes are piling up: it reports what the transport itself sent and received, the round-trip time and the path in use, every second for as long as it lasts.
