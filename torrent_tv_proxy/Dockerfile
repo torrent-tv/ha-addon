@@ -3,6 +3,19 @@ FROM ${BUILD_FROM}
 
 RUN apk add --no-cache nodejs npm ffmpeg python3 make g++
 
+# Node must be the LTS line the proxy is developed and tested on. The base
+# image supplies whatever Alpine happens to ship, so without this the addon
+# would follow it silently onto an untested major — including the odd-numbered
+# releases, which never become LTS. Failing the build is the point: a drift
+# here is a decision to make, not something to discover from a crash in the
+# field.
+RUN node -v \
+    && MAJOR="$(node -p 'process.versions.node.split(".")[0]')" \
+    && if [ "$MAJOR" != "24" ]; then \
+         echo "This addon requires Node 24 (LTS); the base image has $(node -v)" >&2; \
+         exit 1; \
+       fi
+
 # BUILD_VERSION is injected automatically by the HA supervisor from config.yaml.
 # Declaring it here ensures the npm install layer is invalidated whenever
 # the addon version changes — no need to pin the npm package version manually.

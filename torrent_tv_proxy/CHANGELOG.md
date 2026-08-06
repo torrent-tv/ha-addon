@@ -1,3 +1,8 @@
+## 0.3.28
+
+- **Fix**: Pulls proxy 2.9.110 — a torrent the proxy had cleaned up as idle was still being handed to the player, which killed every later attempt at that same source until the addon was restarted. Two sessions in a row failed this way; the source is now added again instead.
+- **Chore**: The build now checks that the base image supplies Node 24, the LTS line the proxy is tested on, and fails with a clear message if it ever drifts off it.
+
 ## 0.3.27
 
 - **Chore**: Pulls proxy 2.9.109 — a transcode session outlives a vanished browser by thirty minutes instead of ten, so a viewer who closed the tab or lost the network comes back to a warm encoder. An open tab never consumes this at all: it re-asserts itself every 30 s.
