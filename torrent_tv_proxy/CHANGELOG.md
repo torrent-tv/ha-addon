@@ -1,3 +1,7 @@
+## 0.3.30
+
+- **New**: Pulls proxy 2.9.112 — when the data a session is playing goes away, the proxy now downloads it again and carries on, instead of reporting a failure the viewer could do nothing about.
+
 ## 0.3.29
 
 - **Fix**: Pulls proxy 2.9.111 — the film being watched can no longer be deleted while a seek is in progress, and the encoder is no longer held back on the strength of a position ffmpeg reported but had not reached. Both were measured on 2026-08-06: six gigabytes evicted mid-seek, and a segment held for 45.7 s because nobody was producing it.
