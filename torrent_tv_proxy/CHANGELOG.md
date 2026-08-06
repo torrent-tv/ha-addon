@@ -1,3 +1,7 @@
+## 0.3.38
+
+- **Fix**: Pulls proxy 2.9.120 — the rest of the film is fetched while the viewer needs nothing, instead of the link sitting idle whenever the encoder is held back; the stall warning stops firing when a download of zero is the correct state; and the progress report carries the two timings the browser needs to estimate a wait after a seek.
+
 ## 0.3.37
 
 - **Fix**: Pulls proxy 2.9.119 — the quality menu can finally say what automatic quality has settled on. The height was reported as zero whenever the video was copied, which is most sessions, so the menu read a bare "Auto".
