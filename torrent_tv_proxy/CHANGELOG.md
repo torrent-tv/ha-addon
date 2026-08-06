@@ -1,3 +1,7 @@
+## 0.3.39
+
+- **Fix**: Pulls proxy 2.9.121 — a seek no longer hangs on a segment that a terminated run left short of a track. Such a file looks complete, so it was served, and the player could not use it.
+
 ## 0.3.38
 
 - **Fix**: Pulls proxy 2.9.120 — the rest of the film is fetched while the viewer needs nothing, instead of the link sitting idle whenever the encoder is held back; the stall warning stops firing when a download of zero is the correct state; and the progress report carries the two timings the browser needs to estimate a wait after a seek.
