@@ -1,3 +1,7 @@
+## 0.3.33
+
+- **Chore**: Pulls proxy 2.9.115 — a diagnostic that could flood the addon log after a seek now reports the start and the end of what it observes, with how long it lasted.
+
 ## 0.3.32
 
 - **Fix**: Pulls proxy 2.9.114 — seeking no longer destroys the torrent. Each seek left one piece of memory permanently reserved, and when the store ran out it reported the exhaustion to the torrent client, which closed the store and dropped the torrent; playback then failed with "file not found" until the addon was restarted.
