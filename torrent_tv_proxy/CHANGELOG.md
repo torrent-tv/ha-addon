@@ -1,3 +1,7 @@
+## 0.3.34
+
+- **New**: Pulls proxy 2.9.116 — a progress report says which height is being produced, so the player can show what automatic quality has settled on instead of just "Auto".
+
 ## 0.3.33
 
 - **Chore**: Pulls proxy 2.9.115 — a diagnostic that could flood the addon log after a seek now reports the start and the end of what it observes, with how long it lasted.
