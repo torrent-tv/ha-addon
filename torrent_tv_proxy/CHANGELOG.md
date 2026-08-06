@@ -1,3 +1,7 @@
+## 0.3.40
+
+- **Fix**: Pulls proxy 2.9.122 — resuming a film now starts encoding where the viewer was. The position reached the proxy and was then ignored when the encoder was started, so a Retry after a proxy restart spent 45 s transcoding the opening credits and gave up.
+
 ## 0.3.39
 
 - **Fix**: Pulls proxy 2.9.121 — a seek no longer hangs on a segment that a terminated run left short of a track. Such a file looks complete, so it was served, and the player could not use it.
