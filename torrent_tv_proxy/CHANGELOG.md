@@ -1,3 +1,7 @@
+## 0.3.26
+
+- **New**: Pulls proxy 2.9.108 — when a data channel stops delivering while still accepting requests, the log now names the cause instead of only showing that bytes are piling up: it reports what the transport itself sent and received, the round-trip time and the path in use, every second for as long as it lasts.
+
 ## 0.3.25
 
 - **Fix**: Pulls proxy 2.9.107 — 0.3.24 could not play anything: every playback plan failed with `firstSegmentMs is not defined`. Update straight from 0.3.23 or earlier; do not stay on 0.3.24.
