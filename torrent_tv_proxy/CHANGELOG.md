@@ -1,3 +1,7 @@
+## 0.3.41
+
+- **Fix**: Pulls proxy 2.9.123 — 0.3.39 could delete the segment the encoder was writing, so that segment never appeared and playback stopped. Update straight past 0.3.39.
+
 ## 0.3.40
 
 - **Fix**: Pulls proxy 2.9.122 — resuming a film now starts encoding where the viewer was. The position reached the proxy and was then ignored when the encoder was started, so a Retry after a proxy restart spent 45 s transcoding the opening credits and gave up.
