@@ -1,3 +1,7 @@
+## 0.3.37
+
+- **Fix**: Pulls proxy 2.9.119 — the quality menu can finally say what automatic quality has settled on. The height was reported as zero whenever the video was copied, which is most sessions, so the menu read a bare "Auto".
+
 ## 0.3.36
 
 - **New**: Pulls proxy 2.9.118 — when the encoder is held back, the log now says what that decision was taken on, which is what a stalled download after a seek could not be explained without.
