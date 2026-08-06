@@ -1,3 +1,7 @@
+## 0.3.29
+
+- **Fix**: Pulls proxy 2.9.111 — the film being watched can no longer be deleted while a seek is in progress, and the encoder is no longer held back on the strength of a position ffmpeg reported but had not reached. Both were measured on 2026-08-06: six gigabytes evicted mid-seek, and a segment held for 45.7 s because nobody was producing it.
+
 ## 0.3.28
 
 - **Fix**: Pulls proxy 2.9.110 — a torrent the proxy had cleaned up as idle was still being handed to the player, which killed every later attempt at that same source until the addon was restarted. Two sessions in a row failed this way; the source is now added again instead.
