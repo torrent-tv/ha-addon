@@ -1,3 +1,7 @@
+## 0.3.42
+
+- **Fix**: Pulls proxy 2.9.124 — subtitles no longer drift away from the picture. A segment was labelled with the time the playlist assigned it, and on a file whose keyframe index disagrees with its own contents that was out by four seconds; the label now comes from the segment itself.
+
 ## 0.3.41
 
 - **Fix**: Pulls proxy 2.9.123 — 0.3.39 could delete the segment the encoder was writing, so that segment never appeared and playback stopped. Update straight past 0.3.39.
