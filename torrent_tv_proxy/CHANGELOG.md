@@ -1,3 +1,7 @@
+## 0.3.43
+
+- **Fix**: Pulls proxy 2.9.125 — playback works again. 0.3.42 could not play anything: the proxy served the playlist and then held every request for the first segment until the browser gave up, while the finished segments lay on disk. Update straight past 0.3.42.
+
 ## 0.3.42
 
 - **Fix**: Pulls proxy 2.9.124 — subtitles no longer drift away from the picture. A segment was labelled with the time the playlist assigned it, and on a file whose keyframe index disagrees with its own contents that was out by four seconds; the label now comes from the segment itself.
