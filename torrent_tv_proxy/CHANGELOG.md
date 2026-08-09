@@ -1,3 +1,7 @@
+## 0.3.44
+
+- **Chore**: Pull proxy 2.9.126 — a read whose offset falls outside its piece pool now ends short and says so, instead of throwing an exception the process swallowed and then answering no reads at all.
+
 ## 0.3.43
 
 - **Fix**: Pulls proxy 2.9.125 — playback works again. 0.3.42 could not play anything: the proxy served the playlist and then held every request for the first segment until the browser gave up, while the finished segments lay on disk. Update straight past 0.3.42.
