@@ -1,3 +1,7 @@
+## 0.3.45
+
+- **Chore**: Pull proxy 2.9.127 — a read that hands the file over out of order now says so, which is what the AC-3 corruption of 2026-08-09 needs in order to name its own cause.
+
 ## 0.3.44
 
 - **Chore**: Pull proxy 2.9.126 — a read whose offset falls outside its piece pool now ends short and says so, instead of throwing an exception the process swallowed and then answering no reads at all.
