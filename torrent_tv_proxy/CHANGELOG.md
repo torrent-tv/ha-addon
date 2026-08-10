@@ -1,3 +1,7 @@
+## 0.3.49
+
+- **Chore**: Pull proxy 2.9.131 — a run's first segment is served once the encoder has passed it, which is the segment every resume and seek depends on.
+
 ## 0.3.48
 
 - **Chore**: Pull proxy 2.9.130 — a held segment now says why it is held, so the case where a produced segment is never served names its own cause instead of running out silently.
