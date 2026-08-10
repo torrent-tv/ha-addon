@@ -1,3 +1,7 @@
+## 0.3.46
+
+- **Chore**: Pull proxy 2.9.128 — a read that ends because the reader left is no longer logged as a failure.
+
 ## 0.3.45
 
 - **Chore**: Pull proxy 2.9.127 — a read that hands the file over out of order now says so, which is what the AC-3 corruption of 2026-08-09 needs in order to name its own cause.
