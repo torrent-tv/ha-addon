@@ -1,3 +1,7 @@
+## 0.3.55
+
+- **New**: Pulls proxy 2.9.137 — a session states the track set its output will carry and sends it to the browser, so a track lost on the way is named at once instead of showing as a black picture with working sound.
+
 ## 0.3.54
 
 - **Fix**: Pulls proxy 2.9.136 — what a complete init segment must describe is taken from the track set the proxy declares it will output, instead of assuming two tracks.
