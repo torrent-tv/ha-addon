@@ -1,3 +1,7 @@
+## 0.3.48
+
+- **Chore**: Pull proxy 2.9.130 — a held segment now says why it is held, so the case where a produced segment is never served names its own cause instead of running out silently.
+
 ## 0.3.47
 
 - **Chore**: Pull proxy 2.9.129 — a held segment now says why it is held, which is the instrument for a resume that never plays.
