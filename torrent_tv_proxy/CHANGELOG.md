@@ -1,3 +1,7 @@
+## 0.3.52
+
+- **Chore**: Pull proxy 2.9.134 — the restart-delay instrument prints.
+
 ## 0.3.51
 
 - **Chore**: Pull proxy 2.9.133 — a restarted encoder no longer waits for its predecessor to die, which is about a second off every seek.
