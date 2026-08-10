@@ -1,3 +1,7 @@
+## 0.3.50
+
+- **Chore**: Pull proxy 2.9.132 — an encoder restart reports what each of its stages cost.
+
 ## 0.3.49
 
 - **Chore**: Pull proxy 2.9.131 — a run's first segment is served once the encoder has passed it, which is the segment every resume and seek depends on.
