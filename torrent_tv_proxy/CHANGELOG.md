@@ -1,3 +1,7 @@
+## 0.3.51
+
+- **Chore**: Pull proxy 2.9.133 — a restarted encoder no longer waits for its predecessor to die, which is about a second off every seek.
+
 ## 0.3.50
 
 - **Chore**: Pull proxy 2.9.132 — an encoder restart reports what each of its stages cost.
