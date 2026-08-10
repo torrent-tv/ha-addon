@@ -1,3 +1,7 @@
+## 0.3.47
+
+- **Chore**: Pull proxy 2.9.129 — a held segment now says why it is held, which is the instrument for a resume that never plays.
+
 ## 0.3.46
 
 - **Chore**: Pull proxy 2.9.128 — a read that ends because the reader left is no longer logged as a failure.
