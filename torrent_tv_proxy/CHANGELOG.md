@@ -1,3 +1,7 @@
+## 0.3.54
+
+- **Fix**: Pulls proxy 2.9.136 — what a complete init segment must describe is taken from the track set the proxy declares it will output, instead of assuming two tracks.
+
 ## 0.3.53
 
 - **Fix**: Pulls proxy 2.9.135 — a session no longer plays sound with no picture at all (an init segment short of a track was cached for the whole session), and a run's first segment is no longer held while it lies finished on disk.
