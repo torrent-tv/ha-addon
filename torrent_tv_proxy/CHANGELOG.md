@@ -1,3 +1,7 @@
+## 0.3.59
+
+- Pulls proxy 2.9.141: a held segment now records whether the encoder has moved at all since the run started, so a wait on torrent data can be told apart from a wait on encoding.
+
 ## 0.3.58
 
 - Pulls proxy 2.9.140: the time to produce a first segment is now derived from the startup benchmark, so the estimate is right on a machine's first run instead of resting on an assumed rate; measured medians also survive a restart.
