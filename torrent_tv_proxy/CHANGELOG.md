@@ -1,3 +1,7 @@
+## 0.3.57
+
+- Pulls proxy 2.9.139: the proxy now states which tracks its output carries. It had been declaring none at all, which left the browser unable to tell a file with no video from a session that lost the track, and left the init guard accepting any header.
+
 ## 0.3.56
 
 - Pulls proxy 2.9.138: the init segment must declare every track before it is cached, so a header written before the video was muxed can no longer leave the browser playing sound with no picture for the whole session.
