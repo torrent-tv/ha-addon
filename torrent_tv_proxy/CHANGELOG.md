@@ -1,3 +1,7 @@
+## 0.3.58
+
+- Pulls proxy 2.9.140: the time to produce a first segment is now derived from the startup benchmark, so the estimate is right on a machine's first run instead of resting on an assumed rate; measured medians also survive a restart.
+
 ## 0.3.57
 
 - Pulls proxy 2.9.139: the proxy now states which tracks its output carries. It had been declaring none at all, which left the browser unable to tell a file with no video from a session that lost the track, and left the init guard accepting any header.
