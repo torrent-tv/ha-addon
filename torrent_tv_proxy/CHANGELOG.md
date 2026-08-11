@@ -1,3 +1,7 @@
+## 0.3.61
+
+- Pulls proxy 2.11.0: a quality change is placed where the player asked for it rather than where the rung being left had read to, a segment request the running encode can never reach is repaired instead of held for ever, and quality switching now works on a copied video as well.
+
 ## 0.3.60
 
 - Pulls proxy 2.10.0: a session that re-encodes its video now publishes a master playlist, so the viewer can change quality without playback stopping. Only one encoder runs at a time — the rung nobody is watching is stopped.
