@@ -1,3 +1,7 @@
+## 0.3.56
+
+- Pulls proxy 2.9.138: the init segment must declare every track before it is cached, so a header written before the video was muxed can no longer leave the browser playing sound with no picture for the whole session.
+
 ## 0.3.55
 
 - **New**: Pulls proxy 2.9.137 — a session states the track set its output will carry and sends it to the browser, so a track lost on the way is named at once instead of showing as a black picture with working sound.
