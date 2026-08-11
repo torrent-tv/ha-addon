@@ -1,3 +1,7 @@
+## 0.3.60
+
+- Pulls proxy 2.10.0: a session that re-encodes its video now publishes a master playlist, so the viewer can change quality without playback stopping. Only one encoder runs at a time — the rung nobody is watching is stopped.
+
 ## 0.3.59
 
 - Pulls proxy 2.9.141: a held segment now records whether the encoder has moved at all since the run started, so a wait on torrent data can be told apart from a wait on encoding.
