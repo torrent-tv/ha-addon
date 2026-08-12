@@ -1,3 +1,7 @@
+## 0.3.64
+
+- **Fix**: A momentary network failure no longer ends the build with an error about the wrong thing. node-datachannel fetches a prebuilt binary from GitHub and falls back to building from source if that one request fails — and that fallback is broken in the tool it uses, so the build died reporting `expected first argument to be an array` when what had actually happened was `socket hang up`. The download is retried, and the resulting binary is checked for rather than assumed: without it the addon starts with no WebRTC at all.
+
 ## 0.3.63
 
 - Pulls proxy 2.12.1: the cut grid of a copied stream is corrected from the file itself where the container index is wrong, and the quality warm-up actually works — it was being cancelled by the stream still playing, which made one switch take 43.6 s.

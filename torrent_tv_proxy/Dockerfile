@@ -30,8 +30,24 @@ ARG BUILD_VERSION
 # source build uTP is disabled and the proxy reaches peers over TCP only.
 # Force-compile it here (toolchain is installed above); best-effort — if the
 # build fails the proxy keeps working with TCP-only peers.
+# node-datachannel's own install script fetches a prebuilt binary from GitHub
+# and, if that ONE request fails, falls back to building from source — a
+# fallback that is itself broken in `prebuild` 13 ("expected first argument to
+# be an array"), so a momentary network hiccup ends the whole build with an
+# error about the wrong thing entirely. That is exactly what happened on
+# 2026-08-12: `prebuild-install warn install socket hang up`, and immediately
+# afterwards the same file downloaded from this host in 0.6 s. The download is
+# therefore retried, and the result is CHECKED rather than assumed — an addon
+# that starts without this module has no WebRTC at all, which is the whole
+# transport.
 RUN npm install --global @torrent-tv/proxy --ignore-scripts \
- && npm rebuild --global node-datachannel \
+ && cd /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules/node-datachannel \
+ && for attempt in 1 2 3 4 5; do \
+      npm rebuild --global node-datachannel && break; \
+      echo "node-datachannel: build attempt $attempt failed; retrying in 10s" >&2; \
+      sleep 10; \
+    done \
+ && ls build/Release/*.node \
  && (npm_config_build_from_source=true npm rebuild --global utp-native \
      || echo "WARNING: utp-native build failed; peer connections stay TCP-only")
 
