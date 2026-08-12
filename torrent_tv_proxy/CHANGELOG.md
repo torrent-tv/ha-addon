@@ -1,3 +1,7 @@
+## 0.3.63
+
+- Pulls proxy 2.12.1: the cut grid of a copied stream is corrected from the file itself where the container index is wrong, and the quality warm-up actually works — it was being cancelled by the stream still playing, which made one switch take 43.6 s.
+
 ## 0.3.62
 
 - Pulls proxy 2.12.0: a quality rung is prepared before the player switches to it, so the switch no longer shows a spinner; a forced resolution keeps the ladder beneath it, so a rung the host cannot encode steps down instead of freezing.
