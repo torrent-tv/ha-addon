@@ -1,3 +1,7 @@
+## 0.3.62
+
+- Pulls proxy 2.12.0: a quality rung is prepared before the player switches to it, so the switch no longer shows a spinner; a forced resolution keeps the ladder beneath it, so a rung the host cannot encode steps down instead of freezing.
+
 ## 0.3.61
 
 - Pulls proxy 2.11.0: a quality change is placed where the player asked for it rather than where the rung being left had read to, a segment request the running encode can never reach is repaired instead of held for ever, and quality switching now works on a copied video as well.
