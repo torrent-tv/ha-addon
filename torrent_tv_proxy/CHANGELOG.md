@@ -1,3 +1,9 @@
+## 0.6.0
+
+- **New**: Pulls proxy 2.15.0 — the audio track is made ready before the player changes to it, so a change of language no longer shows a spinner over a stopped picture.
+- **Fix**: The track a viewer leaves is stopped, and only the one being listened to is moved on a seek. On this box a viewer who had changed track once had three readers on one file, and at a seek they pinned every piece the store had; a read then ended with zero bytes and every encoder took that for the end of the file.
+- **Fix**: A read waits for a piece to be released instead of failing, so a momentary shortage is a pause rather than the end of playback.
+
 ## 0.5.2
 
 - **Fix**: Pulls proxy 2.14.3 — changing the audio track is quick again. On this box 0.5.1 left the viewer on a spinner that never ended: the track was started ahead of where the picture actually was, and the proxy then refused the segments the player kept asking for instead of correcting itself. The track now starts where the picture is, measured from what the browser reports it holds.
