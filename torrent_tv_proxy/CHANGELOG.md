@@ -1,3 +1,7 @@
+## 0.5.2
+
+- **Fix**: Pulls proxy 2.14.3 — changing the audio track is quick again. On this box 0.5.1 left the viewer on a spinner that never ended: the track was started ahead of where the picture actually was, and the proxy then refused the segments the player kept asking for instead of correcting itself. The track now starts where the picture is, measured from what the browser reports it holds.
+
 ## 0.5.1
 
 - **Fix**: Pulls proxy 2.14.1 — changing the audio track no longer costs twenty seconds of silence. Measured on this box: the track was changed 159 seconds in, the encoder was placed correctly, and then a repair meant for a misplaced run sent it back to the beginning of the film.
