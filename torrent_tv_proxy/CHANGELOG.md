@@ -1,3 +1,7 @@
+## 0.6.1
+
+- **Fix**: Pulls proxy 2.15.1 — a magnet that never found its metadata no longer makes the same film unplayable from its own `.torrent` file. Measured on this box: one magnet with no reachable trackers left every later attempt at that infohash bound to an empty torrent, and only a restart cleared it.
+
 ## 0.6.0
 
 - **New**: Pulls proxy 2.15.0 — the audio track is made ready before the player changes to it, so a change of language no longer shows a spinner over a stopped picture.
