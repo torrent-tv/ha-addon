@@ -1,3 +1,7 @@
+## 0.6.3
+
+- **Fix**: Pulls proxy 2.15.3 — a magnet that found no peers no longer blocks the same film from opening as a `.torrent` afterwards. Until now the failed magnet left an entry with no file list, every later attempt was answered by it, and only restarting the addon cleared it.
+
 ## 0.6.2
 
 - **Fix**: Pulls proxy 2.15.2 — changing the audio track no longer costs a minute of spinner. The player asks the new track for its first segment before anything else, and that request was held for the full minute before failing, even though nothing could ever have produced it.
