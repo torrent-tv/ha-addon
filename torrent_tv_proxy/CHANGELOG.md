@@ -1,3 +1,7 @@
+## 0.5.1
+
+- **Fix**: Pulls proxy 2.14.1 — changing the audio track no longer costs twenty seconds of silence. Measured on this box: the track was changed 159 seconds in, the encoder was placed correctly, and then a repair meant for a misplaced run sent it back to the beginning of the film.
+
 ## 0.5.0
 
 - **New**: Pulls proxy 2.14.0 — audio is published once for the file instead of being encoded again for every quality rung, and changing the audio track no longer rebuilds the stream from nothing. On a box that struggles to encode one picture, encoding the same soundtrack six times over is work spent on nothing.
