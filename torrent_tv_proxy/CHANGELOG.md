@@ -1,3 +1,9 @@
+## 0.5.0
+
+- **New**: Pulls proxy 2.14.0 — audio is published once for the file instead of being encoded again for every quality rung, and changing the audio track no longer rebuilds the stream from nothing. On a box that struggles to encode one picture, encoding the same soundtrack six times over is work spent on nothing.
+- **Fix**: The quality this host serves by COPY is never taken out of the menu. On 2026-08-15 on this very box, switching down to 240p made 1080p disappear four seconds later — the rung that was actually working, and the one a stranded viewer goes back to.
+- **Fix**: A rung running just under realtime now teaches this host what the file costs, so the menu corrects itself. One ran at 0.95-0.999x for three minutes here and taught nothing.
+
 ## 0.4.0
 
 - **New**: Pulls proxy 2.13.0 — a quality rung is offered only where this host can actually produce it faster than it is watched. The budget used to price encoding alone, which is half the work, and on this very box it offered a 240p rung it then ran at 0.388-0.947x while the 1080p it replaced was copied at 7.8-8.9x: picking a lower quality was what broke playback. Decoding is now measured at startup from three bundled reference clips, and then re-measured on the file being watched, from the encoder already running on it.
