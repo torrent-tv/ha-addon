@@ -1,3 +1,7 @@
+## 0.6.2
+
+- **Fix**: Pulls proxy 2.15.2 — changing the audio track no longer costs a minute of spinner. The player asks the new track for its first segment before anything else, and that request was held for the full minute before failing, even though nothing could ever have produced it.
+
 ## 0.6.1
 
 - **Fix**: Pulls proxy 2.15.1 — a magnet that never found its metadata no longer makes the same film unplayable from its own `.torrent` file. Measured on this box: one magnet with no reachable trackers left every later attempt at that infohash bound to an empty torrent, and only a restart cleared it.
