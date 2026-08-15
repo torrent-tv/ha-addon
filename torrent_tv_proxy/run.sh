@@ -18,6 +18,12 @@ ARGS=(
   # Use the system ffmpeg installed in the image (ffmpeg-static's bundled
   # binary is intentionally not downloaded — see Dockerfile).
   --ffmpeg-bin "$(command -v ffmpeg)"
+  # What this host has measured about itself — how long it takes to create a
+  # session and to make a first segment — so a viewer arriving after a restart
+  # is shown a figure with a measurement behind it. /data is the only directory
+  # the Supervisor keeps: everything else lives in the container's writable
+  # layer and is discarded when an update rebuilds it.
+  --state-dir /data
 )
 
 if [ -n "${TOKEN}" ]; then

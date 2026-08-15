@@ -1,3 +1,8 @@
+## 0.4.0
+
+- **New**: Pulls proxy 2.13.0 — a quality rung is offered only where this host can actually produce it faster than it is watched. The budget used to price encoding alone, which is half the work, and on this very box it offered a 240p rung it then ran at 0.388-0.947x while the 1080p it replaced was copied at 7.8-8.9x: picking a lower quality was what broke playback. Decoding is now measured at startup from three bundled reference clips, and then re-measured on the file being watched, from the encoder already running on it.
+- **New**: What this host has measured about itself is kept in `/data`, which the Supervisor keeps across updates. It used to live inside the container, where every addon update discarded it and the first viewer after one was shown a figure with no measurement behind it.
+
 ## 0.3.65
 
 - **Chore**: Pulls proxy 2.12.2 — the transport heartbeat is now written once per connection with each channel's queue beside it, a channel watch ends when the transport stops knowing its session, and the recorded host timings no longer ship inside the package.
