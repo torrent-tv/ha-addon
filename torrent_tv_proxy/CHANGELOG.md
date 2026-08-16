@@ -1,3 +1,7 @@
+## 0.12.1
+
+- **Fix**: Pulls proxy 2.21.1 — this box no longer teaches itself impossible costs. It was measuring what copying and decoding a film cost while TWO conversions shared the machine, so each measurement came out several times too expensive, every lower quality was refused as impossible, and the quality menu disappeared along with them. A cost is now only taken from a conversion that had the box to itself.
+
 ## 0.12.0
 
 - **Fix**: Pulls proxy 2.21.0 — the two measurements added yesterday (what copying a film costs this box, and what downloading and serving it costs) were never actually taken: both read from places that hold nothing here. They are taken now, and three faults in how they would have been read are fixed with them — most importantly that a copy's speed was being averaged over the minutes it spends deliberately paused, which made it look five times more expensive than it is.
