@@ -1,3 +1,7 @@
+## 0.9.0
+
+- **New**: Pulls proxy 2.18.0 — the box now counts what copying a film costs it, and weighs a quality choice against the work it will really be doing rather than against an empty machine. On this very box the sum comes out as the failure did: an eighth of the machine for the copy plus the rung itself is more than one second of work per second, which is why picking a lower quality used to stop playback.
+
 ## 0.8.0
 
 - **New**: Pulls proxy 2.17.0 — the startup measurement of this box's encoder is taken on real film instead of a generated pattern, and read from ffmpeg's own progress instead of a stopwatch around it. The pattern made the box look 1.23x faster than it is, and the stopwatch hid the difference between presets behind the half-second it takes to start a program; both errors pointed the same way, at offering a quality the box cannot actually produce.
