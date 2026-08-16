@@ -1,3 +1,7 @@
+## 0.11.0
+
+- **Fix**: Pulls proxy 2.20.0 — a film's readers now share the memory set aside for it instead of each claiming the whole of it. On this box that is what emptied the store on 2026-08-15: with the soundtrack served separately there were two readers, a quality warm-up made three, and playback stopped outright.
+
 ## 0.10.0
 
 - **New**: Pulls proxy 2.19.0 — the box measures what downloading and serving a film costs it, and counts that against the quality it offers. With every conversion suspended this box was still a fifth to a third busy, and none of that was being counted; a quality choice was therefore weighed against a machine that does not exist.
