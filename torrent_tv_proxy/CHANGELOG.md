@@ -1,3 +1,7 @@
+## 0.7.0
+
+- **New**: Pulls proxy 2.16.0 — while a film is being converted, the log says what this box is actually doing: how much of it ffmpeg is getting, how much everything else takes, how much is spent waiting on the disk, and the CPU's clock and temperature. On this very box a quality rung ran at half the predicted speed with nothing else running, and nothing recorded said why.
+
 ## 0.6.3
 
 - **Fix**: Pulls proxy 2.15.3 — a magnet that found no peers no longer blocks the same film from opening as a `.torrent` afterwards. Until now the failed magnet left an entry with no file list, every later attempt was answered by it, and only restarting the addon cleared it.
