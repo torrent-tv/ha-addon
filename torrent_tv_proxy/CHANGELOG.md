@@ -1,3 +1,7 @@
+## 0.13.0
+
+- **Fix**: Pulls proxy 2.22.0 — the quality menu stops emptying itself. Which qualities are OFFERED comes from the measurement taken at startup against known clips, which does not move; the figure learned while a film plays moves with whatever else the box is doing, and three sessions in a row it refused one more quality each time until only one was left and the menu vanished. A quality actually SEEN running too slowly, with the box to itself, is still withdrawn — that much a live reading can speak for.
+
 ## 0.12.1
 
 - **Fix**: Pulls proxy 2.21.1 — this box no longer teaches itself impossible costs. It was measuring what copying and decoding a film cost while TWO conversions shared the machine, so each measurement came out several times too expensive, every lower quality was refused as impossible, and the quality menu disappeared along with them. A cost is now only taken from a conversion that had the box to itself.
