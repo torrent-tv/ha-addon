@@ -1,3 +1,8 @@
+## 0.8.0
+
+- **New**: Pulls proxy 2.17.0 — the startup measurement of this box's encoder is taken on real film instead of a generated pattern, and read from ffmpeg's own progress instead of a stopwatch around it. The pattern made the box look 1.23x faster than it is, and the stopwatch hid the difference between presets behind the half-second it takes to start a program; both errors pointed the same way, at offering a quality the box cannot actually produce.
+- **Fix**: A measurement that cannot be trusted is now refused rather than used — a window of no width, a position some ffmpeg builds print before they have one, a speed no machine can reach. One such reading used to become the figure every quality decision was taken from.
+
 ## 0.7.0
 
 - **New**: Pulls proxy 2.16.0 — while a film is being converted, the log says what this box is actually doing: how much of it ffmpeg is getting, how much everything else takes, how much is spent waiting on the disk, and the CPU's clock and temperature. On this very box a quality rung ran at half the predicted speed with nothing else running, and nothing recorded said why.
