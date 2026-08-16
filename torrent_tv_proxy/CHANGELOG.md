@@ -1,3 +1,7 @@
+## 0.10.0
+
+- **New**: Pulls proxy 2.19.0 — the box measures what downloading and serving a film costs it, and counts that against the quality it offers. With every conversion suspended this box was still a fifth to a third busy, and none of that was being counted; a quality choice was therefore weighed against a machine that does not exist.
+
 ## 0.9.0
 
 - **New**: Pulls proxy 2.18.0 — the box now counts what copying a film costs it, and weighs a quality choice against the work it will really be doing rather than against an empty machine. On this very box the sum comes out as the failure did: an eighth of the machine for the copy plus the rung itself is more than one second of work per second, which is why picking a lower quality used to stop playback.
