@@ -1,3 +1,9 @@
+## 0.14.0
+
+- **Fix**: Pulls proxy 2.23.0 — seeking no longer damages the box's own settings. Every jump through a film killed the running conversion, and the proxy read that killing as the conversion having FAILED: on a machine with a graphics chip that can convert video, it then switched itself to the slow software converter for good, and started an extra conversion at the position you had just left. A moment of "failed" also sat between the kill and the restart, which a request arriving right then was answered with an error.
+- **Fix**: A film whose data briefly goes missing no longer costs the box its fast converter either. Losing the download says nothing about the converter, and it was being treated as a converter fault.
+- **New**: The conversion's own progress through its lifetime — starting, producing, suspended, waiting for data, stopped — is now written down as a table the code follows, and every step it takes is recorded in the log. Nothing acts on it yet; it is there so the next failure names itself instead of being reconstructed by hand.
+
 ## 0.13.0
 
 - **Fix**: Pulls proxy 2.22.0 — the quality menu stops emptying itself. Which qualities are OFFERED comes from the measurement taken at startup against known clips, which does not move; the figure learned while a film plays moves with whatever else the box is doing, and three sessions in a row it refused one more quality each time until only one was left and the menu vanished. A quality actually SEEN running too slowly, with the box to itself, is still withdrawn — that much a live reading can speak for.
