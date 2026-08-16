@@ -1,3 +1,7 @@
+## 0.12.0
+
+- **Fix**: Pulls proxy 2.21.0 — the two measurements added yesterday (what copying a film costs this box, and what downloading and serving it costs) were never actually taken: both read from places that hold nothing here. They are taken now, and three faults in how they would have been read are fixed with them — most importantly that a copy's speed was being averaged over the minutes it spends deliberately paused, which made it look five times more expensive than it is.
+
 ## 0.11.0
 
 - **Fix**: Pulls proxy 2.20.0 — a film's readers now share the memory set aside for it instead of each claiming the whole of it. On this box that is what emptied the store on 2026-08-15: with the soundtrack served separately there were two readers, a quality warm-up made three, and playback stopped outright.
