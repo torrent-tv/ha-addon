@@ -1,3 +1,7 @@
+## 0.21.2
+
+- Pulls proxy 2.30.2: the cut-time shift is reverted — the field showed it moved the picture's cuts off the source's own keyframes — and the steering count in the log compares like with like.
+
 ## 0.21.1
 
 - Pulls proxy 2.30.1: a seek is no longer undone a second later by a request the player issued before it.
