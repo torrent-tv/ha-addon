@@ -1,3 +1,7 @@
+## 0.25.0
+
+- Pulls proxy 2.34.0: the proxy measures the smallest buffer at which no interruption reaches the viewer and tells the browser, which stops waiting for a hand-chosen twenty-five seconds.
+
 ## 0.24.0
 
 - Pulls proxy 2.33.0: a quality step is judged on the machine it will actually run on — the prediction is multiplied by the share of the host that is free — and each running step reports what its prediction was worth against what it measured.
