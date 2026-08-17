@@ -1,3 +1,7 @@
+## 0.24.0
+
+- Pulls proxy 2.33.0: a quality step is judged on the machine it will actually run on — the prediction is multiplied by the share of the host that is free — and each running step reports what its prediction was worth against what it measured.
+
 ## 0.23.0
 
 - Pulls proxy 2.32.0: the decode cost is fitted from six calibration clips instead of three, so a term the measurements cannot determine is refused rather than published as a zero. The startup measurement takes longer for it, and the log now says which terms the clips determined.
