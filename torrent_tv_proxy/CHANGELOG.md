@@ -1,3 +1,7 @@
+## 0.20.0
+
+- Pulls proxy 2.28.0: the playlist and the media agree again. On files whose first timestamp is not zero, the copied picture was cut that far from where it was asked, disagreed with the soundtrack about every boundary, and the two corrected each other all session — which is what made the player refetch fragments endlessly.
+
 ## 0.19.0
 
 - Pulls proxy 2.27.0: picture and sound begin a run at the same instant. The picture can only start at a real keyframe and moves forward to it; the soundtrack has none and starts exactly where asked — up to three seconds apart after every seek. The soundtrack now follows the picture to the moment the picture really began.
