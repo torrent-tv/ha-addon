@@ -1,3 +1,7 @@
+## 0.17.0
+
+- Pulls proxy 2.25.0: picture and sound no longer drift apart after a seek — every session of one film publishes the same timeline — and the read window grows into a lead while the reader is being made to wait.
+
 ## 0.16.0
 
 - Pulls proxy 2.24.1: a segment is stamped where the playlist the player holds says it begins. On a file whose container keyframe index is wrong, a seek used to leave the browser refetching the same two segments for ever — 1908 times each over ten minutes, measured — with the picture frozen.
