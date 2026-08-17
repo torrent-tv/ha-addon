@@ -1,3 +1,7 @@
+## 0.18.0
+
+- Pulls proxy 2.26.0: the log now reports, per file, how far produced segments fell from the playlist and how many of them began at another keyframe the container's own table names — enough to settle whether the table is wrong or our grid is built over gaps in it.
+
 ## 0.17.1
 
 - Pulls proxy 2.25.1: picture and sound are back in step — a segment is stamped with its own start again, as it was before the two releases that tried moving it toward the playlist.
