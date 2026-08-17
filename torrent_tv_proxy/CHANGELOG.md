@@ -1,3 +1,7 @@
+## 0.26.0
+
+- Pulls proxy 2.35.0: what a second encode costs this machine is measured at startup instead of assumed — on this host the same work is 2.6x dearer with one encoder beside it — and the quality offer uses that instead of adding independent prices.
+
 ## 0.25.0
 
 - Pulls proxy 2.34.0: the proxy measures the smallest buffer at which no interruption reaches the viewer and tells the browser, which stops waiting for a hand-chosen twenty-five seconds.
