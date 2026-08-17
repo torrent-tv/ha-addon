@@ -1,3 +1,7 @@
+## 0.23.0
+
+- Pulls proxy 2.32.0: the decode cost is fitted from six calibration clips instead of three, so a term the measurements cannot determine is refused rather than published as a zero. The startup measurement takes longer for it, and the log now says which terms the clips determined.
+
 ## 0.22.0
 
 - Pulls proxy 2.31.0: the encoder run's status is one thing in one place — the two hand-maintained strings that could disagree are now computed from the run's own state.
