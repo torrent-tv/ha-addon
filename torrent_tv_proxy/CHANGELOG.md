@@ -1,3 +1,7 @@
+## 0.17.1
+
+- Pulls proxy 2.25.1: picture and sound are back in step — a segment is stamped with its own start again, as it was before the two releases that tried moving it toward the playlist.
+
 ## 0.17.0
 
 - Pulls proxy 2.25.0: picture and sound no longer drift apart after a seek — every session of one film publishes the same timeline — and the read window grows into a lead while the reader is being made to wait.
