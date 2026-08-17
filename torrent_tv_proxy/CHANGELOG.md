@@ -1,3 +1,7 @@
+## 0.22.0
+
+- Pulls proxy 2.31.0: the encoder run's status is one thing in one place — the two hand-maintained strings that could disagree are now computed from the run's own state.
+
 ## 0.21.2
 
 - Pulls proxy 2.30.2: the cut-time shift is reverted — the field showed it moved the picture's cuts off the source's own keyframes — and the steering count in the log compares like with like.
