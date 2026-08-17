@@ -1,3 +1,7 @@
+## 0.16.0
+
+- Pulls proxy 2.24.1: a segment is stamped where the playlist the player holds says it begins. On a file whose container keyframe index is wrong, a seek used to leave the browser refetching the same two segments for ever — 1908 times each over ten minutes, measured — with the picture frozen.
+
 ## 0.15.0
 
 - **Fix**: Pulls proxy 2.24.0 — the quality you just chose stops disappearing from the menu. Preparing a quality in the background is a second conversion running beside the one on screen, and the box counted that second conversion against itself: the quality being prepared looked unaffordable purely because it was being prepared, so it was dropped from the menu and the picture it had already made was refused.
