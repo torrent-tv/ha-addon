@@ -1,3 +1,10 @@
+## 0.15.0
+
+- **Fix**: Pulls proxy 2.24.0 — the quality you just chose stops disappearing from the menu. Preparing a quality in the background is a second conversion running beside the one on screen, and the box counted that second conversion against itself: the quality being prepared looked unaffordable purely because it was being prepared, so it was dropped from the menu and the picture it had already made was refused.
+- **New**: The box now counts what a separate soundtrack costs it, and what a second picture costs while both are running. Both were counted as nothing, which is why it kept offering qualities it could not hold.
+- **Fix**: A speed measured while the film was not downloading fast enough is no longer taken as a measurement of the box. Twenty seconds of a slow download used to make the box look ten times weaker than it is, and every quality above the one on screen was withdrawn on the download's account.
+- **Fix**: The log stops repeating the same line about withheld qualities every few seconds for the whole film, which was pushing everything else out of it.
+
 ## 0.14.0
 
 - **Fix**: Pulls proxy 2.23.0 — seeking no longer damages the box's own settings. Every jump through a film killed the running conversion, and the proxy read that killing as the conversion having FAILED: on a machine with a graphics chip that can convert video, it then switched itself to the slow software converter for good, and started an extra conversion at the position you had just left. A moment of "failed" also sat between the kill and the restart, which a request arriving right then was answered with an error.
