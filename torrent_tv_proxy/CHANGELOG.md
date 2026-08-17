@@ -1,5 +1,9 @@
 ## 0.21.0
 
+- Pulls proxy 2.30.0: the log now states, per file, the speed a quality step must sustain to survive this swarm and the smallest buffer that hides an interruption — both computed from the reader's own waits rather than chosen by hand.
+
+## 0.21.0
+
 - Pulls proxy 2.29.0: a piece the reader is waiting for is requested from the fastest peers that have it, instead of being left with whichever peer happened to take it. The swarm was delivering five times what the film consumed and the reader still waited 47 times in two minutes.
 
 ## 0.20.0
