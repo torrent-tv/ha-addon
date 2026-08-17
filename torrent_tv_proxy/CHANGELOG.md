@@ -1,3 +1,7 @@
+## 0.21.1
+
+- Pulls proxy 2.30.1: a seek is no longer undone a second later by a request the player issued before it.
+
 ## 0.21.0
 
 - Pulls proxy 2.30.0: the log now states, per file, the speed a quality step must sustain to survive this swarm and the smallest buffer that hides an interruption — both computed from the reader's own waits rather than chosen by hand.
