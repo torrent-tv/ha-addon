@@ -1,3 +1,6 @@
+## 0.27.1
+
+- Pulls proxy 2.36.1: a copied picture is cut at its own keyframes again. The container's table names a track per entry, and both field films index their subtitle tracks as well — 4669 and 5007 extra entries — which were being read as though they were keyframes, so every cut asked for at one of them landed at the next real keyframe instead: 2.002 s late on one film, a median of 6.3 s and up to 21 s on the other.
 ## 0.27.0
 
 - Pulls proxy 2.36.0: the torrent is charged for the megabytes it is actually measured to be moving, at a price that no longer contains the process's own idle draw (which made the same host report 145 ms/MB over 8.7 MB and 23 ms/MB over 54 MB), and a quality step is judged against the speed this file's own supply demands instead of a hand-chosen 1.5.
