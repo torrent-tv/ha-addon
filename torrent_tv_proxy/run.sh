@@ -26,6 +26,20 @@ ARGS=(
   --state-dir /data
 )
 
+# Node resolves host names through `getaddrinfo` on the libuv thread pool, and
+# that pool holds FOUR threads by default. A torrent announces to every tracker
+# in its file at once — ten or thirteen of them — so four names are resolved and
+# the rest queue; a tracker that no longer exists holds its thread for the full
+# ten-second resolver timeout, and every announce behind it blows its own
+# fifteen-second deadline. Measured inside this container 2026-08-18: the ten
+# trackers of one film took 7.6 s to resolve as a burst and 27-42 ms each with a
+# larger pool, and the film — 517 seeders on a tracker that answers in 50 ms —
+# spent eleven minutes with zero peers because every announce timed out.
+#
+# Sized to hold several torrents' announce lists at once, since the pool also
+# serves this process's file reads. Idle threads cost memory and nothing else.
+export UV_THREADPOOL_SIZE=64
+
 if [ -n "${TOKEN}" ]; then
   ARGS+=(--token "${TOKEN}")
 fi

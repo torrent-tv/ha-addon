@@ -1,3 +1,7 @@
+## 0.27.2
+
+- **Fix**: Peer discovery no longer starves behind name resolution. Node resolves host names on a four-thread pool by default, so a torrent announcing to ten trackers at once resolves four and queues the rest — and a tracker that no longer exists holds its thread for the resolver's whole ten-second timeout while every announce behind it misses its own deadline. Measured in this container: those ten names took 7.58 s as a burst against 27-42 ms each with a larger pool, and the film — 517 seeders on a tracker that answers in 50 ms — spent eleven minutes with zero peers. The run script now states the pool size before the proxy starts.
+- Pulls proxy 2.36.2: a live session no longer answers 404 to the master playlist it just published, which stopped playback outright on 2026-08-18, and the same pool fix ships inside the proxy for other ways of running it.
 ## 0.27.1
 
 - Pulls proxy 2.36.1: a copied picture is cut at its own keyframes again. The container's table names a track per entry, and both field films index their subtitle tracks as well — 4669 and 5007 extra entries — which were being read as though they were keyframes, so every cut asked for at one of them landed at the next real keyframe instead: 2.002 s late on one film, a median of 6.3 s and up to 21 s on the other.
