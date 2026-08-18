@@ -1,3 +1,6 @@
+## 0.27.3
+
+- The proxy now leaves a diagnostic report behind when it dies. The supervisor's watchdog restarted this addon twelve times between 2026-08-16 and 2026-08-18 — eleven times on exit code 139 (SIGSEGV) and once on 134 (SIGABRT) — and every one of those is a viewer's "Connection to the proxy was lost". The crash is in native code, so nothing appears in the proxy's own log; Node's report carries the native frames and is written to /data, which survives the container being recreated.
 ## 0.27.2
 
 - **Fix**: Peer discovery no longer starves behind name resolution. Node resolves host names on a four-thread pool by default, so a torrent announcing to ten trackers at once resolves four and queues the rest — and a tracker that no longer exists holds its thread for the resolver's whole ten-second timeout while every announce behind it misses its own deadline. Measured in this container: those ten names took 7.58 s as a burst against 27-42 ms each with a larger pool, and the film — 517 seeders on a tracker that answers in 50 ms — spent eleven minutes with zero peers. The run script now states the pool size before the proxy starts.

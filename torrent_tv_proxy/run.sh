@@ -40,6 +40,18 @@ ARGS=(
 # serves this process's file reads. Idle threads cost memory and nothing else.
 export UV_THREADPOOL_SIZE=64
 
+# What the proxy leaves behind when it dies. Measured on this host: the addon
+# was restarted by the supervisor's watchdog TWELVE times between 2026-08-16 and
+# 2026-08-18 — eleven with exit code 139 (SIGSEGV) and one with 134 (SIGABRT) —
+# and each time the proxy's own log ends mid-heartbeat with nothing said. A
+# segmentation fault is in native code, so no JavaScript stack exists to print;
+# Node's diagnostic report is the only thing that names the frames.
+#
+# Written to /data because that survives the container being recreated, which is
+# exactly what happens after each crash. Node names each file uniquely, so
+# reports accumulate rather than overwrite.
+export NODE_OPTIONS="--report-on-fatalerror --report-uncaught-exception --report-directory=/data"
+
 if [ -n "${TOKEN}" ]; then
   ARGS+=(--token "${TOKEN}")
 fi
