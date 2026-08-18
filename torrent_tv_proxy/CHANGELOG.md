@@ -1,3 +1,6 @@
+## 0.27.0
+
+- Pulls proxy 2.36.0: the torrent is charged for the megabytes it is actually measured to be moving, at a price that no longer contains the process's own idle draw (which made the same host report 145 ms/MB over 8.7 MB and 23 ms/MB over 54 MB), and a quality step is judged against the speed this file's own supply demands instead of a hand-chosen 1.5.
 ## 0.26.0
 
 - Pulls proxy 2.35.0: what a second encode costs this machine is measured at startup instead of assumed — on this host the same work is 2.6x dearer with one encoder beside it — and the quality offer uses that instead of adding independent prices.
