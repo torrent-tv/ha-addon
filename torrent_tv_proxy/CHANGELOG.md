@@ -1,3 +1,7 @@
+## 0.29.1
+
+- Pulls proxy 2.38.1: when a blocked piece cannot be steered onto a faster peer, the wait line now says what is holding it — how many blocks are still missing and on which wires they sit, slowest first. Measured before anything is built on it, because duplicating those blocks costs traffic and the numbers decide whether it is worth doing at all.
+
 ## 0.29.0
 
 - Pulls proxy 2.38.0: an MP4's keyframe times are read as composition times, on the track the handler names. Measured against ffmpeg itself: a release with a composition offset and no edit list was 62.1 ms early on every keyframe, and one where the two cancel is unchanged and exact.
