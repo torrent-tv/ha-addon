@@ -24,6 +24,14 @@ ARGS=(
   # the Supervisor keeps: everything else lives in the container's writable
   # layer and is discarded when an update rebuilds it.
   --state-dir /data
+  # The log has to outlive the container, because the container does not
+  # survive what most needs reading about: on 2026-08-18 the proxy died
+  # thirteen times with SIGSEGV, and Home Assistant's watchdog RECREATED the
+  # container each time, taking every line before the crash with it. /data is
+  # the only directory the Supervisor keeps across restarts and updates. The
+  # proxy rotates it at 32 MB and keeps one previous turn, so the owner's disk
+  # is bounded.
+  --log-file /data/proxy.log
 )
 
 # Node resolves host names through `getaddrinfo` on the libuv thread pool, and
