@@ -1,3 +1,6 @@
+## 0.30.1
+
+- Pulls proxy 2.39.1: the block duplication of 2.39.0 is removed. Measured against what a viewer feels — the seconds the picture stands still — it never paid: nothing to improve on a well-seeded film, and with the download capped just above the film's rate, which is what a home line is, it made the picture stop for 28.8 s against 12.8 s. Under one shared budget a duplicate spends the very bytes it is trying to go around.
 ## 0.30.0
 
 - Pulls proxy 2.39.0: when a reader is stuck on a piece and every block of it is already spoken for, those last blocks are asked of a second, faster peer as well. Measured against itself on one film, six pairs across two pacing rates: the median wait for a piece fell in all six, by 6 to 68 per cent. Costs about 3 per cent extra traffic, and only while a reader is actually blocked.
