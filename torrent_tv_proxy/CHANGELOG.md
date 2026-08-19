@@ -1,3 +1,7 @@
+## 0.29.0
+
+- Pulls proxy 2.38.0: an MP4's keyframe times are read as composition times, on the track the handler names. Measured against ffmpeg itself: a release with a composition offset and no edit list was 62.1 ms early on every keyframe, and one where the two cancel is unchanged and exact.
+
 ## 0.28.1
 
 - Pulls proxy 2.37.1: a seek's own cost no longer counts against the quality offer. The wait on the first piece after a jump measures the move, not the swarm, and letting it in collapsed a five-rung menu to one 131 ms after a seek.
