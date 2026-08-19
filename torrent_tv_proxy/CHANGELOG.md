@@ -1,3 +1,7 @@
+## 0.31.3
+
+- Pulls proxy 2.40.2 and `utp-native` 2.5.3-ttv.2: the second place that read a callback result nobody wrote is guarded. With the first fix in the loading path the process still died twice within an hour, and the stack named `on_utp_accept` instead of `on_utp_read`.
+
 ## 0.31.2
 
 - The check added in 0.31.1 also matched an intermediate build artefact under `obj.target`, which has no manifest three levels up, so it failed a build that was in fact correct. It now looks only at `build/Release/utp_native.node`.
