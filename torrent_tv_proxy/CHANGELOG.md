@@ -1,5 +1,9 @@
 ## 0.27.3
 
+- Builds uTP from our own source instead of the published library. `utp-native` reads an uninitialised `napi_value` after `napi_make_callback` and hands it to `napi_get_buffer_info`, which dereferences it inside V8: the proxy died thirteen times in three days with SIGSEGV in `on_utp_read`, always on incoming data, and the watchdog recreated the container each time — which is what a viewer sees as "Connection to the proxy was lost". The addon now installs `@torrent-tv/utp-native@2.5.3-ttv.1` under the name WebTorrent imports and compiles it there, as it already had to (no musl prebuilds exist). Temporary: when https://github.com/mafintosh/utp-native/pull/58 is released, the install line goes and the registry version is used again.
+
+## 0.27.3
+
 - The proxy now leaves a diagnostic report behind when it dies. The supervisor's watchdog restarted this addon twelve times between 2026-08-16 and 2026-08-18 — eleven times on exit code 139 (SIGSEGV) and once on 134 (SIGABRT) — and every one of those is a viewer's "Connection to the proxy was lost". The crash is in native code, so nothing appears in the proxy's own log; Node's report carries the native frames and is written to /data, which survives the container being recreated.
 ## 0.27.2
 
