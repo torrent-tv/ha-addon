@@ -1,3 +1,6 @@
+## 0.31.0
+
+- Pulls proxy 2.40.0: what a reader wants is claimed in four bands of decreasing urgency instead of one, so what the viewer reaches in seconds is no longer indistinguishable from the rest of the film. The widths of the lead bands come from what has been measured about the file on its swarm — the worst interruption met, and the surplus the swarm delivers between interruptions. Which way a read claims is decided per read, and the log compares the two directly, so the next sessions say by number whether it helps.
 ## 0.30.1
 
 - Pulls proxy 2.39.1: the block duplication of 2.39.0 is removed. Measured against what a viewer feels — the seconds the picture stands still — it never paid: nothing to improve on a well-seeded film, and with the download capped just above the film's rate, which is what a home line is, it made the picture stop for 28.8 s against 12.8 s. Under one shared budget a duplicate spends the very bytes it is trying to go around.
