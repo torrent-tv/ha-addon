@@ -1,3 +1,6 @@
+## 0.31.1
+
+- Pulls proxy 2.40.1: the patched `utp-native` finally reaches WebTorrent's own nested copy, which is the one it was loading all along — the crash of 21:03 names that path in its stack, and so did every earlier one. The image now deletes nested copies after the install and fails the build if any surviving binary is not ours.
 ## 0.31.0
 
 - Pulls proxy 2.40.0: what a reader wants is claimed in four bands of decreasing urgency instead of one, so what the viewer reaches in seconds is no longer indistinguishable from the rest of the film. The widths of the lead bands come from what has been measured about the file on its swarm — the worst interruption met, and the surplus the swarm delivers between interruptions. Which way a read claims is decided per read, and the log compares the two directly, so the next sessions say by number whether it helps.

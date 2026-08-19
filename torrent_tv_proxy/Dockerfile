@@ -26,6 +26,15 @@ ARG BUILD_VERSION
 # rebuild only the native addon that genuinely needs its install script.
 # The proxy is started with --ffmpeg-bin pointing at the system ffmpeg
 # (installed above via apk), so ffmpeg-static's bundled binary is not required.
+# The substitution has to reach the WHOLE tree, not the top of it. Installed at
+# the proxy's own level only, it left `webtorrent/node_modules/utp-native` in
+# place - and Node resolves from the requiring module outward, so webtorrent
+# loaded its own copy and the published defect went on killing the process. The
+# crash of 2026-08-19 21:03 names that path frame for frame. Nested copies are
+# removed after the install, and the build FAILS if any surviving
+# `utp_native.node` belongs to a package other than ours: a silent fallback to
+# the broken one is what cost a day.
+#
 # utp-native ships no musl prebuilds (HA base images are Alpine), so without a
 # source build uTP is disabled and the proxy reaches peers over TCP only.
 # Force-compile it here (toolchain is installed above); best-effort — if the
@@ -51,8 +60,17 @@ RUN npm install --global @torrent-tv/proxy --ignore-scripts \
  && (cd /usr/local/lib/node_modules/@torrent-tv/proxy \
      && npm install --ignore-scripts --no-save --no-audit --no-fund \
         "utp-native@npm:@torrent-tv/utp-native@2.5.3-ttv.1") \
+ && find /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules -mindepth 3 \
+      -type d -name utp-native -prune -exec rm -rf {} + \
  && (npm_config_build_from_source=true npm rebuild --global utp-native \
-     || echo "WARNING: utp-native build failed; peer connections stay TCP-only")
+     || echo "WARNING: utp-native build failed; peer connections stay TCP-only") \
+ && for module in $(find /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules \
+      -name utp_native.node); do \
+      pkg="$(dirname "$(dirname "$(dirname "$module")")")/package.json"; \
+      grep -q '"name": "@torrent-tv/utp-native"' "$pkg" \
+        || { echo "FATAL: $module is not our build" >&2; exit 1; }; \
+      echo "utp-native: our build at $module"; \
+    done
 
 COPY run.sh /run.sh
 RUN chmod a+x /run.sh
