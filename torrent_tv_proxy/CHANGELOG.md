@@ -1,3 +1,7 @@
+## 0.28.1
+
+- Pulls proxy 2.37.1: a seek's own cost no longer counts against the quality offer. The wait on the first piece after a jump measures the move, not the swarm, and letting it in collapsed a five-rung menu to one 131 ms after a seek.
+
 ## 0.28.0
 
 - Pulls proxy 2.37.0: the segment a viewer seeks TO is no longer refused as stale — on 2026-08-18 that refusal froze a session for 149 seconds while the player re-fetched two audio segments 1473 times. The proxy also writes its log to `/data/proxy.log` now (rotated at 32 MB, one previous turn kept): the container is recreated by the watchdog on every crash and by every update, and each time it took the lines explaining the failure with it.
