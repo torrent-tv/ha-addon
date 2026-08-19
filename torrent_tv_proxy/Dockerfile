@@ -65,7 +65,7 @@ RUN npm install --global @torrent-tv/proxy --ignore-scripts \
  && (npm_config_build_from_source=true npm rebuild --global utp-native \
      || echo "WARNING: utp-native build failed; peer connections stay TCP-only") \
  && for module in $(find /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules \
-      -name utp_native.node); do \
+      -path '*/build/Release/utp_native.node' -not -path '*obj.target*'); do \
       pkg="$(dirname "$(dirname "$(dirname "$module")")")/package.json"; \
       grep -q '"name": "@torrent-tv/utp-native"' "$pkg" \
         || { echo "FATAL: $module is not our build" >&2; exit 1; }; \

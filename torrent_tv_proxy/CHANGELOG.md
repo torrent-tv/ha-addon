@@ -1,3 +1,7 @@
+## 0.31.2
+
+- The check added in 0.31.1 also matched an intermediate build artefact under `obj.target`, which has no manifest three levels up, so it failed a build that was in fact correct. It now looks only at `build/Release/utp_native.node`.
+
 ## 0.31.1
 
 - Pulls proxy 2.40.1: the patched `utp-native` finally reaches WebTorrent's own nested copy, which is the one it was loading all along — the crash of 21:03 names that path in its stack, and so did every earlier one. The image now deletes nested copies after the install and fails the build if any surviving binary is not ours.
