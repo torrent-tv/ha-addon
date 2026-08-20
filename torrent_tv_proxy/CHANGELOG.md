@@ -1,6 +1,12 @@
+## 0.33.2
+
+- Pulls proxy 2.43.2 and builds `@torrent-tv/utp-native@2.5.3-ttv.3`: the proxy no longer dies without a word in the middle of a film. A failed UDP read left the uTP library parsing a sender address that never existed, killing the process — three times in two days.
+- Pulls proxy 2.43.2: a soundtrack no longer moves the grid the picture is cut on. The two readings disagreed by 1.951 s on the field file and overwrote each other for as long as it played.
+
 ## 0.33.1
 
 - Pulls proxy 2.43.1: a subtitle request says where the browser's copy ends and gets back only the cues past it, instead of the whole track — 76 KB a time on the field file — every few seconds.
+
 ## 0.33.0
 
 - Pulls proxy 2.43.0: an MP4's text subtitles are read from its sample table, which states every cue's own byte range — so a cue costs its own few dozen bytes instead of the cluster around it, and still never costs a request. `tx3g` and `wvtt` are decoded; TTML is left out rather than half-shown.

@@ -35,6 +35,12 @@ ARG BUILD_VERSION
 # `utp_native.node` belongs to a package other than ours: a silent fallback to
 # the broken one is what cost a day.
 #
+# Our build now carries TWO fixes, not one. The second was found on 2026-08-20:
+# the UDP read callback parsed a sender address that a FAILED read never
+# produced, dereferencing a null pointer on the thread owning the socket.
+# Three core dumps in two days, each about three and a half hours into an
+# otherwise healthy run. Both fixes are absent from upstream master.
+#
 # utp-native ships no musl prebuilds (HA base images are Alpine), so without a
 # source build uTP is disabled and the proxy reaches peers over TCP only.
 # Force-compile it here (toolchain is installed above); best-effort — if the
@@ -59,7 +65,7 @@ RUN npm install --global @torrent-tv/proxy --ignore-scripts \
  && ls build/Release/*.node \
  && (cd /usr/local/lib/node_modules/@torrent-tv/proxy \
      && npm install --ignore-scripts --no-save --no-audit --no-fund \
-        "utp-native@npm:@torrent-tv/utp-native@2.5.3-ttv.2") \
+        "utp-native@npm:@torrent-tv/utp-native@2.5.3-ttv.3") \
  && find /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules -mindepth 3 \
       -type d -name utp-native -prune -exec rm -rf {} + \
  && (npm_config_build_from_source=true npm rebuild --global utp-native \
