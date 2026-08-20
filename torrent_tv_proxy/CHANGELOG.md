@@ -1,3 +1,7 @@
+## 0.33.6
+
+- Pulls proxy 2.47.0: the addon no longer disappears from the registry for five seconds every hour and forty minutes. Something upstream was closing the connection after exactly 100 min 15 s, and a viewer arriving in the gap was told there was no proxy; the connection is now replaced at ninety minutes, with the replacement taking over before the old one closes.
+
 ## 0.33.5
 
 - Pulls proxy 2.46.0: the quality menu stops over-promising on the files that actually need re-encoding. What a video costs to decode is now measured separately for HEVC and for 10-bit HEVC instead of being guessed from H.264 — and a video that has to be re-encoded is, by definition, one the browser could not play, so it is usually one of those.
