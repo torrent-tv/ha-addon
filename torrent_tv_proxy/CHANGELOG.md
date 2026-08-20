@@ -1,3 +1,8 @@
+## 0.33.3
+
+- Pulls proxy 2.44.0: subtitles stop appearing at moments that have nothing to do with the picture. A track asked for what it lacked by film time, while cues come out of whichever clusters are downloaded and those do not arrive in order — so one answer carrying a line from far ahead made everything behind it unreachable for the rest of the session.
+- Pulls proxy 2.44.0: reading a subtitle track costs a fraction of what it did. One walk over the container now fills every track instead of one walk per track, and the same cluster bytes were being fetched and parsed five times on the field film.
+
 ## 0.33.2
 
 - Pulls proxy 2.43.2 and builds `@torrent-tv/utp-native@2.5.3-ttv.3`: the proxy no longer dies without a word in the middle of a film. A failed UDP read left the uTP library parsing a sender address that never existed, killing the process — three times in two days.
