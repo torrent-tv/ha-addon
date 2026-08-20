@@ -1,3 +1,7 @@
+## 0.33.5
+
+- Pulls proxy 2.46.0: the quality menu stops over-promising on the files that actually need re-encoding. What a video costs to decode is now measured separately for HEVC and for 10-bit HEVC instead of being guessed from H.264 — and a video that has to be re-encoded is, by definition, one the browser could not play, so it is usually one of those.
+
 ## 0.33.4
 
 - Pulls proxy 2.45.0: a fragment now lands where the player was told to expect it. Segments were being cut on a grid the proxy had since corrected while the player still held the original one — 119 of 125 of them arriving a uniform 2.002 s early on the field film, four times what a player can bridge, after which the same fragment is fetched again and again.
