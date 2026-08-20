@@ -1,3 +1,6 @@
+## 0.32.0
+
+- Pulls proxy 2.42.0: embedded text subtitles are read out of the clusters the film is already downloading instead of being extracted with ffmpeg. One track used to cost a full extra copy of the film and 752 seconds — the browser gave up after 60 — because a subtitle stream is sparse and the demuxer walks the whole container whatever range is asked of it. The blocks sit in clusters the viewer is downloading anyway, so the cues now cost no extra bytes and are ready before playback reaches them.
 ## 0.31.3
 
 - Pulls proxy 2.40.2 and `utp-native` 2.5.3-ttv.2: the second place that read a callback result nobody wrote is guarded. With the first fix in the loading path the process still died twice within an hour, and the stack named `on_utp_accept` instead of `on_utp_read`.
