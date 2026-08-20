@@ -1,3 +1,8 @@
+## 0.33.4
+
+- Pulls proxy 2.45.0: a fragment now lands where the player was told to expect it. Segments were being cut on a grid the proxy had since corrected while the player still held the original one — 119 of 125 of them arriving a uniform 2.002 s early on the field film, four times what a player can bridge, after which the same fragment is fetched again and again.
+- Pulls proxy 2.45.0: which subtitle track a file asks for is read out of the file rather than out of ffmpeg's description of it, so a file that marked no track is no longer indistinguishable from one that marked every track.
+
 ## 0.33.3
 
 - Pulls proxy 2.44.0: subtitles stop appearing at moments that have nothing to do with the picture. A track asked for what it lacked by film time, while cues come out of whichever clusters are downloaded and those do not arrive in order — so one answer carrying a line from far ahead made everything behind it unreachable for the rest of the session.
