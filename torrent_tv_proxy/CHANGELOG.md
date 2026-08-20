@@ -1,3 +1,6 @@
+## 0.33.0
+
+- Pulls proxy 2.43.0: an MP4's text subtitles are read from its sample table, which states every cue's own byte range — so a cue costs its own few dozen bytes instead of the cluster around it, and still never costs a request. `tx3g` and `wvtt` are decoded; TTML is left out rather than half-shown.
 ## 0.32.0
 
 - Pulls proxy 2.42.0: embedded text subtitles are read out of the clusters the film is already downloading instead of being extracted with ffmpeg. One track used to cost a full extra copy of the film and 752 seconds — the browser gave up after 60 — because a subtitle stream is sparse and the demuxer walks the whole container whatever range is asked of it. The blocks sit in clusters the viewer is downloading anyway, so the cues now cost no extra bytes and are ready before playback reaches them.
