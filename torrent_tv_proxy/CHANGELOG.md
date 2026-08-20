@@ -1,3 +1,6 @@
+## 0.33.1
+
+- Pulls proxy 2.43.1: a subtitle request says where the browser's copy ends and gets back only the cues past it, instead of the whole track — 76 KB a time on the field file — every few seconds.
 ## 0.33.0
 
 - Pulls proxy 2.43.0: an MP4's text subtitles are read from its sample table, which states every cue's own byte range — so a cue costs its own few dozen bytes instead of the cluster around it, and still never costs a request. `tx3g` and `wvtt` are decoded; TTML is left out rather than half-shown.
