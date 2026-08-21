@@ -1,3 +1,9 @@
+## 0.34.0
+
+- Pulls proxy 2.51.0: seeking no longer makes the picture drift behind its own numbering. A run was positioned on one boundary table and cut on another, so every restart carried the distance between them into all of its cuts — and since that distance accumulates, the drift grew with each seek: two segments after the first, four after the next. Past a certain point the player's buffer stops extending at all and the picture jumps forward on its own.
+- Pulls proxy 2.51.0: the DHT is given entry points that answer. Two of the three the library ships are dead and the third could not be reached by name on a host with IPv6, so the routing table stayed empty and a torrent had only its trackers to find peers with — one file waited 4 min 17 s for its first peer while the tracker was reporting five seeders. An empty routing table is now reported instead of passing unnoticed.
+- Pulls proxy 2.51.0: a stalling player is answered rather than left talking to its own console, and a run says where it was positioned and how far the two boundary tables have moved apart.
+
 ## 0.33.9
 
 - Pulls proxy 2.50.0: seeking in an AVI no longer lands a keyframe early. AVI names its keyframes by frame number, and the resulting time sits up to a frame away from the real one — enough for a seek to fall just short and go back to the previous keyframe.
