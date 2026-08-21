@@ -1,3 +1,8 @@
+## 0.33.9
+
+- Pulls proxy 2.50.0: seeking in an AVI no longer lands a keyframe early. AVI names its keyframes by frame number, and the resulting time sits up to a frame away from the real one — enough for a seek to fall just short and go back to the previous keyframe.
+- Pulls proxy 2.50.0: a file whose container carries no keyframe index at all — MPEG-TS, for instance — is re-encoded instead of copied. A copied picture can only be cut at the source's own keyframes, and without an index nobody knows where they are, so the playlist was describing cuts the file does not have.
+
 ## 0.33.8
 
 - Pulls proxy 2.49.0: the addon should stop dying in the middle of a film. A core dump named the fault — the thread that owns the torrent client was being torn down while a datagram was still arriving, and the datagram walked into memory that had just been freed. The thread is now allowed to finish by itself instead of being stopped under itself, and a thread that ends is written to the log rather than passing in silence.
