@@ -1,3 +1,7 @@
+## 0.37.0
+
+- Pulls proxy 2.54.0. The automatic quality step no longer rewrites the SIZE of the picture underneath a session the browser is already decoding — a change of resolution is a change of variant now, and the proxy asks the player to move rather than changing what it is producing. Also brings the step back UP, which has never existed, the quality step on the copy path, and a bitrate ceiling taken from the viewer's own measured link.
+
 ## 0.36.1
 
 - Pulls proxy 2.53.0, which carries the pin to `@torrent-tv/utp-native` 2.5.3-ttv.4. The 0.36.0 build failed: the version is stated in two places — the proxy's own `overrides` and this Dockerfile — and moving only the second made npm refuse the install as a conflicting override.
