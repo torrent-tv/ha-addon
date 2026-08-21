@@ -1,3 +1,7 @@
+## 0.33.7
+
+- Pulls proxy 2.48.0: after a seek, the picture now arrives where the player expects it. ffmpeg moves an input seek back by 130 ms on containers that seek in decode order, so a copied picture began one keyframe earlier than asked and every segment of that run was cut two seconds from where its playlist said — four times what a player can bridge, after which the same fragment is fetched again and again until the film dies. Confirmed against ffmpeg's own source and measured on both Matroska and MP4.
+
 ## 0.33.6
 
 - Pulls proxy 2.47.0: the addon no longer disappears from the registry for five seconds every hour and forty minutes. Something upstream was closing the connection after exactly 100 min 15 s, and a viewer arriving in the gap was told there was no proxy; the connection is now replaced at ninety minutes, with the replacement taking over before the old one closes.
