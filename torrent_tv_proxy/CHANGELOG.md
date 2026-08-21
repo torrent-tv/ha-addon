@@ -1,3 +1,8 @@
+## 0.33.8
+
+- Pulls proxy 2.49.0: the addon should stop dying in the middle of a film. A core dump named the fault — the thread that owns the torrent client was being torn down while a datagram was still arriving, and the datagram walked into memory that had just been freed. The thread is now allowed to finish by itself instead of being stopped under itself, and a thread that ends is written to the log rather than passing in silence.
+- Pulls proxy 2.49.0: crash dumps are capped at the newest two. Each is over four gigabytes and four of them had nearly filled the disk.
+
 ## 0.33.7
 
 - Pulls proxy 2.48.0: after a seek, the picture now arrives where the player expects it. ffmpeg moves an input seek back by 130 ms on containers that seek in decode order, so a copied picture began one keyframe earlier than asked and every segment of that run was cut two seconds from where its playlist said — four times what a player can bridge, after which the same fragment is fetched again and again until the film dies. Confirmed against ffmpeg's own source and measured on both Matroska and MP4.
