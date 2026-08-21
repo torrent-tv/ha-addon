@@ -1,3 +1,7 @@
+## 0.36.0
+
+- Builds `@torrent-tv/utp-native` 2.5.3-ttv.4, which stops the proxy dying every few hours. `on_utp_accept` asked JavaScript for the buffer for the next connection and then handed the returned value to napi without checking that anything had been returned — the value was an uninitialised local, and the macro that fills it inspects only one kind of failure and carries on regardless. Two core dumps on 2026-08-21, at 16:49 and 19:50, both on the thread that owns the uTP socket and both with the same top frames; the bottom of that stack is the ordinary event loop, so it is not the shutdown race fixed earlier. Every live session on the proxy died with it, each time.
+
 ## 0.35.0
 
 - Pulls proxy 2.52.0: reopening a film at a position no longer loses the sound. The picture went to the right place and the soundtrack started re-encoding from the beginning of the file, so the player waited 45 seconds for audio that was 52 minutes away and was told the proxy had sent no video.
