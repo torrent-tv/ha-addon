@@ -1,3 +1,10 @@
+## 0.35.0
+
+- Pulls proxy 2.52.0: reopening a film at a position no longer loses the sound. The picture went to the right place and the soundtrack started re-encoding from the beginning of the file, so the player waited 45 seconds for audio that was 52 minutes away and was told the proxy had sent no video.
+- Pulls proxy 2.52.0: the log line about a torrent's swarm now says how many peers are connected, how many the client knows but has not connected to, and what the tracker reported — enough to tell "nobody was offered" from "several were offered and we reached none". Before it printed a connection count beside a field that was always a question mark.
+- Pulls proxy 2.52.0: the wait for the first connected peer is measured and reported. One file waited 4 min 17 s for its first peer while the tracker was reporting five seeders, and nothing counted or showed it.
+- Pulls proxy 2.52.0: one torrent is logged under one identifier — its infohash — instead of three different hashes across neighbouring lines.
+
 ## 0.34.0
 
 - Pulls proxy 2.51.0: seeking no longer makes the picture drift behind its own numbering. A run was positioned on one boundary table and cut on another, so every restart carried the distance between them into all of its cuts — and since that distance accumulates, the drift grew with each seek: two segments after the first, four after the next. Past a certain point the player's buffer stops extending at all and the picture jumps forward on its own.
