@@ -1,3 +1,7 @@
+## 0.44.0
+
+- Pulls proxy 2.55.6. Diagnostic only: every step of the subtitle push chain now logs on success (subscribe, cues found, cues sent), needed because a field report of cues still not appearing at once had no evidence in the log to work from either way. Needs server 0.16.3 or later for the matching browser-side log.
+
 ## 0.43.0
 
 - Pulls proxy 2.55.5. Subtitle cues are now PUSHED to the browser over the WebRTC data channel the moment the proxy reads them, instead of being fetched on a timer — rides the existing `proxy-control` channel, never the one carrying segment bytes. Needs server 0.16.2 or later, which receives the push and creates every declared track's element up front instead of one at a time behind a fetch.
