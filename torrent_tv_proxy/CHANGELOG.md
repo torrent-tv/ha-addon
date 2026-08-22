@@ -1,3 +1,7 @@
+## 0.41.0
+
+- Pulls proxy 2.55.3. A subtitle track's cues are now walked ahead of being asked for — a periodic pass in the torrent worker keeps every actively-read file's cues caught up with what has downloaded, instead of only walking clusters inside a browser's first request for a track (which paid for the whole backlog serially, on a film well into playback).
+
 ## 0.40.0
 
 - Pulls proxy 2.55.2. The decode benchmark's pipe sanity log now compares figures over the same window instead of the whole run, and only flags a divergence when the two are actually more than 1.5x apart, instead of printing an editorial line unconditionally on every reading.
