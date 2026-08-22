@@ -1,3 +1,7 @@
+## 0.42.0
+
+- Pulls proxy 2.55.4. Subtitle cues now warm on the piece-verified event instead of a 3 s poll — a cue is walked the instant its cluster's piece becomes readable, off WebTorrent's own `verified` signal, so nothing waits on a schedule to be picked up.
+
 ## 0.41.0
 
 - Pulls proxy 2.55.3. A subtitle track's cues are now walked ahead of being asked for — a periodic pass in the torrent worker keeps every actively-read file's cues caught up with what has downloaded, instead of only walking clusters inside a browser's first request for a track (which paid for the whole backlog serially, on a film well into playback).
