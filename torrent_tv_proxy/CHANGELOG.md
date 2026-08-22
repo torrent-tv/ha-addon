@@ -1,3 +1,7 @@
+## 0.43.0
+
+- Pulls proxy 2.55.5. Subtitle cues are now PUSHED to the browser over the WebRTC data channel the moment the proxy reads them, instead of being fetched on a timer — rides the existing `proxy-control` channel, never the one carrying segment bytes. Needs server 0.16.2 or later, which receives the push and creates every declared track's element up front instead of one at a time behind a fetch.
+
 ## 0.42.0
 
 - Pulls proxy 2.55.4. Subtitle cues now warm on the piece-verified event instead of a 3 s poll — a cue is walked the instant its cluster's piece becomes readable, off WebTorrent's own `verified` signal, so nothing waits on a schedule to be picked up.
