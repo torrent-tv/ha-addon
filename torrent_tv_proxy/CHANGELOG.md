@@ -1,3 +1,7 @@
+## 0.38.0
+
+- Pulls proxy 2.55.0. The decode calibration was measuring the loop rather than the decode — a clip restart costs the decoder 0.03-0.12 s and a five-second clip at 55x restarts eleven times a second — so every reading this host takes of itself was 25-33 % low, and biased differently per clip. The clip is now fed to the decoder as one continuous stream, the readings are ordered the way decoding is, and the whole startup calibration is shorter than before.
+
 ## 0.37.0
 
 - Pulls proxy 2.54.0. The automatic quality step no longer rewrites the SIZE of the picture underneath a session the browser is already decoding — a change of resolution is a change of variant now, and the proxy asks the player to move rather than changing what it is producing. Also brings the step back UP, which has never existed, the quality step on the copy path, and a bitrate ceiling taken from the viewer's own measured link.
