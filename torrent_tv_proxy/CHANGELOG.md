@@ -1,3 +1,7 @@
+## 0.39.0
+
+- Pulls proxy 2.55.1. A magnet URI and a `.torrent` file for the same content are now keyed by their shared infohash instead of by a hash of the request bytes, so the two share one swarm and one cache from the first request instead of colliding as `WebTorrent client error: Cannot add duplicate torrent`. Also logs the decode benchmark's actual pipe throughput beside what it needed, as a sanity check on the reading.
+
 ## 0.38.0
 
 - Pulls proxy 2.55.0. The decode calibration was measuring the loop rather than the decode — a clip restart costs the decoder 0.03-0.12 s and a five-second clip at 55x restarts eleven times a second — so every reading this host takes of itself was 25-33 % low, and biased differently per clip. The clip is now fed to the decoder as one continuous stream, the readings are ordered the way decoding is, and the whole startup calibration is shorter than before.
