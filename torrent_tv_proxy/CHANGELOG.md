@@ -1,3 +1,7 @@
+## 0.40.0
+
+- Pulls proxy 2.55.2. The decode benchmark's pipe sanity log now compares figures over the same window instead of the whole run, and only flags a divergence when the two are actually more than 1.5x apart, instead of printing an editorial line unconditionally on every reading.
+
 ## 0.39.0
 
 - Pulls proxy 2.55.1. A magnet URI and a `.torrent` file for the same content are now keyed by their shared infohash instead of by a hash of the request bytes, so the two share one swarm and one cache from the first request instead of colliding as `WebTorrent client error: Cannot add duplicate torrent`. Also logs the decode benchmark's actual pipe throughput beside what it needed, as a sanity check on the reading.
