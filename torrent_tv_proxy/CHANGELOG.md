@@ -1,3 +1,7 @@
+## 0.45.0
+
+- Pulls proxy 2.55.7. Fixes subtitle push outright: the subscription was recorded under the browser's registry key while the pool published under its own infohash-based key, so a push never found a subscriber for any torrent since the feature shipped. Now resolved through `sourceRegistry` at the point of subscription.
+
 ## 0.44.0
 
 - Pulls proxy 2.55.6. Diagnostic only: every step of the subtitle push chain now logs on success (subscribe, cues found, cues sent), needed because a field report of cues still not appearing at once had no evidence in the log to work from either way. Needs server 0.16.3 or later for the matching browser-side log.
