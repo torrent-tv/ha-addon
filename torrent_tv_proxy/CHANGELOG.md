@@ -1,3 +1,7 @@
+## 0.46.0
+
+- Pulls proxy 2.55.8. Fixes the crash that killed the proxy twice in one evening (2026-08-22): with everything quiet — viewer paused or gone, upload disabled, idle peer connections closed — the torrent worker thread's event loop drained and the thread ended by itself; its teardown then touched already-freed memory (SIGSEGV during worker shutdown) and took the whole process down instantly. The worker now keeps one interval accounted for, so the loop never drains while the process lives.
+
 ## 0.45.0
 
 - Pulls proxy 2.55.7. Fixes subtitle push outright: the subscription was recorded under the browser's registry key while the pool published under its own infohash-based key, so a push never found a subscriber for any torrent since the feature shipped. Now resolved through `sourceRegistry` at the point of subscription.
