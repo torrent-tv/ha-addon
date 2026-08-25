@@ -1,3 +1,7 @@
+## 0.48.3
+
+- Fix `poisonmalloc.c` (protected the backing page instead of the payload page — immediate SEGV at startup) and fix `bin/cli.js` `--sctp-debug` binding (called the method without its `this`). Bumps proxy to 2.55.11.
+
 ## 0.48.2
 
 - Fix `run.sh` (bad `bashio::config.equals` argument order — diagnostic flags never fired).

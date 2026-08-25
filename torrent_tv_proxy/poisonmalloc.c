@@ -58,6 +58,7 @@ struct header {
 
 struct quarantined {
 	void *base;
+	void *payload;
 	size_t span;
 };
 
@@ -140,33 +141,36 @@ void *malloc(size_t size)
 	return (void *)payload;
 }
 
-static void quarantine_push(void *base, size_t span)
+static void quarantine_push(void *base, void *payload, size_t span)
 {
 	while (ring_count >= QUARANTINE_SLOTS ||
 	       (ring_bytes + span > QUARANTINE_BYTES && ring_count > 0)) {
 		struct quarantined *oldest = &ring[(ring_head - ring_count) % QUARANTINE_SLOTS];
-		mprotect(oldest->base, oldest->span, PROT_READ | PROT_WRITE);
+		mprotect(oldest->payload, oldest->span, PROT_READ | PROT_WRITE);
 		real_free(oldest->base);
 		ring_bytes -= oldest->span;
 		ring_count--;
 	}
 	ring[ring_head % QUARANTINE_SLOTS].base = base;
+	ring[ring_head % QUARANTINE_SLOTS].payload = payload;
 	ring[ring_head % QUARANTINE_SLOTS].span = span;
 	ring_head++;
 	ring_count++;
 	ring_bytes += span;
 }
 
-static void fenced_free(char *raw, uint32_t size)
+static void fenced_free(void *payload, uint32_t size, void *base)
 {
-	size_t span = align_up(sizeof(struct header) + (size_t)size, PAGE_SIZE);
-	if (mprotect(raw, span, PROT_NONE) != 0) {
-		/* Cannot protect (unexpected layout) — fall back to real free. */
-		real_free(raw);
+	size_t span = align_up((size_t)size, PAGE_SIZE);
+	if (span == 0) {
+		span = PAGE_SIZE;
+	}
+	if (mprotect(payload, span, PROT_NONE) != 0) {
+		real_free(base);
 		return;
 	}
 	pthread_mutex_lock(&lock);
-	quarantine_push(raw, span);
+	quarantine_push(base, payload, span);
 	pthread_mutex_unlock(&lock);
 }
 
@@ -183,7 +187,9 @@ void free(void *ptr)
 	uint32_t size = ((uint32_t *)raw)[1];
 
 	if (kind == HDR_MAGIC) {
-		fenced_free(raw, size);
+		struct header *hdr = (struct header *)((char *)ptr - sizeof(struct header));
+		/* Payload is page-aligned; header sits right before it. */
+		fenced_free(ptr, size, hdr->base);
 		return;
 	}
 	if (kind == 0) {
@@ -228,12 +234,7 @@ void *realloc(void *ptr, size_t size)
 	char *raw = (char *)ptr - ALIGNMENT;
 	uint32_t old_size = ((uint32_t *)raw)[1];
 	if (((uint32_t *)raw)[0] != HDR_MAGIC && ((uint32_t *)raw)[0] != 0) {
-		/* Foreign pointer: no metadata, plain move. */
-		void *fresh = malloc(size);
-		if (fresh) {
-			memcpy(fresh, ptr, size < old_size ? size : 4096);
-		}
-		return fresh;
+		return real_realloc(ptr, size);
 	}
 	void *fresh = malloc(size);
 	if (!fresh) {
