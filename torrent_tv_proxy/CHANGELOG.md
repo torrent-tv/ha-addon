@@ -1,3 +1,8 @@
+## 0.47.0
+
+- Pulls proxy 2.55.9. When a viewer's send queue stays wedged for over 30 s, the proxy now records the wire itself: a bounded tcpdump (128-byte packet headers, 4 × 30 s ring, 120 s total, one capture at a time) lands beside the core dumps, so the rare one-way transmit death of 2026-08-24 carries its own evidence instead of 88 minutes of counters that all say success.
+- The image now ships tcpdump — without it the witness could only ever log its own absence.
+
 ## 0.46.0
 
 - Pulls proxy 2.55.8. Fixes the crash that killed the proxy twice in one evening (2026-08-22): with everything quiet — viewer paused or gone, upload disabled, idle peer connections closed — the torrent worker thread's event loop drained and the thread ended by itself; its teardown then touched already-freed memory (SIGSEGV during worker shutdown) and took the whole process down instantly. The worker now keeps one interval accounted for, so the loop never drains while the process lives.
