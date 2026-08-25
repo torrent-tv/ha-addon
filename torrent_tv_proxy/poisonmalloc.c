@@ -33,6 +33,7 @@
 #include <string.h>
 #include <sys/mman.h>
 #include <unistd.h>
+#include <errno.h>
 
 #define PAGE_SIZE 4096u
 #define HDR_MAGIC 0x5015F0EDu
