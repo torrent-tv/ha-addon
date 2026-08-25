@@ -1,3 +1,7 @@
+## 0.48.2
+
+- Fix `run.sh` (bad `bashio::config.equals` argument order — diagnostic flags never fired).
+
 ## 0.48.1
 
 - Fix build (missing `errno.h` for `poisonmalloc.c`).

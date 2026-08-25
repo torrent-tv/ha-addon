@@ -69,12 +69,12 @@ if bashio::var.has_value "${SEGMENT_FORMAT}"; then
   ARGS+=(--segment-format "${SEGMENT_FORMAT}")
 fi
 
-if bashio::config.equals 'true' 'sctp_debug'; then
+if bashio::config.true 'sctp_debug'; then
   bashio::log.info "SCTP debug logging enabled"
   ARGS+=(--sctp-debug)
 fi
 
-if bashio::config.equals 'true' 'poison_heap'; then
+if bashio::config.true 'poison_heap'; then
   if [ -f /usr/lib/poisonmalloc.so ]; then
     export LD_PRELOAD=/usr/lib/poisonmalloc.so
     bashio::log.info "Poison heap active (LD_PRELOAD)"
