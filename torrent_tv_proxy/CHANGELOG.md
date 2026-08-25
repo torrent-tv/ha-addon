@@ -1,3 +1,7 @@
+## 0.48.1
+
+- Fix build (missing `errno.h` for `poisonmalloc.c`).
+
 ## 0.48.0
 
 - Pulls proxy 2.55.10. Diagnostic build: node-datachannel is rebuilt with `SCTP_DEBUG=ON` and the proxy exposes `--sctp-debug` — when enabled, the browser-side SACK stream (`a_rwnd`, gap reports, retransmissions) is printed as `usrsctp:` lines into the log, which is what separates the two remaining hypotheses for the delivery-side freeze of 2026-08-24/25. The flag is off by default; toggle it in the addon configuration (`sctp_debug`) for the reproduction run only — the log volume is high.
