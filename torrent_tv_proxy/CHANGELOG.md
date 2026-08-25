@@ -1,3 +1,7 @@
+## 0.48.4
+
+- Pulls proxy 2.55.12. Fixes the `sctp_debug` wiring (one-arg call always threw `Function expected` — `node-datachannel` 0.32.x needs the callback) so verbose SCTP lines actually appear. Poison heap stays available via `poison_heap` toggle (fixed in 0.48.3, disabled by default for the previous run).
+
 ## 0.48.3
 
 - Fix `poisonmalloc.c` (protected the backing page instead of the payload page — immediate SEGV at startup) and fix `bin/cli.js` `--sctp-debug` binding (called the method without its `this`). Bumps proxy to 2.55.11.
