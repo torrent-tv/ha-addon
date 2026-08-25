@@ -1,6 +1,6 @@
 name: "Torrent TV Proxy"
 description: "Run Torrent TV proxy and connect it to your server."
-version: "0.47.0"
+version: "0.48.0"
 slug: "torrent_tv_proxy"
 init: false
 startup: services
@@ -35,7 +35,11 @@ options:
   # Supervisor persists whatever is chosen here across addon restarts and
   # updates, so the selection is remembered.
   segment_format: "fmp4"
+  sctp_debug: false
+  poison_heap: false
 schema:
   server_url: str
   token: str
   segment_format: "list(fmp4|mpegts)"
+  sctp_debug: bool
+  poison_heap: bool

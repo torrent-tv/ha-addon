@@ -57,6 +57,7 @@ ARG BUILD_VERSION
 # transport.
 RUN npm install --global @torrent-tv/proxy --ignore-scripts \
  && cd /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules/node-datachannel \
+ && sed -i '/FetchContent_Declare(/i set(SCTP_DEBUG ON CACHE BOOL "" FORCE)' CMakeLists.txt \
  && for attempt in 1 2 3 4 5; do \
       npm rebuild --global node-datachannel && break; \
       echo "node-datachannel: build attempt $attempt failed; retrying in 10s" >&2; \
@@ -79,6 +80,9 @@ RUN npm install --global @torrent-tv/proxy --ignore-scripts \
     done
 
 COPY run.sh /run.sh
-RUN chmod a+x /run.sh
+COPY poisonmalloc.c /tmp/poisonmalloc.c
+RUN chmod a+x /run.sh \
+ && gcc -shared -fPIC -O2 -o /usr/lib/poisonmalloc.so /tmp/poisonmalloc.c -ldl -lpthread \
+ && ls -la /usr/lib/poisonmalloc.so
 
 CMD [ "/run.sh" ]

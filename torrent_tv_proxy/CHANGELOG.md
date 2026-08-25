@@ -1,3 +1,8 @@
+## 0.48.0
+
+- Pulls proxy 2.55.10. Diagnostic build: node-datachannel is rebuilt with `SCTP_DEBUG=ON` and the proxy exposes `--sctp-debug` — when enabled, the browser-side SACK stream (`a_rwnd`, gap reports, retransmissions) is printed as `usrsctp:` lines into the log, which is what separates the two remaining hypotheses for the delivery-side freeze of 2026-08-24/25. The flag is off by default; toggle it in the addon configuration (`sctp_debug`) for the reproduction run only — the log volume is high.
+- Diagnostic: the image now also builds `poisonmalloc.so` and toggles it with `poison_heap`. When on, freed pages become `PROT_NONE` in a bounded quarantine so any use-after-free faults immediately at the offending instruction and the core dump names the guilty module. Off by default; same config-toggle pattern.
+
 ## 0.47.0
 
 - Pulls proxy 2.55.9. When a viewer's send queue stays wedged for over 30 s, the proxy now records the wire itself: a bounded tcpdump (128-byte packet headers, 4 × 30 s ring, 120 s total, one capture at a time) lands beside the core dumps, so the rare one-way transmit death of 2026-08-24 carries its own evidence instead of 88 minutes of counters that all say success.
