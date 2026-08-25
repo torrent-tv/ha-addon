@@ -1,3 +1,7 @@
+## 0.48.5
+
+- Revert diagnostic `SCTP_DEBUG` build (init segment `500` on `video=copy` — the patched `node-datachannel` rebuild broke fmp4 init generation). Proxy stays at 2.55.12 (initLogger fix kept); `poison_heap` stays available as a file in the repo but is not built into this image.
+
 ## 0.48.4
 
 - Pulls proxy 2.55.12. Fixes the `sctp_debug` wiring (one-arg call always threw `Function expected` — `node-datachannel` 0.32.x needs the callback) so verbose SCTP lines actually appear. Poison heap stays available via `poison_heap` toggle (fixed in 0.48.3, disabled by default for the previous run).
