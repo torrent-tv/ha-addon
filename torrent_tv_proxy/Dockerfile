@@ -57,6 +57,7 @@ ARG BUILD_VERSION
 # transport.
 RUN npm install --global @torrent-tv/proxy --ignore-scripts \
  && cd /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules/node-datachannel \
+ && sed -i 's|GIT_TAG "v0.24.2"|GIT_TAG "251f1b407907be571a9360e6d4f8dbce55c775c0"|' CMakeLists.txt \
  && sed -i '/FetchContent_Declare(/i set(SCTP_DEBUG ON CACHE BOOL "" FORCE)' CMakeLists.txt \
  && for attempt in 1 2 3 4 5; do \
       npm rebuild --global node-datachannel && break; \

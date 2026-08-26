@@ -1,3 +1,7 @@
+## 0.48.8
+
+- Restore `SCTP_DEBUG=ON` diagnostic build with libdatachannel pinned to the exact commit of v0.24.2 (FetchContent was pulling a moving tag — the 0.48.4→0.48.5 behavior change came from an unpinned rebuild). The `init 500` regression is therefore not expected to return with the pin in place.
+
 ## 0.48.7
 
 - Make `poison_heap` opt-in again (was always-on in 0.48.6 and crashed at startup on this host). `sctp_debug` stays always-on in this diagnostic series.
