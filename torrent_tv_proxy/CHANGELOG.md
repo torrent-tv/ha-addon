@@ -1,3 +1,7 @@
+## 0.49.2
+
+- **Fix**: Pulls proxy 2.56.0 — subtitle tracks are numbered as ffmpeg numbers them, so a file carrying a picture-based track no longer sends cues to a track the browser does not know or falls back to reading the whole film for them; one walk of a file at a time, instead of a fresh one on every verified piece racing the timer over the same clusters; and every push says what film time its cues cover and how much of the file has been walked.
+
 ## 0.49.1
 
 - **Fix**: Pulls proxy 2.55.14 and `utp-native` 2.5.3-ttv.5. The fork carries ten defects found by reading the whole binding after the seventh crash of this family named its frame: three callbacks read the connection pointer without checking it exists (and a socket refused before it was accepted carries none, while its destructor announces itself regardless — the ttv.4 patch created one such path itself); the read callback copied at an accumulated offset without consulting the buffer length, writing past the end, which is the best candidate for six deaths inside libuv bookkeeping between 2026-08-18 and 08-25; a connection could be destroyed twice; and the callback macro checked none of the napi results it used. It also gains IPv6, which the module never had, and a resolver that no longer hands it addresses it cannot use. 77 checks pass on the target, two of which used to fail or hang.
