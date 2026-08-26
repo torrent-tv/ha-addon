@@ -1,3 +1,8 @@
+## 0.49.0
+
+- **New**: Pulls proxy 2.55.13 — numbered delivery probes with a computed verdict (`flowing` / `stream-stuck` / `association-stopped` / `reverse-direction-gone`), the far end's own account of itself logged as `[dc-far]`, and `GET /api/delivery-sink` behind the new `delivery_sink` option (off by default). The sink is what gives the delivery freeze something to freeze: it takes hundreds of megabytes through the real transport before the state appears at all, and a film cannot be made to deliver on demand.
+- **Change**: The `SCTP_DEBUG=ON` source build of libdatachannel is gone from the image. It was there to separate the two remaining causes inside SCTP, and it cost a broken image once already (0.48.5, fmp4 init `500`) while adding several minutes of native compilation to every rebuild. The probes read the same freeze from both ends without touching the native build — a probe on an unordered, no-retransmit channel passes head-of-line blocking in another stream but not a closed receive window, which is the distinction the verbose stream was wanted for. `sctp_debug` stays as an option for an image deliberately built with the flag again, and is no longer forced on at startup.
+
 ## 0.48.8
 
 - Restore `SCTP_DEBUG=ON` diagnostic build with libdatachannel pinned to the exact commit of v0.24.2 (FetchContent was pulling a moving tag — the 0.48.4→0.48.5 behavior change came from an unpinned rebuild). The `init 500` regression is therefore not expected to return with the pin in place.
