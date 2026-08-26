@@ -1,3 +1,7 @@
+## 0.48.7
+
+- Make `poison_heap` opt-in again (was always-on in 0.48.6 and crashed at startup on this host). `sctp_debug` stays always-on in this diagnostic series.
+
 ## 0.48.6
 
 - Diagnostic build: logging stays on without manual steps until removed. Core dumps allowed (`ulimit -c unlimited`), freed pages become inaccessible and any later access crashes immediately at the offending instruction (core dump names the module), and SCTP verbose stream (`usrsctp:`) is always on. No config toggle needed for this build.

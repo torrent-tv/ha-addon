@@ -73,14 +73,16 @@ if bashio::var.has_value "${SEGMENT_FORMAT}"; then
   ARGS+=(--segment-format "${SEGMENT_FORMAT}")
 fi
 
-# Diagnostic build 0.48.6: always on until removed.
-# Freed pages become inaccessible — any use after free crashes immediately
-# at the instruction that touches it, and the core dump names the module.
-if [ -f /usr/lib/poisonmalloc.so ]; then
-  export LD_PRELOAD=/usr/lib/poisonmalloc.so
-  bashio::log.info "Freed-memory protection active — freed pages become inaccessible, any later access crashes immediately at the offending instruction"
-else
-  bashio::log.warning "Freed-memory protection library not found"
+# Diagnostic build: freed-memory protection is available but off by default
+# in this image — enable it via config `poison_heap` when hunting the crash
+# family; leave it off for normal viewing.
+if bashio::config.true 'poison_heap'; then
+  if [ -f /usr/lib/poisonmalloc.so ]; then
+    export LD_PRELOAD=/usr/lib/poisonmalloc.so
+    bashio::log.info "Freed-memory protection active — freed pages become inaccessible, any later access crashes immediately at the offending instruction"
+  else
+    bashio::log.warning "Freed-memory protection library not found"
+  fi
 fi
 
 bashio::log.info "SCTP verbose logging enabled"
