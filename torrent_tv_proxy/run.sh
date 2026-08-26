@@ -85,16 +85,6 @@ if bashio::config.true 'poison_heap'; then
   fi
 fi
 
-# The verbose SCTP stream only exists in an image built with SCTP_DEBUG=ON, and
-# that source build of libdatachannel is gone from this image (0.49.0): it broke
-# fmp4 init generation once (0.48.5) and the delivery probes read the same
-# freeze from both ends without touching the native build. The flag stays here,
-# off, for an image that is deliberately built with the option again.
-if bashio::config.true 'sctp_debug'; then
-  bashio::log.info "SCTP verbose logging requested"
-  ARGS+=(--sctp-debug)
-fi
-
 # A torrent-free stream of a repeating pattern, served over the data channel, so
 # the delivery freeze has something to freeze: it takes hundreds of megabytes
 # and the real transport to appear at all. Off unless asked for.

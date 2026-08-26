@@ -1,3 +1,7 @@
+## 0.49.1
+
+- **Chore**: Every trace of the `SCTP_DEBUG` build is gone — the `sctp_debug` option, its schema entry and the `--sctp-debug` argument in `run.sh`. Rebuilding libdatachannel from source is not something this image does; the option pointed at a flag that only ever did anything in such a build, and the proxy no longer carries the flag either (2.55.14). The delivery probes answer the question that build was wanted for, from both ends, with no native compilation.
+
 ## 0.49.0
 
 - **New**: Pulls proxy 2.55.13 — numbered delivery probes with a computed verdict (`flowing` / `stream-stuck` / `association-stopped` / `reverse-direction-gone`), the far end's own account of itself logged as `[dc-far]`, and `GET /api/delivery-sink` behind the new `delivery_sink` option (off by default). The sink is what gives the delivery freeze something to freeze: it takes hundreds of megabytes through the real transport before the state appears at all, and a film cannot be made to deliver on demand.
