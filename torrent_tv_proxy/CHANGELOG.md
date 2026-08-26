@@ -1,3 +1,7 @@
+## 0.48.6
+
+- Diagnostic build: logging stays on without manual steps until removed. Core dumps allowed (`ulimit -c unlimited`), freed pages become inaccessible and any later access crashes immediately at the offending instruction (core dump names the module), and SCTP verbose stream (`usrsctp:`) is always on. No config toggle needed for this build.
+
 ## 0.48.5
 
 - Revert diagnostic `SCTP_DEBUG` build (init segment `500` on `video=copy` — the patched `node-datachannel` rebuild broke fmp4 init generation). Proxy stays at 2.55.12 (initLogger fix kept); `poison_heap` stays available as a file in the repo but is not built into this image.

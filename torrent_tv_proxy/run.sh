@@ -48,6 +48,10 @@ ARGS=(
 # serves this process's file reads. Idle threads cost memory and nothing else.
 export UV_THREADPOOL_SIZE=64
 
+# Diagnostic build 0.48.6: keep logging active without manual steps until
+# explicitly removed. Allow core dumps for every crash.
+ulimit -c unlimited || true
+
 # What the proxy leaves behind when it dies. Measured on this host: the addon
 # was restarted by the supervisor's watchdog TWELVE times between 2026-08-16 and
 # 2026-08-18 — eleven with exit code 139 (SIGSEGV) and one with 134 (SIGABRT) —
@@ -69,18 +73,17 @@ if bashio::var.has_value "${SEGMENT_FORMAT}"; then
   ARGS+=(--segment-format "${SEGMENT_FORMAT}")
 fi
 
-if bashio::config.true 'sctp_debug'; then
-  bashio::log.info "SCTP debug logging enabled"
-  ARGS+=(--sctp-debug)
+# Diagnostic build 0.48.6: always on until removed.
+# Freed pages become inaccessible — any use after free crashes immediately
+# at the instruction that touches it, and the core dump names the module.
+if [ -f /usr/lib/poisonmalloc.so ]; then
+  export LD_PRELOAD=/usr/lib/poisonmalloc.so
+  bashio::log.info "Freed-memory protection active — freed pages become inaccessible, any later access crashes immediately at the offending instruction"
+else
+  bashio::log.warning "Freed-memory protection library not found"
 fi
 
-if bashio::config.true 'poison_heap'; then
-  if [ -f /usr/lib/poisonmalloc.so ]; then
-    export LD_PRELOAD=/usr/lib/poisonmalloc.so
-    bashio::log.info "Poison heap active (LD_PRELOAD)"
-  else
-    bashio::log.warning "poison_heap requested but /usr/lib/poisonmalloc.so not found"
-  fi
-fi
+bashio::log.info "SCTP verbose logging enabled"
+ARGS+=(--sctp-debug)
 
 exec torrent-tv-proxy "${ARGS[@]}"
