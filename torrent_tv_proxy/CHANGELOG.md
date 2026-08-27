@@ -1,3 +1,7 @@
+## 0.50.1
+
+- **Fix**: Pulls proxy 2.58.1 and `utp-native` 2.5.3-ttv.7. ttv.6 registered an environment cleanup hook for every uTP context and never removed it once a context closed normally, so the hook outlived the memory it pointed at and, at teardown, called `uv_close` on handles that had already gone. That put a dead handle into libuv's closing machinery, and the process died later when a healthy handle was unlinked beside it. Read from the core dump down to the faulting instruction and by walking the loop's handle queue until a node could not be read.
+
 ## 0.50.0
 
 - **Fix**: Pulls proxy 2.58.0 and `utp-native` 2.5.3-ttv.6. The ninth core dump of this family named a fault with no uTP frame in it at all — the torrent worker thread ending, and node faulting as it closed what was left on that thread's event loop. The module registers two libuv handles that are fields of a struct living inside a JavaScript buffer, so the loop holds pointers into memory the collector owns until those handles are closed, and the thread ending takes the memory first. A cleanup hook now closes them before the environment goes, every callback checks a plain flag before touching the JavaScript bridge, and a strong reference holds the buffer until both handles are closed. The thread ending is still a lost session, but it is no longer a dead process.
