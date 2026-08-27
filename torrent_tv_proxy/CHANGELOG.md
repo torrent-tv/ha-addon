@@ -1,3 +1,8 @@
+## 0.49.3
+
+- **Fix**: Pulls proxy 2.57.0. 0.49.2 was built before 2.56.0 reached npm, so it reinstalled the previous proxy from the cached layer; this bump is what actually delivers both releases.
+- **New**: The packet witness now records the seconds BEFORE a delivery freeze rather than only after one. A size-bounded tcpdump ring runs while a viewer is being served and its files are kept the moment a wedge is declared, and the capture that follows runs for three retransmission timeouts, long enough for silence on the wire to mean something. The wedge itself is declared when it is certain — the queue has not fallen, the accepted-byte counter has not moved for longer than this connection's own arithmetic allows, and the peer is still sending — instead of after a fixed half minute, which is why neither field capture holds the onset.
+
 ## 0.49.2
 
 - **Fix**: Pulls proxy 2.56.0 — subtitle tracks are numbered as ffmpeg numbers them, so a file carrying a picture-based track no longer sends cues to a track the browser does not know or falls back to reading the whole film for them; one walk of a file at a time, instead of a fresh one on every verified piece racing the timer over the same clusters; and every push says what film time its cues cover and how much of the file has been walked.
