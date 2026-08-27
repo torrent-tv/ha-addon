@@ -1,3 +1,8 @@
+## 0.50.0
+
+- **Fix**: Pulls proxy 2.58.0 and `utp-native` 2.5.3-ttv.6. The ninth core dump of this family named a fault with no uTP frame in it at all — the torrent worker thread ending, and node faulting as it closed what was left on that thread's event loop. The module registers two libuv handles that are fields of a struct living inside a JavaScript buffer, so the loop holds pointers into memory the collector owns until those handles are closed, and the thread ending takes the memory first. A cleanup hook now closes them before the environment goes, every callback checks a plain flag before touching the JavaScript bridge, and a strong reference holds the buffer until both handles are closed. The thread ending is still a lost session, but it is no longer a dead process.
+- **New**: The worker says why it is ending, from inside itself and before anything is torn down, with a list of what still held its loop open. The line the parent had for this never printed once — the crash arrives during the thread's own teardown, ahead of the event the parent waits for.
+
 ## 0.49.4
 
 - **Fix**: Pulls proxy 2.57.1 — the flags a Matroska file states about its own subtitle tracks are read instead of guessed from the words a releaser typed into a track name: `FlagForced` (a track of signs and foreign speech, not of dialogue), `FlagHearingImpaired`, `FlagEnabled` (a track marked unusable is no longer offered, though it keeps its place in the numbering because ffmpeg keeps it), and `LanguageBCP47`, which the specification says MUST be preferred over the three-letter code.

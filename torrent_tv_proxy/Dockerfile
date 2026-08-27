@@ -65,7 +65,7 @@ RUN npm install --global @torrent-tv/proxy --ignore-scripts \
  && ls build/Release/*.node \
  && (cd /usr/local/lib/node_modules/@torrent-tv/proxy \
      && npm install --ignore-scripts --no-save --no-audit --no-fund \
-        "utp-native@npm:@torrent-tv/utp-native@2.5.3-ttv.5") \
+        "utp-native@npm:@torrent-tv/utp-native@2.5.3-ttv.6") \
  && find /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules -mindepth 3 \
       -type d -name utp-native -prune -exec rm -rf {} + \
  && (npm_config_build_from_source=true npm rebuild --global utp-native \
