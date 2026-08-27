@@ -1,3 +1,7 @@
+## 0.50.3
+
+- **Fix**: Pulls proxy 2.58.3. The kernel killed the addon on 2026-08-27 for memory — `exit code 137`, no core dump, 2.4 GB resident on a host with under two free — and the log had never recorded a single figure about memory. It now says once a minute what the process holds and what the machine has left, the torrent stores share one budget across the process instead of each taking its own, and that budget comes from the kernel's `MemAvailable` rather than from a number that on Linux means something else.
+
 ## 0.50.2
 
 - **Fix**: Pulls proxy 2.58.2 and `utp-native` 2.5.3-ttv.8. The structs holding libuv's UDP socket, timer and send requests are no longer JavaScript buffers: the module allocates and frees them itself, once libuv has finished with them. That is what ends the crash family rather than patching another route into it — every one of the nine deaths was libuv pointing into memory the garbage collector had taken back. 77 tests pass on the target architecture and sixty create-and-destroy cycles leave memory flat.
