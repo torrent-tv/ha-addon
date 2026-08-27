@@ -1,3 +1,7 @@
+## 0.49.4
+
+- **Fix**: Pulls proxy 2.57.1 — the flags a Matroska file states about its own subtitle tracks are read instead of guessed from the words a releaser typed into a track name: `FlagForced` (a track of signs and foreign speech, not of dialogue), `FlagHearingImpaired`, `FlagEnabled` (a track marked unusable is no longer offered, though it keeps its place in the numbering because ffmpeg keeps it), and `LanguageBCP47`, which the specification says MUST be preferred over the three-letter code.
+
 ## 0.49.3
 
 - **Fix**: Pulls proxy 2.57.0. 0.49.2 was built before 2.56.0 reached npm, so it reinstalled the previous proxy from the cached layer; this bump is what actually delivers both releases.
