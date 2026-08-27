@@ -1,3 +1,7 @@
+## 0.50.2
+
+- **Fix**: Pulls proxy 2.58.2 and `utp-native` 2.5.3-ttv.8. The structs holding libuv's UDP socket, timer and send requests are no longer JavaScript buffers: the module allocates and frees them itself, once libuv has finished with them. That is what ends the crash family rather than patching another route into it — every one of the nine deaths was libuv pointing into memory the garbage collector had taken back. 77 tests pass on the target architecture and sixty create-and-destroy cycles leave memory flat.
+
 ## 0.50.1
 
 - **Fix**: Pulls proxy 2.58.1 and `utp-native` 2.5.3-ttv.7. ttv.6 registered an environment cleanup hook for every uTP context and never removed it once a context closed normally, so the hook outlived the memory it pointed at and, at teardown, called `uv_close` on handles that had already gone. That put a dead handle into libuv's closing machinery, and the process died later when a healthy handle was unlinked beside it. Read from the core dump down to the faulting instruction and by walking the loop's handle queue until a node could not be read.
