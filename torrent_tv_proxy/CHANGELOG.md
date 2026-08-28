@@ -1,3 +1,7 @@
+## 0.51.2
+
+- **New**: Pulls proxy 2.59.2. A failed encode run now says what it asked the source for and what the source actually holds, beside the command it ran. Three sessions died on 2026-08-26 with nothing in the log but `ffmpeg exited with code 255`, which does not separate "we asked for a track this file does not have" from any other refusal.
+
 ## 0.51.1
 
 - **Fix**: Pulls proxy 2.59.1. The usrsctp state script crashed instead of reporting "no association found" when no viewer was connected yet — found by hand-verifying 2.59.0 against the live process right after this addon's own rollout.
