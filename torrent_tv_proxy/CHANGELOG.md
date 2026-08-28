@@ -1,3 +1,7 @@
+## 0.55.0
+
+- **Fix**: Pulls proxy 2.63.0. The memory this addon holds is now measurable rather than guessed: the piece store says what it has taken as well as what it holds, the torrent worker reports its own memory (where the piece pool actually lives), and the line carries what neither counter claims plus the free space on disk. A store's allowance follows the machine instead of being fixed when it was created, so it stops growing into memory the host no longer has. Also: a busy connection filling the viewer's buffer is no longer mistaken for a frozen one, which had been spending three-minute packet captures on healthy sessions.
+
 ## 0.54.0
 
 - **New**: Pulls proxy 2.62.0. Each session now says what its cushion actually is — seconds of film ready ahead of the earliest viewer's picture, the megabytes that represents off the swarm, and how much the browsers say they hold. Deepening the browser's buffer in 0.53.0 had no reading behind it; this is that reading, and it is also what says what the deeper buffer costs the person hosting the proxy.
