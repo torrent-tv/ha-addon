@@ -1,3 +1,7 @@
+## 0.51.0
+
+- **New**: Pulls proxy 2.59.0. A wedge (roadmap item 11) is now declared, and its evidence gathered, even on small-message traffic that never fills the send queue — the only trigger that existed required a nonzero queue, and the last real episode never set it. usrsctp's own association state (peer receive window, pending data, retransmission timeout) can now be read on either wedge trigger, automatically, via a bundled `gdb` script — no rebuild needed since `node_datachannel.node` ships unstripped. `gdb` is now installed in the image permanently rather than by hand after every rebuild.
+
 ## 0.50.3
 
 - **Fix**: Pulls proxy 2.58.3. The kernel killed the addon on 2026-08-27 for memory — `exit code 137`, no core dump, 2.4 GB resident on a host with under two free — and the log had never recorded a single figure about memory. It now says once a minute what the process holds and what the machine has left, the torrent stores share one budget across the process instead of each taking its own, and that budget comes from the kernel's `MemAvailable` rather than from a number that on Linux means something else.

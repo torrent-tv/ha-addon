@@ -1,7 +1,7 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/base:latest
 FROM ${BUILD_FROM}
 
-RUN apk add --no-cache nodejs npm ffmpeg python3 make g++ tcpdump
+RUN apk add --no-cache nodejs npm ffmpeg python3 make g++ tcpdump gdb
 
 # Node must be the LTS line the proxy is developed and tested on. The base
 # image supplies whatever Alpine happens to ship, so without this the addon
