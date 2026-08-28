@@ -1,3 +1,7 @@
+## 0.51.1
+
+- **Fix**: Pulls proxy 2.59.1. The usrsctp state script crashed instead of reporting "no association found" when no viewer was connected yet — found by hand-verifying 2.59.0 against the live process right after this addon's own rollout.
+
 ## 0.51.0
 
 - **New**: Pulls proxy 2.59.0. A wedge (roadmap item 11) is now declared, and its evidence gathered, even on small-message traffic that never fills the send queue — the only trigger that existed required a nonzero queue, and the last real episode never set it. usrsctp's own association state (peer receive window, pending data, retransmission timeout) can now be read on either wedge trigger, automatically, via a bundled `gdb` script — no rebuild needed since `node_datachannel.node` ships unstripped. `gdb` is now installed in the image permanently rather than by hand after every rebuild.
