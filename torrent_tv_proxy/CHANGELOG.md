@@ -1,3 +1,7 @@
+## 0.51.3
+
+- **Fix**: Pulls proxy 2.59.3. Two quality rungs that the machine encodes at the same size now share one encoder instead of starting one each. On a CM4 that had left three ffmpeg processes producing one identical picture, every rung above 240p running at 0.04x of realtime, and the viewer watching a slideshow that ended in a spinner.
+
 ## 0.51.2
 
 - **New**: Pulls proxy 2.59.2. A failed encode run now says what it asked the source for and what the source actually holds, beside the command it ran. Three sessions died on 2026-08-26 with nothing in the log but `ffmpeg exited with code 255`, which does not separate "we asked for a track this file does not have" from any other refusal.
