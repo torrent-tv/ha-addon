@@ -1,3 +1,7 @@
+## 0.54.0
+
+- **New**: Pulls proxy 2.62.0. Each session now says what its cushion actually is — seconds of film ready ahead of the earliest viewer's picture, the megabytes that represents off the swarm, and how much the browsers say they hold. Deepening the browser's buffer in 0.53.0 had no reading behind it; this is that reading, and it is also what says what the deeper buffer costs the person hosting the proxy.
+
 ## 0.53.0
 
 - **New**: Pulls proxy 2.61.0. The proxy now tells the browser how far ahead of the viewer it keeps video produced, so the player can hold all of it instead of the thirty seconds it kept while two minutes stood ready on disk. A held segment request is judged against the same figure, measured on the session's own cut grid, and against the position of the viewer who actually made it — one session serves everyone watching a copied picture, and a seek by the viewer in front used to release the requests being held for the viewer behind them.
