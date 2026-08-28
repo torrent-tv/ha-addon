@@ -1,3 +1,7 @@
+## 0.53.0
+
+- **New**: Pulls proxy 2.61.0. The proxy now tells the browser how far ahead of the viewer it keeps video produced, so the player can hold all of it instead of the thirty seconds it kept while two minutes stood ready on disk. A held segment request is judged against the same figure, measured on the session's own cut grid, and against the position of the viewer who actually made it — one session serves everyone watching a copied picture, and a seek by the viewer in front used to release the requests being held for the viewer behind them.
+
 ## 0.52.0
 
 - **Fix**: Pulls proxy 2.60.0. One film watched by more than one person is one session on this machine when the picture is copied, and the proxy now tells those viewers apart. A separately published audio track starts where the EARLIEST of them is, instead of at a position worked out by subtracting one viewer's buffer from another viewer's furthest request; the quality budget acts on the slowest link and the emptiest buffer among them rather than on whoever reported last; and a viewer who has left stops deciding for the ones still here.
