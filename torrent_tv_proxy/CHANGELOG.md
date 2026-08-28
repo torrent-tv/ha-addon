@@ -1,3 +1,7 @@
+## 0.52.0
+
+- **Fix**: Pulls proxy 2.60.0. One film watched by more than one person is one session on this machine when the picture is copied, and the proxy now tells those viewers apart. A separately published audio track starts where the EARLIEST of them is, instead of at a position worked out by subtracting one viewer's buffer from another viewer's furthest request; the quality budget acts on the slowest link and the emptiest buffer among them rather than on whoever reported last; and a viewer who has left stops deciding for the ones still here.
+
 ## 0.51.3
 
 - **Fix**: Pulls proxy 2.59.3. Two quality rungs that the machine encodes at the same size now share one encoder instead of starting one each. On a CM4 that had left three ffmpeg processes producing one identical picture, every rung above 240p running at 0.04x of realtime, and the viewer watching a slideshow that ended in a spinner.
