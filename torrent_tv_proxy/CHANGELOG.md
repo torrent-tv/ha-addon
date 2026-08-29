@@ -1,3 +1,7 @@
+## 0.56.0
+
+- **New**: Pulls proxy 2.64.0. Container/track domain per spec (RFC 9559 / ISO 14496-12): `Container` → `MatroskaContainer`/`Mp4Container`/`AviContainer`, `ContainerTrack` → `VideoTrack`/`AudioTrack`/`SubtitleTrack` → `Text`/`Image`, `FlagForced` only on subtitles, `LanguageBCP47` MUST, `track_enabled`/`alternate_group`/`elng`; orchestrators (`ContainerOrchestrator`, `SubtitleOrchestrator`) and controllers (`Playback/Subtitle`) per roadmap 62. Also pulls 2.63.1 fix: reader window follows live memory allowance, not birth reservation.
+
 ## 0.55.0
 
 - **Fix**: Pulls proxy 2.63.0. The memory this addon holds is now measurable rather than guessed: the piece store says what it has taken as well as what it holds, the torrent worker reports its own memory (where the piece pool actually lives), and the line carries what neither counter claims plus the free space on disk. A store's allowance follows the machine instead of being fixed when it was created, so it stops growing into memory the host no longer has. Also: a busy connection filling the viewer's buffer is no longer mistaken for a frozen one, which had been spending three-minute packet captures on healthy sessions.
