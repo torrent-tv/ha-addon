@@ -1,3 +1,7 @@
+## 0.56.1
+
+- **Fix**: Pulls proxy 2.64.1. Spec compliance: `FlagDefault` zero-length as default 1 (was reading as false), `S_TEXT/WEBVTT` as text.
+
 ## 0.56.0
 
 - **New**: Pulls proxy 2.64.0. Container/track domain per spec (RFC 9559 / ISO 14496-12): `Container` → `MatroskaContainer`/`Mp4Container`/`AviContainer`, `ContainerTrack` → `VideoTrack`/`AudioTrack`/`SubtitleTrack` → `Text`/`Image`, `FlagForced` only on subtitles, `LanguageBCP47` MUST, `track_enabled`/`alternate_group`/`elng`; orchestrators (`ContainerOrchestrator`, `SubtitleOrchestrator`) and controllers (`Playback/Subtitle`) per roadmap 62. Also pulls 2.63.1 fix: reader window follows live memory allowance, not birth reservation.
