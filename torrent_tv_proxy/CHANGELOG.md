@@ -1,3 +1,7 @@
+## 0.56.2
+
+- **Fix**: Pulls proxy 2.64.2. Log torrent removal reason, refcount and caller for idle/disk-cap eviction; log stats getTorrent failures.
+
 ## 0.56.1
 
 - **Fix**: Pulls proxy 2.64.1. Spec compliance: `FlagDefault` zero-length as default 1 (was reading as false), `S_TEXT/WEBVTT` as text.
