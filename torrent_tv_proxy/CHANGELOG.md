@@ -1,3 +1,7 @@
+## 0.56.4
+
+- **Fix**: Pulls proxy 2.64.4. Piece store now holds one `SharedArrayBuffer` per resident piece instead of one growable pool that never shrunk — `committed` is `resident`, memory is returned on eviction and when the allowance is lowered, and the fragment path carries the piece's own buffer. The pool that leaked 650 MB is gone.
+
 ## 0.56.3
 
 - **Fix**: Pulls proxy 2.64.3. Memory diagnostics — high-water heap snapshot and high-rss warning.
