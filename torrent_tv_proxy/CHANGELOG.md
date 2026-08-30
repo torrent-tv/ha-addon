@@ -1,3 +1,7 @@
+## 0.56.3
+
+- **Fix**: Pulls proxy 2.64.3. Memory diagnostics — high-water heap snapshot and high-rss warning.
+
 ## 0.56.2
 
 - **Fix**: Pulls proxy 2.64.2. Log torrent removal reason, refcount and caller for idle/disk-cap eviction; log stats getTorrent failures.
