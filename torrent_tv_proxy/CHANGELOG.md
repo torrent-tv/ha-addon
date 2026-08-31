@@ -1,3 +1,7 @@
+## 0.56.8
+
+- **New**: Pulls proxy 2.64.8. A backward restart of the encoder now says what it costs. Nothing already written is lost — every run keeps its own directory and the session serves the union of all of them — so the price is work about to be done twice, because the new run walks forward through segments the old one had already finished, and it is the viewer in front, who has nothing produced ahead of them until the run gets back to where it already was. The line says how far back it went, how many of those segments are already on disk, and the running totals for the session. It is the reading roadmap item 64 needs before a session is allowed more than one concurrent encode run.
+
 ## 0.56.7
 
 - **Fix**: Pulls proxy 2.64.7. A file opened at a position starts its SOUND at that position. The audio rendition is a session of its own and its start was worked out as the picture's read head less the buffer the viewer reports holding; at a cold open there is no report, and the fallback subtracted the whole 120 s look-ahead from a buffer that does not exist. Field 2026-08-31: a page opened at 588 s started its sound at 460 s, and the segment the viewer needed took 38.8 s to appear against the picture's 8.4 s.
