@@ -1,3 +1,7 @@
+## 0.59.0
+
+- **New**: Pulls proxy 2.68.0. The background fetch of a soundtrack now stands aside after a stall, not only during one. On a swarm with no spare capacity the earlier rule still let it take bandwidth between stalls — and the stalls were the proof there was none spare. Measured on 2026-08-31: 200-600 KB/s delivered against the 399 KB/s the film eats, a seek that waited 101 seconds for a single piece, and the picture standing still 145.6 seconds before the player gave up. On a starving swarm the fetch now stops altogether.
+
 ## 0.58.0
 
 - **New**: Pulls proxy 2.67.0. A soundtrack shipped as its own file beside the picture is now fetched WHOLE from the moment the viewer opens the episode, so switching to it does not wait for the swarm — in the field on 2026-08-31 the first piece of one took 27.7 seconds to arrive, which is longer than a switch is willing to wait, and the first switch to the Russian dub failed for exactly that reason while the second succeeded. The fetch uses only the room the viewer's own reading leaves: it proceeds only while no reader on the torrent is waiting for a piece, and that is re-asked before every piece. What plays now always comes first.
