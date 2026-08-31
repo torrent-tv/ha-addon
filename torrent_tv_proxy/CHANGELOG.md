@@ -1,3 +1,7 @@
+## 0.56.5
+
+- **Fix**: Pulls proxy 2.64.5. A rung measured at 0.007x (4K HEVC on CM4, field 2026-08-31) is no longer kept just because it is on screen — the `playingHeight` exemption now follows the measured check, and `ownHeight` is kept only for a copied source. A 4K HEVC transcode at 0.007x with 0.04s buffered no longer stalls the viewer with no way to downgrade; the offer can become empty and the viewer gets an error instead of an endless spinner.
+
 ## 0.56.4
 
 - **Fix**: Pulls proxy 2.64.4. Piece store now holds one `SharedArrayBuffer` per resident piece instead of one growable pool that never shrunk — `committed` is `resident`, memory is returned on eviction and when the allowance is lowered, and the fragment path carries the piece's own buffer. The pool that leaked 650 MB is gone.
