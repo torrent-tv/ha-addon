@@ -1,3 +1,8 @@
+## 0.56.7
+
+- **Fix**: Pulls proxy 2.64.7. A file opened at a position starts its SOUND at that position. The audio rendition is a session of its own and its start was worked out as the picture's read head less the buffer the viewer reports holding; at a cold open there is no report, and the fallback subtracted the whole 120 s look-ahead from a buffer that does not exist. Field 2026-08-31: a page opened at 588 s started its sound at 460 s, and the segment the viewer needed took 38.8 s to appear against the picture's 8.4 s.
+- **Fix**: The first encode run is positioned from the position the viewer asked for, not from the figure rounded to ten seconds for the session key. 588 s became 590 s, which falls in the segment AFTER the one the viewer is inside, so the player asked for a segment behind the run and the run was restarted onto it.
+
 ## 0.56.6
 
 - **New**: Pulls proxy 2.64.6. The torrent worker reads its own memory once a second and writes a line when the heap has moved, and it writes a heap snapshot of ITS OWN isolate into `/data` on every new high-water above 400 MB, three kept. That isolate has been killed three times in two days for reaching its 2240 MB ceiling — 2026-08-30 14:00 and 23:19, 2026-08-31 13:27 — each time with the whole rise fitting inside one sixty-second gap, and every snapshot the proxy has ever written was of the main isolate, whose heap is 26 MB. The line now also says the ceiling beside the heap.
