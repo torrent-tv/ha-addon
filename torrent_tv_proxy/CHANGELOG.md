@@ -1,3 +1,8 @@
+## 0.56.6
+
+- **New**: Pulls proxy 2.64.6. The torrent worker reads its own memory once a second and writes a line when the heap has moved, and it writes a heap snapshot of ITS OWN isolate into `/data` on every new high-water above 400 MB, three kept. That isolate has been killed three times in two days for reaching its 2240 MB ceiling — 2026-08-30 14:00 and 23:19, 2026-08-31 13:27 — each time with the whole rise fitting inside one sixty-second gap, and every snapshot the proxy has ever written was of the main isolate, whose heap is 26 MB. The line now also says the ceiling beside the heap.
+- **Fix**: Eight defects in the piece store's reservation accounting, found by reading it after that third death: a slot lost on any failure between claiming and filling it, a failure path that could take back another claim's reservation, a read that retried every 50 ms for ever instead of failing, a wait that allocated per pending spill, a close that stranded whoever was waiting, a stale disk copy resurrected by its own in-flight write, an unhandled rejection that could end the torrent thread, and an LRU whose capacity never followed the allowance.
+
 ## 0.56.5
 
 - **Fix**: Pulls proxy 2.64.5. A rung measured at 0.007x (4K HEVC on CM4, field 2026-08-31) is no longer kept just because it is on screen — the `playingHeight` exemption now follows the measured check, and `ownHeight` is kept only for a copied source. A 4K HEVC transcode at 0.007x with 0.04s buffered no longer stalls the viewer with no way to downgrade; the offer can become empty and the viewer gets an error instead of an endless spinner.
