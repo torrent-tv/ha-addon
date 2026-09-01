@@ -1,3 +1,8 @@
+## 0.60.0
+
+- **New**: Pulls proxy 2.69.0. A subtitle track is no longer given a language the text cannot support. Measured over Wikipedia extracts in seventeen languages: the detector needs 650 characters of Russian before its answer stops walking between Bulgarian, Serbian and Russian, while Korean is settled by 40 — so the figure is now the candidate language's own, and an answer that does not survive losing half the text is refused as well. Instead of a wrong label the track shows Unknown, and the reading is re-taken as the film downloads: the label moves onto the right language once enough of the file has arrived.
+- **Fix**: A Russian subtitle FILE was reported as English, because the detector was handed the raw `.ass` — which is half Latin markup — while the markup-free text it was about to serve sat beside it. All three places a language is read now read the words and nothing else.
+
 ## 0.59.0
 
 - **New**: Pulls proxy 2.68.0. The background fetch of a soundtrack now stands aside after a stall, not only during one. On a swarm with no spare capacity the earlier rule still let it take bandwidth between stalls — and the stalls were the proof there was none spare. Measured on 2026-08-31: 200-600 KB/s delivered against the 399 KB/s the film eats, a seek that waited 101 seconds for a single piece, and the picture standing still 145.6 seconds before the player gave up. On a starving swarm the fetch now stops altogether.
