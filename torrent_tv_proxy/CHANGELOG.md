@@ -1,3 +1,8 @@
+## 0.62.1
+
+- **Fix**: Pulls proxy 2.71.1. What a reader needs is stated once and used for both purposes — deciding what to fetch from the swarm, and deciding what to keep in memory. They were two separate lists that could disagree with each other.
+- **New**: A file this machine cannot keep up with at any quality is refused with a reason instead of being opened into a session that stalls. On 2026-08-28 five sessions on one file left every quality at a twenty-fifth of realtime and the viewer watched a slideshow.
+
 ## 0.62.0
 
 - **Fix**: Pulls proxy 2.71.0. The part of the proxy that downloads the film was writing its log lines into the container's output instead of the log file, and the container's output is destroyed by every update — so the readings that explain a stall have been thrown away for as long as they have existed. Measured over a whole 49 938-line file: not one line from the piece reader or the torrent pool was in it.
