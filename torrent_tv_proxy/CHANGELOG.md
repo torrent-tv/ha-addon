@@ -1,3 +1,11 @@
+## 0.62.0
+
+- **Fix**: Pulls proxy 2.71.0. The part of the proxy that downloads the film was writing its log lines into the container's output instead of the log file, and the container's output is destroyed by every update — so the readings that explain a stall have been thrown away for as long as they have existed. Measured over a whole 49 938-line file: not one line from the piece reader or the torrent pool was in it.
+- **Fix**: Whole seasons are no longer downloaded while the viewer is choosing an episode. A torrent used to be selected in full the moment its list of files arrived, and the unwanted files were dropped afterwards.
+- **Fix**: One place now decides what is fetched and in what order. There were four, and they overwrote each other: a seek could be undone by another part of the proxy opening the same file, after which the download walked forward from the beginning — on a 4.7 GB film that cost 2.47 GB and 93 seconds before the picture could continue.
+- **New**: What is fetched follows five levels of urgency — what the picture is stopped on, the rest of the buffer being built, the lead ahead of it, the rest of the file, and the gap left behind by a forward seek. The last two are asked for only while nothing urgent is missing anywhere on this proxy, so a second viewer's film cannot take bandwidth from a picture that has stopped.
+- **Fix**: With two viewers watching different episodes of one release, the proxy no longer fetches every episode lying between them.
+
 ## 0.61.0
 
 - **New**: Pulls proxy 2.70.0. Memory for film pieces is re-used instead of being taken afresh for every piece. A viewing on 2026-09-02 took a new four-megabyte piece of memory 7575 times in 44 minutes, each given back only when the runtime got round to it, which is why the process held 1.86 GB while its own accounting said 352 MB — and twice that day the host's out-of-memory killer ended it.
