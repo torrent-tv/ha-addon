@@ -1,3 +1,11 @@
+## 0.63.0
+
+- **Fix**: Pulls proxy 2.72.0. The proxy was killed by the machine at 4.4 GB twenty minutes after the previous release, and the previous release caused it: memory holding a piece on its way to disk was not counted as memory in use, so every arriving piece made the total grow by one while the disk fell behind. It is counted now, and a full store waits for the disk instead of pushing out another piece.
+- **Fix**: The store is no longer given exactly what the readers ask for and nothing more. Six readers wanting 23 pieces of a store allowed 23 meant no free place ever existed, so every arriving piece displaced a wanted one — 233 of them in a minute against 119 writes the disk managed. It now also gets room for what arrives while a write is finishing, measured from its own figures.
+- **Fix**: A piece that will be wanted later than the one it would displace is written straight to disk instead of taking its place.
+- **Fix**: A proxy reported how much memory it had free using a figure that on Linux counts only what is idle at that instant, while the rest is cache the kernel hands back on demand. Every Linux proxy in the pool understated itself, and that figure is 40 % of how a viewer's proxy is chosen.
+- **New**: When a proxy cannot keep up with a file, the viewer is moved to one that can instead of being shown an error. The proxy that refused has already worked out what the file is, and its answer travels — so every other proxy answers in milliseconds without downloading anything.
+
 ## 0.62.1
 
 - **Fix**: Pulls proxy 2.71.1. What a reader needs is stated once and used for both purposes — deciding what to fetch from the swarm, and deciding what to keep in memory. They were two separate lists that could disagree with each other.
