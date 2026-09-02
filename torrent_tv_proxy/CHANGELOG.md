@@ -1,3 +1,7 @@
+## 0.60.2
+
+- **New**: Pulls proxy 2.69.2. The piece store now says why it keeps writing film data out to disk and reading it back. A viewing on 2026-09-02 wrote 6565 pieces out and fetched 7575 back in 44 minutes, with only 53.6 % of reads served from memory, and no reading said whether the pieces being dropped were the wrong ones or whether there was simply not enough room for what was being watched. One line per torrent now states what the readers between them are asking to keep against what the store may hold, how many drops had to take a piece a reader had said it needs, and how long a piece stayed on disk before it was wanted back.
+
 ## 0.60.1
 
 - **Fix**: Pulls proxy 2.69.1. The proxy was killed twice by this host's out-of-memory killer during a viewing on 2026-09-02, and its own memory series could not see either rise: both fell inside a single gap of a reading taken once a minute — 602 MB in the last line before the first kill against 1.72 GB measured by the kernel 34 seconds later, and 1171 MB against 1.86 GB nine seconds later. The process now reads its memory every second and writes a line when it has moved by 25 MB, so the next rise is a curve rather than one number and then a death.
