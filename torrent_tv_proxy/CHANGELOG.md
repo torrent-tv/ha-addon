@@ -1,3 +1,11 @@
+## 0.61.0
+
+- **New**: Pulls proxy 2.70.0. Memory for film pieces is re-used instead of being taken afresh for every piece. A viewing on 2026-09-02 took a new four-megabyte piece of memory 7575 times in 44 minutes, each given back only when the runtime got round to it, which is why the process held 1.86 GB while its own accounting said 352 MB — and twice that day the host's out-of-memory killer ended it.
+- **Fix**: How much memory the proxy may use is now worked out from what the film being watched actually needs and what the machine can spare, rather than from a quarter of free memory with a 64 MB floor and a 512 MB ceiling. Those three figures came from a single observation of one machine on 2026-08-03 and applied to every machine since.
+- **Fix**: The allowance could only ever fall. A torrent opened while the machine was busy kept a small allowance for its whole life, however much memory was freed afterwards.
+- **Fix**: A piece downloaded ahead of the viewer no longer pushes out a piece the player is about to ask for; it is written to disk instead, for the same one write it would have cost a moment later. And a piece already on disk is not written a second time when it leaves memory again.
+- **Fix**: Memory is given back when a torrent's peers go quiet or the viewer stops, rather than being held until the torrent is removed a quarter of an hour later.
+
 ## 0.60.2
 
 - **New**: Pulls proxy 2.69.2. The piece store now says why it keeps writing film data out to disk and reading it back. A viewing on 2026-09-02 wrote 6565 pieces out and fetched 7575 back in 44 minutes, with only 53.6 % of reads served from memory, and no reading said whether the pieces being dropped were the wrong ones or whether there was simply not enough room for what was being watched. One line per torrent now states what the readers between them are asking to keep against what the store may hold, how many drops had to take a piece a reader had said it needs, and how long a piece stayed on disk before it was wanted back.
