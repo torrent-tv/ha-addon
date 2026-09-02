@@ -1,3 +1,9 @@
+## 0.60.1
+
+- **Fix**: Pulls proxy 2.69.1. The proxy was killed twice by this host's out-of-memory killer during a viewing on 2026-09-02, and its own memory series could not see either rise: both fell inside a single gap of a reading taken once a minute — 602 MB in the last line before the first kill against 1.72 GB measured by the kernel 34 seconds later, and 1171 MB against 1.86 GB nine seconds later. The process now reads its memory every second and writes a line when it has moved by 25 MB, so the next rise is a curve rather than one number and then a death.
+- **Fix**: The torrent thread's line was triggered by the one figure that was not moving. It watched the heap, which stood at 31-173 MB all session, while the buffers holding film pieces swung between 130 and 950 MB in the same isolate. All three figures are watched now.
+- **Chore**: Nothing was added to what a quiet second costs: every read of `/proc` moved behind the decision to write the line.
+
 ## 0.60.0
 
 - **New**: Pulls proxy 2.69.0. A subtitle track is no longer given a language the text cannot support. Measured over Wikipedia extracts in seventeen languages: the detector needs 650 characters of Russian before its answer stops walking between Bulgarian, Serbian and Russian, while Korean is settled by 40 — so the figure is now the candidate language's own, and an answer that does not survive losing half the text is refused as well. Instead of a wrong label the track shows Unknown, and the reading is re-taken as the film downloads: the label moves onto the right language once enough of the file has arrived.
