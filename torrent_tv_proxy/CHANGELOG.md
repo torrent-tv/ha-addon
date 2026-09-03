@@ -1,3 +1,8 @@
+## 0.67.0
+
+- **New**: Pulls proxy 2.76.0. Two people watching the same film on this proxy now share the work instead of doubling it. Measured here on 2026-09-03: two viewers of one file whose picture needs no re-encoding got two separate encodes of the identical picture — four ffmpeg processes for one film, twice the data pulled ahead, and the memory that holds the film's pieces full to its ceiling. They were told apart by which soundtrack each had chosen, although a picture carries no sound. The picture is now one piece of work for both of them, and each still gets their own language, their own quality and their own place in the film.
+- **Fix**: With two viewers, one changing language or quality no longer stops the other's sound or picture.
+- **New**: Where a file's keyframes are is read once per file rather than once per viewer, by the same reading that already learns the file's length and its tracks — over the torrent instead of over the proxy's own HTTP.
 ## 0.66.0
 
 - **New**: Pulls proxy 2.75.0. What the picture IS is now read from the file as well as from ffmpeg, not from ffmpeg alone. Until now the size, the frame rate, whether it is HDR and how many bits a sample carries all came from ffmpeg's own description of the file, while what the file itself declares about its picture was read and then used for nothing. It matters most on a ten-bit HDR release whose ffmpeg line does not mention it: that decides whether the colours are converted for an ordinary screen, and how the machine prices the work before offering a quality.
