@@ -1,5 +1,6 @@
 ## 0.63.1
 
+- **Fix**: A seek could leave the picture stopped for good. The encoder writes each piece into a file it creates before it has anything to put in it, so a run cut short by a seek left an empty file behind; the proxy took the file's presence as proof the piece was made, kept the encoder stopped for being far enough ahead, and refused to serve that same piece for being empty. Nothing was produced from then on. A piece now counts only if it has bytes in it, and the empty leftover is removed once the run that opened it has ended.
 - **Fix**: Pulls proxy 2.72.1. Subtitles on a track stored inside the film were shown as the whole line of the subtitle file's own bookkeeping — the reading order, the style name, the margins — followed by the words. Matroska stores such a line without its two timing fields, because it keeps the timing itself, and the proxy was counting the fields of the other form. Reading how the bytes are wrapped is now each container's own answer, stated where the specification states it, and the subtitle format's markup is taken off separately.
 
 ## 0.63.0
