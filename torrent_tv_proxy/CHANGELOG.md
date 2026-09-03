@@ -1,3 +1,9 @@
+## 0.65.0
+
+- **Fix**: Pulls proxy 2.74.1. A paused viewer whose tab is in the background no longer makes the proxy declare the connection wedged. Measured here on 2026-09-03: the viewer paused at 15:24:21 with two minutes buffered, the tab went hidden at 15:24:35, the browser began throttling its own timers (`loopLag` 681 → 5957 ms), and at 15:26:05 the proxy printed `association-stopped`, kept 61 MB of recorded traffic and took a three-minute capture — seven seconds before the same connection read `flowing` again. Four such false alarms that day, each filling `/data` with evidence of nothing. The browser's own reported delay is now part of how long an answer is allowed to take.
+- **New**: A forced subtitle track in an MP4 is shown as forced, read from the sample entry's display flags as Apple's QuickTime File Format defines them.
+- **New**: What a session has produced is stated in one place instead of three, and the answer no longer costs a walk of every run directory on the thread that carries video to the viewer — 1350 files for a 90-minute film, on every segment request.
+
 ## 0.64.1
 
 - **Fix**: Pulls proxy 2.73.1. Turning on an embedded subtitle track no longer loses the beginning of the episode. On a file already downloaded from an earlier sitting the proxy finds its cues within a second and a half — before the browser has subscribed — and the catch-up request the browser then makes was being answered on the thread that cannot read pieces, so it came back empty. Measured here on 2026-09-03: 283 clusters indexed, 0 walked, and the viewer got subtitles only from 81.7 s onward.
