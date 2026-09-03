@@ -1,3 +1,7 @@
+## 0.64.1
+
+- **Fix**: Pulls proxy 2.73.1. Turning on an embedded subtitle track no longer loses the beginning of the episode. On a file already downloaded from an earlier sitting the proxy finds its cues within a second and a half — before the browser has subscribed — and the catch-up request the browser then makes was being answered on the thread that cannot read pieces, so it came back empty. Measured here on 2026-09-03: 283 clusters indexed, 0 walked, and the viewer got subtitles only from 81.7 s onward.
+
 ## 0.64.0
 
 - **Fix**: Pulls proxy 2.73.0. Starting a film with a soundtrack shipped as its own file no longer spends eight seconds asking ffmpeg where that file's timeline begins — the proxy reads it from the file's own header, which it had already read a moment earlier and in eight milliseconds. Measured on this host on 2026-09-03: 8078, 8112 and 8121 ms, three cold starts out of three, for an answer that was in hand from the first second.
