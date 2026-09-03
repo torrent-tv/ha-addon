@@ -1,3 +1,7 @@
+## 0.63.1
+
+- **Fix**: Pulls proxy 2.72.1. Subtitles on a track stored inside the film were shown as the whole line of the subtitle file's own bookkeeping — the reading order, the style name, the margins — followed by the words. Matroska stores such a line without its two timing fields, because it keeps the timing itself, and the proxy was counting the fields of the other form. Reading how the bytes are wrapped is now each container's own answer, stated where the specification states it, and the subtitle format's markup is taken off separately.
+
 ## 0.63.0
 
 - **Fix**: Pulls proxy 2.72.0. The proxy was killed by the machine at 4.4 GB twenty minutes after the previous release, and the previous release caused it: memory holding a piece on its way to disk was not counted as memory in use, so every arriving piece made the total grow by one while the disk fell behind. It is counted now, and a full store waits for the disk instead of pushing out another piece.
