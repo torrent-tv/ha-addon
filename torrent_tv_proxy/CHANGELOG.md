@@ -1,3 +1,7 @@
+## 0.63.2
+
+- **Fix**: Pulls proxy 2.72.2. A request for room in the proxy's piece memory could never end: two waits inside one calculation shared a single record of when the wait began, and each of them cleared it on giving up, which started the other's wait afresh. The refusal the store is meant to end with was therefore unreachable, and a piece that could not be placed was retried every fifty milliseconds for as long as the process lived. Such a request now fails after five seconds and says why.
+
 ## 0.63.1
 
 - **Fix**: A seek could leave the picture stopped for good. The encoder writes each piece into a file it creates before it has anything to put in it, so a run cut short by a seek left an empty file behind; the proxy took the file's presence as proof the piece was made, kept the encoder stopped for being far enough ahead, and refused to serve that same piece for being empty. Nothing was produced from then on. A piece now counts only if it has bytes in it, and the empty leftover is removed once the run that opened it has ended.
