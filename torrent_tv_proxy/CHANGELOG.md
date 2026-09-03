@@ -1,3 +1,10 @@
+## 0.64.0
+
+- **Fix**: Pulls proxy 2.73.0. Starting a film with a soundtrack shipped as its own file no longer spends eight seconds asking ffmpeg where that file's timeline begins — the proxy reads it from the file's own header, which it had already read a moment earlier and in eight milliseconds. Measured on this host on 2026-09-03: 8078, 8112 and 8121 ms, three cold starts out of three, for an answer that was in hand from the first second.
+- **Fix**: A viewer whose data is on its way is no longer told the proxy sent nothing. The proxy now reports the bytes arriving for the stream being waited on, so a start that is slow because the swarm is slow keeps waiting instead of failing — the case measured here ended 0.4 s before the piece it needed arrived.
+- **New**: When a viewer resumes part-way through a film, the proxy starts fetching that part of the file as soon as the film is chosen, rather than when the encoder opens its input nearly a minute later.
+- **Fix**: A download stuck on the last few blocks of one piece is retried against every peer that has it, on every attempt. Measured here: 46.3 s on one piece whose last three blocks of 512 sat with slow peers, while the swarm as a whole was delivering 1.2 MB/s.
+
 ## 0.63.2
 
 - **Fix**: Pulls proxy 2.72.2. A request for room in the proxy's piece memory could never end: two waits inside one calculation shared a single record of when the wait began, and each of them cleared it on giving up, which started the other's wait afresh. The refusal the store is meant to end with was therefore unreachable, and a piece that could not be placed was retried every fifty milliseconds for as long as the process lived. Such a request now fails after five seconds and says why.
