@@ -1,3 +1,7 @@
+## 0.67.4
+
+- **Fix**: Pulls proxy 2.76.4. The encoder was being restarted every five seconds while a film played — each restart made one or two seconds of video and was then replaced. Two places were reading "this encoder has no end" as if it were a number, so the plan both stopped the encoder as useless and started another one a second further along, over and over.
+
 ## 0.67.3
 
 - **Fix**: Pulls proxy 2.76.3. The proxy stopped answering a few seconds after a film was opened — no picture, no health, not even its own log — while burning a whole processor core. Found on this machine by reading the stack out of the live process: a search for where a new encoder could start was counting segment numbers one at a time towards nine quadrillion, because it had not been told how long the film is. The figure had moved elsewhere in the previous release and three places were still asking for it by its old name.
