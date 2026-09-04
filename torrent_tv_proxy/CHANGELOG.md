@@ -1,3 +1,7 @@
+## 0.67.6
+
+- **New**: Pulls proxy 2.76.6. This proxy now says which films it already has when the site asks how it is doing, so a viewer of a film it is downloading can be sent here rather than to a machine that would start the same download from nothing. For the owner that means the second viewer of a film costs almost nothing extra.
+
 ## 0.67.5
 
 - **Fix**: Pulls proxy 2.76.5. A quality step that this machine has been seen failing at is no longer offered on a machine whose startup measurement is missing — the strongest evidence about a step is that it ran and could not keep up, and it was being discarded along with a prediction it does not depend on.
