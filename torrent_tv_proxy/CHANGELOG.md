@@ -1,3 +1,7 @@
+## 0.67.1
+
+- **New**: Pulls proxy 2.76.1. The proxy now records how long it takes to read where a film's keyframes are — the reading that decides whether the picture can be passed through untouched or has to be re-encoded in full, which on this machine is the difference between almost free and the whole processor. Nothing measured it before, and until it is measured no sensible limit can be put on that wait.
+
 ## 0.67.0
 
 - **New**: Pulls proxy 2.76.0. Two people watching the same film on this proxy now share the work instead of doubling it. Measured here on 2026-09-03: two viewers of one file whose picture needs no re-encoding got two separate encodes of the identical picture — four ffmpeg processes for one film, twice the data pulled ahead, and the memory that holds the film's pieces full to its ceiling. They were told apart by which soundtrack each had chosen, although a picture carries no sound. The picture is now one piece of work for both of them, and each still gets their own language, their own quality and their own place in the film.
