@@ -1,3 +1,7 @@
+## 0.67.3
+
+- **Fix**: Pulls proxy 2.76.3. The proxy stopped answering a few seconds after a film was opened — no picture, no health, not even its own log — while burning a whole processor core. Found on this machine by reading the stack out of the live process: a search for where a new encoder could start was counting segment numbers one at a time towards nine quadrillion, because it had not been told how long the film is. The figure had moved elsewhere in the previous release and three places were still asking for it by its old name.
+
 ## 0.67.2
 
 - **New**: Pulls proxy 2.76.2. Waiting for the film's keyframe table — the reading that decides whether the picture can be passed through untouched or has to be re-encoded in full — is now bounded, and the bound comes from measuring that read on this very machine over seventeen films: every table that arrived did so within 25 seconds, while two files answered nothing for two minutes. A film whose table has not arrived in time is re-encoded rather than leaving the viewer waiting, and the reading goes on in the background, so opening the same film again gets the cheap path.
