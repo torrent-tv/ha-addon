@@ -1,3 +1,7 @@
+## 0.67.5
+
+- **Fix**: Pulls proxy 2.76.5. A quality step that this machine has been seen failing at is no longer offered on a machine whose startup measurement is missing — the strongest evidence about a step is that it ran and could not keep up, and it was being discarded along with a prediction it does not depend on.
+
 ## 0.67.4
 
 - **Fix**: Pulls proxy 2.76.4. The encoder was being restarted every five seconds while a film played — each restart made one or two seconds of video and was then replaced. Two places were reading "this encoder has no end" as if it were a number, so the plan both stopped the encoder as useless and started another one a second further along, over and over.
