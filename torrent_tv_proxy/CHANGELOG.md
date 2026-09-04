@@ -1,3 +1,7 @@
+## 0.67.2
+
+- **New**: Pulls proxy 2.76.2. Waiting for the film's keyframe table — the reading that decides whether the picture can be passed through untouched or has to be re-encoded in full — is now bounded, and the bound comes from measuring that read on this very machine over seventeen films: every table that arrived did so within 25 seconds, while two files answered nothing for two minutes. A film whose table has not arrived in time is re-encoded rather than leaving the viewer waiting, and the reading goes on in the background, so opening the same film again gets the cheap path.
+
 ## 0.67.1
 
 - **New**: Pulls proxy 2.76.1. The proxy now records how long it takes to read where a film's keyframes are — the reading that decides whether the picture can be passed through untouched or has to be re-encoded in full, which on this machine is the difference between almost free and the whole processor. Nothing measured it before, and until it is measured no sensible limit can be put on that wait.
