@@ -1,3 +1,8 @@
+## 0.68.0
+
+- **Fix**: Pulls proxy 2.77.0, which fixes a film that would not start at all. The proxy decided whether anybody was watching an output from the last piece of video they had asked for — so a viewer who had only just opened the film counted as nobody, and the encoder making that film's soundtrack was stopped a second after it started, with nothing made. The picture cannot play without that soundtrack's opening file, so the browser waited a minute and gave up. A viewer is now known to be there from the moment they arrive, and known to have gone when their connection closes, which also means a closed tab frees this machine's work at once instead of some minutes later.
+- **Fix**: Also in 2.77.0: when an encoder failed to start, this proxy would keep starting it again without limit. The limit that was supposed to stop that had never run at all, because of a mistake in the order of two lines, and neither had the fallback from a broken hardware encoder to software or the retry after the film's data briefly goes away. All three work now.
+
 ## 0.67.6
 
 - **New**: Pulls proxy 2.76.6. This proxy now says which films it already has when the site asks how it is doing, so a viewer of a film it is downloading can be sent here rather than to a machine that would start the same download from nothing. For the owner that means the second viewer of a film costs almost nothing extra.
