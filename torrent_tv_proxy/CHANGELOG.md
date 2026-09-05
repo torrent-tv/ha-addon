@@ -1,3 +1,7 @@
+## 0.70.1
+
+- **Fix**: Pulls proxy 2.80.0, which stops the proxy freezing itself. When it suspected a stalled connection it attached a debugger to its own process to read the state of that connection — and a debugger stops every thread of the program it is attached to. On 2026-09-05 the suspicion was wrong and lasted half a second; the debugger held the proxy for four minutes, playback stopped, the addon answered nothing at all, and only restarting it recovered. That reading is now off unless it is switched on deliberately, and its time limit is kept by a separate program that goes on counting whatever happens to the proxy.
+
 ## 0.70.0
 
 - **Fix**: Pulls proxy 2.79.0. Three parts of the proxy were each deciding where an encoder should work, and they undid each other: starting one killed another, a seek started a third, and the stretch one of them had worked out was thrown away on the way to the encoder. Measured on 2026-09-05: 684 encoders started and 660 killed in eight minutes of one film, most of them dying before they made anything, while the piece the viewer was waiting for went unmade for 32 seconds. One part decides now, and nothing else starts or stops an encoder.
