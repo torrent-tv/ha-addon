@@ -1,3 +1,10 @@
+## 0.70.0
+
+- **Fix**: Pulls proxy 2.79.0. Three parts of the proxy were each deciding where an encoder should work, and they undid each other: starting one killed another, a seek started a third, and the stretch one of them had worked out was thrown away on the way to the encoder. Measured on 2026-09-05: 684 encoders started and 660 killed in eight minutes of one film, most of them dying before they made anything, while the piece the viewer was waiting for went unmade for 32 seconds. One part decides now, and nothing else starts or stops an encoder.
+- **Fix**: Also in 2.79.0: a piece of video is handed to the player as soon as the encoder says it has finished writing it. Before, the proof was that the NEXT piece had appeared — which never happens for the last piece an encoder makes, so the first piece after every restart was held back from the viewer although it was complete and on disk.
+- **Fix**: How many encoders may run at once is now the smallest of three measured limits instead of one. Only the processor was asked; but every encoder reads the same torrent and they cannot together consume faster than it arrives, and encoders working far apart each need their own memory for the torrent's pieces. On this machine it is the memory, not the processor, that allows the fewest.
+- **New**: The page tells the proxy whether the picture is moving, the moment it changes. A viewer who has paused needs nothing made in front of them, so the machine's work goes to whoever is watching.
+
 ## 0.69.0
 
 - **Fix**: Pulls proxy 2.78.0, which fixes a picture that stops for minutes in the middle of an episode. Three parts of the proxy were each deciding where the encoder for a film should work, and two of them disagreed on every pass: one started an encoder where the viewer was, another moved it further along, and the first then killed it for standing in the wrong place. Measured on 2026-09-05: a new encoder started and killed every half second, dozens of times, none of them making anything, and the viewer's picture stood still for 125 seconds. Only one part decides now, and nothing moves what it decided.
