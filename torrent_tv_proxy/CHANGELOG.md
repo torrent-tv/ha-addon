@@ -1,3 +1,7 @@
+## 0.70.3
+
+- **Fix**: Pulls proxy 2.80.3, which is why a film would not start on 2026-09-05. The pieces a run made were named for one moment and carried another: the run was asked for segment #36 at 247.873 s, began at 230.439 s, and named its files #36, #37, #38 while they held film 17.4 s earlier. Two causes, one keyframe each. A cut is kept on the player's clock and the seek looked it up again in the file's own keyframe list, where a rounding of two parts in a quadrillion answered the previous keyframe — 8.717 s. That difference was then handed to ffmpeg as a trim, which beside `-copyts` moves the whole run backwards by its own amount instead of forwards. The picture buffer covered the playhead; the sound buffer had a 17.4 s hole across it, and a player can only play the overlap — so nothing played, though every piece had been delivered, and the viewer was told the proxy had sent no video.
+
 ## 0.70.2
 
 - **Fix**: Pulls proxy 2.80.2. Three encoders were started on one track within 200 ms, each writing the same file names as another that was already running, and the film came apart: `/stream` handed out bytes that were not the file's, ffmpeg reported twenty-two source-parse errors, a segment the player could not append, and an empty picture for six minutes while this machine went on encoding (field 2026-09-05). An encoder is now placed where nobody else is writing, and its stretch ends where the next live encoder begins, so two of them cannot overlap.
