@@ -1,3 +1,7 @@
+## 0.70.4
+
+- **Fix**: Pulls proxy 2.80.4. The picture and the sound jerked once each in the first minute, and both were the same thing: a piece an encoder was still writing when it was stopped got served as if it were whole. On being stopped ffmpeg writes that piece out and names it exactly as it names a finished one, so what reached the viewer was a valid, playable piece holding less film than its place in the film promises — 3.92 seconds where 5.589 were expected. The picture jumped 1.5 seconds at 1:02 and the sound 2.8 seconds at 17.5. Such a piece is now thrown away and made again.
+
 ## 0.70.3
 
 - **Fix**: Pulls proxy 2.80.3, which is why a film would not start on 2026-09-05. The pieces a run made were named for one moment and carried another: the run was asked for segment #36 at 247.873 s, began at 230.439 s, and named its files #36, #37, #38 while they held film 17.4 s earlier. Two causes, one keyframe each. A cut is kept on the player's clock and the seek looked it up again in the file's own keyframe list, where a rounding of two parts in a quadrillion answered the previous keyframe — 8.717 s. That difference was then handed to ffmpeg as a trim, which beside `-copyts` moves the whole run backwards by its own amount instead of forwards. The picture buffer covered the playhead; the sound buffer had a 17.4 s hole across it, and a player can only play the overlap — so nothing played, though every piece had been delivered, and the viewer was told the proxy had sent no video.
