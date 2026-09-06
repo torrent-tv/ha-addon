@@ -1,3 +1,7 @@
+## 0.70.5
+
+- **Fix**: Pulls proxy 2.80.5, which finishes what 0.70.4 began. That release recognised the half-written piece an encoder leaves when this proxy stops it on purpose. An encoder can also be killed outright or die on its own, and then it leaves the same half-written piece with no announcement at all — playable, and holding less film than its place in the film promises. A piece is now kept only where the encoder said it had finished it while still running.
+
 ## 0.70.4
 
 - **Fix**: Pulls proxy 2.80.4. The picture and the sound jerked once each in the first minute, and both were the same thing: a piece an encoder was still writing when it was stopped got served as if it were whole. On being stopped ffmpeg writes that piece out and names it exactly as it names a finished one, so what reached the viewer was a valid, playable piece holding less film than its place in the film promises — 3.92 seconds where 5.589 were expected. The picture jumped 1.5 seconds at 1:02 and the sound 2.8 seconds at 17.5. Such a piece is now thrown away and made again.
