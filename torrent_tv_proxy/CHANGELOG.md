@@ -1,3 +1,7 @@
+## 0.70.6
+
+- **Fix**: Pulls proxy 2.80.6. `waitForBufferDrain` resolved after 5 s while `bufferedAmount` was still above `LOW_WATER` and kept queueing into a wedged association — `399 MB` `rss 455→982 MB`. Now waits until `LOW_WATER`. `wedgeIsCertain` required `queued>0` — on the real wedge the channel queue was `0` from `10:47:15` to `11:00`, so `16` minutes late. Now `0` is allowed. `peerStillSending` was read from transport's `bytesReceived` `~140 B/s` on SACKs — gave `flowing` every other tick — now sums `report.channels[].bytes`, with `30 s` rate-limit on the stuck line and single capture per wedge.
+
 ## 0.70.5
 
 - **Fix**: Pulls proxy 2.80.5, which finishes what 0.70.4 began. That release recognised the half-written piece an encoder leaves when this proxy stops it on purpose. An encoder can also be killed outright or die on its own, and then it leaves the same half-written piece with no announcement at all — playable, and holding less film than its place in the film promises. A piece is now kept only where the encoder said it had finished it while still running.
