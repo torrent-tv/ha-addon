@@ -1,3 +1,7 @@
+## 0.70.10
+
+- **Fix**: Pulls proxy 2.80.10. A request for a segment no longer moves the encoder. It used to read the traffic — how often a number behind the encoder had been asked for, how many different ones, how long ago — and restart the encoder from that, which is a second thing deciding where encoders go beside the one that is supposed to. Where a viewer is, is what places them. Also: the clearing-up after an encoder ends is at last told which piece that encoder itself reported finished, so it can tell a whole piece from one it was cut off in the middle of.
+
 ## 0.70.9
 
 - **Fix**: Pulls proxy 2.80.9. What the encoding plan believes exists is now read from the disk before every decision instead of remembered. Readiness could only ever be added to the plan's map and never taken back, so a segment stayed "made" for the life of the process after its file had gone — and on 2026-09-07 the map claimed all 482 segments of a film while the directory held none of them. The plan concluded there was nothing left to make, stopped the only encoder, and placed no other; two sessions in a row showed the viewer an error card and the second never received a single byte. Also: a viewer waiting with no encoder making what they wait for is now said out loud with the numbers behind it, the encoding state line names the whole output instead of its first sixty characters, and heap snapshots of the main thread are written where a restart does not erase them.
