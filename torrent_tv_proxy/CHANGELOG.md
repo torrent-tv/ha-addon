@@ -1,3 +1,7 @@
+## 0.70.7
+
+- **Fix**: Pulls proxy 2.80.7. The piece store's memory floor took the widest single reader's window as its lower bound instead of what all live readers together need — right for one reader, wrong for several. Three concurrent readers of one file (picture, sound, edge-warming read) each held their own window; residents filled the floor before the third reader's window was covered, and every resident piece belonged to some reader's live window with nothing left to evict. `Every resident piece is pinned` then reached WebTorrent's own write path, which treats any error there as fatal and destroys the torrent outright — `files` went to `[]`, every later read answered `File N not found`, and the session never recovered. The floor now asks for the union of every reader's window, same as the store's own memory request already did.
+
 ## 0.70.6
 
 - **Fix**: Pulls proxy 2.80.6. `waitForBufferDrain` resolved after 5 s while `bufferedAmount` was still above `LOW_WATER` and kept queueing into a wedged association — `399 MB` `rss 455→982 MB`. Now waits until `LOW_WATER`. `wedgeIsCertain` required `queued>0` — on the real wedge the channel queue was `0` from `10:47:15` to `11:00`, so `16` minutes late. Now `0` is allowed. `peerStillSending` was read from transport's `bytesReceived` `~140 B/s` on SACKs — gave `flowing` every other tick — now sums `report.channels[].bytes`, with `30 s` rate-limit on the stuck line and single capture per wedge.
