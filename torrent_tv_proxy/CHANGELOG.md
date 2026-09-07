@@ -1,3 +1,7 @@
+## 0.70.9
+
+- **Fix**: Pulls proxy 2.80.9. What the encoding plan believes exists is now read from the disk before every decision instead of remembered. Readiness could only ever be added to the plan's map and never taken back, so a segment stayed "made" for the life of the process after its file had gone — and on 2026-09-07 the map claimed all 482 segments of a film while the directory held none of them. The plan concluded there was nothing left to make, stopped the only encoder, and placed no other; two sessions in a row showed the viewer an error card and the second never received a single byte. Also: a viewer waiting with no encoder making what they wait for is now said out loud with the numbers behind it, the encoding state line names the whole output instead of its first sixty characters, and heap snapshots of the main thread are written where a restart does not erase them.
+
 ## 0.70.8
 
 - **Chore**: Pulls proxy 2.80.8. No behaviour change — logs the exact windows and budget a "move" decision was made from, so the next occurrence of an encoder wandering back and forth (field 2026-09-07) can be read from the log instead of guessed at.
