@@ -1,3 +1,7 @@
+## 0.70.8
+
+- **Chore**: Pulls proxy 2.80.8. No behaviour change — logs the exact windows and budget a "move" decision was made from, so the next occurrence of an encoder wandering back and forth (field 2026-09-07) can be read from the log instead of guessed at.
+
 ## 0.70.7
 
 - **Fix**: Pulls proxy 2.80.7. The piece store's memory floor took the widest single reader's window as its lower bound instead of what all live readers together need — right for one reader, wrong for several. Three concurrent readers of one file (picture, sound, edge-warming read) each held their own window; residents filled the floor before the third reader's window was covered, and every resident piece belonged to some reader's live window with nothing left to evict. `Every resident piece is pinned` then reached WebTorrent's own write path, which treats any error there as fatal and destroys the torrent outright — `files` went to `[]`, every later read answered `File N not found`, and the session never recovered. The floor now asks for the union of every reader's window, same as the store's own memory request already did.
