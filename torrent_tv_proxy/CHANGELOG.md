@@ -1,3 +1,11 @@
+## 0.70.18
+
+- Proxy 2.80.18: the `Infinity` in the encoder placement is replaced by a floor
+  derived from the host's own measured speed, and a double count removed with it.
+  The plan now prints the INTERVAL of every action, which is what named the real
+  field fault: every encoder was given an interval of one segment, 63 of them in
+  a session.
+
 ## 0.70.17
 
 - Proxy 2.80.17: where a second encoder joins a stretch is derived rather than
