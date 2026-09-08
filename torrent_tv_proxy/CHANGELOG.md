@@ -1,3 +1,10 @@
+## 0.70.12
+
+- Proxy 2.80.12: the predicate deciding whether an output is the one somebody
+  is consuming asks each layer only for what it owns — the output layer takes a
+  plain step id instead of reading a viewer's fields. `docs/encode-architecture.md`
+  draws the shape the last release enforced.
+
 ## 0.70.11
 
 - Proxy 2.80.11: one authority over where encoders go, and it is the plan. Eight
