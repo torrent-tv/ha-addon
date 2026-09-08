@@ -1,3 +1,10 @@
+## 0.70.17
+
+- Proxy 2.80.17: where a second encoder joins a stretch is derived rather than
+  halved, and whether it is worth having is asked at all — two under this host's
+  measured contention against one at full speed. At 1080p the penalty is 1.98 and
+  a second no longer gets placed.
+
 ## 0.70.16
 
 - Proxy 2.80.16: the spinner caravan, by arithmetic alone. A body was charged a
