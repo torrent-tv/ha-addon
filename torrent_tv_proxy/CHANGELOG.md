@@ -1,3 +1,11 @@
+## 0.70.13
+
+- Proxy 2.80.13: whether the priority map is served in its own order is now
+  measured, for downloading and for encoding, on one scale. A read that ends
+  shorter than its declared length says so — the leading candidate for 2138
+  decoder errors in one field session. And the reads feeding ffmpeg are failed
+  when the torrent thread dies, instead of going quiet.
+
 ## 0.70.12
 
 - Proxy 2.80.12: the predicate deciding whether an output is the one somebody
