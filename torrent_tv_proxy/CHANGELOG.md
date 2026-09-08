@@ -1,3 +1,11 @@
+## 0.70.16
+
+- Proxy 2.80.16: the spinner caravan, by arithmetic alone. A body was charged a
+  whole piece for the one it was already making, and the piece was priced at the
+  unpenalised rate — so killing a working encoder looked cheaper than leaving it
+  by ten milliseconds, and an extra encoder looked free. Both props the previous
+  release carried are gone with the fault they were propping up.
+
 ## 0.70.15
 
 - Proxy 2.80.15: the spinner caravan. The film BEHIND the viewer was read as due
