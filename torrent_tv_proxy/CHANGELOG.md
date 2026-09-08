@@ -1,3 +1,12 @@
+## 0.70.14
+
+- Proxy 2.80.14: what the master playlist declares a variant carries is measured
+  instead of guessed from its height — the browser sizes its cushion in bytes
+  from that figure, and it was five times low. The speed a step must run at no
+  longer divides a worst case by a near-zero gap (158.60x on a file downloaded
+  whole). Only what a read is stopped on reaches memory, so the piece store stops
+  evicting pieces its readers declared. And the store names its holders.
+
 ## 0.70.13
 
 - Proxy 2.80.13: whether the priority map is served in its own order is now
