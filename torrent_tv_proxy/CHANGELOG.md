@@ -1,3 +1,19 @@
+## 0.70.19
+
+- Proxy 2.80.19: a piece's NAME is what proves it is finished. It was proved by
+  the NEXT number existing, which is sound for one writer walking forward and
+  false the moment two runs share an output — and the field paid for it:
+  `segment-00057.mp4` was served at 2 268 361 bytes and then at 4 510 940,
+  exactly half, the browser appended the half and refused the whole one for the
+  rest of the session with the picture frozen at 319.66 s. A piece is now
+  written under a working name carrying its run's own tag and renamed when the
+  encoder says it has closed it. With it: the last piece of every run becomes
+  provable, clearing up after a dead run stops being a guess about which file it
+  left, and the code that did that guessing is deleted.
+- The encoder placement now prints every term it decided from — the speed, what
+  a start and a stop cost here, and what a second of film costs to fetch again —
+  so a decision in the log can be recomputed rather than only read.
+
 ## 0.70.18
 
 - Proxy 2.80.18: the `Infinity` in the encoder placement is replaced by a floor
