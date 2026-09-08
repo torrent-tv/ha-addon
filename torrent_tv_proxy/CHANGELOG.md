@@ -1,3 +1,12 @@
+## 0.70.15
+
+- Proxy 2.80.15: the spinner caravan. The film BEHIND the viewer was read as due
+  immediately — the map says `null`, the reader made it 0 — so it bought
+  encoders and took the one serving the viewer, 39 times in one session, and the
+  picture stood still for 116.7 s. The objective now follows the map's own rank
+  order, residual work takes only spare capacity, and no encoder is moved for a
+  gain smaller than what moving costs.
+
 ## 0.70.14
 
 - Proxy 2.80.14: what the master playlist declares a variant carries is measured
