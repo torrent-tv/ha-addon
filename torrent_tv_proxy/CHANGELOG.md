@@ -1,3 +1,14 @@
+## 0.70.11
+
+- Proxy 2.80.11: one authority over where encoders go, and it is the plan. Eight
+  other places placed or killed them by rules of their own; each now states the
+  fact it knows and the plan places what follows. Each output is handed the
+  priority map of its own viewers, so a person on 480p states nothing about
+  1080p — which is what stops the plan and the session manager fighting over
+  the same encoder several times a second. The seek settle timer, its cooldown
+  and its one-segment backoff are gone: a viewer's position takes effect when
+  they state it.
+
 ## 0.70.10
 
 - **Fix**: Pulls proxy 2.80.10. A request for a segment no longer moves the encoder. It used to read the traffic — how often a number behind the encoder had been asked for, how many different ones, how long ago — and restart the encoder from that, which is a second thing deciding where encoders go beside the one that is supposed to. Where a viewer is, is what places them. Also: the clearing-up after an encoder ends is at last told which piece that encoder itself reported finished, so it can tell a whole piece from one it was cut off in the middle of.
