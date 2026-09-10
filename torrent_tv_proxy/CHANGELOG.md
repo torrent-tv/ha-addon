@@ -1,3 +1,23 @@
+## 0.71.0
+
+- Proxy 2.81.0: every encoder had been running twice, on every run, since
+  2026-09-04. Building a run and starting it were two acts, so two owners each
+  performed the second — 207 runs against 414 spawns in the field logs of 08-10
+  September, without exception. Only the second process was reachable, so a stop
+  killed one and the other ran on, measured 105 seconds past its own run’s
+  death, with eleven writing at once on this four-core host. It doubled the
+  processor, doubled the readers of the piece store, and put two writers on one
+  file name — which is what defeated the rename 2.80.19 had just introduced.
+- The spilled pieces have a ceiling and give disk back when they pass it. One
+  fifty-minute viewing wrote 14 400 MB into a file that could never shrink; on a
+  32 GB card that is the card.
+- One owner divides the disk between the segments and the spilled pieces,
+  instead of each reading the free space as though it were alone. What goes
+  first is decided by where the viewers are: behind them, furthest behind first.
+- A clean stop now leaves nothing in `/tmp/torrent-tv-hls`, which is what stops
+  a directory adopted at startup being adopted for ever. 5.0 GB of segments from
+  sessions that had ended hours before were on this host on 2026-09-10.
+
 ## 0.70.19
 
 - Proxy 2.80.19: a piece's NAME is what proves it is finished. It was proved by
