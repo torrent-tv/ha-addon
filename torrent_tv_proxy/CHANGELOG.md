@@ -1,3 +1,9 @@
+## 0.71.2
+
+- Proxy 2.81.1: the `disk:` reading is printed. 2.81.0 built it and called it
+  from nowhere, so the one line that can answer "why is there no room" was
+  missing from the log.
+
 ## 0.71.1
 
 - Rebuild: 0.71.0 was built in the seconds before npm made proxy 2.81.0
