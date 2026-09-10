@@ -1,3 +1,20 @@
+## 0.72.0
+
+- Proxy 2.82.0-2.83.0.
+- The encoder ping-ponged because nothing measured what a start costs: both
+  figures were learned only from runs that had ENDED, so at a cold open they
+  read zero, and zero means "free". Measured at startup now, from one ffmpeg
+  run. Field 2026-09-08: an encoder moved between two adjacent numbers every
+  half second and produced nothing.
+- A host with a GPU measured neither its decoding, nor what a second job costs
+  it, nor its own encoder throughput — all three were asked only where the
+  encoder was software. The quality offer had nothing to compute from.
+- Three idle periods stood for one unknown and contradicted each other: a
+  torrent went at fifteen minutes while the session it feeds lived to thirty.
+  One number now, one hour, and what it stands for is being measured.
+- The spilled pieces lose what is behind every read head, on the same pass, in
+  the order the viewers give. Their ceiling alone never bound on this host.
+
 ## 0.71.3
 
 - Proxy 2.81.2: the disk reading said `0MB free` on a host with 103 GB, and
