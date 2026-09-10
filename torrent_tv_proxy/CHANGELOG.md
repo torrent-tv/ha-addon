@@ -1,3 +1,8 @@
+## 0.71.1
+
+- Rebuild: 0.71.0 was built in the seconds before npm made proxy 2.81.0
+  available, so it installed 2.80.19. Nothing else changed.
+
 ## 0.71.0
 
 - Proxy 2.81.0: every encoder had been running twice, on every run, since
