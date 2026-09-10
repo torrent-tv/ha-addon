@@ -1,3 +1,8 @@
+## 0.71.3
+
+- Proxy 2.81.2: the disk reading said `0MB free` on a host with 103 GB, and
+  the spilled pieces were never registered with the owner of the disk.
+
 ## 0.71.2
 
 - Proxy 2.81.1: the `disk:` reading is printed. 2.81.0 built it and called it
