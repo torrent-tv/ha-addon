@@ -1,3 +1,17 @@
+## 0.74.0
+
+- Proxy 2.83.2-2.83.3.
+- 0.73.1 could not start playback at all. The rule that takes a proxy out of a
+  swarm it needs nothing from asked every five seconds whether anybody was
+  reading, and a torrent added three seconds earlier answered no — its edges
+  still being read, its plan still being built. It left the swarm with 741
+  connections let go, and nothing brought it back: rejoining waits for a reader,
+  and the reader was waiting for the header the swarm had been fetching.
+- Leaving is now a consequence of a departure rather than a decision of a pass:
+  releasing the last claim on a file lets the swarm go, taking one brings it
+  back. A torrent nobody has read yet cannot leave a swarm, because nothing asks
+  it to.
+
 ## 0.73.1
 
 - The same proxy as 0.73.0 was meant to carry. 0.73.0 was built in the minute
