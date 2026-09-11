@@ -1,3 +1,31 @@
+## 0.73.0
+
+- Proxy 2.83.1.
+- The piece store could end a torrent, and on 2026-09-11 it did: switching to
+  the second episode of a five-file torrent reached a store that had shrunk to
+  three blocks of 4 MB while the machine offered 4.3 GB, a claim for a block
+  failed, and the torrent client answered that by destroying the torrent. Every
+  read then said `File 1 not found` until the addon was restarted. Memory is no
+  longer a reason to refuse anything.
+- A read for a peer took a whole 4 MB piece to answer a request for 16 KB, and
+  competed with playback for the same blocks. It reads the range it was asked
+  for, straight off the disk.
+- A file downloaded whole is now a file: written out once and read from then on
+  with an ordinary file read. Its spilled pieces are dropped as the duplicate
+  they have become — one episode was 1417 MB of segments beside 1424 MB of
+  pieces — and a torrent downloaded whole, everything without exception, is
+  removed while its files stay.
+- A proxy that needs nothing from a swarm is no longer in that swarm. Incoming
+  connections are not limited by WebTorrent's own `maxConns`, so on a popular
+  torrent they only climbed: 249 at the start of one viewing, 596 at the end, on
+  a file complete for three quarters of an hour.
+- No segment is left shorter than a segment at the end of a film, which is what
+  produced a 0.16 s last segment the sound had no data for, a repair run given a
+  start later than its own end, and a viewer held 23 s for a 404.
+- What is behind the delivery probes is measured in time now, not in probes, and
+  the two clocks are reconciled from the exchange — so a probe waiting behind
+  queued film is told from an association that has stopped.
+
 ## 0.72.0
 
 - Proxy 2.82.0-2.83.0.
