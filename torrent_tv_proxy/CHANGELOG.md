@@ -1,3 +1,10 @@
+## 0.73.1
+
+- The same proxy as 0.73.0 was meant to carry. 0.73.0 was built in the minute
+  after 2.83.1 was published, and npm was still serving 2.83.0 — so the addon
+  installed the version before the one it was bumped for. This bump is what
+  busts the build cache and pulls 2.83.1.
+
 ## 0.73.0
 
 - Proxy 2.83.1.
