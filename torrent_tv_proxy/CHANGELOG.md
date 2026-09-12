@@ -1,3 +1,23 @@
+## 0.74.2
+
+- Proxy 2.83.5.
+- A piece the store has dropped is no longer claimed as ours. The disk tier
+  removes a piece once every reader is past it, which is what bounds the spill;
+  the library kept its own record saying the piece was still here, and nothing
+  reconciled the two. A read then found nothing where the library promised
+  something, failed, and the piece was never fetched again. Field 2026-09-12: a
+  film played 80 seconds and stood still for 92 minutes while the proxy answered
+  every request for one segment with "the encoder has not made it".
+- A read whose piece is taken from under it now waits for the piece to come back
+  instead of ending the encoder.
+- A run whose input is away no longer has a replacement started at it twice a
+  second: the wait now sits where the decision is taken. In the field that was
+  2432 ffmpeg starts in 23 minutes.
+- The log says an established fact once and then less often, with the number it
+  held back, and the file may reach 1 GB before it turns over. The old 32 MB
+  turned over twice inside that session and destroyed the record of how the
+  failure began.
+
 ## 0.74.1
 
 - Proxy 2.83.4.
