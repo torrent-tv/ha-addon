@@ -1,3 +1,8 @@
+## 0.74.3
+
+- Rebuild: 0.74.2 was built while npm was still serving the previous proxy, so
+  the image installed 2.83.4 despite the bump. Same changes as 0.74.2.
+
 ## 0.74.2
 
 - Proxy 2.83.5.
