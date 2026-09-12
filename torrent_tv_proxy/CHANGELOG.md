@@ -1,3 +1,16 @@
+## 0.74.4
+
+- Proxy 2.83.6.
+- What the review of 2.83.5 found. A log line sent from the torrent thread was
+  judged by the repeat rule twice, and its level — warning, error — was thrown
+  away at the send, so everything that thread has ever reported arrived as
+  ordinary information.
+- The count of piece claims taken back is printed. It was being kept and read by
+  nobody, and the gap between it and what the stores announce is what says
+  whether the mechanism is reaching the torrent at all.
+- What the encoding plan remembers about a file whose data went away is
+  forgotten once nobody is watching that file.
+
 ## 0.74.3
 
 - Rebuild: 0.74.2 was built while npm was still serving the previous proxy, so
