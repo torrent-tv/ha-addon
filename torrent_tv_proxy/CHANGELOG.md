@@ -1,3 +1,26 @@
+## 0.74.1
+
+- Proxy 2.83.4.
+- Nothing counts readers any more. How many claims a torrent's files had used
+  to decide whether it kept its swarm, whether it was removed, whether the disk
+  cap could evict it and whether a complete file could be written out — a
+  second bookkeeping of what the priority map already states, and wrong in both
+  directions: a torrent being opened has no readers, and a viewer who has left
+  can leave one behind. One question is asked instead, of what has been stated:
+  is anything wanted of this torrent.
+- The map can now say that nobody wants a file. It could say only the opposite:
+  a file whose viewers had gone was forgotten silently, so what had been stated
+  on its behalf stood until the torrent itself was removed.
+- A swarm is let go on a departure and never on a beginning, and a torrent is
+  on the idle clock from the moment it exists.
+- The two ends of a file — where a container keeps its directory — are wanted by
+  the file for as long as it is open, instead of by the read that fetched them
+  and gave them up on finishing.
+- A torrent whose episode nobody has chosen warms its first item rather than
+  nothing: two pieces, and the likeliest pick.
+- What is in a torrent is answered by the proxy alone. The browser decided it
+  twice more, and the three answers had already diverged.
+
 ## 0.74.0
 
 - Proxy 2.83.2-2.83.3.
