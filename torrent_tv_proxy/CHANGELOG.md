@@ -1,3 +1,14 @@
+## 0.75.1
+
+- Fix: the npm-install layer is invalidated by the addon version, which it was
+  not. `ARG BUILD_VERSION` was declared and never referenced, and Docker keys a
+  RUN layer on the command text — a build argument enters that key only where it
+  is actually used. So every "bump the addon to pull the new proxy" was a
+  coin toss: 0.74.6 and 0.75.0 both claimed proxies they did not carry, and
+  0.75.0 installed 2.83.8 under a changelog saying 2.84.0. The install now
+  mentions the version, so the layer changes when it does.
+- Proxy 2.84.0, this time in the image.
+
 ## 0.75.0
 
 - Proxy 2.84.0. Where a viewer is has one writer and is a function of time —
