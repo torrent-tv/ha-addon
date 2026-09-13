@@ -1,3 +1,12 @@
+## 0.75.0
+
+- Proxy 2.84.0. Where a viewer is has one writer and is a function of time —
+  two writers filled one field in turn, so the priority map jumped backwards
+  and forwards several times a second and the machine spent six minutes on 77
+  encoder starts and 141 stops while both browsers sat frozen (field
+  2026-09-13). Presence is the connection now, not silence; a soundtrack begins
+  where the earliest viewer stands with nothing subtracted.
+
 ## 0.74.7
 
 - Proxy 2.83.8, for real this time. 0.74.6 said the same and the host ran
