@@ -16,9 +16,16 @@ RUN node -v \
          exit 1; \
        fi
 
-# BUILD_VERSION is injected automatically by the HA supervisor from config.yaml.
-# Declaring it here ensures the npm install layer is invalidated whenever
-# the addon version changes — no need to pin the npm package version manually.
+# BUILD_VERSION is injected automatically by the HA supervisor from config.yaml,
+# and the install below MENTIONS IT so that the layer is invalidated whenever
+# the addon version changes.
+#
+# Declaring the ARG is not enough, and that is what kept shipping an old proxy
+# under a new addon version: Docker keys a RUN layer on the command text, and a
+# build argument enters that key only where it is actually referenced. Addon
+# 0.74.6 and 0.75.0 both said they carried a proxy they did not — 0.75.0 was
+# built with this layer cached and installed 2.83.8 under a version claiming
+# 2.84.0.
 ARG BUILD_VERSION
 # NOTE: ip-set (a transitive dependency of webtorrent) ships a hostile
 # `preinstall: npx only-allow pnpm` script that aborts any plain `npm install`
@@ -55,7 +62,8 @@ ARG BUILD_VERSION
 # therefore retried, and the result is CHECKED rather than assumed — an addon
 # that starts without this module has no WebRTC at all, which is the whole
 # transport.
-RUN npm install --global @torrent-tv/proxy --ignore-scripts \
+RUN echo "building for addon ${BUILD_VERSION}" \
+ && npm install --global @torrent-tv/proxy --ignore-scripts \
  && cd /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules/node-datachannel \
  && for attempt in 1 2 3 4 5; do \
       npm rebuild --global node-datachannel && break; \
