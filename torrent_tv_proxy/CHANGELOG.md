@@ -1,3 +1,10 @@
+## 0.74.7
+
+- Proxy 2.83.8, for real this time. 0.74.6 said the same and the host ran
+  2.83.7: the image was built with the npm-install layer cached, so the
+  browser-log route and its writer were not in it at all and `/data` held no
+  `client-*.log` file. A version bump is what busts that cache.
+
 ## 0.74.6
 
 - Proxy 2.83.8.
