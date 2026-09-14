@@ -1,3 +1,9 @@
+## 0.77.0
+
+- Proxy 2.86.0: a link reading no longer expires after thirty seconds. The
+  speed of a link persists and is corrected by every transfer; whether the
+  reading is still somebody's is presence, which is the connection.
+
 ## 0.76.2
 
 - The image 0.76.1 built carried proxy 2.85.0, not 2.85.1: the install asks npm
