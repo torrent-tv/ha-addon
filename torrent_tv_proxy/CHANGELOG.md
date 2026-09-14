@@ -1,3 +1,13 @@
+## 0.76.0
+
+- Proxy 2.85.0: a viewer who has said nothing is no longer assumed to be
+  watching. Field 2026-09-14 on this host — a tab hidden for 145 seconds put
+  the viewer 146 seconds into a film they had not begun, the soundtrack's
+  encoder went there, and the segment the browser was asking for was ranked
+  last of a hundred and answered 503 after sixty seconds.
+- Proxy 2.85.0 also adds `GET /api/link-probe`, so a browser can time its link
+  before a film is chosen instead of waiting for the first segment of one.
+
 ## 0.75.1
 
 - Fix: the npm-install layer is invalidated by the addon version, which it was
