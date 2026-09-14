@@ -1,3 +1,9 @@
+## 0.76.1
+
+- Proxy 2.85.1: no behaviour change. Taking in a viewer's report left the
+  session manager for the viewer's own layer, and with it the question of which
+  output a viewer has on screen and how long a link measurement lasts.
+
 ## 0.76.0
 
 - Proxy 2.85.0: a viewer who has said nothing is no longer assumed to be
