@@ -1,3 +1,10 @@
+## 0.76.2
+
+- The image 0.76.1 built carried proxy 2.85.0, not 2.85.1: the install asks npm
+  for `latest`, and the registry was still serving the previous version at the
+  moment the layer was built. Re-released against a registry that now answers
+  2.85.1. Nothing else changed.
+
 ## 0.76.1
 
 - Proxy 2.85.1: no behaviour change. Taking in a viewer's report left the
