@@ -1,3 +1,8 @@
+## 0.78.0
+
+- **New**: Proxy 2.87.0 qualifies selectable software and hardware encoder modes for the host and reserves encoding capacity before opening. If the host has no suitable room, the page can retry another proxy before playback.
+- **Chore**: Accept Node.js 24 and newer in the addon image; the proxy package requires Node.js 24 or newer.
+
 ## 0.77.0
 
 - Proxy 2.86.0: a link reading no longer expires after thirty seconds. The
