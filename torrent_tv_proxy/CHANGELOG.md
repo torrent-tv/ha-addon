@@ -1,3 +1,7 @@
+## 0.78.5
+
+- **Chore**: Install proxy 2.87.5, which identifies magnet sources by infohash so viewers using different magnet links share the same output.
+
 ## 0.78.4
 
 - **Chore**: Install proxy 2.87.4, which reads media metadata before episode selection and fills selected torrents under the shared priority map.
