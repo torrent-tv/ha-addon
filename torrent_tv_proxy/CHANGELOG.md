@@ -1,3 +1,7 @@
+## 0.78.3
+
+- **Chore**: Install proxy 2.87.3, which updates Fastify dependencies and keeps WebTorrent pinned to 2.8.5.
+
 ## 0.78.2
 
 - **Chore**: Install proxy 2.87.2, which persists an installation identity in the configured state directory.
