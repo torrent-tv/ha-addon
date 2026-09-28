@@ -22,7 +22,9 @@ RUN node -v \
 
 # BUILD_VERSION is injected automatically by the HA supervisor from config.yaml,
 # and the install below MENTIONS IT so that the layer is invalidated whenever
-# the addon version changes.
+# the addon version changes. Keep the proxy version in the install command
+# aligned with the version recorded in CHANGELOG.md; pinning avoids a build
+# resolving the previous npm `latest` tag while a release is still propagating.
 #
 # Declaring the ARG is not enough, and that is what kept shipping an old proxy
 # under a new addon version: Docker keys a RUN layer on the command text, and a
@@ -66,8 +68,8 @@ ARG BUILD_VERSION
 # therefore retried, and the result is CHECKED rather than assumed — an addon
 # that starts without this module has no WebRTC at all, which is the whole
 # transport.
-RUN echo "building for addon ${BUILD_VERSION}" \
- && npm install --global @torrent-tv/proxy --ignore-scripts \
+RUN echo "building for addon ${BUILD_VERSION} with proxy 2.87.5" \
+ && npm install --global @torrent-tv/proxy@2.87.5 --ignore-scripts \
  && cd /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules/node-datachannel \
  && for attempt in 1 2 3 4 5; do \
       npm rebuild --global node-datachannel && break; \
