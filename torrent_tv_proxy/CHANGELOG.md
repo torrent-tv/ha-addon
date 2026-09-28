@@ -1,3 +1,7 @@
+## 0.78.6
+
+- **Fix**: Install proxy 2.87.5 by exact version so a new add-on build cannot resolve the previous npm `latest` tag during release propagation.
+
 ## 0.78.5
 
 - **Chore**: Install proxy 2.87.5, which identifies magnet sources by infohash so viewers using different magnet links share the same output.
