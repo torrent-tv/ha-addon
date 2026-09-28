@@ -1,3 +1,7 @@
+## 0.78.8
+
+- **Chore**: Install proxy 2.87.7, which refreshes sidecar audio metadata after its header becomes available.
+
 ## 0.78.7
 
 - **Chore**: Install proxy 2.87.6, which keeps torrent source identity below the service layer.
