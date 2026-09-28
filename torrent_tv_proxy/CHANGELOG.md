@@ -1,3 +1,7 @@
+## 0.78.2
+
+- **Chore**: Install proxy 2.87.2, which persists an installation identity in the configured state directory.
+
 ## 0.78.1
 
 - **Chore**: Install proxy 2.87.1, which narrows the storage interfaces used by encoding components and documents the browser-facing HTTP contract.
