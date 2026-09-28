@@ -1,3 +1,7 @@
+## 0.78.7
+
+- **Chore**: Install proxy 2.87.6, which keeps torrent source identity below the service layer.
+
 ## 0.78.6
 
 - **Fix**: Install proxy 2.87.5 by exact version so a new add-on build cannot resolve the previous npm `latest` tag during release propagation.
