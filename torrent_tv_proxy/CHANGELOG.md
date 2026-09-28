@@ -1,3 +1,7 @@
+## 0.78.1
+
+- **Chore**: Install proxy 2.87.1, which narrows the storage interfaces used by encoding components and documents the browser-facing HTTP contract.
+
 ## 0.78.0
 
 - **New**: Proxy 2.87.0 qualifies selectable software and hardware encoder modes for the host and reserves encoding capacity before opening. If the host has no suitable room, the page can retry another proxy before playback.
