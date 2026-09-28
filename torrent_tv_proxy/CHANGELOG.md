@@ -1,3 +1,7 @@
+## 0.78.11
+
+- **Chore**: Install proxy 2.87.10, which keeps late metadata refresh active while the container track list is still empty.
+
 ## 0.78.10
 
 - **Chore**: Install proxy 2.87.9, which stops late metadata refresh after a completed header read reports no audio tracks.
