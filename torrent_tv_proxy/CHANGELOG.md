@@ -1,3 +1,7 @@
+## 0.78.4
+
+- **Chore**: Install proxy 2.87.4, which reads media metadata before episode selection and fills selected torrents under the shared priority map.
+
 ## 0.78.3
 
 - **Chore**: Install proxy 2.87.3, which updates Fastify dependencies and keeps WebTorrent pinned to 2.8.5.
