@@ -2,6 +2,10 @@
 
 - **Chore**: Install proxy 2.87.7, which refreshes sidecar audio metadata after its header becomes available.
 
+## 0.78.9
+
+- **Fix**: Install proxy 2.87.8, which releases viewers only after their current WebRTC connection closes, including during a transport replacement.
+
 ## 0.78.7
 
 - **Chore**: Install proxy 2.87.6, which keeps torrent source identity below the service layer.
