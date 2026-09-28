@@ -3,16 +3,20 @@ FROM ${BUILD_FROM}
 
 RUN apk add --no-cache nodejs npm ffmpeg python3 make g++ tcpdump gdb
 
-# Node must be the LTS line the proxy is developed and tested on. The base
-# image supplies whatever Alpine happens to ship, so without this the addon
-# would follow it silently onto an untested major — including the odd-numbered
-# releases, which never become LTS. Failing the build is the point: a drift
-# here is a decision to make, not something to discover from a crash in the
-# field.
+# Node must be at least the line the proxy is developed on. The base image
+# supplies whatever Alpine happens to ship, so without this the addon could
+# follow it silently onto a major OLDER than the code needs. Failing the build
+# is the point: a drift here is a decision to make, not something to discover
+# from a crash in the field.
+#
+# A FLOOR, NOT A PIN, since 2026-09-20. It named one major exactly, which also
+# forbade every major ABOVE it — a prohibition nothing had measured. The
+# package's own `engines` carried the same bound and has been opened the same
+# way.
 RUN node -v \
     && MAJOR="$(node -p 'process.versions.node.split(".")[0]')" \
-    && if [ "$MAJOR" != "24" ]; then \
-         echo "This addon requires Node 24 (LTS); the base image has $(node -v)" >&2; \
+    && if [ "$MAJOR" -lt 24 ]; then \
+         echo "This addon requires Node 24 or newer; the base image has $(node -v)" >&2; \
          exit 1; \
        fi
 
