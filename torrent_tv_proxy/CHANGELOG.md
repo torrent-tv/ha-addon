@@ -1,3 +1,7 @@
+## 0.78.10
+
+- **Chore**: Install proxy 2.87.9, which stops late metadata refresh after a completed header read reports no audio tracks.
+
 ## 0.78.8
 
 - **Chore**: Install proxy 2.87.7, which refreshes sidecar audio metadata after its header becomes available.
