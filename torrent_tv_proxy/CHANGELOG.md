@@ -1,3 +1,7 @@
+## 0.78.13
+
+- **Fix**: Pull proxy 2.87.12 with whole-machine capacity-aware output selection and initial playback-readiness measurements.
+
 ## 0.78.12
 
 - **Chore**: Install proxy 2.87.11 with proxy-side playback readiness forecasting.
