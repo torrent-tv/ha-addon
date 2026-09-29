@@ -1,3 +1,7 @@
+## 0.78.14
+
+- **Chore**: Install proxy 2.87.13, which includes active piece reads in piece-store memory demand.
+
 ## 0.78.13
 
 - **Fix**: Pull proxy 2.87.12 with whole-machine capacity-aware output selection and initial playback-readiness measurements.
