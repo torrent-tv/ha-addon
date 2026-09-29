@@ -22,8 +22,8 @@ RUN node -v \
 
 # BUILD_VERSION is injected automatically by the HA supervisor from config.yaml,
 # and the install below MENTIONS IT so that the layer is invalidated whenever
-# the addon version changes. Keep the proxy version in the install command
-# aligned with the version recorded in CHANGELOG.md; pinning avoids a build
+# the addon version changes. Keep PROXY_VERSION aligned with the version
+# recorded in CHANGELOG.md; pinning avoids a build
 # resolving the previous npm `latest` tag while a release is still propagating.
 #
 # Declaring the ARG is not enough, and that is what kept shipping an old proxy
@@ -33,6 +33,7 @@ RUN node -v \
 # built with this layer cached and installed 2.83.8 under a version claiming
 # 2.84.0.
 ARG BUILD_VERSION
+ARG PROXY_VERSION=2.87.13
 # NOTE: ip-set (a transitive dependency of webtorrent) ships a hostile
 # `preinstall: npx only-allow pnpm` script that aborts any plain `npm install`
 # (exit code 254).  Install with lifecycle scripts disabled to bypass it, then
@@ -68,8 +69,8 @@ ARG BUILD_VERSION
 # therefore retried, and the result is CHECKED rather than assumed — an addon
 # that starts without this module has no WebRTC at all, which is the whole
 # transport.
-RUN echo "building for addon ${BUILD_VERSION} with proxy 2.87.10" \
- && npm install --global @torrent-tv/proxy@2.87.11 --ignore-scripts \
+RUN echo "building for addon ${BUILD_VERSION} with proxy ${PROXY_VERSION}" \
+ && npm install --global "@torrent-tv/proxy@${PROXY_VERSION}" --ignore-scripts \
  && cd /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules/node-datachannel \
  && for attempt in 1 2 3 4 5; do \
       npm rebuild --global node-datachannel && break; \

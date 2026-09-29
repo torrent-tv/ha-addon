@@ -1,6 +1,10 @@
+## 0.78.15
+
+- **Fix**: Pin the addon build to proxy 2.87.13 through a build argument and print the selected version in the build log.
+
 ## 0.78.14
 
-- **Chore**: Install proxy 2.87.13, which includes active piece reads in piece-store memory demand.
+- **Chore**: Record the intended proxy 2.87.13 update; the Dockerfile pin was not updated in this release.
 
 ## 0.78.13
 
