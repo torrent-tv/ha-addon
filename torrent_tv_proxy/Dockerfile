@@ -69,7 +69,7 @@ ARG BUILD_VERSION
 # that starts without this module has no WebRTC at all, which is the whole
 # transport.
 RUN echo "building for addon ${BUILD_VERSION} with proxy 2.87.10" \
- && npm install --global @torrent-tv/proxy@2.87.10 --ignore-scripts \
+ && npm install --global @torrent-tv/proxy@2.87.11 --ignore-scripts \
  && cd /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules/node-datachannel \
  && for attempt in 1 2 3 4 5; do \
       npm rebuild --global node-datachannel && break; \

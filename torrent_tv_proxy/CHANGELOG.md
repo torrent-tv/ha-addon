@@ -1,3 +1,7 @@
+## 0.78.12
+
+- **Chore**: Install proxy 2.87.11 with proxy-side playback readiness forecasting.
+
 ## 0.78.11
 
 - **Chore**: Install proxy 2.87.10, which keeps late metadata refresh active while the container track list is still empty.
