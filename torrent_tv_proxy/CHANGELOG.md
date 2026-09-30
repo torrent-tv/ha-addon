@@ -1,3 +1,7 @@
+## 0.78.19
+
+- **Fix**: Install proxy 2.87.17 with separate-init media coverage for re-encoded HLS fragments in the integral playback forecast.
+
 ## 0.78.18
 
 - **Fix**: Install proxy 2.87.16 with protected source reads, complete segment publication, preserved presentation timestamps and integral readiness based on measured media intervals.
