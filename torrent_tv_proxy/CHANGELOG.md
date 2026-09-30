@@ -1,3 +1,7 @@
+## 0.78.18
+
+- **Fix**: Install proxy 2.87.16 with protected source reads, complete segment publication, preserved presentation timestamps and integral readiness based on measured media intervals.
+
 ## 0.78.17
 
 - **Fix**: Install proxy 2.87.15 with integral playback forecasts that preserve positive measured service and account for already buffered media.
