@@ -1,3 +1,7 @@
+## 0.78.21
+
+- **Fix**: Install proxy 2.87.19 with complete shared reads after source assembly, preserved decode order on copy restarts, and measured video continuity in the readiness integral.
+
 ## 0.78.20
 
 - **Fix**: Install proxy 2.87.18 with variable-rate presentation coverage and per-viewer HLS clock projection in the integral readiness forecast.
