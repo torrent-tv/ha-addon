@@ -1,3 +1,7 @@
+## 0.78.16
+
+- **Fix**: Install proxy 2.87.14 with playback readiness based on proxy-prepared media and the measured client-delivery trajectory.
+
 ## 0.78.15
 
 - **Fix**: Pin the addon build to proxy 2.87.13 through a build argument and print the selected version in the build log.
