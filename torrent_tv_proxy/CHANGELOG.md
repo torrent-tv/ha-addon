@@ -1,3 +1,7 @@
+## 0.78.22
+
+- **Fix**: Install proxy 2.87.20 so source HTTP requests read completed files through the worker pool adapter and recover from removed files before sending headers.
+
 ## 0.78.21
 
 - **Fix**: Install proxy 2.87.19 with complete shared reads after source assembly, preserved decode order on copy restarts, and measured video continuity in the readiness integral.
