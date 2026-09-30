@@ -1,3 +1,7 @@
+## 0.79.0
+
+- **New**: Install proxy 2.88.0, which states per picture which episode its name says it is and whether a release is one work, a series or not known, for the page's film metadata.
+
 ## 0.78.23
 
 - **Fix**: Install proxy 2.87.21 with ordered memory reservations for waiting source reads and one shared revival per piece.
