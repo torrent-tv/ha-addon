@@ -1,3 +1,7 @@
+## 0.78.20
+
+- **Fix**: Install proxy 2.87.18 with variable-rate presentation coverage and per-viewer HLS clock projection in the integral readiness forecast.
+
 ## 0.78.19
 
 - **Fix**: Install proxy 2.87.17 with separate-init media coverage for re-encoded HLS fragments in the integral playback forecast.
