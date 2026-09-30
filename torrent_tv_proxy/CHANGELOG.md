@@ -1,3 +1,7 @@
+## 0.78.17
+
+- **Fix**: Install proxy 2.87.15 with integral playback forecasts that preserve positive measured service and account for already buffered media.
+
 ## 0.78.16
 
 - **Fix**: Install proxy 2.87.14 with playback readiness based on proxy-prepared media and the measured client-delivery trajectory.
