@@ -1,3 +1,7 @@
+## 0.78.23
+
+- **Fix**: Install proxy 2.87.21 with ordered memory reservations for waiting source reads and one shared revival per piece.
+
 ## 0.78.22
 
 - **Fix**: Install proxy 2.87.20 so source HTTP requests read completed files through the worker pool adapter and recover from removed files before sending headers.
