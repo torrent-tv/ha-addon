@@ -1,6 +1,10 @@
-## 0.79.4
+## 0.79.5
 
 - **Fix**: Install proxy 2.88.4, which bounds a copied soundtrack by its codec and re-encodes a soundtrack that states no rate instead of refusing the video.
+
+## 0.79.4
+
+- **Chore**: Version bump only. The Dockerfile still pinned `PROXY_VERSION=2.88.3`, so this release installs proxy 2.88.3.
 
 ## 0.79.3
 
