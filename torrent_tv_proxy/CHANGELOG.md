@@ -1,3 +1,7 @@
+## 0.79.6
+
+- **Fix**: Install proxy 2.88.5 with a measured-service playback start model, packaged audio calibration samples and rejection of truncated cached fragments.
+
 ## 0.79.5
 
 - **Fix**: Install proxy 2.88.4, which bounds a copied soundtrack by its codec and re-encodes a soundtrack that states no rate instead of refusing the video.
