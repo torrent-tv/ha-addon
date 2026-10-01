@@ -1,3 +1,7 @@
+## 0.79.9
+
+- **Fix**: Install proxy 2.89.1, which reads a file kept whole from the disk for the subtitle walk instead of waiting on a torrent store that no longer holds its pieces.
+
 ## 0.79.8
 
 - **Fix**: Install proxy 2.89.0, which reads embedded subtitles from the clusters the torrent holds whether or not the Cues table names them, labels a Matroska track with no `Language` element as English, and no longer keeps a read whose bytes have not arrived as a statement about the file.
