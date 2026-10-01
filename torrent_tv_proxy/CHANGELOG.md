@@ -1,3 +1,7 @@
+## 0.79.2
+
+- **Fix**: Install proxy 2.88.2 with the first failing forecast boundary and track clocks in readiness diagnostics.
+
 ## 0.79.1
 
 - **New**: Install proxy 2.88.1 to preserve explicit ASS/SSA title and year metadata for release identification.
