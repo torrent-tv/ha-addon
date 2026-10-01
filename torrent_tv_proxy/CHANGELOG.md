@@ -1,3 +1,7 @@
+## 0.79.3
+
+- **Fix**: Install proxy 2.88.3 with audio frame continuity matching the browser buffer, without counting actual missing audio or extending isolated ranges.
+
 ## 0.79.2
 
 - **Fix**: Install proxy 2.88.2 with the first failing forecast boundary and track clocks in readiness diagnostics.
