@@ -1,3 +1,7 @@
+## 0.79.8
+
+- **Fix**: Install proxy 2.89.0, which reads embedded subtitles from the clusters the torrent holds whether or not the Cues table names them, labels a Matroska track with no `Language` element as English, and no longer keeps a read whose bytes have not arrived as a statement about the file.
+
 ## 0.79.7
 
 - **Fix**: Install proxy 2.88.6, which validates audio segments against the encoder's actual cut-time contract.
