@@ -10,7 +10,7 @@ RUN apk add --no-cache nodejs npm ffmpeg python3 make g++ tcpdump gdb
 # from a crash in the field.
 #
 # A FLOOR, NOT A PIN, since 2026-09-20. It named one major exactly, which also
-# forbade every major ABOVE it — a prohibition nothing had measured. The
+# forbade every major ABOVE it â€” a prohibition nothing had measured. The
 # package's own `engines` carried the same bound and has been opened the same
 # way.
 RUN node -v \
@@ -29,11 +29,11 @@ RUN node -v \
 # Declaring the ARG is not enough, and that is what kept shipping an old proxy
 # under a new addon version: Docker keys a RUN layer on the command text, and a
 # build argument enters that key only where it is actually referenced. Addon
-# 0.74.6 and 0.75.0 both said they carried a proxy they did not — 0.75.0 was
+# 0.74.6 and 0.75.0 both said they carried a proxy they did not â€” 0.75.0 was
 # built with this layer cached and installed 2.83.8 under a version claiming
 # 2.84.0.
 ARG BUILD_VERSION
-ARG PROXY_VERSION=2.88.0
+ARG PROXY_VERSION=2.88.1
 # NOTE: ip-set (a transitive dependency of webtorrent) ships a hostile
 # `preinstall: npx only-allow pnpm` script that aborts any plain `npm install`
 # (exit code 254).  Install with lifecycle scripts disabled to bypass it, then
@@ -57,16 +57,16 @@ ARG PROXY_VERSION=2.88.0
 #
 # utp-native ships no musl prebuilds (HA base images are Alpine), so without a
 # source build uTP is disabled and the proxy reaches peers over TCP only.
-# Force-compile it here (toolchain is installed above); best-effort — if the
+# Force-compile it here (toolchain is installed above); best-effort â€” if the
 # build fails the proxy keeps working with TCP-only peers.
 # node-datachannel's own install script fetches a prebuilt binary from GitHub
-# and, if that ONE request fails, falls back to building from source — a
+# and, if that ONE request fails, falls back to building from source â€” a
 # fallback that is itself broken in `prebuild` 13 ("expected first argument to
 # be an array"), so a momentary network hiccup ends the whole build with an
 # error about the wrong thing entirely. That is exactly what happened on
 # 2026-08-12: `prebuild-install warn install socket hang up`, and immediately
 # afterwards the same file downloaded from this host in 0.6 s. The download is
-# therefore retried, and the result is CHECKED rather than assumed — an addon
+# therefore retried, and the result is CHECKED rather than assumed â€” an addon
 # that starts without this module has no WebRTC at all, which is the whole
 # transport.
 RUN echo "building for addon ${BUILD_VERSION} with proxy ${PROXY_VERSION}" \
