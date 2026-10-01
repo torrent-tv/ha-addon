@@ -1,3 +1,7 @@
+## 0.79.4
+
+- **Fix**: Install proxy 2.88.4, which bounds a copied soundtrack by its codec and re-encodes a soundtrack that states no rate instead of refusing the video.
+
 ## 0.79.3
 
 - **Fix**: Install proxy 2.88.3 with audio frame continuity matching the browser buffer, without counting actual missing audio or extending isolated ranges.
