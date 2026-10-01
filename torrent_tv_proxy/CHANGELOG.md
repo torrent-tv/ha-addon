@@ -1,3 +1,7 @@
+## 0.79.7
+
+- **Fix**: Install proxy 2.88.6, which validates audio segments against the encoder's actual cut-time contract.
+
 ## 0.79.6
 
 - **Fix**: Install proxy 2.88.5 with a measured-service playback start model, packaged audio calibration samples and rejection of truncated cached fragments.
