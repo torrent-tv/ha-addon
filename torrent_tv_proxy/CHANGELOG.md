@@ -1,3 +1,7 @@
+## 0.79.12
+
+- **Fix**: Install proxy 2.89.4. An encoder's speed is measured by the run itself over its own working time, so a slow swarm no longer reads as a slow machine to the plan; quality steps are judged on the viewer's report with measured terms only; the stream an output sends is measured over every finished piece; whether a piece is whole is decided by the encoding.
+
 ## 0.79.11
 
 - **Fix**: Install proxy 2.89.3, which decides whether buffered media is continuous in the integer timestamps of the file and by the rule every browser engine applies, so joins whose ticks are equal are no longer taken for holes.
