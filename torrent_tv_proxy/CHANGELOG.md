@@ -1,3 +1,7 @@
+## 0.79.13
+
+- **Fix**: Install proxy 2.89.5. A segment store's watch on an output's directory ends when that directory is removed by anything other than the store itself, and a directory made again under the same name is watched again, so a wait for a piece there no longer ends only on its deadline.
+
 ## 0.79.12
 
 - **Fix**: Install proxy 2.89.4. An encoder's speed is measured by the run itself over its own working time, so a slow swarm no longer reads as a slow machine to the plan; quality steps are judged on the viewer's report with measured terms only; the stream an output sends is measured over every finished piece; whether a piece is whole is decided by the encoding.
