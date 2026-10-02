@@ -1,3 +1,7 @@
+## 0.79.15
+
+- **Chore**: Install proxy 2.89.6. Seventeen of the proxy's own checks are brought in line with the system they check; the proxy's behaviour is unchanged.
+
 ## 0.79.14
 
 - **Fix**: Install proxy 2.89.5. A segment store's watch on an output's directory ends when that directory is removed by anything other than the store itself, and a directory made again under the same name is watched again, so a wait for a piece there no longer ends only on its deadline.
