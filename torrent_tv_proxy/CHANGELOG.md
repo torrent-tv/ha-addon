@@ -1,6 +1,10 @@
-## 0.79.15
+## 0.79.16
 
 - **Chore**: Install proxy 2.89.6. Seventeen of the proxy's own checks are brought in line with the system they check; the proxy's behaviour is unchanged.
+
+## 0.79.15
+
+- **Chore**: Released to install proxy 2.89.6, and installed 2.89.5: the version was raised in `config.yaml` and not in the Dockerfile's `PROXY_VERSION`. Nothing changed for the host.
 
 ## 0.79.14
 
