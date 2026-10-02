@@ -1,3 +1,7 @@
+## 0.79.10
+
+- **Fix**: Install proxy 2.89.3, which decides whether buffered media is continuous in the integer timestamps of the file and by the rule every browser engine applies, so joins whose ticks are equal are no longer taken for holes.
+
 ## 0.79.9
 
 - **Fix**: Install proxy 2.89.1, which reads a file kept whole from the disk for the subtitle walk instead of waiting on a torrent store that no longer holds its pieces.
