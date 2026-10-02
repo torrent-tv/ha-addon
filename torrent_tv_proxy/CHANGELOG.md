@@ -1,6 +1,10 @@
-## 0.79.13
+## 0.79.14
 
 - **Fix**: Install proxy 2.89.5. A segment store's watch on an output's directory ends when that directory is removed by anything other than the store itself, and a directory made again under the same name is watched again, so a wait for a piece there no longer ends only on its deadline.
+
+## 0.79.13
+
+- **Chore**: Released without moving `PROXY_VERSION` in the Dockerfile, so it still installs proxy 2.89.4.
 
 ## 0.79.12
 
