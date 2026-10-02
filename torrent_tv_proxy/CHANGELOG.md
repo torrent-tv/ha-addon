@@ -1,6 +1,10 @@
-## 0.79.10
+## 0.79.11
 
 - **Fix**: Install proxy 2.89.3, which decides whether buffered media is continuous in the integer timestamps of the file and by the rule every browser engine applies, so joins whose ticks are equal are no longer taken for holes.
+
+## 0.79.10
+
+- **Chore**: Released without moving `PROXY_VERSION` in the Dockerfile, so it still installs proxy 2.89.1.
 
 ## 0.79.9
 
