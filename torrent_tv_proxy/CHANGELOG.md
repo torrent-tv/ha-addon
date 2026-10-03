@@ -1,3 +1,7 @@
+## 0.79.17
+
+- **Fix**: Install proxy 2.89.7. Whole audio segments are judged on FFmpeg's actual packet clock instead of a truncated MP4 position or the requested seek, and a publication failure releases the encoder's claim instead of leaving playback waiting for an absent segment.
+
 ## 0.79.16
 
 - **Chore**: Install proxy 2.89.6. Seventeen of the proxy's own checks are brought in line with the system they check; the proxy's behaviour is unchanged.
