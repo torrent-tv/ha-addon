@@ -19,10 +19,6 @@ on:
         options: [auto, patch, minor]
         default: auto
 
-concurrency:
-  group: main-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-
 permissions:
   contents: read
 
@@ -30,6 +26,11 @@ jobs:
   checks:
     name: Checks
     runs-on: ubuntu-latest
+    # A newer push to a pull request makes its older checks pointless; every push to
+    # main gets a group of its own, so no check of main is ever replaced.
+    concurrency:
+      group: ${{ github.event_name == 'pull_request' && format('checks-{0}', github.ref) || format('checks-{0}', github.run_id) }}
+      cancel-in-progress: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -79,6 +80,11 @@ jobs:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
+    # Every release runs, one at a time, in the order the runs reach the queue.
+    concurrency:
+      group: release
+      cancel-in-progress: false
+      queue: max
     permissions:
       contents: write
     steps:
