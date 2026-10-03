@@ -4,7 +4,6 @@ version: "0.79.17"
 slug: "torrent_tv_proxy"
 init: false
 startup: services
-boot: auto
 host_network: true
 # Map all available video devices (GPU /dev/dri for VAAPI/QSV, /dev/video* for
 # V4L2) into the container so the proxy can use hardware-accelerated transcoding
