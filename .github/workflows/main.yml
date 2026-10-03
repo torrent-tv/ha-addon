@@ -1,0 +1,102 @@
+name: Main
+
+# Every push to main checks the add-on and builds its image, then releases it when
+# the Conventional Commits since the last tag ask for one: the version in
+# config.yaml and the changelog heading are written, committed and tagged. Home
+# Assistant reads the add-on from this repository, so that push is the release.
+# A proxy release arrives here as `fix(proxy)`/`feat(proxy): install proxy <v>`.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Release step
+        type: choice
+        options: [auto, patch, minor]
+        default: auto
+
+concurrency:
+  group: main-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - uses: torrent-tv/.github/actions/checks@main
+        with:
+          node: "false"
+          changelog: torrent_tv_proxy/CHANGELOG.md
+          version-file: torrent_tv_proxy/config.yaml
+          extra-check: |
+            version=$(sed -n 's/^ARG PROXY_VERSION=//p' torrent_tv_proxy/Dockerfile)
+            for attempt in $(seq 1 20); do
+              if [ "$(npm view "@torrent-tv/proxy@$version" version 2>/dev/null)" = "$version" ]; then
+                echo "PROXY_VERSION $version is published on npm"
+                exit 0
+              fi
+              echo "npm does not serve @torrent-tv/proxy@$version yet (attempt $attempt)"
+              sleep 15
+            done
+            echo "::error file=torrent_tv_proxy/Dockerfile::PROXY_VERSION $version is not published on npm"
+            exit 1
+
+  lint:
+    name: Add-on configuration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: frenck/action-addon-linter@v2
+        with:
+          path: ./torrent_tv_proxy
+
+  build:
+    name: Image builds
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build the add-on image for amd64
+        run: docker build --build-arg BUILD_VERSION=ci torrent_tv_proxy
+
+  release:
+    name: Release
+    needs: [checks, lint, build]
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - id: release
+        uses: torrent-tv/.github/actions/release-prepare@main
+        with:
+          version-files: torrent_tv_proxy/config.yaml
+          changelog: torrent_tv_proxy/CHANGELOG.md
+          bump: ${{ inputs.bump || 'auto' }}
+      - if: steps.release.outputs.released == 'true'
+        uses: torrent-tv/.github/actions/release-finish@main
+        with:
+          tag: ${{ steps.release.outputs.tag }}
+          notes-file: ${{ steps.release.outputs.notes-file }}
+          github-token: ${{ github.token }}

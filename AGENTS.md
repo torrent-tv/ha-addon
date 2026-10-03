@@ -22,14 +22,34 @@ Addon slug: `torrent_tv_proxy` (HA UI shows `b34a1737_torrent_tv_proxy`).
   existing devices are mapped). The proxy auto-detects and falls back to
   software, so this is safe on any host.
 
-## Changelog
+## Commits
 
-Every addon release must be recorded in `torrent_tv_proxy/CHANGELOG.md` — add an
-entry under a new `## <version>` heading at the top (version from
-`torrent_tv_proxy/config.yaml`), following the existing
-`- **New**/**Fix**/**Chore**:` format. Bump and add an entry whenever the proxy
-changes, since the addon must be re-released to pull it. See the parent
-`../CLAUDE.md`.
+Every commit header follows Conventional Commits (`<type>(<scope>)!: <subject>`,
+types `feat fix perf refactor docs test build ci chore style revert`); CI refuses
+a pushed commit that does not. Enable the local check once per clone:
+`git config core.hooksPath .githooks`. Rules: `torrent-tv/.github` CONTRIBUTING.md.
+
+## Changelog and release
+
+Every add-on change that reaches a host is recorded in
+`torrent_tv_proxy/CHANGELOG.md` as a bullet under `## Unreleased` at the top,
+in the existing `- **New**/**Fix**/**Chore**:` format. Never write a version
+heading and never edit the `config.yaml` version: the release job does both.
+
+GitHub Actions releases. A push to `main` runs `.github/workflows/main.yml`:
+commit headers, line endings, the changelog entry, that `PROXY_VERSION` is
+published on npm, the add-on linter, and a build of the image for amd64. Then,
+when the commits since the last `v*` tag ask for it (`feat` → minor;
+`fix`/`perf`/`revert` → patch), the release job writes the version into
+`config.yaml`, renames `## Unreleased` to it, commits
+`chore(release): <version>`, tags it and pushes. Home Assistant reads the add-on
+from this repository, so that push is the release; the host is still updated on
+the host.
+
+A proxy release arrives here by itself: the proxy's release job sets
+`PROXY_VERSION`, adds the proxy's notes under `## Unreleased` and pushes
+`fix(proxy)`/`feat(proxy): install proxy <version>`, which this workflow then
+releases. The order proxy → add-on is therefore kept by construction.
 
 ## Gotchas
 
@@ -41,9 +61,9 @@ changes, since the addon must be re-released to pull it. See the parent
 - **LF line endings** are mandatory for `run.sh` and `Dockerfile` (CRLF breaks
   the bashio shebang / Docker line continuations). Editing on Windows can
   reintroduce CRLF — strip it (`sed -i 's/\r$//'`).
-- **Release order**: publish the proxy to npm FIRST (`npm run patch` in
-  `../proxy`), THEN bump this `config.yaml` version + push + update the addon.
-  Otherwise the rebuild reinstalls the OLD proxy.
+- **Release order**: the proxy is published to npm before `PROXY_VERSION` names
+  it; CI keeps this order (see "Changelog and release") and refuses a
+  `PROXY_VERSION` that npm does not serve.
 - **Triggering the update remotely over SSH (`ssh ha`, verified 2026-08-01):**
   the standalone `/usr/bin/ha` CLI on the host is UNauthenticated by default —
   `ha store reload`/`ha apps update ...` fail with `unauthorized: missing or
