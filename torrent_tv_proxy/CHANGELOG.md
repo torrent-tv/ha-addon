@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.89.11, which carries:
+  - **Fix**: A failed encoder run says what the source holds again. The line `this run asked for …, and the source holds N video, N audio, N subtitle` was meant to tell an output with no stream (the source's fault) from a track index past the end (ours), but every field failure printed `what the source holds was not recorded`: a session takes its media info from the playback planner's cache, and the planner left the stream counts out of it although it parses the same ffmpeg banner. They are cached with the rest now.
+
 ## 0.79.20
 
 - **Fix**: Install proxy 2.89.10, which carries:
