@@ -1,4 +1,4 @@
-## Unreleased
+## 0.79.19
 
 - **Fix**: Install proxy 2.89.9, which carries:
   - **Fix**: The delivery probe judges a connection by how old the newest probe the browser has seen is, not by how long that probe took to arrive. The time it took is fixed once it has arrived, so on the wedge of 2026-09-28 it stayed 9 ms for a whole minute while the browser saw nothing after probe 1464, and every line read `flowing`; on idle healthy connections its 3 ms allowance left out the browser's own handling of the message, and `association-stopped` was printed for connections that delivered every probe. The age's allowance now also counts the probe interval, which `probeWedgeIsCertain` already counted. A real wedge is now named within about a second and reaches the packet witness.
