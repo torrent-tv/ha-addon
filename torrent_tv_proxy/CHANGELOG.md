@@ -1,4 +1,4 @@
-## Unreleased
+## 0.79.20
 
 - **Fix**: Install proxy 2.89.10, which carries:
   - **Fix**: An audio track warm-up that is still being made answers `503` with `warming: true`. That answer means the track and how it is produced are recorded for the viewer; a `503` without it is a preparation that failed and recorded nothing. Until now the two were the same status, so a page restating its soundtrack after a reconnect could not tell whether the proxy had kept it.
