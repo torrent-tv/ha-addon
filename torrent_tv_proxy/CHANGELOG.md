@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.89.20, which carries:
+  - **Fix**: The Docker image takes node from Alpine's own `nodejs` package in every stage, as the add-on does, instead of copying the official image's binary: one way of getting node, and 285 MB instead of 348 MB on the HA host. The binary was chosen for being three patch releases newer, and none of those three is a security release; 24.18.1, which Alpine ships, is the last one (torrent-tv/meta#98).
+
 ## 0.79.30
 
 - **Fix**: Install proxy 2.89.19, which carries:
