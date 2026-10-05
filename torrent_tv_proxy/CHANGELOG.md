@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Fix**: The image holds only what the proxy runs with: 340 MB instead of 901 MB on the HA host. It is built in two stages, and the compiler, python, npm, npm's and node-gyp's caches stay in the one that builds; gdb is no longer installed, since nothing the add-on starts uses it. The install that substitutes our `utp-native` also put the proxy's devDependencies into every image — 55.5 MB of `@biomejs` — and now omits them; the compiler's intermediate objects are removed. The final stage runs `torrent-tv-proxy --help`, so a node that cannot load the native modules fails the build rather than the first start (torrent-tv/meta#98).
+
 ## 0.79.28
 
 - **Fix**: Install proxy 2.89.18, which carries:
