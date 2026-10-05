@@ -64,6 +64,12 @@ ARG PROXY_VERSION=2.89.20
 # Three core dumps in two days, each about three and a half hours into an
 # otherwise healthy run. Both fixes are absent from upstream master.
 #
+# WHICH build is read from the proxy being installed, from its `overrides`, and
+# from nowhere else. It used to be written here as well, and the two had to move
+# together: a proxy pinning one version and this line installing another makes
+# npm refuse with EOVERRIDE, which is what failed addon 0.36.0. With one place
+# to say it, a proxy release that moves the version brings the build with it.
+#
 # utp-native ships no musl prebuilds (HA base images are Alpine), so without a
 # source build uTP is disabled and the proxy reaches peers over TCP only.
 # Force-compile it here (toolchain is installed above); best-effort — if the
@@ -89,8 +95,13 @@ RUN echo "building for addon ${BUILD_VERSION} with proxy ${PROXY_VERSION}" \
     done \
  && ls build/Release/*.node \
  && (cd /usr/local/lib/node_modules/@torrent-tv/proxy \
+     && utp_spec="$(node -p "require('./package.json').overrides['utp-native']")" \
+     && case "$utp_spec" in \
+          npm:@torrent-tv/utp-native@*) echo "utp-native: the proxy pins $utp_spec" ;; \
+          *) echo "FATAL: the proxy pins no utp-native build of ours: $utp_spec" >&2; exit 1 ;; \
+        esac \
      && npm install --omit=dev --ignore-scripts --no-save --no-audit --no-fund \
-        "utp-native@npm:@torrent-tv/utp-native@2.5.3-ttv.8") \
+        "utp-native@${utp_spec}") \
  && find /usr/local/lib/node_modules/@torrent-tv/proxy/node_modules -mindepth 3 \
       -type d -name utp-native -prune -exec rm -rf {} + \
  && (npm_config_build_from_source=true npm rebuild --global utp-native \
