@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.89.16, which carries:
+  - **Fix**: A proxy started without `--log-file` keeps the browser's log. The page sends its log to the proxy for most of a viewing, and the proxy wrote it only to per-session files beside its own log file; with no log file named, which is every run from npm or Docker other than the Home Assistant addon, the browser's half of every viewing was dropped. It now goes to the console, beside the proxy's lines, each prefixed `client <sessionId>`. `docs/logs.md` states where the log goes for each way of starting the proxy (torrent-tv/meta#96).
+
 ## 0.79.25
 
 - **Fix**: Install proxy 2.89.15, which carries:
