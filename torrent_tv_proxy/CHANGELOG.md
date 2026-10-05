@@ -1,4 +1,4 @@
-## Unreleased
+## 0.80.0
 
 - **New**: Install proxy 2.90.0, which carries:
   - **Fix**: A film watched from its whole file no longer brings its torrent back every ten seconds. Once every file of a torrent is kept whole the torrent is removed, and the download figures the page polls, the priority map and the other requests that steer a download each rebuilt it from its recipe only to be told nothing was missing; the next sweep removed it again. Field 2026-10-04, proxy 2.89.11: one viewer, one whole file, and the torrent removed and added 671 times in two hours, each time connecting to the swarm anew. A file held whole now answers those requests without its torrent — the figures say everything is here and nothing is arriving — and the torrent is used only while it exists (torrent-tv/meta#1).
