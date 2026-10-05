@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.89.17, which carries:
+  - **Fix**: Every browser log line the proxy keeps names the page's send it came in, as `batch=<n>`, and the server prints the same number. A send that reached neither side, or a batch the proxy took over a connection that could no longer carry its answer back, is now visible by comparing the two (torrent-tv/meta#77).
+
 ## 0.79.26
 
 - **Fix**: Install proxy 2.89.16, which carries:
