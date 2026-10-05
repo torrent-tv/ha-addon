@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Chore**: The uTP build the image compiles is the one the installed proxy pins in its `overrides`, read from its `package.json`, instead of a version written into the Dockerfile as well. The two had to be moved together and a mismatch made npm refuse the install (`EOVERRIDE`, addon 0.36.0); a proxy release that moves the version now brings the build with it (torrent-tv/meta#1).
+
 ## 0.79.31
 
 - **Fix**: Install proxy 2.89.20, which carries:
