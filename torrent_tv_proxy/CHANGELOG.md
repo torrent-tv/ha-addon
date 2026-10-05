@@ -1,4 +1,4 @@
-## Unreleased
+## 0.79.30
 
 - **Fix**: Install proxy 2.89.19, which carries:
   - **Fix**: A session's browser log file on the proxy is named after the torrent it played. The first batch from the page always arrives before a torrent is chosen, the file was named then and never again, so on the addon host on 2026-10-05 146 of 147 files ended in `-no-torrent-yet` and none could be found by its film (torrent-tv/meta#123). The file is now renamed when the first torrent arrives and keeps the lines written before it; another torrent opened later in the same page gets a file of its own under the same `client-<start>-<session>` prefix.
