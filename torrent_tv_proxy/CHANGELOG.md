@@ -1,4 +1,4 @@
-## Unreleased
+## 0.84.0
 
 - **New**: Install proxy 2.94.0, which carries:
   - **New**: `GET /api/sources/:sourceKey/files/:fileIndex/container-metadata` answers what an opened file states about the work it carries — title, series, season, episode, episode title, year, genre, description, `IMDB`/`TMDB`/`TVDB` ids, track and chapter titles, and whether it has a cover — from Matroska `Tags`, `Info/Title`, `Chapters` and `Attachments`, the MP4 iTunes item list and QuickTime metadata keys, and AVI `LIST INFO`. It reads only the first and the last piece of the file, which opening it fetches anyway, and bytes already held; nothing is asked of the swarm for it (torrent-tv/meta#139).
