@@ -1,3 +1,8 @@
+## Unreleased
+
+- **New**: Install proxy 2.93.0, which carries:
+  - **New**: `GET /api/sources/:sourceKey/files/:fileIndex/fingerprint` answers the OpenSubtitles hash of a file (its size plus its first and last 64 KiB), the key under which release databases name an exact release. It reads only those two edges, answers `202` while they have not arrived, and `404` for a file shorter than 128 KiB (torrent-tv/meta#135).
+
 ## 0.82.6
 
 - **Fix**: Install proxy 2.92.6, which carries:
