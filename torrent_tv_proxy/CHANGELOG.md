@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.93.1, which carries:
+  - **Fix**: A peer update schedules only that peer's queue and skips source availability scans when it cannot request. Updating every peer no longer repeats the complete cross-torrent download calculation for each peer; map changes still schedule all live downloads.
+
 ## 0.83.0
 
 - **New**: Install proxy 2.93.0, which carries:
