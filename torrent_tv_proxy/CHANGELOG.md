@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.92.3, which carries:
+  - **Fix**: Restoring source demand reconnects HTTP seeds closed when the previous demand ended, so preparation and subsequent playback can use the same seed without requiring external torrent peers.
+
 ## 0.82.2
 
 - **Fix**: Install proxy 2.92.2, which carries:
