@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.92.1, which carries:
+  - **Fix**: Use the system ffprobe when the bundled file cannot be executed, including installations that deliberately disable dependency installation scripts.
+
 ## 0.82.0
 
 - **New**: Install proxy 2.92.0, which carries:
