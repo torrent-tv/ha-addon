@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.94.1, which carries:
+  - **Fix**: A track table this proxy refuses to read no longer hides what a file states about its work: the titles of its tracks are left out and the rest is answered (torrent-tv/meta#139).
+
 ## 0.84.0
 
 - **New**: Install proxy 2.94.0, which carries:
