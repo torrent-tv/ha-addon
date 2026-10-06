@@ -1,4 +1,4 @@
-## Unreleased
+## 0.83.4
 
 - **Fix**: Install proxy 2.93.4, which carries:
   - **Fix**: Initial file preparation reads the first requested media interval instead of indexing the complete file. Full-source download demand remains a separate low-priority map entry.
