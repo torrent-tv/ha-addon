@@ -1,4 +1,4 @@
-## Unreleased
+## 0.83.2
 
 - **Fix**: Install proxy 2.93.2, which carries:
   - **Fix**: Playback forecasts look up source ranges by output and segment instead of scanning every packet range for every segment. Repricing, seeking and withdrawal replace the lookup together with the download map.
