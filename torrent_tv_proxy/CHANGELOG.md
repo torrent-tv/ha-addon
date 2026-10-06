@@ -1,3 +1,9 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.92.6, which carries:
+  - **Fix**: Download scheduling measures each usable peer once per pass and stops when its request slots are full. Whole-file priority maps no longer repeatedly scan choked peers or inflate the measured download CPU cost enough to refuse playback on an otherwise available host.
+  - **Fix**: Download map ranges remain memory eviction preferences but no longer force their entire union to stay in RAM under pressure. Required read windows and actual byte holds retain their memory floor.
+
 ## 0.82.5
 
 - **Fix**: Install proxy 2.92.5, which carries:
