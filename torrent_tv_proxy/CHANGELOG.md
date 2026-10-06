@@ -1,4 +1,4 @@
-## Unreleased
+## 0.83.3
 
 - **Fix**: Install proxy 2.93.3, which carries:
   - **Fix**: Reserve the complete urgent encoder input before distributing memory to speculative torrent pieces, so a large file cannot prevent playback from starting while memory is available.
