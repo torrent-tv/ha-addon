@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.92.5, which carries:
+  - **Fix**: Matroska packet reads at a selected position begin at the indexed Cluster and retain the preceding decode dependencies. Opening or seeking into a partly downloaded film no longer requires structural bytes from its entire earlier portion, and a completed final interval cannot replace the whole-file packet index.
+
 ## 0.82.4
 
 - **Fix**: Install proxy 2.92.4, which carries:
