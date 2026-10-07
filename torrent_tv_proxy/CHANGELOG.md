@@ -1,4 +1,4 @@
-## Unreleased
+## 0.85.5
 
 - **Fix**: Install proxy 2.95.5, which carries:
   - **Fix**: Retain Matroska declarations that FFmpeg follows through SeekHead, and retry missing source-range metadata for speculative segments through the same read tracking as urgent segments (torrent-tv/meta#95).
