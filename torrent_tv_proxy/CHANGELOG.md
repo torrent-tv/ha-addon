@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.6, which carries:
+  - **Fix**: Tell WebTorrent about every wanted segment instead of only the earliest one: the most important class is requested first and the rest only by peers that would otherwise stand idle, so peers that do not hold the next segment keep downloading the following ones; on a stand with partial peers twelve segments arrived in 18 s instead of 170 s (torrent-tv/meta#95).
+
 ## 0.85.5
 
 - **Fix**: Install proxy 2.95.5, which carries:
