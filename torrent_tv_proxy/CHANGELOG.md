@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.13, which carries:
+  - **Fix**: Trim original-source AAC preroll with FFmpeg's output seek and explicitly preserve the published segment position when copying or transcoding separate audio. A later copied AAC segment no longer starts at zero (torrent-tv/meta#154).
+
 ## 0.85.12
 
 - **Fix**: Install proxy 2.95.12, which carries:
