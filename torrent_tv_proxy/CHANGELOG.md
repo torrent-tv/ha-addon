@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.10, which carries:
+  - **Fix**: Resume AVI idx1 parsing from its retained cursor after missing bytes or memory instead of discarding and rebuilding the index. Metadata memory admission wakes pending encoder inputs, including when admission changes during a read; successful keyframe retries populate the shared table, and memory shortages remain pending playback work (torrent-tv/meta#151).
+
 ## 0.85.9
 
 - **Fix**: Install proxy 2.95.9, which carries:
