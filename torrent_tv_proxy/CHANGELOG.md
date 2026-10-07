@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.11, which carries:
+  - **Fix**: Publish copied open-GOP HEVC segments with the leading pictures that FFmpeg places in the following file and retain their decode references. Original-source fMP4 video is partitioned before completeness validation; unavailable following media still fails validation (torrent-tv/meta#154).
+
 ## 0.85.10
 
 - **Fix**: Install proxy 2.95.10, which carries:
