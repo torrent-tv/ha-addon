@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.3, which carries:
+  - **Fix**: A video track the file marks unusable (Matroska `FlagEnabled` 0, MP4 `track_enabled` cleared) is no longer the picture. The plan, the encoder's input and the keyframe table the cuts come from all take the first usable video track; a file whose only video track is disabled declares no picture. The codec a file is planned with is that of its first usable soundtrack. Disabled tracks keep their numbers, because ffmpeg counts them (torrent-tv/meta#49).
+
 ## 0.85.2
 
 - **Fix**: Install proxy 2.95.2, which carries:
