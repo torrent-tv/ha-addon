@@ -1,3 +1,14 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.4, which carries:
+  - **Fix**: Cut copied audio from its actual first packet time when it starts after the published boundary, avoiding an extra start delay at every segment end and refusal of complete MP4 audio (torrent-tv/meta#95).
+  - **Fix**: Index source-byte coverage and arrival times once per playback forecast, avoiding repeated range splitting and full-file arrival scans that delay media requests (torrent-tv/meta#95).
+  - **Fix**: Preserve native AAC encoder priming in a shared fMP4 init obtained after a seek, so returning to the first segment retains its negative decode timestamp without an HTTP 500 (torrent-tv/meta#95).
+  - **Fix**: Use WebTorrent's native request scheduling through public selections and critical-piece demand, without replacing its internal peer update method. Forecast unrequested pieces from measured suppliers and complete priority bands rather than refusing playback until every block is already queued (torrent-tv/meta#95).
+  - **Fix**: Preserve real sub-millisecond FFmpeg trims and account for recorded movie-edit quantization when checking segment boundaries (torrent-tv/meta#95).
+  - **Fix**: Give FFmpeg retained ranges of the original Matroska source when its Cues provide the complete time-to-byte map. Other layouts retain their existing input preparation. Finite local HTTP responses support bundled FFmpeg versions and never wait for absent source bytes. Preserve copied video presentation times when its first decode timestamps are negative (torrent-tv/meta#95).
+  - **Fix**: Preserve each segment's deadline and urgent-preparation flag when converting and refreshing priority maps. Reserve memory for finite inputs already chosen by the encode plan, and retain the main thread's assigned torrent-store allowance during periodic maintenance (torrent-tv/meta#95).
+
 ## 0.85.3
 
 - **Fix**: Install proxy 2.95.3, which carries:
