@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.7, which carries:
+  - **Fix**: Pieces downloaded ahead of the viewer go to disk instead of filling memory: the piece store no longer asks for memory by the download map, which on Home Assistant took 4.4 GB in five minutes and got the proxy killed by the kernel (torrent-tv/meta#95).
+
 ## 0.85.6
 
 - **Fix**: Install proxy 2.95.6, which carries:
