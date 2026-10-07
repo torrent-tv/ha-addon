@@ -1,4 +1,4 @@
-## Unreleased
+## 0.85.8
 
 - **Fix**: Install proxy 2.95.8, which carries:
   - **Fix**: The idle-removal clock of a torrent nobody wants runs from when it stopped being wanted instead of restarting on every report, which also stops thousands of identical log lines when a map is withdrawn (torrent-tv/meta#95).
