@@ -1,4 +1,4 @@
-## Unreleased
+## 0.85.4
 
 - **Fix**: Install proxy 2.95.4, which carries:
   - **Fix**: Cut copied audio from its actual first packet time when it starts after the published boundary, avoiding an extra start delay at every segment end and refusal of complete MP4 audio (torrent-tv/meta#95).
