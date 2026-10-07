@@ -1,4 +1,4 @@
-## Unreleased
+## 0.85.0
 
 - **New**: Install proxy 2.95.0, which carries:
   - **Fix**: The per-step `prediction` line compares a running encode with the prediction for the mode it is actually encoded in, computed for that output. It used to take the figure the offer decides on, which is the cheapest mode, and the last offer computed anywhere in the process: an XviD 360p step was predicted at `ultrafast` and measured at `fast`. The line now names the mode and keeps the offer's figure beside it (torrent-tv/meta#3).
