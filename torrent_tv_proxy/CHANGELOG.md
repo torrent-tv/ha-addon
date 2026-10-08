@@ -1,4 +1,4 @@
-## Unreleased
+## 0.85.17
 
 - **Fix**: Install proxy 2.95.17, which carries:
   - **Fix**: A read of encoder input that finds pieces missing from storage names them, and whether the torrent still counts them as held. Field 2026-10-08: an AVI's fifth piece waited for bytes for minutes while the swarm reported nothing missing (torrent-tv/meta#151).
