@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.19, which carries:
+  - **Perf**: An AVI interval finds its keyframes by halving a list made once per stream instead of walking every picture of the film. The download map asks this for every segment of every output: 2035 intervals of a two-hour AVI took 1825 ms and take 41 ms (measured on a desktop); on Home Assistant the map reached the swarm 70 s after a segment was wanted (torrent-tv/meta#151).
+
 ## 0.85.18
 
 - **Fix**: Install proxy 2.95.18, which carries:
