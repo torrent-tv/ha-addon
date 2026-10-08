@@ -1,4 +1,4 @@
-## Unreleased
+## 0.85.18
 
 - **Fix**: Install proxy 2.95.18, which carries:
   - **Fix**: The proxy says what it tells the swarm to fetch first — the level, its priority and the pieces — whenever that changes. Field 2026-10-08: the piece an AVI's fifth segment needed was never requested while pieces near the film's end were (torrent-tv/meta#151).
