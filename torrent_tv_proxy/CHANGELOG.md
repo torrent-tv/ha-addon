@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.29, which carries:
+  - **Fix**: Forecast startup from measured torrent download service when future media pieces have no queued arrival, and keep an unconfirmed zero delay unknown to the viewer (#ttv-160).
+
 ## 0.85.28
 
 - **Fix**: Install proxy 2.95.28, which carries:
