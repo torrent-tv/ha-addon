@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.20, which carries:
+  - **Fix**: Keep encoded material while viewers still need it, begin expiry after confirmed departure, and restore complete segment registration when an existing output produces files after cleanup. Coordinate retention outside storage and protect active reads.
+
 ## 0.85.19
 
 - **Fix**: Install proxy 2.95.19, which carries:
