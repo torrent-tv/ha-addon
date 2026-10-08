@@ -1,4 +1,4 @@
-## Unreleased
+## 0.85.32
 
 - **Fix**: Install proxy 2.95.32, which carries:
   - **Fix**: A copied soundtrack served beside a re-encoded picture begins at its own interval. FFmpeg's seek lands on the picture's keyframe before the time asked for, and only decoded streams were trimmed there, so a copied piece began at that keyframe: with a keyframe every 11 s a piece of `Frankenstein.rus.LostFilm.TV.avi` held the film's first four seconds and playback failed at 8 s (torrent-tv/meta#159).
