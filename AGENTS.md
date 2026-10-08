@@ -1,7 +1,7 @@
 # ha-addon — Home Assistant addon for the proxy
 
 Packages and runs `@torrent-tv/proxy` as a Home Assistant addon. See the parent
-`../CLAUDE.md` for the overall architecture and release process. This is the
+`../AGENTS.md` for the overall architecture and release process. This is the
 ONLY place Home-Assistant-specific concerns belong (the proxy itself stays
 deployment-agnostic).
 
