@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.25, which carries:
+  - **Fix**: A run that reads the original file states at its end how many reads FFmpeg made of its input, how many bytes, and when the first and the last came. Field 2026-10-08: a run took 6-9 s for a piece FFmpeg makes from a file in 1.6 s, and nothing said whether it was waiting on its input (torrent-tv/meta#151).
+
 ## 0.85.24
 
 - **Fix**: Install proxy 2.95.24, which carries:
