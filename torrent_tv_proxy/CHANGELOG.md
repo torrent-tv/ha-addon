@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.34, which carries:
+  - **Fix**: Apply the browser's 0.25 s starting-range allowance to reported media ranges in playback readiness. On HA, the video range started at 0.083 s while the play position was 0 s; the page counted 60 s as buffered, but the proxy counted 0 s and withheld playback (#ttv-160).
+
 ## 0.85.33
 
 - **Fix**: Install proxy 2.95.33, which carries:
