@@ -4,7 +4,7 @@ context: |
   Home Assistant addon packaging @torrent-tv/proxy (slug torrent_tv_proxy; HA
   shows b34a1737_torrent_tv_proxy). The ONLY place Home-Assistant-specific
   concerns belong; the proxy itself stays deployment-agnostic.
-  Constraints (see CLAUDE.md for the full set):
+  Constraints (see AGENTS.md for the full set):
   - Dockerfile installs the proxy globally from npm with --ignore-scripts plus
     a targeted npm rebuild of node-datachannel (ip-set ships a hostile
     preinstall). Keep this if the install flow changes.
