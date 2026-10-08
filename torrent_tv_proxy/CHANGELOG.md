@@ -1,4 +1,4 @@
-## Unreleased
+## 0.85.33
 
 - **Fix**: Install proxy 2.95.33, which carries:
   - **Fix**: Share the measured torrent download service across media files from the same torrent when forecasting playback readiness (#ttv-160).
