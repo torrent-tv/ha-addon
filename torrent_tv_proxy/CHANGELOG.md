@@ -1,4 +1,4 @@
-## Unreleased
+## 0.86.1
 
 - **Fix**: Install proxy 2.96.1, which carries:
   - **Fix**: The proxy echoes the server's round-trip probe (`rtt-probe` → `rtt-echo`) so the server can measure the tunnel round trip; the WebSocket ping frame it used first never came back over Cloudflare and nginx. The `health-request` the server no longer sends is no longer answered (#ttv-36).
