@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.95.41, which carries:
+  - **Fix**: Read each source piece once when assembling disjoint packet ranges for an encoder. This avoids repeated reads of spilled pieces while preparing copied MP4 segments (#ttv-163).
+
 ## 0.85.40
 
 - **Fix**: Install proxy 2.95.40, which carries:
