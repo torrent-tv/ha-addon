@@ -1,3 +1,8 @@
+## Unreleased
+
+- **New**: Install proxy 2.96.0, which carries:
+  - **New**: The proxy sends the server its state when it changes — load and free memory, room for one more encode, and the films it holds, now including files kept whole after their torrent was removed — over every open tunnel connection: on connect, when a torrent is added or closed or a file kept or let go, when an encoder starts or ends, when a viewer comes or goes, and every 5 s (the kernel's load-average cadence) when anything differs. The server chooses proxies from these reports instead of asking every proxy on each choice (#ttv-36).
+
 ## 0.85.41
 
 - **Fix**: Install proxy 2.95.41, which carries:
