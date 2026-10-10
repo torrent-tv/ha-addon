@@ -1,4 +1,4 @@
-## Unreleased
+## 0.86.13
 
 - **Fix**: Install proxy 2.96.13, which carries:
   - **Fix**: An AVI film starts playing again once enough of it is ready. 2.96.11 left repeated byte ranges out of the download map itself, but a segment's own zones are also what the start forecast reads to know which bytes that segment needs; two segments of one group of pictures read the same bytes, so the second lost all of them and the forecast answered `source-input-ranges-unavailable` for ever. On Home Assistant 2026-10-11 the page held 32 s and never started. Repeats are now left out only of what is sent to the torrent (#ttv-166).
