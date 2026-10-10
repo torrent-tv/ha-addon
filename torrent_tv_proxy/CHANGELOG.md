@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.96.9, which carries:
+  - **Fix**: The proxy no longer stops for minutes when the download map works out what a long soundtrack read from its own packets needs. Each interval was found by reading every packet of the track, a two-hour soundtrack is 339 thousand of them, and the map asked for 2035 intervals in one pass without giving the event loop a turn: on Home Assistant 2026-10-10 (proxy 2.96.8) the main thread ran at a full core with nothing written to the log and no picture encoded. Records whose times ascend are now searched — only a packet starting within the longest duration before an interval can reach into it — and select exactly the same packets: 2035 intervals took 88.5 s on a desktop and take 0.42 s. Records whose times go back are still read whole (#ttv-166).
+
 ## 0.86.8
 
 - **Fix**: Install proxy 2.96.8, which carries:
