@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.4
 
 - **Fix**: Install proxy 2.97.4, which carries:
   - **Fix**: An encoder's input is named by its source, file, ranges and what is stated about its packets, without hashing every copied byte. On Home Assistant hashing took 13.45 s of 180 s of the main thread on a Matroska film whose picture and sound copy the same ~30 MB per piece. The check that a packet's address holds its expected payload stays (#ttv-178).
