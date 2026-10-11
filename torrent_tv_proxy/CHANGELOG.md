@@ -1,4 +1,4 @@
-## Unreleased
+## 0.87.0
 
 - **New**: Install proxy 2.97.0, which carries:
   - **New**: `--profile-start <seconds>` takes a CPU profile of the main thread for that many seconds from the first source opened and writes it beside the state (`cpu-start-<time>.cpuprofile`, readable in Chrome's DevTools). Off by default; it samples beside the thread and does not stop it. At a cold start on Home Assistant (#ttv-166 run 12) the main thread ran at 83-108 % of a core for thirty seconds while the first input waited 29.5 s, and nothing said what it was doing (#ttv-177).
