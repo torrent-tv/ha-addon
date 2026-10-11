@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.0
 
 - **New**: Option `profile_start` (seconds, 0 by default) passes `--profile-start` to the proxy: a CPU profile of its main thread from the first film opened, written to `/data` (#ttv-177).## 0.87.0
 
