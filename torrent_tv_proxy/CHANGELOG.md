@@ -1,3 +1,10 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.97.1, which carries:
+  - **Fix**: At a cold start the second run of an AVI or Matroska original input is no longer one piece. A stretch is sized by the copy rate times how long an encoder takes to open that input, and a new output had no reading of its own, so its second run copied one piece and cost another open (6.34 s on Home Assistant, #ttv-166 run 12). Until an output has opened once, the host's startup reading of an encoder's start stands in, and the log says so (#ttv-184).
+  - **Fix**: A pause no longer counts as part of starting an encoder. The time to the first output and the open of an input were wall-clock times, so an encoder paused for a more urgent one read as slow to start, and the next stretch was sized from that (#ttv-184).
+  - **Fix**: A prepared input reaching past a bound the plan has since narrowed is used for its prefix instead of being copied again, and a prepared next stretch that no live run ends before and no start is placed at is given back — after a seek it held memory the stretch at the new position needed (#ttv-184).
+
 ## 0.88.0
 
 - **New**: Option `profile_start` (seconds, 0 by default) passes `--profile-start` to the proxy: a CPU profile of its main thread from the first film opened, written to `/data` (#ttv-177).
