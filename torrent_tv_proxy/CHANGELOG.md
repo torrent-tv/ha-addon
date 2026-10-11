@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.5
 
 - **Fix**: Install proxy 2.97.5, which carries:
   - **Fix**: A refused piece of a copied stretch no longer ends playback. The piece is placed again as a run of its own, and a request for it is held meanwhile instead of answered 500; only the failure of a run holding that one piece ends production. On Home Assistant one refused piece of a six-piece stretch ended the viewer's playback right after a seek, while the same piece made alone had been published in an earlier session (#ttv-178).
