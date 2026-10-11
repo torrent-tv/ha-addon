@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.1
 
 - **Fix**: Install proxy 2.97.1, which carries:
   - **Fix**: At a cold start the second run of an AVI or Matroska original input is no longer one piece. A stretch is sized by the copy rate times how long an encoder takes to open that input, and a new output had no reading of its own, so its second run copied one piece and cost another open (6.34 s on Home Assistant, #ttv-166 run 12). Until an output has opened once, the host's startup reading of an encoder's start stands in, and the log says so (#ttv-184).
