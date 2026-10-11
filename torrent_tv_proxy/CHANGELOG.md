@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.2
 
 - **Fix**: Install proxy 2.97.2, which carries:
   - **Fix**: The processor line no longer reads impossible shares such as "process 1238 %" of a core. Its counters were read as promises while the main thread was busy and the time afterwards, so one second took several seconds of counting; they are now read together, at one instant (#ttv-177).
