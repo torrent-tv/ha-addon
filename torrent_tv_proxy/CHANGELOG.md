@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.6
 
 - **Fix**: Install proxy 2.97.6, which carries:
   - **Fix**: A copied open-GOP picture no longer stands still for about half a second at piece boundaries. Its pieces stay cut from keyframe to keyframe in decode order, so the pictures shown just before a keyframe travel with it; moving them into the piece before together with a copy of the keyframe made the browser drop them when the next piece arrived (Media Source removes what decodes after a replaced keyframe), a hole of 0.21-0.29 s measured on Home Assistant and reproduced in Chrome Canary. A run that starts at such a keyframe takes those pictures from the file the run before closed past its cut, and where none is held it reads from the keyframe before. A run stopped by the plan judges its last piece by the file the stop flushes, and a piece that cannot be proven then is left unpublished instead of failing the run (#ttv-178).
