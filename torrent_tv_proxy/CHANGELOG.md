@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.18
 
 - **Fix**: Install proxy 2.97.18, which carries:
   - **Fix**: A cold film's first bytes are asked of the swarm as soon as they are known, not after the whole film has been worked out (broken in 2.97.17). The download map was published only once its pass had worked out what every piece of the film reads; with the main thread given back after each piece, that pass took 14.6 s on a cold two-hour AVI, and the swarm fetched nothing for 17.5 s while the encoder waited for its next piece and the start forecast read the download as 0.00 MB/s. What a pass has resolved is now published before it works out a piece of lower priority (#ttv-178).
