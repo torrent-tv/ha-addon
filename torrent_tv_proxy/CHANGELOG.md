@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.15
 
 - **Fix**: Install proxy 2.97.15, which carries:
   - **Fix**: A viewer waiting for the picture no longer holds up the proxy's other answers. The start forecast, worked out on every progress poll, converted every piece of the film anew each time, 160-250 ms on an input the size of the field's two-hour AVI; and the download map's pass worked out what every piece reads on every map, which held the main thread up to 1.5 s (Home Assistant profile, 2026-10-12). A piece already played that was never read and is not made is left out, what has not changed is kept between polls, and the forecast takes about 45 ms on that input with the same answer (#ttv-178).
