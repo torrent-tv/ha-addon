@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.17
 
 - **Fix**: Install proxy 2.97.17, which carries:
   - **Fix**: A cold AVI's first encoder open no longer waits for the main thread. Building the soundtrack's packet table and the map's first pass over some 4000 zones held it 5.4-6.9 s while FFmpeg's first open waited for its answers (8.2-9.8 s against 3.5-6.6 s for later opens). Both now give the thread back as they go — the table at each portion of the file, the pass after each zone it works out — and what the pass worked out is kept when a newer map ends it (#ttv-178).
