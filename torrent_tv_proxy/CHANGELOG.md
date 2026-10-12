@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.16
 
 - **Fix**: Install proxy 2.97.16, which carries:
   - **Chore**: 2.97.15's entry said a copy for an encoder reads four pieces at once unless `UV_THREADPOOL_SIZE` says otherwise; the proxy sets 64 where the deployment states none, so a copy reads up to 64 at once (#ttv-178).
