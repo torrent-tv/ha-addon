@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.10
 
 - **Fix**: Install proxy 2.97.10, which carries:
   - **Fix**: Lowering the download limit no longer fails a peer's data. WebTorrent's limiter cut a peer's data into slices of a tenth of the rate at the time, and a slice still waiting when the limit fell asked the smaller bucket for more than it holds ("exceeds bucket size"), which ends that peer's stream; slices are now one BitTorrent block, 16 KiB, whatever the rate (#ttv-178).
