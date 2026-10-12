@@ -1,3 +1,10 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.97.10, which carries:
+  - **Fix**: Lowering the download limit no longer fails a peer's data. WebTorrent's limiter cut a peer's data into slices of a tenth of the rate at the time, and a slice still waiting when the limit fell asked the smaller bucket for more than it holds ("exceeds bucket size"), which ends that peer's stream; slices are now one BitTorrent block, 16 KiB, whatever the rate (#ttv-178).
+  - **Fix**: After a seek, the piece the viewer waits for is served sooner. A piece that takes nothing from the file closed after it — a re-encoded picture, or sound served on its own — is published as soon as the completeness check proves it whole, not when the next file closes (5.6 s on the field's AVI); and the input copied ahead of a piece the viewer reaches soon is held to the time left before they reach it, less the time the run takes to serve it, never below what makes that piece (222.4 MB copied for 7.7 s before a piece needed in about 8 s; the picture stood 13.2 s) (#ttv-178).
+  - **Chore**: The torrent thread counts the bytes it hands to readers — encoder inputs, container reads, `/stream` — and each `torrent:` line says them beside the bytes downloaded and sent to peers, across every torrent, so that the thread's processor can be set against each kind of work (#ttv-178).
+
 ## 0.88.9
 
 - **Fix**: Install proxy 2.97.9, which carries:
