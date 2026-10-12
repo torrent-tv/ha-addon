@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.8
 
 - **Fix**: Install proxy 2.97.8, which carries:
   - **Fix**: The download limit by processor share counts the proxy's processor as a share of the machine, as the encoder cost and the price of a byte already were; 2.97.7 counted it in cores, so on the four-core addon host the limit was about four times looser than the model (#ttv-178).
