@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.12
 
 - **Fix**: Install proxy 2.97.12, which carries:
   - **Fix**: After a seek back to bytes already downloaded, the encoder starts while its input is still being copied. It used to wait for the whole stretch: on the field's AVI 126.5 MB took 16.3 s, then FFmpeg's own open 10.1 s, and the picture stood 33 s. Now the header and index are copied first and the run starts; the film itself is copied a torrent piece at a time while FFmpeg opens, and a read inside it waits for it. The run is as long as before, so no extra start is paid. The open a stretch is sized from leaves out that wait, so the stretch does not grow by its own copy time (#ttv-178).
