@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.25
 
 - **Fix**: Install proxy 2.97.25, which carries:
   - **Perf**: The swarm is asked for a run's whole input at once. While anything urgent is missing it is told only the most urgent group, and at a cold start that was one segment's input, so a peer holding none of its pieces had nothing to send and the next run was admitted only as far as its input had arrived. The segments the next run would copy — as much as its copy rate, its open and memory allow — now take the first segment's place in the download map, one group, since WebTorrent keeps no order between several (#ttv-178).
