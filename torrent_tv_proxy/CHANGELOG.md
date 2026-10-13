@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.22
 
 - **Fix**: Install proxy 2.97.22, which carries:
   - **Fix**: A large AVI plays to its end. Its length was taken from the main header, whose frame count covers only the first part of an OpenDML file, so the field's two-hour AVI was listed as 2:15:36 of its 2:29:58 and its last 14 minutes could be neither played nor reached; the length now follows FFmpeg's rule, the longest stream of variable-size samples by its own header (#ttv-178).
