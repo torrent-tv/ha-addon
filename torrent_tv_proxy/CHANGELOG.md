@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.26
 
 - **Fix**: Install proxy 2.97.26, which carries:
   - **Fix**: A cold film's start no longer waits for the download map's pass to work its zones out again before every lower zone (broken in 2.97.25). The zones a pass publishes as it goes were built — with the next run's input raised — before each of its 4000 steps whether or not they were published, so the pass was quadratic: the start forecast answered "source-input-ranges-unavailable" for 71 s on a cold AVI against about 12 s before, and the build took 29 s of the main thread in ten minutes. They are now built only when published (#ttv-178).
