@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.30
 
 - **Fix**: Install proxy 2.97.30, which carries:
   - **Fix**: The bytes each segment reads are kept for the start forecast in a table of their own instead of being read off the zones the torrent is told. The forecast lost a segment's bytes whenever its zone left the map in the meantime, and could only ever see what the torrent was told in the form it was told it (#ttv-178).
