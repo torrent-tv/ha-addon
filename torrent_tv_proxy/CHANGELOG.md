@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.28
 
 - **Fix**: Install proxy 2.97.28, which carries:
   - **Perf**: A metadata read no longer packs every playback zone of the film again before it adds its own few ranges to the download map. The packed playback and native zones are kept until they change, and a statement is added to them: on Home Assistant that packing took 27 s of the main thread in fifteen minutes of a two-hour AVI, on the thread that also sends the viewer its segments (#ttv-178).
