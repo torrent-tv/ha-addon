@@ -1,3 +1,11 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.97.22, which carries:
+  - **Fix**: A large AVI plays to its end. Its length was taken from the main header, whose frame count covers only the first part of an OpenDML file, so the field's two-hour AVI was listed as 2:15:36 of its 2:29:58 and its last 14 minutes could be neither played nor reached; the length now follows FFmpeg's rule, the longest stream of variable-size samples by its own header (#ttv-178).
+  - **Fix**: An MP4 or Matroska file whose timeline does not begin at zero no longer lists seconds past its last picture. Its length was counted from zero while every cut is published from the file's start, so a file starting at 5 s ended its playlist with 5 s that hold no picture (#ttv-178).
+  - **Fix**: A Matroska file that states no `Duration`, as one written while streaming does, opens; its length is the end of its last frame. It was refused with `media-duration-unavailable` once its packets had been read (#ttv-178).
+  - **Fix**: An MPEG program stream (`.mpg`, `.vob`) of more than one group of pictures opens. A group whose first picture carried no timestamp was placed on the previous group's base, and the index refused to go back: none of four such files FFmpeg wrote opened (#ttv-178).
+
 ## 0.88.21
 
 - **Fix**: Install proxy 2.97.21, which carries:
