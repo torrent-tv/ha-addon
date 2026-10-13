@@ -1,4 +1,4 @@
-## Unreleased
+## 0.88.31
 
 - **Fix**: Install proxy 2.97.31, which carries:
   - **Perf**: Packing the download map finds a repeat of the same bytes by the two numbers of the range instead of a string made of them, keeps the ranges in numeric lists, and takes a zone that names several ranges with one demand for all of them. The same windows are sent; packing a two-hour AVI's map took 25 s of the main thread in fifteen minutes on Home Assistant, 20 s of it making those strings (#ttv-178).
