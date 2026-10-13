@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.97.23, which carries:
+  - **Chore**: Each published piece says where its time went: when the encoder finished writing it (the file's own time), when the encoder named it, and when it was published — on its own, when the file after it closed, or at the run's end. A piece that came 5.7 s after the one before stopped a viewer inside a running run, and nothing told the encoder's time from the proxy's (#ttv-178).
+
 ## 0.88.22
 
 - **Fix**: Install proxy 2.97.22, which carries:
