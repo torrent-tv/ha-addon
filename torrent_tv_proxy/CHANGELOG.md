@@ -1,4 +1,4 @@
-## Unreleased
+## 0.90.15
 
 - **Fix**: Install proxy 2.98.15, which carries:
   - **Fix**: An AVI picture's input no longer waits behind the soundtrack's packet table of the whole film. A statement a container answers from what it has already read — the track table, the media facts, and an AVI's source navigation and source ranges once its index is read — is answered beside the file's read queue instead of after every read asked before it; the index is read once for any number of asks at once. On Home Assistant the picture's first input of a cold AVI waited about 4 s behind that table, which it does not use (r38, #ttv-178).
