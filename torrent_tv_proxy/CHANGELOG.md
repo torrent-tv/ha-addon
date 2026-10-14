@@ -1,4 +1,4 @@
-## Unreleased
+## 0.89.0
 
 - **New**: Install proxy 2.98.0, which carries:
   - **Fix**: Preparing a quality step the master lists but the offer no longer holds is answered as not available now (409, with the heights offered) instead of "no such variant". The proxy can withdraw its ask while the page is already preparing the step: on Home Assistant 360p was asked for, the offer moved back to 400p two seconds later, and the page's preparation arriving after it was refused as if the step did not exist (#ttv-178).
