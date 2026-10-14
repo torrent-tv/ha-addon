@@ -1,4 +1,4 @@
-## Unreleased
+## 0.90.1
 
 - **Fix**: Install proxy 2.98.1, which carries:
   - **Perf**: The priority map holds what each viewer wants as the rules that say it — where they stand, the urgent allowance, the doubling bands of priority, the pause — and answers for a second, for a stretch and as stretches of one value from them, instead of building arrays one entry per second of film for every viewer and again for the merge. The answers are the same; building, merging and cutting the map of a two-hour film for two viewers took 0.6-0.9 ms and takes 0.03-0.1 ms, and it was built 21-61 times a minute on Home Assistant (#ttv-178).
