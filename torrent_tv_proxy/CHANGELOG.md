@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.98.5, which carries:
+  - **Perf**: The next run's input is raised again once for everything a map or a pass changed, before the windows are told, instead of at every segment that changed: on a cold start that was once for each of 4500 segments worked out, 2.5 s of the main thread on Home Assistant (#ttv-178).
+
 ## 0.90.4
 
 - **Fix**: Install proxy 2.98.4, which carries:
