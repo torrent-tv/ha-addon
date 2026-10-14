@@ -1,4 +1,4 @@
-## Unreleased
+## 0.90.4
 
 - **Fix**: Install proxy 2.98.4, which carries:
   - **Perf**: What the torrent is told of a played file is kept from map to map and brought up to date by what a new map changes, instead of being worked out whole on every map: each segment keeps its demand and ranges, each range the segments naming it, each band its ranges in byte order. A viewer playing on moves only the deadlines' time base, and such a map reworks no segment; otherwise only the segments where the map says something new, those made or lost, and the next run's input are worked out again, and only the bands they touch are packed again. The windows are the same, on every map of 8 000 random ones; over a two-hour film with two outputs a map took 6.6-7.0 ms and takes 0.53-0.83 ms on this machine, and on Home Assistant one was worked out whole every second (#ttv-178).
