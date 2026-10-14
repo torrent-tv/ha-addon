@@ -1,3 +1,7 @@
+## Unreleased
+
+- **New**: The `pin_preset` option makes every re-encoded picture at one libx264 preset (`fast`, `faster`, `veryfast`, `superfast`, `ultrafast`), for test runs compared at one quality. Empty, the default, leaves the choice to the machine (#ttv-178).
+
 ## 0.89.0
 
 - **New**: Install proxy 2.98.0, which carries:
