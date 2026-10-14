@@ -1,4 +1,4 @@
-## Unreleased
+## 0.90.6
 
 - **Fix**: Install proxy 2.98.6, which carries:
   - **Perf**: An encoder input waiting for its bytes is tried again only when some of them arrive: the torrent thread names the bytes of each piece it verifies. It was tried at every piece verified anywhere in the file, and a seek's input was prepared 28 times in 8.5 s on Home Assistant, each try asking the torrent thread which ranges it holds (171 ms on average) (#ttv-178).
