@@ -1,4 +1,4 @@
-## Unreleased
+## 0.90.0
 
 - **New**: The `pin_preset` option makes every re-encoded picture at one libx264 preset (`fast`, `faster`, `veryfast`, `superfast`, `ultrafast`), for test runs compared at one quality. Empty, the default, leaves the choice to the machine (#ttv-178).
 
