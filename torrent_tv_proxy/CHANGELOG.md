@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.98.17, which carries:
+  - **Fix**: A run's open is measured only at a measured processing speed — the run's own between two closed pieces, else the output's newest such reading — and not recorded where none exists or where the piece's encoding at that speed exceeds the time to it; the open estimated before stands. Runs of one piece on Home Assistant were priced at a predicted 0.08x, recorded opens of 0.00 s, and the next inputs were sized from them to one piece each, so every piece cost 6.0-7.5 s for 4 s of film and the picture stood 22 times (r41, #ttv-178).
+
 ## 0.90.16
 
 - **Fix**: Install proxy 2.98.16, which carries:
