@@ -1,3 +1,9 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.98.8, which carries:
+  - **Perf**: The start forecast keeps each track's time geometry between polls while its pieces, timescale and clock offset are the same: the timescale of its pieces and their placement on the page's clock. Gathering every remaining piece's edges and placing each anew on every poll of a waiting viewer was about 3 s of Home Assistant's main thread in 15 minutes; over a two-hour film a poll takes 5.6 ms instead of 8.8 ms on this machine, with the same answer on 450 random polls (#ttv-178).
+  - **Perf**: The start forecast is given the same list of a segment's torrent inputs while they stand, instead of a new list compared range by range for every segment of the film on every poll (#ttv-178).
+
 ## 0.90.7
 
 - **Fix**: Install proxy 2.98.7, which carries:
