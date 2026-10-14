@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.98.7, which carries:
+  - **Fix**: Bytes of the file arriving while a waiting encoder input is being tried start another try only when the input waits for them: on Home Assistant a held-range check takes about 344 ms, and any piece verified anywhere in the file during it repeated the try (#ttv-178).
+
 ## 0.90.6
 
 - **Fix**: Install proxy 2.98.6, which carries:
