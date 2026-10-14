@@ -101,4 +101,11 @@ if [[ "${PROFILE_START}" =~ ^[0-9]+$ ]] && (( PROFILE_START > 0 )); then
   ARGS+=(--profile-start "${PROFILE_START}")
 fi
 
+# One software preset for test runs compared at one quality. Empty is off.
+PIN_PRESET="$(bashio::config 'pin_preset' '')"
+if [[ -n "${PIN_PRESET}" ]]; then
+  bashio::log.info "Every re-encoded picture at preset ${PIN_PRESET}"
+  ARGS+=(--pin-preset "${PIN_PRESET}")
+fi
+
 exec torrent-tv-proxy "${ARGS[@]}"
