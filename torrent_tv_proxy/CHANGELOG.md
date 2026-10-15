@@ -1,4 +1,4 @@
-## Unreleased
+## 0.91.16
 
 - **Fix**: Install proxy 2.99.16, which carries:
   - **Fix**: The start forecast's download service of a source is never below what the swarm carried. Measured only where our selection held no connection back, it read 0 B/s from a stretch with nothing to ask while the torrent downloaded 5-18 MB/s, and after a seek to 1000 s the viewer was held on "service not advancing" (r54, #ttv-178).
