@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.99.2, which carries:
+  - **Fix**: A viewer whose buffer holds the rest of the film is no longer read as running dry: their buffer drains because the film ends, and no output can add to it. On Home Assistant the last two minutes of an AVI were taken for a machine-bound viewer, a faster speed setting was prepared 53 times and given up each time with nothing left of the film to give, and the player was asked for 240p eight times (r43, #ttv-178).
+
 ## 0.91.1
 
 - **Fix**: Install proxy 2.99.1, which carries:
