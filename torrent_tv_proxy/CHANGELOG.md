@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.99.10, which carries:
+  - **Chore**: Every start-forecast answer says where its time went: waiting for the torrent thread's source stats and its arrival forecast, the stream rate, the start forecast, and in all. On Home Assistant a held viewer's answer took 11.2 s while its forecast took 0.1-0.4 s and it crossed the connection in 21 ms (r50, #ttv-178).
+
 ## 0.91.9
 
 - **Fix**: Install proxy 2.99.9, which carries:
