@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.99.7, which carries:
+  - **Fix**: A Matroska film starts again. Proxy 2.99.6 read a Matroska soundtrack from its own packets; on Home Assistant their table was refused memory, the soundtrack's first run was given one piece and never closed it, and the film never started (r47, #ttv-178). The soundtrack is read from the original file again.
+
 ## 0.91.6
 
 - **Fix**: Install proxy 2.99.6, which carries:
