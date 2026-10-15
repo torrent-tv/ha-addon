@@ -1,4 +1,4 @@
-## Unreleased
+## 0.91.0
 
 - **New**: Install proxy 2.99.0, which carries:
   - **New**: A viewer whose picture this machine makes slower than realtime is moved, without their player being told, to a faster speed setting of the same size and limit before a smaller picture is asked for, and back up one setting when they have room to spare. Each setting is priced by the whole model of its encoding here — its startup measurement at that size, this file's measured decoding, the other work running, the free share of the machine, and no faster than it was seen running alone here — over a run, its open included: `film / (open + film / processing)`. Only for segments that carry their own parameter sets (MPEG-TS): an fMP4 segment is read against one init, which another setting does not match (#ttv-178).
