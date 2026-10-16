@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.100.2, which carries:
+  - **Fix**: A soundtrack input's line says how long its packet walk waited for the same track's earlier walks and what it read of the file, and a walk from the picture's copy says whether memory or the copy stopped it. Walked from the copy, a soundtrack piece still took 0.9-12.6 s and no line said where (r62, #ttv-178).
+
 ## 0.92.1
 
 - **Fix**: Install proxy 2.100.1, which carries:
