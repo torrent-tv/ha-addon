@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Removed**: Option `input_stretch_bytes` (0.94.0). The comparison of input sizes it was for is finished; a value still saved for it is ignored by Home Assistant with a warning (#ttv-182).
+
 ## 0.94.1
 
 - **Fix**: Install proxy 2.101.1, which carries:
