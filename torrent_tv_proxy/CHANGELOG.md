@@ -1,3 +1,8 @@
+## Unreleased
+
+- **New**: Install proxy 2.101.0, which carries:
+  - **New**: Option `--input-stretch-bytes <bytes>` sizes every original-input stretch to that many bytes instead of copy rate times open, for runs that compare input sizes. The memory allowance, the bytes downloaded and the plan's bound still end a stretch; the quality choice is priced as before. The selection line says when the size was named (`targetFixed`) (#ttv-182).
+
 ## 0.92.14
 
 - **Fix**: Install proxy 2.100.15, which carries:
