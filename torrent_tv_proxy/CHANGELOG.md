@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.1, which carries:
+  - **Fix**: Report the processor's upper bound (the CPUs this process may use and any cgroup CPU quota on its path, fractional quotas included), the measured free processor in cores (unknown where no idle reading exists or our own use is unread under a limit), the cgroup's own use and throttling, each run's CPU seconds per second of film over every machine reading with the runs beside it, and each run's per-second processor and speed with their scatter once a minute. Readings only: no admission, pause, start or quality decision changes (#ttv-180).
+
 ## 0.94.0
 
 - **New**: Option `input_stretch_bytes` (bytes, 0 by default) passes `--input-stretch-bytes` to the proxy: every original-input stretch is sized to that many bytes instead of the machine's rule, for test runs that compare input sizes (#ttv-182).
