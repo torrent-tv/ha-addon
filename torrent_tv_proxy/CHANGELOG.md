@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.100.6, which carries:
+  - **Perf**: A file's fingerprint names both missing edges at once, so a cold start asks the swarm for the file's last piece with its first. Asked only after the first had arrived, the last piece — which also holds a Matroska film's Cues — came 2.4 s later, and the start waited for it (r66, #ttv-178).
+
 ## 0.92.5
 
 - **Fix**: Install proxy 2.100.5, which carries:
