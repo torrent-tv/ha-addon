@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.100.5, which carries:
+  - **Fix**: A Matroska soundtrack's packet walk for a piece begins at the Cluster that holds the first frame it needs, not one Cluster earlier; only a picture needs the Cluster before its cue. Begun earlier, a soundtrack walk started before the bytes the picture's input had copied for the same piece, and 101 of 166 walks from those copies stopped at once (r65, #ttv-178).
+
 ## 0.92.4
 
 - **Fix**: Install proxy 2.100.4, which carries:
