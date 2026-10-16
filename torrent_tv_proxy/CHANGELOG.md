@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.100.15, which carries:
+  - **Fix**: Report original-input selection targets, boundary probes and reservation-time memory so short encoder runs can be attributed to the limits actually observed, without extra source reads or changes to admission (#ttv-181).
+
 ## 0.92.13
 
 - **Fix**: Install proxy 2.100.14, which carries:
