@@ -1,3 +1,7 @@
+## Unreleased
+
+- **New**: Option `input_stretch_bytes` (bytes, 0 by default) passes `--input-stretch-bytes` to the proxy: every original-input stretch is sized to that many bytes instead of the machine's rule, for test runs that compare input sizes (#ttv-182).
+
 ## 0.93.0
 
 - **New**: Install proxy 2.101.0, which carries:

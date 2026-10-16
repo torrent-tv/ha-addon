@@ -44,6 +44,9 @@ options:
   # veryfast, superfast, ultrafast), for test runs compared at one quality.
   # Empty leaves the choice to the machine, which is what a viewer should get.
   pin_preset: ""
+  # One size in bytes for every original-input stretch, for test runs that
+  # compare input sizes. 0 leaves the size to the machine's own rule.
+  input_stretch_bytes: 0
 schema:
   server_url: str
   token: str
@@ -52,3 +55,4 @@ schema:
   delivery_sink: bool
   profile_start: int(0,)
   pin_preset: str?
+  input_stretch_bytes: int(0,)
