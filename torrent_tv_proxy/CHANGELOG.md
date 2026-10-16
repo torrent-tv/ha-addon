@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.100.10, which carries:
+  - **Fix**: A viewer held before their picture moves is no longer moved to a faster speed setting; only a viewer whose buffer is draining is, as before 2.100.9. Held after a seek on Home Assistant, a viewer was moved from a piece past the one they were waiting for, the output they left stopped making that piece, and the picture stood for good; at the cold start the move was refused anyway, since a second encoder beside the first would have slowed every output to 0.53x (r71, #ttv-178).
+
 ## 0.92.9
 
 - **Fix**: Install proxy 2.100.9, which carries:
