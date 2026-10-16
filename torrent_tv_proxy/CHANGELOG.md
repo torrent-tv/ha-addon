@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.99.19, which carries:
+  - **Fix**: A Matroska file's picture ranges, arithmetic over its Cues once read, are answered beside a soundtrack's packet walk of the same file instead of behind it in the file's one queue of reads. Behind it, after a seek to 1000 s the picture's next input was ready only after the sound's, one piece every 7-8 s where the two had been prepared side by side every 2 s, and the picture stopped five times (r57 against r50, #ttv-178).
+
 ## 0.91.18
 
 - **Fix**: Install proxy 2.99.18, which carries:
