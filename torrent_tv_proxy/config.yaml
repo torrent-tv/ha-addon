@@ -36,8 +36,9 @@ options:
   segment_format: "fmp4"
   poison_heap: false
   delivery_sink: false
-  # Seconds of CPU profile of the proxy's main thread, taken from the first
-  # film opened and written to /data as cpu-start-<time>.cpuprofile. 0 is off.
+  # Seconds of CPU profile of the proxy's main thread and torrent thread, taken from the first
+  # film opened and written to /data as cpu-start-<time>.cpuprofile and
+  # cpu-torrent-<time>.cpuprofile. 0 is off.
   profile_start: 0
   # One libx264 preset every re-encoded picture is made at (fast, faster,
   # veryfast, superfast, ultrafast), for test runs compared at one quality.
