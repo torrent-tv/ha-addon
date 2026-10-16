@@ -93,11 +93,12 @@ if bashio::config.true 'delivery_sink'; then
   ARGS+=(--delivery-sink)
 fi
 
-# A CPU profile of the main thread from the first film opened, for the number
+# CPU profiles of the main thread and the torrent thread from the first film
+# opened, for the number
 # of seconds given, written to /data. Off unless a positive number is set.
 PROFILE_START="$(bashio::config 'profile_start' 0)"
 if [[ "${PROFILE_START}" =~ ^[0-9]+$ ]] && (( PROFILE_START > 0 )); then
-  bashio::log.info "Main-thread CPU profile for ${PROFILE_START}s from the first film opened"
+  bashio::log.info "CPU profiles of the main and torrent threads for ${PROFILE_START}s from the first film opened"
   ARGS+=(--profile-start "${PROFILE_START}")
 fi
 
