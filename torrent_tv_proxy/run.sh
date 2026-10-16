@@ -109,4 +109,12 @@ if [[ -n "${PIN_PRESET}" ]]; then
   ARGS+=(--pin-preset "${PIN_PRESET}")
 fi
 
+# One size for every original-input stretch, in bytes, for test runs that
+# compare input sizes (torrent-tv/meta#182). 0 leaves the machine's rule.
+INPUT_STRETCH_BYTES="$(bashio::config 'input_stretch_bytes' 0)"
+if [[ "${INPUT_STRETCH_BYTES}" =~ ^[0-9]+$ ]] && (( INPUT_STRETCH_BYTES > 0 )); then
+  bashio::log.info "Every original-input stretch sized to ${INPUT_STRETCH_BYTES} bytes"
+  ARGS+=(--input-stretch-bytes "${INPUT_STRETCH_BYTES}")
+fi
+
 exec torrent-tv-proxy "${ARGS[@]}"
