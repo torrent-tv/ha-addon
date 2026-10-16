@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.100.13, which carries:
+  - **Fix**: Let the control connection acquire its own signalling session, so it can reconnect after a server release closes the earlier signalling socket while media keeps playing. Advertise capability version 2 for this contract.
+
 ## 0.92.11
 
 - **Fix**: Install proxy 2.100.12, which carries:
