@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.16, which carries:
+  - **Fix**: Do not cancel a viewer's picture preset move when a separate soundtrack closes a segment; reconsider the move against its prepared picture and the picture the viewer is leaving (#ttv-195).
+
 ## 0.94.15
 
 - **Fix**: Install proxy 2.101.15, which carries:
