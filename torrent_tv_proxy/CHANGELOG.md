@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.13, which carries:
+  - **Fix**: Prevent late reports, media requests and completed source, audio or quality preparations from restoring a viewer after their connection closes, so unwatched files stop downloading and encoding.
+
 ## 0.94.12
 
 - **Fix**: Install proxy 2.101.12, which carries:
