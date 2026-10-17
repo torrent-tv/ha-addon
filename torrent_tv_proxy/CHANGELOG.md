@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.14
 
 - **Fix**: Install proxy 2.101.14, which carries:
   - **Fix**: Withdraw a disposed output's last encoding priority map, including while its stopped processes finish exiting, so later plans and state reports do not keep its old demand.
