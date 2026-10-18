@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.18, which carries:
+  - **Fix**: Judge separately served copied AAC segments against the published interval without applying the run's muxer-clock shift (#ttv-206).
+
 ## 0.94.17
 
 - **Fix**: Install proxy 2.101.17, which carries:
