@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.21, which carries:
+  - **Fix**: Serve completed files through the storage owner's read lease so active HTTP responses prevent eviction until the response ends or is cancelled (#ttv-209).
+
 ## 0.94.20
 
 - **Fix**: Install proxy 2.101.20, which carries:
