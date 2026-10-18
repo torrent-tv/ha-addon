@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.20
 
 - **Fix**: Install proxy 2.101.20, which carries:
   - **Fix**: Keep a viewer on the current picture preset until the proposed quality step proves it can encode at the source's required speed (#ttv-200).
