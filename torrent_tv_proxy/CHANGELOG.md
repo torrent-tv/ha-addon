@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.23, which carries:
+  - **Fix**: Evict eligible unused output segments when the measured disk allowance is zero, while preserving active reads and current viewer segments (#ttv-211).
+
 ## 0.94.22
 
 - **Fix**: Install proxy 2.101.22, which carries:
