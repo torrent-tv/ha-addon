@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.17
 
 - **Fix**: Install proxy 2.101.17, which carries:
   - **Fix**: Judge embedded copied sound against published segment boundaries after its packets are selected, without applying the run's muxer-clock shift twice (#ttv-206).
