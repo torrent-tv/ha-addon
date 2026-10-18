@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.19, which carries:
+  - **Fix**: Keep an urgent machine-bound quality request active until the encoder and buffer both show measured recovery, so a brief buffer increase does not cancel the switch before the player receives it (#ttv-200).
+
 ## 0.94.18
 
 - **Fix**: Install proxy 2.101.18, which carries:
