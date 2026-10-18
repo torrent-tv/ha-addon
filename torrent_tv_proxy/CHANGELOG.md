@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.24, which carries:
+  - **Fix**: Expire completed source files after the shared idle period, preserve active reads, and remove unaccounted partial files left by interrupted writes.
+
 ## 0.94.23
 
 - **Fix**: Install proxy 2.101.23, which carries:
