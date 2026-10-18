@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.22
 
 - **Fix**: Install proxy 2.101.22, which carries:
   - **Fix**: Reserve completed-file storage before concurrent writes and evict eligible unused files before admitting a needed file (#ttv-210).
