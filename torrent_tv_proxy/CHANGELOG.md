@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.31
 
 - **Fix**: Install proxy 2.101.31, which carries:
   - **Fix**: Estimate the early first-frame wait from per-stage medians for the current cache and copy/encode path (#ttv-185).
