@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.40, which carries:
+  - **Chore**: Readiness reports identify the source, track, segment and near-window or tail position of missing input ranges, including changes to the missing segment while its reason stays the same (#ttv-185).
+
 ## 0.94.39
 
 - **Fix**: Install proxy 2.101.39, which carries:
