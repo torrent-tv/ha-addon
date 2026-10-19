@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.35
 
 - **Fix**: Install proxy 2.101.35, which carries:
   - **Fix**: Return keyframe-based playback sessions before their first playlist is written so the viewer can receive live readiness estimates during preparation (#ttv-185).
