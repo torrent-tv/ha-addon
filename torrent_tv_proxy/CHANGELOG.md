@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.32
 
 - **Fix**: Install proxy 2.101.32, which carries:
   - **Fix**: Keep the active first-segment estimate during source polling so a historical prior cannot replace it (#ttv-185).
