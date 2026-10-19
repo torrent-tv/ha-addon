@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.25, which carries:
+  - **Fix**: Learn host-specific first-frame waits per viewer, source, file and generation after required audio is buffered; return a saved estimate from source statistics before metadata is ready when the selected file is known, and include it in the file list when available (#ttv-185).
+
 ## 0.94.24
 
 - **Fix**: Install proxy 2.101.24, which carries:
