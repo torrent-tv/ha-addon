@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.26
 
 - **Fix**: Install proxy 2.101.26, which carries:
   - **Fix**: Include the separately measured client link and its sample age in saved early first-frame wait observations (#ttv-185).
