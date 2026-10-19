@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.28, which carries:
+  - **Fix**: Include source file availability in early wait observations so a completed file and a stalled incomplete source are compared separately (#ttv-185).
+
 ## 0.94.27
 
 - **Fix**: Install proxy 2.101.27, which carries:
