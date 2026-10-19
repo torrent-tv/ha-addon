@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.41, which carries:
+  - **Fix**: Use packet time bounds to avoid rescanning every reordered MP4 packet for each segment input (#ttv-185).
+
 ## 0.94.40
 
 - **Fix**: Install proxy 2.101.40, which carries:
