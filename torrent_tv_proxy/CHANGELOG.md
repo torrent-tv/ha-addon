@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.36, which carries:
+  - **Chore**: Record proxy session-planning and source-stat wait durations for forecast diagnosis (#ttv-185).
+
 ## 0.94.35
 
 - **Fix**: Install proxy 2.101.35, which carries:
