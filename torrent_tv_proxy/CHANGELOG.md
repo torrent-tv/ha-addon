@@ -1,3 +1,9 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.37, which carries:
+  - **Chore**: Correlate proxy route completion and local HTTP response timing for forecast diagnosis (#ttv-185).
+  - **Fix**: Retain only first-frame observations with complete stage measurements for the fallback forecast (#ttv-185).
+
 ## 0.94.36
 
 - **Fix**: Install proxy 2.101.36, which carries:
