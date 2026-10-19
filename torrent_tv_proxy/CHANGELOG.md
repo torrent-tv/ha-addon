@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.33
 
 - **Fix**: Install proxy 2.101.33, which carries:
   - **Fix**: Do not publish the historical wait prior as a segment forecast before source ranges are mapped (#ttv-185).
