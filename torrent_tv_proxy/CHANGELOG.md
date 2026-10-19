@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.38, which carries:
+  - **Chore**: Trace forwarded session request queue and response lifecycle timings for forecast diagnosis (#ttv-185).
+
 ## 0.94.37
 
 - **Fix**: Install proxy 2.101.37, which carries:
