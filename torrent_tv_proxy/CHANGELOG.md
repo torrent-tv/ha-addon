@@ -1,4 +1,4 @@
-## Unreleased
+## 0.94.37
 
 - **Fix**: Install proxy 2.101.37, which carries:
   - **Chore**: Correlate proxy route completion and local HTTP response timing for forecast diagnosis (#ttv-185).
