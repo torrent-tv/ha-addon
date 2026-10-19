@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.29, which carries:
+  - **Fix**: Merge early link, source and file readings, subtract elapsed action time, and revise the same wait with measured per-track copy/encode rates (#ttv-185).
+
 ## 0.94.28
 
 - **Fix**: Install proxy 2.101.28, which carries:
