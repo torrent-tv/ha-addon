@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.102.1, which carries:
+  - **Fix**: Record opt-in, correlated startup request, source-read queue and first-piece publication events for validating actual playback waits (#ttv-185).
+
 ## 0.95.0
 
 - **New**: Install proxy 2.102.0, which carries:
