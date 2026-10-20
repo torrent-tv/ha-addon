@@ -1,4 +1,4 @@
-## Unreleased
+## 0.97.2
 
 - **Fix**: Install proxy 2.104.2, which carries:
   - **Fix**: Record explicit duration and error outcomes for W5 piece-verification spans (#ttv-185).
