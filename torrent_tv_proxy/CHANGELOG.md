@@ -1,3 +1,10 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.104.2, which carries:
+  - **Fix**: Record explicit duration and error outcomes for W5 piece-verification spans (#ttv-185).
+  - **Fix**: Include source lookup and source-not-ready outcomes in W7 priority-map durations (#ttv-185).
+  - **Fix**: Attach W9 storage timing after the torrent store becomes ready (#ttv-185).
+
 ## 0.97.1
 
 - **Fix**: Install proxy 2.104.1, which carries:
