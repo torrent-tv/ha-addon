@@ -1,4 +1,4 @@
-## Unreleased
+## 0.98.0
 
 - **New**: Install proxy 2.105.0, which carries:
   - **New**: Return separate sidecar subtitle team and track-title metadata while preserving the existing releaser value (#ttv-118).
