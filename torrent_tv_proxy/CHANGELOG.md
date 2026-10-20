@@ -1,3 +1,8 @@
+## Unreleased
+
+- **New**: Install proxy 2.102.0, which carries:
+  - **New**: Read Matroska and supported MP4 chapter declarations from available bytes, preserve source-time sections, and publish versioned snapshots without delaying playback (torrent-tv/meta#110).
+
 ## 0.94.43
 
 - **Fix**: Install proxy 2.101.43, which carries:
