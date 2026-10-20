@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.42, which carries:
+  - **Fix**: Include CPU model, thread count and bound CPU capacity in hardware encode observation keys so moved state does not reuse measurements from a different processor allocation (#ttv-185).
+
 ## 0.94.41
 
 - **Fix**: Install proxy 2.101.41, which carries:
