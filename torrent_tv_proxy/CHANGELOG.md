@@ -1,4 +1,4 @@
-## Unreleased
+## 0.95.3
 
 - **Fix**: Install proxy 2.102.3, which carries:
   - **Chore**: Add opt-in process events for container reads, playback-map resolution, encoder input and output, init delivery, and torrent-worker stages (#ttv-185).
