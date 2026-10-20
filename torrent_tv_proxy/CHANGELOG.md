@@ -1,4 +1,4 @@
-## Unreleased
+## 0.95.4
 
 - **Fix**: Install proxy 2.102.4, which carries:
   - **Chore**: Limit opt-in torrent-piece observations to one span per piece (#ttv-185).
