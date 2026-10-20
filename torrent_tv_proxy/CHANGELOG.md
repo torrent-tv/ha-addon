@@ -1,3 +1,8 @@
+## Unreleased
+
+- **New**: Install proxy 2.103.0, which carries:
+  - **New**: Record each verified torrent piece's storage duration as a separate W9 span inside the existing W8 piece interval (#ttv-185).
+
 ## 0.95.4
 
 - **Fix**: Install proxy 2.102.4, which carries:
