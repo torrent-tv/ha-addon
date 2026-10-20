@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.104.1, which carries:
+  - **Fix**: Record explicit duration fields and error outcomes for W7 priority-map and W10 statistics spans (#ttv-185).
+
 ## 0.97.0
 
 - **New**: Install proxy 2.104.0, which carries:
