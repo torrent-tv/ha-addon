@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.102.2, which carries:
+  - **Chore**: Include the selected historical stages and current first-required estimate in early forecast logs (#ttv-185).
+
 ## 0.95.1
 
 - **Fix**: Install proxy 2.102.1, which carries:
