@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.101.43, which carries:
+  - **Fix**: Restore hardware observation keys without the CPU model, thread count or CPU quota fields added in 2.101.42 (#ttv-185).
+
 ## 0.94.42
 
 - **Fix**: Install proxy 2.101.42, which carries:
