@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.5, which carries:
+  - **Fix**: Find complete AC-3 frames when their sync header crosses an indexed AVI block boundary (#ttv-227).
+
 ## 0.98.4
 
 - **Fix**: Install proxy 2.105.4, which carries:
