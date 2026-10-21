@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.6, which carries:
+  - **Fix**: Trace per-segment source-range resolution, including track, output, segment, method, outcome and monotonic duration (#ttv-185).
+
 ## 0.98.5
 
 - **Fix**: Install proxy 2.105.5, which carries:
