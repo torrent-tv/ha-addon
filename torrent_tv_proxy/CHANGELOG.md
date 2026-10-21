@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.3, which carries:
+  - **Fix**: Assemble complete AC-3 frames across indexed AVI blocks before building audio segments (#ttv-227).
+
 ## 0.98.2
 
 - **Fix**: Install proxy 2.105.2, which carries:
