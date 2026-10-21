@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.2, which carries:
+  - **Fix**: Start a current wait estimate when a seek changes the viewer generation, so the next playback-readiness response can report the seek's first required work (#ttv-185).
+
 ## 0.98.1
 
 - **Fix**: Install proxy 2.105.1, which carries:
