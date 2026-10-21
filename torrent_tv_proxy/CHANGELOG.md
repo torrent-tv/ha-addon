@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.1, which carries:
+  - **Fix**: Keep Matroska chapter discovery out of the playback input read queue and reuse bytes across split EBML header reads (#ttv-221).
+
 ## 0.98.0
 
 - **New**: Install proxy 2.105.0, which carries:
