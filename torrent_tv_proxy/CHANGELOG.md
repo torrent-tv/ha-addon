@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.4, which carries:
+  - **Fix**: Log same-run per-track source, run admission, production, delivery and append event times for the first-required-segment forecast (#ttv-185).
+
 ## 0.98.3
 
 - **Fix**: Install proxy 2.105.3, which carries:
