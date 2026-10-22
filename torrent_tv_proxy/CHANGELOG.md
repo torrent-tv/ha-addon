@@ -1,4 +1,4 @@
-## Unreleased
+## 0.98.7
 
 - **Fix**: Install proxy 2.105.7, which carries:
   - **Fix**: Keep and publish embedded subtitle cues read while the viewer's position moved on, instead of discarding them as obsolete (#ttv-7).
