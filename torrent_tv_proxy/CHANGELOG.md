@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.0
 
 - **New**: Install proxy 2.107.0, which carries:
   - **New**: Record a direct timing span when a separate soundtrack output is first opened (#ttv-185).
