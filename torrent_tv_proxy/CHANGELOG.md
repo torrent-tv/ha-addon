@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Removed**: The 32-bit architectures `i386`, `armhf` and `armv7`, which Home Assistant no longer supports since 2025.12; the add-on is offered only for `aarch64` and `amd64` (#ttv-237).
+
 ## 0.98.8
 
 - **Fix**: Install proxy 2.105.8, which carries:
