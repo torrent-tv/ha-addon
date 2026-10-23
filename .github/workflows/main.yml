@@ -25,12 +25,13 @@ permissions:
 jobs:
   checks:
     name: Checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     # A newer push to a pull request makes its older checks pointless; every push to
     # main gets a group of its own, so no check of main is ever replaced.
     concurrency:
       group: ${{ github.event_name == 'pull_request' && format('checks-{0}', github.ref) || format('checks-{0}', github.run_id) }}
       cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+    # One step per check, so the run shows which check ran and which one failed.
     steps:
       - uses: actions/checkout@v7
         with:
@@ -38,12 +39,21 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-      - uses: torrent-tv/.github/actions/checks@main
+      - name: Commit messages follow Conventional Commits
+        uses: torrent-tv/.github/actions/check-commits@main
+      - name: Branch name names a task
+        uses: torrent-tv/.github/actions/check-branch@main
+      - name: Shell scripts and Dockerfiles use LF
+        uses: torrent-tv/.github/actions/check-line-endings@main
+      - name: Workflows are valid
+        uses: torrent-tv/.github/actions/check-workflows@main
+      - name: Pending changes have a changelog entry
+        uses: torrent-tv/.github/actions/check-changelog@main
         with:
-          node: "false"
           changelog: torrent_tv_proxy/CHANGELOG.md
           version-file: torrent_tv_proxy/config.yaml
-          extra-check: |
+      - name: The proxy version is published on npm
+        run: |
             version=$(sed -n 's/^ARG PROXY_VERSION=//p' torrent_tv_proxy/Dockerfile)
             for attempt in $(seq 1 20); do
               if [ "$(npm view "@torrent-tv/proxy@$version" version 2>/dev/null)" = "$version" ]; then
@@ -58,7 +68,7 @@ jobs:
 
   lint:
     name: Add-on configuration
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - uses: frenck/action-addon-linter@v2
@@ -68,7 +78,7 @@ jobs:
   build:
     name: Image builds
     needs: checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - name: Build the add-on image for amd64
@@ -78,7 +88,7 @@ jobs:
     name: Release
     needs: [checks, lint, build]
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     environment: production
     # Every release runs, one at a time, in the order the runs reach the queue.
     concurrency:
