@@ -1,4 +1,4 @@
-## Unreleased
+## 0.98.11
 
 - **Fix**: Install proxy 2.105.10, which carries:
   - **Fix**: Record the first admitted-input bytes handed to FFmpeg so F1 spans also close for copied audio and video inputs.
