@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.2, which carries:
+  - **Fix**: Hold a torrent's swarm for five minutes after its last reader goes, so a viewer who reloads or reopens the page finds its connections still open; a torrent held whole still lets its swarm go at once (#ttv-240).
+
 ## 0.100.1
 
 - **Fix**: Install proxy 2.107.1, which carries:
