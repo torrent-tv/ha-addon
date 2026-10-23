@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.3, which carries:
+  - **Fix**: The `transcode … start` log line gives the position the run was asked to begin at, to a tenth of a second, instead of that position rounded to the nearest 10 s. The rounded figure was used only in this line and could name a start past the viewer: a soundtrack asked at 18.853 s was logged `start=20s` (#ttv-104).
+
 ## 0.100.2
 
 - **Fix**: Install proxy 2.107.2, which carries:
