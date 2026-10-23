@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.1, which carries:
+  - **Fix**: Pass the wait observer to soundtrack rendition creation so P6.a opening spans are emitted (#ttv-185).
+
 ## 0.100.0
 
 - **New**: Install proxy 2.107.0, which carries:
