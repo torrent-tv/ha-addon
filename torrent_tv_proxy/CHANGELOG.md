@@ -1,4 +1,4 @@
-## Unreleased
+## 0.98.10
 
 - **Fix**: Install proxy 2.105.9, which carries:
   - **Fix**: Record FFmpeg input-open spans on one monotonic clock instead of subtracting proxy uptime from wall-clock time (#ttv-185).
