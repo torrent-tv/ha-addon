@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.11, which carries:
+  - **Fix**: Keep the addresses a torrent dialled when it leaves its swarm and hand them back, with a DHT lookup, when a reader rejoins it, instead of resuming with no known peer until the next periodic announce (#ttv-238).
+
 ## 0.98.11
 
 - **Fix**: Install proxy 2.105.10, which carries:
