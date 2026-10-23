@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.8, which carries:
+  - **Fix**: Read a chosen embedded subtitle two segments ahead of the viewer, so consecutive reading windows overlap and a cue arrives before it starts (#ttv-7).
+
 ## 0.98.7
 
 - **Fix**: Install proxy 2.105.7, which carries:
