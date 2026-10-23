@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.105.9, which carries:
+  - **Fix**: Record FFmpeg input-open spans on one monotonic clock instead of subtracting proxy uptime from wall-clock time (#ttv-185).
+
 ## 0.98.9
 
 - **Removed**: The 32-bit architectures `i386`, `armhf` and `armv7`, which Home Assistant no longer supports since 2025.12; the add-on is offered only for `aarch64` and `amd64` (#ttv-237).
