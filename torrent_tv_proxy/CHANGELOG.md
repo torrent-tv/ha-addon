@@ -1,4 +1,4 @@
-## Unreleased
+## 0.98.14
 
 - **Fix**: Install proxy 2.105.13, which carries:
   - **Fix**: Stop and remove packet captures when their delivery diagnosis clears, while retaining a shared capture until every active diagnosis has cleared (#ttv-79).
