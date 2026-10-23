@@ -1,4 +1,4 @@
-## Unreleased
+## 0.99.1
 
 - **Fix**: Install proxy 2.106.1, which carries:
   - **Fix**: Keep the selected file's preparation demand until its playback map is applied, preventing the swarm from leaving during opening (#ttv-201).
