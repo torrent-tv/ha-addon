@@ -1,3 +1,8 @@
+## Unreleased
+
+- **New**: Install proxy 2.106.0, which carries:
+  - **New**: Record direct process spans for playback-plan completion, piece publication and each readiness calculation; classify traced HTTP requests by their proxy endpoint (#ttv-185).
+
 ## 0.98.14
 
 - **Fix**: Install proxy 2.105.13, which carries:
