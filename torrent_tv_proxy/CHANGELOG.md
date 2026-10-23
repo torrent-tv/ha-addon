@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.4
 
 - **Fix**: Install proxy 2.107.4, which carries:
   - **Fix**: Include the source file indexes for each required playback operation so the browser can measure urgent byte demand across the video and selected audio inputs (#ttv-11).
