@@ -82,4 +82,6 @@ ha-addon/
 
 ## Supported architectures
 
-`aarch64`, `amd64`, `armhf`, `armv7`, `i386`
+`aarch64`, `amd64`. Home Assistant stopped supporting the 32-bit `i386`, `armhf`
+and `armv7` with 2025.12: Supervisor there receives no updates, add-on updates
+included.
