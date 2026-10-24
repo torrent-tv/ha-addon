@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.8, which carries:
+  - **Fix**: Keep playback readiness measurable for a separate soundtrack when its codec has no calibration and no completed segment can produce an encoder-speed reading. The forecast now measures actual media progress over elapsed time, including source waits, rather than remaining at `encode-rate-unavailable` (#ttv-245).
+
 ## 0.100.7
 
 - **Fix**: Install proxy 2.107.7, which carries:
