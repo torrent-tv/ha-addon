@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.10, which carries:
+  - **Fix**: Fill a short gap before a transcoded audio interval with silence so the first encoded audio sample begins at the published boundary. A WMA Pro stream began 52.7 ms after the boundary, beyond the 21.3 ms one-frame tolerance, so its first segment was rejected and playback stopped at 12 s (#ttv-245).
+
 ## 0.100.9
 
 - **Fix**: Install proxy 2.107.9, which carries:
