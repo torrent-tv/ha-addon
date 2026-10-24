@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.12
 
 - **Fix**: Install proxy 2.107.12, which carries:
   - **Fix**: Treat an encoder calibration that cannot produce its benchmark frames as unmeasured. A partial decode had been stored as an empty calibrated mode list, causing the proxy to reject every WMV output before playback could start (#ttv-245).
