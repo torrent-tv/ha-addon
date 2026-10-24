@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.14, which carries:
+  - **Fix**: Do not run a full source-rest packet index while a viewer is using a transcoded output; its serialized file reads delayed the active segment input.
+
 ## 0.100.13
 
 - **Fix**: Install proxy 2.107.13, which carries:
