@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.15, which carries:
+  - **Chore**: Record when the source ranges for a blocking playback segment become available, with its source, output and segment identity (#ttv-185).
+
 ## 0.100.14
 
 - **Fix**: Install proxy 2.107.14, which carries:
