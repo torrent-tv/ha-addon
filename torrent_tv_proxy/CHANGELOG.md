@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.9
 
 - **Fix**: Install proxy 2.107.9, which carries:
   - **Fix**: Continue measuring a separate soundtrack's playback progress across adjacent encoding runs. A segment boundary no longer clears the rate needed by readiness; a seek to a distant interval still resets it (#ttv-245).
