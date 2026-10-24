@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.17
 
 - **Fix**: Install proxy 2.107.17, which carries:
   - **Chore**: Record whether source ranges for a blocking playback segment are available when its forecast blocker clears (#ttv-185).
