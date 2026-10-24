@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.16
 
 - **Fix**: Install proxy 2.107.16, which carries:
   - **Fix**: Wait for the playback map before starting a full source-rest packet scan. On WMV, the scan could request the whole file before its transcoded output was registered, delaying the first segment.
