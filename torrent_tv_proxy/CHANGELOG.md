@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.25, which carries:
+  - **Fix**: Include an unread fragment ending exactly at a seek target in the readiness estimate. The player can request that fragment before the one starting at the target, so omitting it understated the wait.
+
 ## 0.100.24
 
 - **Fix**: Install proxy 2.107.24, which carries:
