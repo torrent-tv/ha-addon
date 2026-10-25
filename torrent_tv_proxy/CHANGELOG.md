@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.27, which carries:
+  - **Fix**: Exclude unfinished outputs the proxy cannot keep producing before reusing them for a viewer.
+
 ## 0.100.26
 
 - **Fix**: Install proxy 2.107.26, which carries:
