@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.30, which carries:
+  - **Fix**: prioritize exact playback input reads over speculative input extensions in the per-file media read queue.
+
 ## 0.100.29
 
 - **Fix**: Install proxy 2.107.29, which carries:
