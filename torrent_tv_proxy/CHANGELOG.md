@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.20
 
 - **Fix**: Install proxy 2.107.20, which carries:
   - **Fix**: Forecast unresolved source work from measured aggregate file density and replace per-segment tail scans with a duration-level continuity estimate.
