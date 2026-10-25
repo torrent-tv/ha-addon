@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.22, which carries:
+  - **Fix**: Measure encoder speed for one-segment runs from active work even when FFmpeg emits only one positive progress report, and keep source waits out of the playback estimate. Previously, that sole positive report became the baseline and left no interval to measure, so readiness remained blocked on an unavailable audio rate.
+
 ## 0.100.21
 
 - **Fix**: Install proxy 2.107.21, which carries:
