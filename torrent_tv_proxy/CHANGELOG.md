@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.19
 
 - **Fix**: Install proxy 2.107.19, which carries:
   - **Fix**: Stop playback readiness checks at an unmapped source range beyond the visible buffer and reserve.
