@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.31, which carries:
+  - **Fix**: base playback readiness on the near viewer window instead of forecasting the remaining film.
+
 ## 0.100.30
 
 - **Fix**: Install proxy 2.107.30, which carries:
