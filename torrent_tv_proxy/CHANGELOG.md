@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.29, which carries:
+  - **Fix**: Abort an obsolete ASF range read while it waits for bytes, so a seek can start its own read without waiting for the old request.
+
 ## 0.100.28
 
 - **Fix**: Install proxy 2.107.28, which carries:
