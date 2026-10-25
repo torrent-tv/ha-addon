@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.26
 
 - **Fix**: Install proxy 2.107.26, which carries:
   - **Fix**: Keep an unread fragment in the seek readiness forecast when its media timestamps can extend across the player's seek target.
