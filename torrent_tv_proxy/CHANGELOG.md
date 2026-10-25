@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.18, which carries:
+  - **Fix**: Allow playback readiness to finish at the exact mapped near window when later source ranges have not been requested yet.
+
 ## 0.100.17
 
 - **Fix**: Install proxy 2.107.17, which carries:
