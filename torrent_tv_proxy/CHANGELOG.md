@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.23, which carries:
+  - **Fix**: Preserve the viewer's 250 ms seek-start tolerance when forecasting the first arriving media range. A WMV picture range starting 67 ms after a seek target was treated as a permanent timeline gap, even though it is within the media element's initial seek tolerance.
+
 ## 0.100.22
 
 - **Fix**: Install proxy 2.107.22, which carries:
