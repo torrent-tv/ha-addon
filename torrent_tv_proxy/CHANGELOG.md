@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.28, which carries:
+  - **Fix**: Stop obsolete ASF packet-window reads when the viewer changes time, so old interval reads cannot delay the current input.
+
 ## 0.100.27
 
 - **Fix**: Install proxy 2.107.27, which carries:
