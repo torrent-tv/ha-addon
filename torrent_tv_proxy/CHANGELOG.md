@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.32
 
 - **Fix**: Install proxy 2.107.32, which carries:
   - **Fix**: Allow playback to start after the browser has received the completed final output, even when the declared file duration extends beyond its media.
