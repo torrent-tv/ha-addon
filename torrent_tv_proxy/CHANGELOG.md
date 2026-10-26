@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.33
 
 - **Fix**: Install proxy 2.107.33, which carries:
   - **Fix**: Carry the live encode input priority, urgency and due time into source metadata download demand, and withdraw that demand when its input is obsolete.
