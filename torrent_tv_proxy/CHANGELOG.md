@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.34, which carries:
+  - **Fix**: Viewer-link measurements and lifetime service traffic can no longer refuse a video output; when no measured rate fits, prepare the machine-supported output and let playback readiness wait. Remove the lifetime service-to-media ratio, which turned a small or interrupted media sample into hundreds of megabits per second of fictitious output demand.
+
 ## 0.100.33
 
 - **Fix**: Install proxy 2.107.33, which carries:
