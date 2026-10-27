@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.43
 
 - **Fix**: Install proxy 2.107.43, which carries:
   - **Fix**: Calculate measured processing throughput from total media produced and active processing time, so unequal segment lengths do not receive equal weight in start forecasts (#ttv-185).
