@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.48
 
 - **Fix**: Install proxy 2.107.48, which carries:
   - **Chore**: Retain browser append and media-fragment parse samples for the playback forecast.
