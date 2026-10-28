@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.45
 
 - **Fix**: Install proxy 2.107.45, which carries:
   - **Fix**: Do not use medians from completed waits as a current first-frame forecast; keep the estimate unknown until the active process model has enough inputs.
