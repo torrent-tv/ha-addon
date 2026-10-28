@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.44
 
 - **Fix**: Install proxy 2.107.44, which carries:
   - **Fix**: Schedule the whole-film suffix as overlapping processing and delivery services instead of adding the full transfer after production (#ttv-185).
