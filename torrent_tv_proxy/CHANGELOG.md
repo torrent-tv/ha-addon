@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.47
 
 - **Fix**: Install proxy 2.107.47, which carries:
   - **Fix**: Stop presenting the whole-film continuity delay as time until the first frame; keep the first-frame estimate unavailable until its full dependency model is implemented.
