@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.46, which carries:
+  - **Fix**: Schedule shared client-link transfers from each track's actual production-ready time, so an unready video piece does not hold ready audio work off the link.
+
 ## 0.100.45
 
 - **Fix**: Install proxy 2.107.45, which carries:
