@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.49
 
 - **Fix**: Install proxy 2.107.49, which carries:
   - **Fix**: Reserve the playback forecast's required disk stock before dividing remaining storage, count shared output demand once, and release it when viewers leave.
