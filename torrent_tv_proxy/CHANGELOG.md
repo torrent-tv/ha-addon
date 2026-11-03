@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.50, which carries:
+  - **Fix**: Release wait measurements when their last live output ends. Shared sessions keep one output-key history until the final session is disposed; delayed responses from a disposed lifetime cannot recreate or overwrite the history of an output reopened under the same key.
+
 ## 0.100.49
 
 - **Fix**: Install proxy 2.107.49, which carries:
