@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.53, which carries:
+  - **Fix**: Keep playback forecast history with live viewer and output owners, and release viewer samples, wait observations and cached geometry when those owners end.
+
 ## 0.100.52
 
 - **Fix**: Install proxy 2.107.52, which carries:
