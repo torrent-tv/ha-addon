@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.52, which carries:
+  - **Fix**: Keep late-tail repetition within the current urgent download class and isolate WebTorrent's private reservation access behind a bounded adapter. Count every missing block covered by an in-flight range and exclude WebSeeds as repeat targets because their requests span a piece suffix; preserve the existing age, tail-size and copy limits.
+
 ## 0.100.51
 
 - **Fix**: Install proxy 2.107.51, which carries:
