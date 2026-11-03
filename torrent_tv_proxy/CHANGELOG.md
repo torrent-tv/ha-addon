@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.54
 
 - **Fix**: Install proxy 2.107.54, which carries:
   - **Fix**: Preserve clock epoch, capture interval, action, revision and validity for source, link, encoder and browser-buffer forecast inputs; clear newer invalid captures while keeping first-frame ETA unavailable.
