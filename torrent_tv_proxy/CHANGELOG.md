@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.56, which carries:
+  - **Fix**: Keep projected encoder speed available to playback readiness while reporting its capture as unknown and preserving its prediction source, without assigning the progress poll's time as a measurement.
+
 ## 0.100.55
 
 - **Fix**: Install proxy 2.107.55, which carries:
