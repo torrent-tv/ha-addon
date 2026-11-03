@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.55, which carries:
+  - **Fix**: Schedule mapped tail source pieces at their earliest output deadlines, reuse shared pieces once, and keep missing source addresses as an explicit aggregate estimate.
+
 ## 0.100.54
 
 - **Fix**: Install proxy 2.107.54, which carries:
