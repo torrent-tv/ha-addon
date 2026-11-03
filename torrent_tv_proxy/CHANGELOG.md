@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.51
 
 - **Fix**: Install proxy 2.107.51, which carries:
   - **Fix**: Keep initial viewer placement and audio selection in the viewer layer. Reopening or joining an output preserves an already placed position, while an explicit seek keeps its buffer and pause handling.
