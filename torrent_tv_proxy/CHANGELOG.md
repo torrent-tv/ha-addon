@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.57, which carries:
+  - **Chore**: Split the proxy composition root into tested owners (segment reading, source byte ranges, playback resolution, media read parameters, encoder input, start order and the rest of its facts) with no behaviour change.
+
 ## 0.100.56
 
 - **Fix**: Install proxy 2.107.56, which carries:
