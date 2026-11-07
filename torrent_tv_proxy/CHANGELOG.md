@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.59
 
 - **Fix**: Install proxy 2.107.59, which carries:
   - **Fix**: Name MPEG-4 AVI FOURCCs from one codec table, so an FMP4, M4S2 or MP4S AVI is named `mpeg4` and its encoder placement is priced at the measured mpeg4 decoder family instead of H.264.
