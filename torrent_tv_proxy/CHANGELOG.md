@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.61
 
 - **Fix**: Install proxy 2.107.61, which carries:
   - **Chore**: Stop setting the retired `waitEstimate` field on the viewer forecast; the browser no longer reads it and the contract now says the forecast carries no wait estimate.
