@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.62, which carries:
+  - **Chore**: Tests now share byte builders (MP4 boxes, EBML elements), wait helpers and source readers instead of carrying local copies, with no behaviour change.
+
 ## 0.100.61
 
 - **Fix**: Install proxy 2.107.61, which carries:
