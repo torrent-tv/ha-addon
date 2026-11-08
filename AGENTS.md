@@ -1,7 +1,9 @@
 # ha-addon — Home Assistant addon for the proxy
 
 Packages and runs `@torrent-tv/proxy` as a Home Assistant addon. See the parent
-`../AGENTS.md` for the overall architecture and release process. This is the
+`../AGENTS.md` for the overall architecture and
+[`torrent-tv/.github/CONTRIBUTING.md`](https://github.com/torrent-tv/.github/blob/main/CONTRIBUTING.md)
+for shared commit, changelog, version and release rules. This is the
 ONLY place Home-Assistant-specific concerns belong (the proxy itself stays
 deployment-agnostic).
 
@@ -9,10 +11,10 @@ Addon slug: `torrent_tv_proxy` (HA UI shows `b34a1737_torrent_tv_proxy`).
 
 ## How it works
 
-- `torrent_tv_proxy/Dockerfile` installs the proxy globally from npm:
-  `npm install --global @torrent-tv/proxy`. Bumping `config.yaml` `version`
-  (via the `ARG BUILD_VERSION` cache-bust) forces a rebuild that pulls the
-  latest published proxy.
+- `torrent_tv_proxy/Dockerfile` installs the exact `@torrent-tv/proxy` version
+  named by `ARG PROXY_VERSION` from npm. The proxy release updates that pin and
+  the add-on changelog; changing the add-on's `config.yaml` version alone does
+  not change which proxy is installed.
 - `torrent_tv_proxy/run.sh` launches it with `--server-url`, host/port, and
   `--ffmpeg-bin "$(command -v ffmpeg)"` — the system ffmpeg installed via apk
   (so ffmpeg-static's binary is not needed).
@@ -22,29 +24,13 @@ Addon slug: `torrent_tv_proxy` (HA UI shows `b34a1737_torrent_tv_proxy`).
   existing devices are mapped). The proxy auto-detects and falls back to
   software, so this is safe on any host.
 
-## Commits
+## Repository release path
 
-Every commit header follows Conventional Commits (`<type>(<scope>)!: <subject>`,
-types `feat fix perf refactor docs test build ci chore style revert`); CI refuses
-a pushed commit that does not. Enable the local check once per clone:
-`git config core.hooksPath .githooks`. Rules: `torrent-tv/.github` CONTRIBUTING.md.
-
-## Changelog and release
-
-Every add-on change that reaches a host is recorded in
-`torrent_tv_proxy/CHANGELOG.md` as a bullet under `## Unreleased` at the top,
-in the existing `- **New**/**Fix**/**Chore**:` format. Never write a version
-heading and never edit the `config.yaml` version: the release job does both.
-
-GitHub Actions releases. A push to `main` runs `.github/workflows/main.yml`:
-commit headers, line endings, the changelog entry, that `PROXY_VERSION` is
-published on npm, the add-on linter, and a build of the image for amd64. Then,
-when the commits since the last `v*` tag ask for it (`feat` → minor;
-`fix`/`perf`/`revert` → patch), the release job writes the version into
-`config.yaml`, renames `## Unreleased` to it, commits
-`chore(release): <version>`, tags it and pushes. Home Assistant reads the add-on
-from this repository, so that push is the release; the host is still updated on
-the host.
+Add-on entries go in `torrent_tv_proxy/CHANGELOG.md`. The version file is
+`torrent_tv_proxy/config.yaml`. `.github/workflows/main.yml` checks that the
+pinned `PROXY_VERSION` is published on npm, lints and builds the image, then
+releases the add-on. Home Assistant reads it from this repository; each host
+still updates its installed add-on separately.
 
 A proxy release arrives here by itself: the proxy's release job sets
 `PROXY_VERSION`, adds the proxy's notes under `## Unreleased` and pushes

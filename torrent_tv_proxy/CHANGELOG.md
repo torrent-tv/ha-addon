@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Chore**: Correct the pinned proxy version and repository release guidance.
+
 ## 0.100.64
 
 - **Fix**: Install proxy 2.107.64, which carries:
