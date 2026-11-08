@@ -1,3 +1,5 @@
+Releases after 0.100.64 are on branch release (https://github.com/torrent-tv/ha-addon/blob/release/torrent_tv_proxy/CHANGELOG.md) and at https://github.com/torrent-tv/ha-addon/releases; this file on main is no longer updated. A pull request describes its change in .changeset/ (see AGENTS.md).
+
 ## 0.100.64
 
 - **Fix**: Install proxy 2.107.64, which carries:

@@ -1,20 +1,25 @@
 name: Main
 
-# Every push to main checks the add-on and builds its image, then releases it when
-# the Conventional Commits since the last tag ask for one: the version in
-# config.yaml and the changelog heading are written, committed and tagged. Home
-# Assistant reads the add-on from this repository, so that push is the release.
-# A proxy release arrives here as `fix(proxy)`/`feat(proxy): install proxy <v>`.
+# Pull requests and pushes to main run the checks. A release builds one commit on
+# top of the main commit it releases, writing the add-on version (config.yaml), the
+# proxy it installs (Dockerfile ARG PROXY_VERSION) and CHANGELOG.md; that commit is
+# tagged v<version> and force-pushed as branch release, which Home Assistant reads
+# (https://github.com/torrent-tv/ha-addon#release). main is never written.
+# A push to main releases the add-on change with the newest release's proxy; a proxy
+# release arrives as the repository_dispatch event proxy-release (torrent-tv/.github
+# actions/addon-dispatch-proxy) and releases main with that proxy.
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  repository_dispatch:
+    types: [proxy-release]
   workflow_dispatch:
     inputs:
       bump:
-        description: Release step
+        description: Least release step (a feat still releases minor)
         type: choice
         options: [auto, patch, minor]
         default: auto
@@ -25,6 +30,7 @@ permissions:
 jobs:
   checks:
     name: Checks
+    if: github.event_name != 'repository_dispatch'
     runs-on: ubuntu-26.04
     # A newer push to a pull request makes its older checks pointless; every push to
     # main gets a group of its own, so no check of main is ever replaced.
@@ -47,27 +53,12 @@ jobs:
         uses: torrent-tv/.github/actions/check-line-endings@main
       - name: Workflows are valid
         uses: torrent-tv/.github/actions/check-workflows@main
-      - name: Pending changes have a changelog entry
-        uses: torrent-tv/.github/actions/check-changelog@main
-        with:
-          changelog: torrent_tv_proxy/CHANGELOG.md
-          version-file: torrent_tv_proxy/config.yaml
-      - name: The proxy version is published on npm
-        run: |
-            version=$(sed -n 's/^ARG PROXY_VERSION=//p' torrent_tv_proxy/Dockerfile)
-            for attempt in $(seq 1 20); do
-              if [ "$(npm view "@torrent-tv/proxy@$version" version 2>/dev/null)" = "$version" ]; then
-                echo "PROXY_VERSION $version is published on npm"
-                exit 0
-              fi
-              echo "npm does not serve @torrent-tv/proxy@$version yet (attempt $attempt)"
-              sleep 15
-            done
-            echo "::error file=torrent_tv_proxy/Dockerfile::PROXY_VERSION $version is not published on npm"
-            exit 1
+      - name: Pull request adds a changeset
+        uses: torrent-tv/.github/actions/check-changesets@main
 
   lint:
     name: Add-on configuration
+    if: github.event_name != 'repository_dispatch'
     runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
@@ -78,19 +69,38 @@ jobs:
   build:
     name: Image builds
     needs: checks
+    # A release builds its own commit; a pull request builds main's Dockerfile with
+    # the proxy the next release would install, which npm must serve.
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - id: proxy
+        uses: torrent-tv/.github/actions/addon-release-plan@main
+        with:
+          release: "false"
       - name: Build the add-on image for amd64
-        run: docker build --build-arg BUILD_VERSION=ci torrent_tv_proxy
+        env:
+          PROXY: ${{ steps.proxy.outputs.proxy-version }}
+        run: docker build --build-arg BUILD_VERSION=ci --build-arg PROXY_VERSION="$PROXY" torrent_tv_proxy
 
   release:
     name: Release
     needs: [checks, lint, build]
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    # A dispatch skips checks, lint and build, and a push skips build; a skipped job
+    # is not a failed one.
+    if: ${{ !cancelled() && !contains(needs.*.result, 'failure') && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-26.04
     environment: production
-    # Every release runs, one at a time, in the order the runs reach the queue.
+    # Every release runs, one at a time, in the order the runs reach the queue. A later
+    # run sees the earlier tag and releases what came after it; a run whose commit a
+    # tag already holds, or whose proxy is already installed, only finishes what is
+    # missing.
     concurrency:
       group: release
       cancel-in-progress: false
@@ -101,20 +111,43 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          # A push releases its own commit. A dispatch or a manual run releases main as
+          # it is when its turn comes, never a main older than the newest release.
+          ref: ${{ github.event_name == 'push' && github.sha || 'refs/heads/main' }}
       - uses: actions/setup-node@v7
         with:
           node-version: 24
+
       - id: release
-        uses: torrent-tv/.github/actions/release-prepare@main
+        uses: torrent-tv/.github/actions/addon-release-plan@main
         with:
-          version-files: torrent_tv_proxy/config.yaml
-          changelog: torrent_tv_proxy/CHANGELOG.md
+          payload: ${{ github.event_name == 'repository_dispatch' && toJSON(github.event.client_payload) || '' }}
           bump: ${{ inputs.bump || 'auto' }}
+          github-token: ${{ github.token }}
+
+      # What Home Assistant will build on the host, built here first.
+      - name: Build the release image and check the proxy in it
+        if: steps.release.outputs.released == 'true' && steps.release.outputs.already != 'true'
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+          PROXY: ${{ steps.release.outputs.proxy-version }}
+        run: |
+          docker build --build-arg BUILD_VERSION="$VERSION" -t addon-release torrent_tv_proxy
+          installed=$(docker run --rm --entrypoint node addon-release \
+            -p 'require("/usr/local/lib/node_modules/@torrent-tv/proxy/package.json").version')
+          if [ "$installed" != "$PROXY" ]; then
+            echo "::error::the image of add-on $VERSION installs proxy $installed, not $PROXY"
+            exit 1
+          fi
+          echo "add-on $VERSION installs proxy $installed"
+
       - if: steps.release.outputs.released == 'true'
-        uses: torrent-tv/.github/actions/release-finish@main
+        uses: torrent-tv/.github/actions/release-tag@main
         with:
           tag: ${{ steps.release.outputs.tag }}
-          changelog: torrent_tv_proxy/CHANGELOG.md
-          version-files: torrent_tv_proxy/config.yaml
           notes-file: ${{ steps.release.outputs.notes-file }}
           github-token: ${{ github.token }}
+
+      # Every run ends here: a run whose tag push succeeded and branch push failed is
+      # finished by the next run, whatever started it.
+      - uses: torrent-tv/.github/actions/addon-release-branch@main

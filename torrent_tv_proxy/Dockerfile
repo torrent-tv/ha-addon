@@ -28,8 +28,10 @@ RUN node -v \
 
 # BUILD_VERSION is injected automatically by the HA supervisor from config.yaml,
 # and the install below MENTIONS IT so that the layer is invalidated whenever
-# the addon version changes. Keep PROXY_VERSION aligned with the version
-# recorded in CHANGELOG.md; pinning avoids a build
+# the addon version changes. On main, PROXY_VERSION is the least proxy a release
+# installs: the release writes the proxy it installs (the newest release's, a
+# dispatched newer one, or this one if higher) on branch release; raise it here
+# only to require a newer proxy. Pinning avoids a build
 # resolving the previous npm `latest` tag while a release is still propagating.
 #
 # Declaring the ARG is not enough, and that is what kept shipping an old proxy

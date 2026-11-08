@@ -1,0 +1,1 @@
+- **Chore**: The add-on is released to branch release of this repository: add it to Home Assistant as https://github.com/torrent-tv/ha-addon#release. The repository without #release receives no further updates.
