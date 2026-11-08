@@ -1,3 +1,9 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.65, which carries:
+  - **Chore**: Releases are now made from tags; release notes come from each pull request's changeset, and the version no longer appears in a commit on main.
+  - **Chore**: Correct repository guidance for the current release and proxy pinning paths.
+
 ## 0.100.65
 
 - **Chore**: Correct the pinned proxy version and repository release guidance.
