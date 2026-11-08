@@ -5,7 +5,9 @@ Packages and runs `@torrent-tv/proxy` as a Home Assistant addon. See the parent
 ONLY place Home-Assistant-specific concerns belong (the proxy itself stays
 deployment-agnostic).
 
-Addon slug: `torrent_tv_proxy` (HA UI shows `b34a1737_torrent_tv_proxy`).
+Addon slug: `torrent_tv_proxy` (HA UI shows `6630818b_torrent_tv_proxy`; repository
+`https://github.com/torrent-tv/ha-addon#release`; it was `b34a1737_…` until the
+meta#336 migration).
 
 ## How it works
 
@@ -29,27 +31,37 @@ types `feat fix perf refactor docs test build ci chore style revert`); CI refuse
 a pushed commit that does not. Enable the local check once per clone:
 `git config core.hooksPath .githooks`. Rules: `torrent-tv/.github` CONTRIBUTING.md.
 
-## Changelog and release
+## Changesets and release
 
-Every add-on change that reaches a host is recorded in
-`torrent_tv_proxy/CHANGELOG.md` as a bullet under `## Unreleased` at the top,
-in the existing `- **New**/**Fix**/**Chore**:` format. Never write a version
-heading and never edit the `config.yaml` version: the release job does both.
+A pull request describes its change in `.changeset/<branch>.md` (the branch name,
+`/` replaced by `-`): one or two bullets in the `- **New**:`/`- **Fix**:`/
+`- **Chore**:` format that tell a viewer what changed. CI (`check-changesets`)
+refuses a pull request without one. Never write a version heading and never edit
+the `config.yaml` version: the release does both.
 
-GitHub Actions releases. A push to `main` runs `.github/workflows/main.yml`:
-commit headers, line endings, the changelog entry, that `PROXY_VERSION` is
-published on npm, the add-on linter, and a build of the image for amd64. Then,
-when the commits since the last `v*` tag ask for it (`feat` → minor;
-`fix`/`perf`/`revert` → patch), the release job writes the version into
-`config.yaml`, renames `## Unreleased` to it, commits
-`chore(release): <version>`, tags it and pushes. Home Assistant reads the add-on
-from this repository, so that push is the release; the host is still updated on
-the host.
+What `main` holds: `torrent_tv_proxy/config.yaml` `version` is the last release
+made from `main` (`0.100.64`) and stays; `ARG PROXY_VERSION` in the Dockerfile is
+the least proxy any release installs (a pull request raises it only to require a
+newer proxy); `CHANGELOG.md` is frozen with a pointer line. A release never
+writes `main`.
 
-A proxy release arrives here by itself: the proxy's release job sets
-`PROXY_VERSION`, adds the proxy's notes under `## Unreleased` and pushes
-`fix(proxy)`/`feat(proxy): install proxy <version>`, which this workflow then
-releases. The order proxy → add-on is therefore kept by construction.
+GitHub Actions releases. A push to `main` runs `.github/workflows/main.yml`: checks
+(commit headers, line endings, workflows, changeset on pull requests), the add-on
+linter, then the release job. It plans the version from the newest `v*` tag and the
+commits after it (`feat` -> minor; `fix`/`perf`/`revert` -> patch) and the notes from
+the changesets, builds one commit on top of the `main` commit (version in
+`config.yaml`, proxy in the Dockerfile, `CHANGELOG.md` = new section + the previous
+release's changelog), builds the image and checks the proxy in it, tags it
+`v<version>`, creates the GitHub Release and force-pushes the tag's commit as branch
+`release`. Home Assistant reads the add-on from
+`https://github.com/torrent-tv/ha-addon#release`. Never write branch `release` by
+hand. Re-runs are safe: a run whose tag exists only moves the branch.
+
+A proxy release arrives as the `repository_dispatch` event `proxy-release`
+(`torrent-tv/.github` `actions/addon-dispatch-proxy`, payload
+`{version, bump, tag, notes}`) and releases `main` with that proxy, at least a patch.
+`workflow_dispatch` `bump` is a least step. The order proxy -> add-on is kept by the
+dispatch, which waits for npm.
 
 ## Gotchas
 
@@ -61,9 +73,9 @@ releases. The order proxy → add-on is therefore kept by construction.
 - **LF line endings** are mandatory for `run.sh` and `Dockerfile` (CRLF breaks
   the bashio shebang / Docker line continuations). Editing on Windows can
   reintroduce CRLF — strip it (`sed -i 's/\r$//'`).
-- **Release order**: the proxy is published to npm before `PROXY_VERSION` names
-  it; CI keeps this order (see "Changelog and release") and refuses a
-  `PROXY_VERSION` that npm does not serve.
+- **Release order**: the proxy is published to npm before the add-on installs it;
+  the dispatch keeps this order (see "Changesets and release") and the release
+  refuses a proxy that npm does not serve.
 - **Triggering the update remotely over SSH (`ssh ha`, verified 2026-08-01):**
   the standalone `/usr/bin/ha` CLI on the host is UNauthenticated by default —
   `ha store reload`/`ha apps update ...` fail with `unauthorized: missing or
@@ -71,22 +83,22 @@ releases. The order proxy → add-on is therefore kept by construction.
   user). Supervisor already runs a properly-token-wired `hassio_cli` container
   for exactly this — run the same commands INSIDE it instead:
   `sudo docker exec hassio_cli ha store reload` then
-  `sudo docker exec hassio_cli ha apps update b34a1737_torrent_tv_proxy`.
+  `sudo docker exec hassio_cli ha apps update 6630818b_torrent_tv_proxy`.
   The SSH user (`silentimp`) is in `wheel` with passwordless `sudo` but is NOT
   in the `docker` group, so plain `docker ...` fails with a socket permission
   error — always prefix `sudo`. If update returns `Error: Another job is
-  running for job group app_b34a1737_torrent_tv_proxy`, an update is already
-  in flight (check with `sudo docker logs app_builder_b34a1737_torrent_tv_proxy
+  running for job group app_6630818b_torrent_tv_proxy`, an update is already
+  in flight (check with `sudo docker logs app_builder_6630818b_torrent_tv_proxy
   --tail 40` — it's a real multi-stage Docker build, ~90s: apk/npm install,
   native module rebuild, image export); just poll until the builder container
   disappears rather than re-issuing the update. Verify success with
-  `sudo docker ps --filter name=app_b34a1737_torrent_tv_proxy` (image tag =
+  `sudo docker ps --filter name=app_6630818b_torrent_tv_proxy` (image tag =
   the new addon version) and
-  `sudo docker exec app_b34a1737_torrent_tv_proxy npm list -g @torrent-tv/proxy`
-  (confirms the actual pulled proxy version, since the addon version and the
-  proxy version it pulled are two different numbers).
+  `sudo docker exec app_6630818b_torrent_tv_proxy node -e "fetch('http://127.0.0.1:9090/healthz').then(r=>r.text()).then(console.log)"`
+  (the runtime stage has no npm; this reads the proxy health endpoint, not the
+  addon version).
 - Refresh the store with `ha store reload` (NOT `ha addons reload`) before the
-  UI shows the update; then `ha apps update b34a1737_torrent_tv_proxy` or the UI
+  UI shows the update; then `ha apps update 6630818b_torrent_tv_proxy` or the UI
   Update button (reload the page if it looks stale). From the UI/HA-local
   shell this works directly (a real Supervisor token is present there); the
   SSH detour above is only needed from an external session like this one.
