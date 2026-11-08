@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.65
 
 - **Chore**: Correct the pinned proxy version and repository release guidance.
 
