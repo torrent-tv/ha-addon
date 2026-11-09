@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Chore**: CI checks that npm serves the pinned proxy version, its metadata and its package archive, through the shared `npm-package-ready` action.
+
 ## 0.100.69
 
 - **Fix**: Install proxy 2.107.68, which carries:
