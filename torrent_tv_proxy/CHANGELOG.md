@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.72
 
 - **Fix**: Install proxy 2.107.70, which carries:
   - **Fix**: Byte ranges on `/stream`, `/media` and `/encode-input` are read one way (RFC 9110): `bytes=-500` is the last 500 bytes, a range past the end is answered 416 with `Content-Range: bytes */<length>` (`/stream` used to serve the whole file), and a multi-range header is answered as the whole file.
