@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.71
 
 - **Fix**: Install proxy 2.107.69, which carries:
   - **Fix**: The proxy no longer forwards requests that arrive over the server tunnel; every relayed request passes one path allowlist and body cap.
