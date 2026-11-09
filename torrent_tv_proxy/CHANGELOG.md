@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.68, which carries:
+  - **Chore**: CI keeps the binaries `npm ci` downloads (node-datachannel, ffmpeg, node headers) in a cache and retries `npm ci`, so a GitHub download outage no longer fails every pull request.
+
 ## 0.100.68
 
 - **Fix**: Install proxy 2.107.67, which carries:
