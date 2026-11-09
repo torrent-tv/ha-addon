@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.75
 
 - **Chore**: Repository guidance is shorter: `AGENTS.md` keeps what every change needs, and updating the add-on on a Home Assistant host is described in `docs/host-update.md`.
 
