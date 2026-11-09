@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.71, which carries:
+  - **Chore**: One script, `scripts/install-native.sh`, now builds and checks the native modules (node-datachannel, our utp-native) for every image that installs the proxy, and ships in the npm package; the Docker image checks itself with `--help` while it is built.
+
 ## 0.100.72
 
 - **Fix**: Install proxy 2.107.70, which carries:
