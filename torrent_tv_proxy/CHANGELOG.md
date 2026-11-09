@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Chore**: The image builds and checks the proxy's native modules with the proxy's own `scripts/install-native.sh` instead of a copy of its steps, and the libuv thread pool size is left to the proxy's default (64) rather than set again in `run.sh`.
+
 ## 0.100.73
 
 - **Fix**: Install proxy 2.107.71, which carries:
