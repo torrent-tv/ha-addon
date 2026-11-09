@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.67
 
 - **Fix**: Install proxy 2.107.66, which carries:
   - **Chore**: Tests now build every serving manager through `managerWithOwnStore` (a store root of its own, no shared default root that `disposeAll` removes under other test processes), every hand-written output through `outputOn`, and the Renditions host through `renditionsHost`. The viewer relations of the Renditions host are now one exported function, `viewerRelationsFor` in `services/viewer/choices.js`, used by `wire-outputs.js` and by the test helper; the viewers are created before the Renditions that read them. No behaviour change.
