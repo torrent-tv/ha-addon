@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Chore**: Repository guidance is shorter: `AGENTS.md` keeps what every change needs, and updating the add-on on a Home Assistant host is described in `docs/host-update.md`.
+
 ## 0.100.74
 
 - **Chore**: The image builds and checks the proxy's native modules with the proxy's own `scripts/install-native.sh` instead of a copy of its steps, and the libuv thread pool size is left to the proxy's default (64) rather than set again in `run.sh`.
