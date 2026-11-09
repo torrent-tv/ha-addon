@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.72, which carries:
+  - **Chore**: Repository guidance is shorter: `AGENTS.md` keeps the rules every change must keep, and the module layout and the component design move to `docs/layout.md` and `docs/component-architecture.md`.
+
 ## 0.100.75
 
 - **Chore**: Repository guidance is shorter: `AGENTS.md` keeps what every change needs, and updating the add-on on a Home Assistant host is described in `docs/host-update.md`.
