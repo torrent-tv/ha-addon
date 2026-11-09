@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.73, which carries:
+  - **Fix**: After a seek, the proxy no longer starts an encoder past the end of the input it was given (a run such as `#188..#187` that makes nothing), and a run that ends without a terminal input failure no longer makes the next segment answer 500: the request is held until the next run makes it.
+
 ## 0.100.76
 
 - **Fix**: Install proxy 2.107.72, which carries:
