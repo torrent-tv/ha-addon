@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.69, which carries:
+  - **Fix**: The proxy no longer forwards requests that arrive over the server tunnel; every relayed request passes one path allowlist and body cap.
+
 ## 0.100.70
 
 - **Chore**: CI checks that npm serves the pinned proxy version, its metadata and its package archive, through the shared `npm-package-ready` action.
