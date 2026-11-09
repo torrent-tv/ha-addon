@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.75, which carries:
+  - **Chore**: The specification of starting a run only inside its input, and of ending production only on a terminal input fact, is now part of the proxy's main specs.
+
 ## 0.100.78
 
 - **Fix**: Install proxy 2.107.74, which carries:
