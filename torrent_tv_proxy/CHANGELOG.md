@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.70
 
 - **Chore**: CI checks that npm serves the pinned proxy version, its metadata and its package archive, through the shared `npm-package-ready` action.
 
