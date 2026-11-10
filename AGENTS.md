@@ -32,7 +32,7 @@ Slug `torrent_tv_proxy`; Home Assistant shows it as `b34a1737_torrent_tv_proxy`.
   their scripts are built by the proxy's `scripts/install-native.sh`. Keep this
   when you touch the Dockerfile.
 - **LF line endings** in `run.sh` and the Dockerfile; CRLF breaks the bashio
-  shebang and Docker line continuations. CI's line-ending check refuses it.
+  shebang and Docker line continuations. `.gitattributes` stores every text file with LF.
 
 ## Release path
 

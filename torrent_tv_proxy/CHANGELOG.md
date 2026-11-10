@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Chore**: CI checks commit headers with the standard commitlint action, every commit included, and branch names inline; text files are stored with LF endings.
+
 ## 0.100.81
 
 - **Fix**: Install proxy 2.107.76, which carries:
