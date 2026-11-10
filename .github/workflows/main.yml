@@ -123,6 +123,8 @@ jobs:
           version-files: torrent_tv_proxy/config.yaml
           changelog: torrent_tv_proxy/CHANGELOG.md
           bump: ${{ inputs.bump || 'auto' }}
+          # The standing task every release commit names (torrent-tv/meta#389).
+          task: "#ttv-389"
       - if: steps.release.outputs.released == 'true'
         uses: torrent-tv/.github/actions/release-finish@main
         with:
