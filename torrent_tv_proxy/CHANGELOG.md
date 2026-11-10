@@ -1,3 +1,10 @@
+## 0.100.97
+
+### Patch Changes
+
+- Install proxy 2.107.88, which carries:
+  - Test helpers can no longer wait a fixed time without a marked reason, so tests wait for events instead.
+
 ## 0.100.96
 
 ### Patch Changes
