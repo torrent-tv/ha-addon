@@ -1,6 +1,6 @@
 {
   "name": "torrent-tv-ha-addon",
-  "version": "0.100.94",
+  "version": "0.100.95",
   "private": true,
   "description": "Version of the Home Assistant add-on, the proxy it installs and the tools that release it; nothing here is published",
   "license": "UNLICENSED",

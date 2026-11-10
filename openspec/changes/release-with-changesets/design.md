@@ -109,6 +109,9 @@ As in infra's design, with these differences:
   `main`. A version is a commit that added a `## <version>` heading to `CHANGELOG.md` and changed
   the version in `torrent_tv_proxy/package.json`; the release commits made before the package
   existed are not versions.
+- The checkout, the tag push and the Release use the release App token with `contents: write`
+  and `workflows: write`, as in infra's design (`GITHUB_TOKEN` can never push a tag that reaches
+  a commit changing workflow files).
 
 ### Dependencies
 
