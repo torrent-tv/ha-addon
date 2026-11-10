@@ -1,3 +1,12 @@
+## 0.100.93
+
+### Patch Changes
+
+- Install proxy 2.107.85, which carries:
+  - Project rules about releases, versions and dependencies are now written once in the shared contributing guide and linked from this repository's agent rules.
+  - The proxy now uses whichever ffprobe on the host can read the stream details it needs, and stops at startup with one clear message when none can.
+  - - **Fix**: A film the proxy copies is no longer refused as having no capacity on an idle machine because one encoder run was measured wrongly.
+
 ## 0.100.92
 
 ### Patch Changes
