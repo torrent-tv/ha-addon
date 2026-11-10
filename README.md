@@ -74,9 +74,14 @@ The proxy binds to port `9090/tcp` and registers itself with the server automati
 ```text
 ha-addon/
   repository.yaml          HA add-on repository descriptor
+  scripts/check.sh         The checks CI runs: tools, pins, config, closure, image
   torrent_tv_proxy/
     config.yaml            Add-on metadata (name, slug, arch, ports, schema)
-    Dockerfile             Based on Alpine; installs Node.js + npm package
+    Dockerfile             Based on Alpine; installs Node.js and the locked proxy
+    package.json           Add-on version and the exact proxy version (private)
+    package-lock.json      The locked proxy tree the image installs
+    self-contained.cjs     Fails when the lock puts part of that tree outside the proxy
+    .changeset/            Changesets: what each change adds to CHANGELOG.md
     run.sh                 Reads options via bashio and starts the proxy
 ```
 

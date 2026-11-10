@@ -1,3 +1,9 @@
+## 0.100.89
+
+### Patch Changes
+
+- The add-on image installs the exact, locked proxy version named in its package.json, and each change is released as its own add-on version.
+
 ## 0.100.88
 
 - **Fix**: Install proxy 2.107.80, which carries:
