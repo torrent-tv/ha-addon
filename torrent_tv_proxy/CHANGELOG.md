@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.76, which carries:
+  - **Chore**: CI rejects a pushed commit that contains a secret not listed in the audited `.secrets.baseline`, and a `pre-commit` hook makes the same check before a commit is made.
+
 ## 0.100.80
 
 - **Chore**: CI rejects a pushed commit that contains a secret not listed in the audited `.secrets.baseline`, and a `pre-commit` hook makes the same check before a commit is made.
