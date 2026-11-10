@@ -268,6 +268,8 @@ jobs:
         run: bash scripts/check.sh pins
       - name: config.yaml states the package.json version
         run: bash scripts/check.sh config
+      - name: The locked proxy tree is self-contained
+        run: bash scripts/check.sh closure
       - name: Pull request adds a changeset
         if: github.event_name == 'pull_request' && matrix.head
         working-directory: torrent_tv_proxy

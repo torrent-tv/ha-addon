@@ -2,7 +2,7 @@
 # The checks that need no secret: main.yml runs them one step each, so a run shows
 # which one failed; dependencies.yml runs `all` on every commit it prepares.
 #
-#   bash scripts/check.sh tools | pins | config | image
+#   bash scripts/check.sh tools | pins | config | closure | image
 #   bash scripts/check.sh all
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -59,6 +59,13 @@ config() {
   echo "config.yaml states version $want"
 }
 
+closure() {
+  # The image copies only the proxy's directory out of node_modules, so every package of the
+  # proxy's tree must sit inside it in the lock. A package that the add-on also depends on
+  # directly is shared at the top and would be left behind (self-contained.cjs).
+  node "$ADDON/self-contained.cjs" "$ADDON/package-lock.json" @torrent-tv/proxy
+}
+
 image() {
   # The image installs the proxy with `npm ci` from package-lock.json and checks it in its
   # last stage (`torrent-tv-proxy --help`): a build that succeeds installed the locked
@@ -70,7 +77,8 @@ case "${1:-}" in
   tools) tools ;;
   pins) pins ;;
   config) config ;;
+  closure) closure ;;
   image) image ;;
-  all) tools && pins && config && image ;;
-  *) echo "usage: bash scripts/check.sh tools|pins|config|image|all" >&2; exit 2 ;;
+  all) tools && pins && config && closure && image ;;
+  *) echo "usage: bash scripts/check.sh tools|pins|config|closure|image|all" >&2; exit 2 ;;
 esac

@@ -14,12 +14,17 @@ RUN apk add --no-cache nodejs npm python3 make g++
 # nothing here names a version. `npm ci` fails when npm does not serve the locked
 # proxy or the lock does not match package.json.
 #
-# .npmrc sets install-strategy=shallow: only @torrent-tv/proxy sits in
-# /opt/torrent-tv/node_modules, with everything it needs flattened in its own
-# node_modules/, the layout of a global install that the proxy's install-native.sh
-# expects (measured on package-lock.json with npm 11.19.1: the proxy's
-# node_modules/ holds node-datachannel and utp-native directly).
-COPY package.json package-lock.json .npmrc /opt/torrent-tv/
+# .npmrc sets install-strategy=shallow: the add-on's direct dependencies sit at the top
+# of /opt/torrent-tv/node_modules, and everything the proxy needs is flattened in the
+# proxy's own node_modules/, the layout of a global install that the proxy's
+# install-native.sh expects. One exception breaks that: a package that the add-on also
+# depends on directly (it was `semver`) is shared at the top, and the final stage, which
+# copies only the proxy's directory, would lose it. package.json therefore names the
+# add-on's own tools under other names (the semver tool is an `npm:` alias), and
+# self-contained.cjs fails the build, before anything is installed, when the lock puts
+# any package of the proxy's tree outside the proxy's directory.
+COPY package.json package-lock.json .npmrc self-contained.cjs /opt/torrent-tv/
+RUN node /opt/torrent-tv/self-contained.cjs /opt/torrent-tv/package-lock.json @torrent-tv/proxy
 
 # BUILD_VERSION is injected automatically by the HA supervisor from config.yaml,
 # and the install below MENTIONS IT so that the layer is invalidated whenever

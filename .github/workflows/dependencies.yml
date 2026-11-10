@@ -118,7 +118,7 @@ jobs:
             exit 1
           fi
           # A version is never lowered.
-          if ! node -e 'process.exit(require("semver").gt(process.argv[1], process.argv[2]) ? 0 : 1)' "$target" "$pinned"; then
+          if ! node -e 'process.exit(require("semver-tool").gt(process.argv[1], process.argv[2]) ? 0 : 1)' "$target" "$pinned"; then
             echo "proxy $pinned is pinned; $target is not newer"
             exit 0
           fi
@@ -150,7 +150,7 @@ jobs:
           done
           npm install "@torrent-tv/proxy@$target" --save-exact --package-lock-only --ignore-scripts --no-audit --no-fund
           # A new minor (or major) part is a `feat`, anything else a `fix`.
-          step=$(node -p 'require("semver").diff(process.argv[1], process.argv[2])' "$pinned" "$target")
+          step=$(node -p 'require("semver-tool").diff(process.argv[1], process.argv[2])' "$pinned" "$target")
           bump='patch'
           prefix='fix'
           if [ "$step" = minor ] || [ "$step" = major ]; then
@@ -163,7 +163,7 @@ jobs:
           : > "$notes"
           if tags=$(gh release list -R torrent-tv/proxy --limit 200 --json tagName --jq '.[].tagName'); then
             selected=$(printf '%s\n' "$tags" | node -e '
-              const semver = require("semver");
+              const semver = require("semver-tool");
               const [pinned, target] = process.argv.slice(1);
               const tags = require("node:fs").readFileSync(0, "utf8").split("\n").filter(Boolean);
               const wanted = tags.filter((t) => /^v\d+\.\d+\.\d+$/.test(t) && semver.gt(t.slice(1), pinned) && semver.lte(t.slice(1), target));
@@ -199,7 +199,7 @@ jobs:
           import { existsSync, readFileSync, writeFileSync } from 'node:fs';
           import { dirname, join } from 'node:path';
 
-          const { default: semver } = await import('semver');
+          const { default: semver } = await import('semver-tool');
           const alerts = JSON.parse(readFileSync(process.env.ALERTS_FILE, 'utf8'));
           const quiet = ['--package-lock-only', '--ignore-scripts', '--no-audit', '--no-fund'];
           const npm = (dir, ...args) => execFileSync('npm', [...args, ...quiet], { cwd: dir, stdio: ['ignore', 'inherit', 'inherit'] });
