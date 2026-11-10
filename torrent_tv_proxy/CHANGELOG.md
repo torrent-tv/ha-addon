@@ -1,3 +1,10 @@
+## 0.100.92
+
+### Patch Changes
+
+- Install proxy 2.107.82, which carries:
+  - Project rules about releases, versions and dependencies are now written once in the shared contributing guide and linked from this repository's agent rules.
+
 ## 0.100.91
 
 ### Patch Changes
