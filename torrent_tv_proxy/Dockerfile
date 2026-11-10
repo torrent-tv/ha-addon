@@ -22,7 +22,7 @@ RUN apk add --no-cache nodejs npm python3 make g++
 # built with this layer cached and installed 2.83.8 under a version claiming
 # 2.84.0.
 ARG BUILD_VERSION
-ARG PROXY_VERSION=2.107.77
+ARG PROXY_VERSION=2.107.78
 # NOTE: ip-set (a transitive dependency of webtorrent) ships a hostile
 # `preinstall: npx only-allow pnpm` script that aborts any plain `npm install`
 # (exit code 254).  Install with lifecycle scripts disabled to bypass it; the
