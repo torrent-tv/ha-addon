@@ -9,11 +9,21 @@ FROM ${BUILD_FROM} AS build
 
 RUN apk add --no-cache nodejs npm python3 make g++
 
+# The proxy version is dependencies["@torrent-tv/proxy"] in package.json, and
+# package-lock.json pins its whole tree; the dependency workflow raises both, so
+# nothing here names a version. `npm ci` fails when npm does not serve the locked
+# proxy or the lock does not match package.json.
+#
+# .npmrc sets install-strategy=shallow: only @torrent-tv/proxy sits in
+# /opt/torrent-tv/node_modules, with everything it needs flattened in its own
+# node_modules/, the layout of a global install that the proxy's install-native.sh
+# expects (measured on package-lock.json with npm 11.19.1: the proxy's
+# node_modules/ holds node-datachannel and utp-native directly).
+COPY package.json package-lock.json .npmrc /opt/torrent-tv/
+
 # BUILD_VERSION is injected automatically by the HA supervisor from config.yaml,
 # and the install below MENTIONS IT so that the layer is invalidated whenever
-# the addon version changes. Keep PROXY_VERSION aligned with the version
-# recorded in CHANGELOG.md; pinning avoids a build
-# resolving the previous npm `latest` tag while a release is still propagating.
+# the addon version changes.
 #
 # Declaring the ARG is not enough, and that is what kept shipping an old proxy
 # under a new addon version: Docker keys a RUN layer on the command text, and a
@@ -22,7 +32,6 @@ RUN apk add --no-cache nodejs npm python3 make g++
 # built with this layer cached and installed 2.83.8 under a version claiming
 # 2.84.0.
 ARG BUILD_VERSION
-ARG PROXY_VERSION=2.107.80
 # NOTE: ip-set (a transitive dependency of webtorrent) ships a hostile
 # `preinstall: npx only-allow pnpm` script that aborts any plain `npm install`
 # (exit code 254).  Install with lifecycle scripts disabled to bypass it; the
@@ -32,10 +41,18 @@ ARG PROXY_VERSION=2.107.80
 # not required.
 # The native modules (node-datachannel, our utp-native) and the Node floor are
 # built and checked by the proxy's own scripts/install-native.sh, which ships in
-# the package; see that script for what it does and why.
-RUN echo "building for addon ${BUILD_VERSION} with proxy ${PROXY_VERSION}" \
- && npm install --global "@torrent-tv/proxy@${PROXY_VERSION}" --ignore-scripts \
- && sh /usr/local/lib/node_modules/@torrent-tv/proxy/scripts/install-native.sh /usr/local/lib/node_modules/@torrent-tv/proxy
+# the package; see that script for what it does and why. The development tools
+# of package.json (changesets and the dependency updater) are left out.
+# The last command compares the installed proxy with the version package.json
+# names, so an image can never carry another proxy than the one it states.
+RUN echo "building for addon ${BUILD_VERSION}" \
+ && cd /opt/torrent-tv \
+ && npm ci --omit=dev --ignore-scripts --no-audit --no-fund \
+ && sh node_modules/@torrent-tv/proxy/scripts/install-native.sh /opt/torrent-tv/node_modules/@torrent-tv/proxy \
+ && wanted="$(node -p "require('./package.json').dependencies['@torrent-tv/proxy']")" \
+ && installed="$(node -p "require('./node_modules/@torrent-tv/proxy/package.json').version")" \
+ && echo "proxy ${installed} installed, package.json names ${wanted}" \
+ && [ "${installed}" = "${wanted}" ]
 
 COPY poisonmalloc.c /tmp/poisonmalloc.c
 RUN gcc -shared -fPIC -O2 -o /usr/lib/poisonmalloc.so /tmp/poisonmalloc.c -ldl -lpthread \
@@ -49,7 +66,7 @@ FROM ${BUILD_FROM}
 # in the running container.
 RUN apk add --no-cache nodejs ffmpeg tcpdump
 
-COPY --from=build /usr/local/lib/node_modules/@torrent-tv/proxy /usr/local/lib/node_modules/@torrent-tv/proxy
+COPY --from=build /opt/torrent-tv/node_modules/@torrent-tv/proxy /usr/local/lib/node_modules/@torrent-tv/proxy
 COPY --from=build /usr/lib/poisonmalloc.so /usr/lib/poisonmalloc.so
 COPY run.sh /run.sh
 # `--help` loads every module of the main thread, node-datachannel's native
