@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.82
 
 - **Chore**: CI checks commit headers with the standard commitlint action, every commit included, and branch names inline; text files are stored with LF endings.
 
