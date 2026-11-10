@@ -42,11 +42,13 @@ Wait until the builder container is gone instead of starting the update again.
 
 ```bash
 ssh ha 'sudo docker ps --filter name=app_b34a1737_torrent_tv_proxy'
-ssh ha 'sudo docker exec app_b34a1737_torrent_tv_proxy npm list -g @torrent-tv/proxy'
+ssh ha 'sudo docker exec app_b34a1737_torrent_tv_proxy node -p "require(\"/usr/local/lib/node_modules/@torrent-tv/proxy/package.json\").version"'
 ```
 
 The first shows the running image, tagged with the add-on version; the second
-shows the proxy version it installed. They are two different numbers.
+shows the proxy version it installed, which is `dependencies` of
+`torrent_tv_proxy/package.json` at that add-on version. They are two different
+numbers.
 
 Which encoder the proxy chose is in the add-on log:
 `hwaccel: using hardware encoder …`, or
