@@ -17,7 +17,7 @@ Slug `torrent_tv_proxy`; Home Assistant shows it as `b34a1737_torrent_tv_proxy`.
   `save-exact=true` and `install-strategy=shallow`.
 - `torrent_tv_proxy/Dockerfile` copies those three files, runs
   `npm ci --omit=dev --ignore-scripts` and fails when the installed proxy is not
-  the version `package.json` names; there is no `ARG PROXY_VERSION`. The shallow
+  the version `package.json` names; the image takes no proxy version argument. The shallow
   strategy puts the add-on's direct dependencies at the top of `node_modules/`
   and flattens what the proxy needs into the proxy's own `node_modules/`: the
   layout of a global install, which the proxy's `scripts/install-native.sh`
