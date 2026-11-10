@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Chore**: CI rejects a pushed commit that contains a secret not listed in the audited `.secrets.baseline`, and a `pre-commit` hook makes the same check before a commit is made.
+
 ## 0.100.79
 
 - **Fix**: Install proxy 2.107.75, which carries:
