@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Fix**: Install proxy 2.107.79, which carries:
+  - **Chore**: CI calls the shared actions from their repository's new name, torrent-tv/workflows.
+
 ## 0.100.85
 
 - **Chore**: CI calls the shared actions from their repository's new name, torrent-tv/workflows.
