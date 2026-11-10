@@ -38,7 +38,7 @@ Slug `torrent_tv_proxy`; Home Assistant shows it as `b34a1737_torrent_tv_proxy`.
 
 The shared flow, including how a proxy release reaches this repository, is in
 the organization's
-[`CONTRIBUTING.md`](https://github.com/torrent-tv/.github/blob/main/CONTRIBUTING.md);
+[`CONTRIBUTING.md`](https://github.com/torrent-tv/workflows/blob/main/CONTRIBUTING.md);
 here, entries go in `torrent_tv_proxy/CHANGELOG.md` under `## Unreleased` and
 the version file is `torrent_tv_proxy/config.yaml`. `.github/workflows/main.yml`
 runs the shared checks, checks that npm serves the pinned `PROXY_VERSION`, runs

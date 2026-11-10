@@ -3,4 +3,4 @@ schema: spec-driven
 context: |
   Home Assistant add-on packages and runs the pinned @torrent-tv/proxy version.
   Repository rules: AGENTS.md.
-  Shared commit and release rules: torrent-tv/.github/CONTRIBUTING.md.
+  Shared commit and release rules: torrent-tv/workflows/CONTRIBUTING.md.

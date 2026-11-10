@@ -46,7 +46,7 @@ jobs:
       - name: Commit messages follow Conventional Commits
         uses: wagoid/commitlint-github-action@v6.2.1
       - name: No secrets in commits
-        uses: torrent-tv/.github/actions/check-secrets@main
+        uses: torrent-tv/workflows/actions/check-secrets@main
       - name: Branch name names a task
         if: github.event_name == 'pull_request'
         run: '[[ "$GITHUB_HEAD_REF" =~ ^(feat|fix|perf|refactor|docs|test|build|ci|chore|style|revert)/ttv-[1-9][0-9]*-[a-z0-9][a-z0-9.-]*$ ]]'
@@ -66,7 +66,7 @@ jobs:
             -ignore input\s.client-id.\sis\snot\sdefined\sin\saction\s.actions/create-github-app-token@
             -ignore missing\sinput\s.app-id.\swhich\sis\srequired\sby\saction\s.actions/create-github-app-token@
       - name: Pending changes have a changelog entry
-        uses: torrent-tv/.github/actions/check-changelog@main
+        uses: torrent-tv/workflows/actions/check-changelog@main
         with:
           changelog: torrent_tv_proxy/CHANGELOG.md
           version-file: torrent_tv_proxy/config.yaml
@@ -74,7 +74,7 @@ jobs:
         id: proxy
         run: echo "version=$(sed -n 's/^ARG PROXY_VERSION=//p' torrent_tv_proxy/Dockerfile)" >> "$GITHUB_OUTPUT"
       - name: The proxy version is published on npm
-        uses: torrent-tv/.github/actions/npm-package-ready@main
+        uses: torrent-tv/workflows/actions/npm-package-ready@main
         with:
           spec: "@torrent-tv/proxy@${{ steps.proxy.outputs.version }}"
           wait-minutes: 5
@@ -118,7 +118,7 @@ jobs:
         with:
           node-version: 24
       - id: release
-        uses: torrent-tv/.github/actions/release-prepare@main
+        uses: torrent-tv/workflows/actions/release-prepare@main
         with:
           version-files: torrent_tv_proxy/config.yaml
           changelog: torrent_tv_proxy/CHANGELOG.md
@@ -126,7 +126,7 @@ jobs:
           # The standing task every release commit names (torrent-tv/meta#389).
           task: "#ttv-389"
       - if: steps.release.outputs.released == 'true'
-        uses: torrent-tv/.github/actions/release-finish@main
+        uses: torrent-tv/workflows/actions/release-finish@main
         with:
           tag: ${{ steps.release.outputs.tag }}
           changelog: torrent_tv_proxy/CHANGELOG.md
