@@ -54,44 +54,28 @@ Slug `torrent_tv_proxy`; Home Assistant shows it as `b34a1737_torrent_tv_proxy`.
 
 ## Release path
 
-The shared rules are in the organization's
-[`CONTRIBUTING.md`](https://github.com/torrent-tv/workflows/blob/main/CONTRIBUTING.md);
-this repository's own are in
+Changesets, versions, the release and the daily dependency update are shared by
+every repository and are written once, in the organization's
+[`CONTRIBUTING.md`](https://github.com/torrent-tv/workflows/blob/main/CONTRIBUTING.md#versions-and-releases)
+("Versions and releases", "How a release reaches its users", "Dependencies").
+What is specific to the add-on, and its OpenSpec change:
 [`openspec/changes/release-with-changesets/design.md`](openspec/changes/release-with-changesets/design.md).
-Home Assistant reads the add-on from `main`; there is no `release` branch.
 
-Every pull request adds a changeset in the standard `@changesets/cli` format, in
-`torrent_tv_proxy/.changeset/` (`npx changeset` there, or a file
-`<branch with / as ->.md`): front matter `"torrent-tv-ha-addon": patch` (or
-`minor`; never `major`), then one sentence a user of the add-on understands.
-CI (`changeset status --since=origin/main`) refuses a pull request without one;
-a change that releases nothing adds an empty one (`changeset add --empty`). A
-commit never edits or renames a changeset an earlier commit added. Nothing is
-written under `## Unreleased`: `CHANGELOG.md` is written by the release.
-
-Nobody edits the version. After a merge to `main`, the `version` job of
-`.github/workflows/main.yml` amends each commit that added a changeset with its
-version in `torrent_tv_proxy/package.json`, the lock, its `CHANGELOG.md` entry
-and the `version:` line of `config.yaml`, and force-pushes `main` with a lease as
-the release App; three changeset commits give three versions. The next run
-checks the commit (`scripts/check.sh`: `tools`, `pins`, `config`, `closure`, `image`), the
-add-on linter runs, `publish` tags each version (`changeset git-tag`) and creates
-its GitHub Release from the `CHANGELOG.md` section, and `rebase-prs` rebases the
-open pull requests. The Supervisor follows the force-pushed `main` with a fetch
-and `git reset --hard`, so the update appears after the rewrite.
-
-`.github/workflows/dependencies.yml` (daily at 03:27 UTC and on
-`workflow_dispatch`) installs the proxy: the proxy's release starts it with
-`gh workflow run dependencies.yml -f proxy-version=<version>`, and the daily run
-reads npm's latest. It waits until npm serves the version (`npm view
-<package>@<version> dist.tarball`, then a HEAD request of the tarball, every
-15 s for up to 20 minutes, one log line each round), writes the exact version
-into `package.json` and the lock, adds a changeset that carries the proxy's
-release notes, and pushes `fix(proxy)` or `feat(proxy): install proxy <version>
-#ttv-387` to `main` as the release App. The same run raises what Dependabot
-alerts name and applies patch and minor updates (`fix(deps)`/`chore(deps)`
-`#ttv-386`), tests each commit with the full checks including the image build,
-and pushes those that passed; no pull request is made.
+- Home Assistant reads the add-on from `main`; there is no `release` branch. The
+  Supervisor follows the force-pushed `main` with a fetch and `git reset --hard`,
+  so the update appears after the rewrite.
+- Changesets live in `torrent_tv_proxy/.changeset/` (`npx changeset` there), with
+  front matter `"torrent-tv-ha-addon"`.
+- The `version` job writes the version into `torrent_tv_proxy/package.json`, the
+  lock, the `CHANGELOG.md` entry and the `version:` line of `config.yaml`. The
+  checks of a commit are `scripts/check.sh`: `tools`, `pins`, `config`, `closure`,
+  `image`, and the add-on linter runs.
+- `.github/workflows/dependencies.yml` runs daily at 03:27 UTC and on
+  `workflow_dispatch` (the proxy's release starts it with `proxy-version=<version>`).
+  Before it installs a proxy version it waits until npm serves it
+  (`npm view <package>@<version> dist.tarball`, then a HEAD request of the
+  tarball, every 15 s for up to 20 minutes, one log line each round). The rest of
+  its flow is in the shared sections above.
 
 ## Updating and checking the add-on on a host
 
