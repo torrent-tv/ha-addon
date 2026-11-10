@@ -99,3 +99,7 @@ blocker in design.md.
 - [ ] 2.13 Every commit on `main` after this change either matches a merged pull request commit
       or is by `torrent-tv-release[bot]` with a header ending in `#ttv-386` or `#ttv-387` and only
       the paths of design.md. Every `force_push` has actor `torrent-tv-release[bot]`.
+- [x] 2.17 The copy check compares each commit of a pull request with the whole history of `main`,
+      and a changeset must be one plain sentence. Check: `bash scripts/check.sh changesets-selftest`
+      exits 0 (the earlier range comparison passes the copy, `copies` fails it; each format rule fails
+      its bad input), and the step "Changeset checks fail on bad input" passes in `Checks`.

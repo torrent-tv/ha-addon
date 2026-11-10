@@ -1,3 +1,9 @@
+## 0.100.94
+
+### Patch Changes
+
+- A changeset that was already released can no longer come back through a pull request, and every changeset must now be one plain sentence.
+
 ## 0.100.93
 
 ### Patch Changes

@@ -69,7 +69,8 @@ What is specific to the add-on, and its OpenSpec change:
 - The `version` job writes the version into `torrent_tv_proxy/package.json`, the
   lock, the `CHANGELOG.md` entry and the `version:` line of `config.yaml`. The
   checks of a commit are `scripts/check.sh`: `tools`, `pins`, `config`, `closure`,
-  `image`, and the add-on linter runs.
+  `image`, and the add-on linter runs. A pull request is also checked by `copies`,
+  `changeset-format` and `changesets-selftest` of the same script.
 - `.github/workflows/dependencies.yml` runs daily at 03:27 UTC and on
   `workflow_dispatch` (the proxy's release starts it with `proxy-version=<version>`).
   Before it installs a proxy version it waits until npm serves it
