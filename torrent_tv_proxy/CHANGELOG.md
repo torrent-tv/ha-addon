@@ -1,3 +1,11 @@
+## 0.100.96
+
+### Patch Changes
+
+- Install proxy 2.107.87, which carries:
+  - A changeset that was already released can no longer come back through a pull request, and every changeset must now be one plain sentence.
+  - A version whose commit changes a workflow file is tagged and released again: the release job now pushes its tag with a token that may touch workflow files.
+
 ## 0.100.95
 
 ### Patch Changes
