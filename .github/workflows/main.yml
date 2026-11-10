@@ -70,7 +70,7 @@ jobs:
           version-file: torrent_tv_proxy/config.yaml
       - name: Read the pinned proxy version
         id: proxy
-        run: echo "version=$(sed -n 's/^ARG PROXY_VERSION=//p' torrent_tv_proxy/Dockerfile)" >> "$GITHUB_OUTPUT"
+        run: echo "version=$(node -p 'require("./torrent_tv_proxy/package.json").dependencies["@torrent-tv/proxy"]')" >> "$GITHUB_OUTPUT"
       - name: The proxy version is published on npm
         uses: torrent-tv/workflows/actions/npm-package-ready@main
         with:
