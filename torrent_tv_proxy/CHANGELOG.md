@@ -1,4 +1,4 @@
-## Unreleased
+## 0.100.84
 
 - **Fix**: Install proxy 2.107.78, which carries:
   - **Chore**: Update dependencies: 1 package(s) changed in the lock file.
