@@ -1,6 +1,6 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/base:latest
 
-# Two stages. The first installs the proxy and compiles its native modules; the
+# Two stages. The first installs the proxy and compiles utp-native; the
 # second is what runs, and receives only the proxy and the one library built
 # for it. The compiler, python, npm, its cache and node-gyp's headers stay in
 # the first: measured on the HA host on 2026-10-05, they, gdb and a
