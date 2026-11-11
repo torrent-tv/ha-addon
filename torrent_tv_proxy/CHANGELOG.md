@@ -1,3 +1,10 @@
+## 0.100.109
+
+### Patch Changes
+
+- Install proxy 2.107.97, which carries:
+  - A pull request now has one final check that stays red until every other check of it has passed.
+
 ## 0.100.108
 
 ### Patch Changes
