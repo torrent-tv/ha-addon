@@ -60,7 +60,7 @@ every repository and are written once, in the organization's
 [`CONTRIBUTING.md`](https://github.com/torrent-tv/workflows/blob/main/CONTRIBUTING.md#versions-and-releases)
 ("Versions and releases", "How a release reaches its users", "Dependencies").
 What is specific to the add-on, and its OpenSpec change:
-[`openspec/changes/release-with-changesets/design.md`](openspec/changes/release-with-changesets/design.md).
+[`openspec/changes/archive/2026-11-11-release-with-changesets/design.md`](openspec/changes/archive/2026-11-11-release-with-changesets/design.md).
 
 - Home Assistant reads the add-on from `main`; there is no `release` branch. The
   Supervisor follows the force-pushed `main` with a fetch and `git reset --hard`,

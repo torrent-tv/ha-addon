@@ -4,7 +4,8 @@ Facts below were read from the files named, the GitHub documentation, or measure
 git repositories and scratch npm projects on this Mac (no torrent, no network beyond the npm
 registry and GitHub's API reads). Each says which. Analysis is marked. The versions, jobs and
 rules shared with infra and server are those of torrent-tv/infra's design
-(`openspec/changes/release-with-changesets/design.md`); this file lists what is specific here.
+(`openspec/changes/archive/2026-11-11-release-with-changesets/design.md` there); this file lists what
+is specific here.
 
 ## Facts
 
