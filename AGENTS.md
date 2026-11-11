@@ -76,7 +76,8 @@ What is specific to the add-on, and its OpenSpec change:
   version), `workflow-tokens` (the dependency job `update` gives no token to package code, and each job
   that pushes holds the App token with the permissions it needs, listed in `WORKFLOW_PUSHES`; it reads the
   workflows with yq 4.54.1), `commit-msg-bot` (the dependency job runs the commit-msg hook on each commit
-  it prepares), `workflow-selftest` (all three on bad input).
+  it prepares), `workflow-refs` (the checkouts of the dependency job `update` are at `main`, so a run
+queued behind another starts from the tip of `main`), `workflow-selftest` (all four on bad input).
 - `.github/workflows/dependencies.yml` runs daily at 03:27 UTC and on
   `workflow_dispatch` (the proxy's release starts it with `proxy-version=<version>`).
   Before it installs a proxy version it waits until npm serves it
