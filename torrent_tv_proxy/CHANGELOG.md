@@ -1,3 +1,10 @@
+## 0.100.105
+
+### Patch Changes
+
+- Install proxy 2.107.94, which carries:
+  - The tests now reject the placeholder version name, so a version source change cannot leave a stale fixture behind.
+
 ## 0.100.104
 
 ### Patch Changes
