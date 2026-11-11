@@ -1,3 +1,10 @@
+## 0.100.98
+
+### Patch Changes
+
+- Install proxy 2.107.89, which carries:
+  - The proxy now takes its WebRTC binary from the per-platform packages of node-datachannel 0.33.6 and checks at install that it loads.
+
 ## 0.100.97
 
 ### Patch Changes
