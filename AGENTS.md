@@ -29,10 +29,11 @@ Slug `torrent_tv_proxy`; Home Assistant shows it as `b34a1737_torrent_tv_proxy`.
   fails the build, before anything is installed, when a package of the proxy's
   tree resolves outside the proxy's directory; `scripts/check.sh closure` runs
   it in CI and in `dependencies.yml`. Never add a direct dependency whose name
-  the proxy's tree also uses. `install-native.sh` then builds and checks the
-  native modules (node-datachannel and our `utp-native` fork named by the
-  proxy's `overrides`), and the last stage runs `torrent-tv-proxy --help`, so an
-  image that cannot load them fails to build. A new proxy reaches the image only
+  the proxy's tree also uses. `install-native.sh` then checks that
+  `node-datachannel` loads (its binary is a per-platform npm package that
+  `npm ci` installs; nothing is built or fetched for it) and builds `utp-native`,
+  our fork named by the proxy's `overrides`, and the last stage runs
+  `torrent-tv-proxy --help`, so an image that cannot load them fails to build. A new proxy reaches the image only
   through `package.json` and the lock, written by `dependencies.yml`.
 - `torrent_tv_proxy/run.sh` reads the options with bashio and starts the proxy
   with `--server-url`, host and port, and `--ffmpeg-bin "$(command -v ffmpeg)"`
