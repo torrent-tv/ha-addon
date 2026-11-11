@@ -47,7 +47,12 @@ blocker in design.md.
 - [ ] 2.5 Changeset checks: two throwaway pull requests, each closed afterwards. One without a
       changeset fails "Pull request adds a changeset". One that writes `^7.8.6` into
       `devDependencies` fails "Dependencies are pinned exactly". Check: run URLs.
-- [ ] 2.6 After the merge, the release of this change: a `force_push` on `refs/heads/main` by
+      Not shown in this repository: no throwaway ha-addon pull request failed at either step
+      (the only one, ha-addon#16, changed `config.yaml` alone and failed "config.yaml states the
+      package.json version"). The same two steps failed on bad input in infra on 2026-11-10: infra#22 at "Pull request adds a changeset"
+      and infra#23 at "Dependencies are pinned exactly" for `^7.8.6` (meta#336 comment
+      6782567095, AC 7 and 17; those runs were deleted afterwards). Archived unticked.
+- [x] 2.6 After the merge, the release of this change: a `force_push` on `refs/heads/main` by
       `torrent-tv-release[bot]` follows the `pr_merge`
       (`gh api "repos/torrent-tv/ha-addon/activity?ref=refs/heads/main"`); the changeset commit
       has its author, author time and header unchanged, sets `torrent_tv_proxy/package.json`
@@ -55,14 +60,33 @@ blocker in design.md.
       changeset; no commit `chore(release)` is added; the next run's `version` job logs
       `no pending changesets`; tag `v0.100.89` and its GitHub Release (body equal to the
       changelog section) exist. Check: `git show --stat <sha>`, `gh release view v0.100.89`.
-- [ ] 2.7 Window: the time from `pr_merge` to `force_push`, with the `version` job's step times,
+      Shown: ha-addon#11 `pr_merge` 2026-11-10 16:03:14 UTC, `force_push` by
+      `torrent-tv-release[bot]` at 16:03:31; d5b0c08 keeps its author and header, sets
+      `config.yaml` and `package.json` to 0.100.89, adds `## 0.100.89` to `CHANGELOG.md` and
+      holds no changeset; run 42850746468 `version` logs `no pending changesets`; tag
+      `v0.100.89` is on d5b0c08 and its GitHub Release exists (meta#336 comment 6781047118, AC
+      15; tag and Release read again 2026-11-11).
+- [x] 2.7 Window: the time from `pr_merge` to `force_push`, with the `version` job's step times,
       is recorded on torrent-tv/meta#336.
+      Shown: `pr_merge` 16:03:14, `force_push` 16:03:31 (17 s); `version` job from 16:03:22: app
+      token 1 s, checkout 1 s, setup-node 1 s, install of the release tools 3 s, version 3 s
+      (16:03:29-16:03:32); recorded on torrent-tv/meta#336 as "Version window (AC 15)" (comment
+      6781047118).
 - [ ] 2.8 A throwaway pull request made on a pre-rewrite tip and holding a copy of a commit
       fails "Pull request carries no copy of a commit on main" until `rebase-prs` rebases it.
+      Not shown in this repository: no throwaway ha-addon pull request was made on a pre-rewrite
+      tip. The check was shown in infra on 2026-11-10: infra#20, cut on the pre-rewrite tip
+      66e555b, failed "Pull request carries no copy of a commit on main" until `rebase-prs`
+      rebased it (run 42925924818, `rebased #20 2a74679 -> d2cb3f5`; meta#336 comment
+      6782567095, AC 13; the runs were deleted afterwards). Archived unticked.
 - [ ] 2.9 A pull request with two commits that each add a changeset yields two versions, two
       tags and two GitHub Releases, and its run had one `Checks` and one `Image builds` leg per
       changeset commit.
-- [ ] 2.10 Proxy reaches Home Assistant. After a proxy release, this repository's `Dependencies`
+      Not shown in this repository: no merged ha-addon pull request had two commits that each
+      added a changeset (ha-addon#14 had four commits and one changeset). Two such commits were
+      released as two versions, two tags and two Releases in proxy#66 (v2.107.83 and v2.107.84;
+      meta#336 comment 6781047118, AC 14). Archived unticked.
+- [x] 2.10 Proxy reaches Home Assistant. After a proxy release, this repository's `Dependencies`
       run (event `workflow_dispatch`, input `<v>`) logs the `waiting for npm ...` lines and
       `npm serves @torrent-tv/proxy@<v> after <s> s` (or the error at 20 minutes), and pushes
       `fix(proxy)` or `feat(proxy): install proxy <v> #ttv-387` as `torrent-tv-release[bot]`. That
@@ -71,34 +95,77 @@ blocker in design.md.
       `CHANGELOG.md`, `config.yaml`), and tag `v<a>` and its GitHub Release follow. Field check on
       the Home Assistant host (skill `ha-field-check`): `ha store reload`; `version_latest` is
       `<a>`; `ha apps update b34a1737_torrent_tv_proxy`; the proxy reports `<v>`.
-- [ ] 2.11 The first `Dependencies` run after the merge ends in one of two ways: it logs
+      Shown: after proxy 2.107.81, ha-addon run 42898937642 (`workflow_dispatch`) logged the
+      `waiting for npm ...` lines and `npm serves @torrent-tv/proxy@2.107.81 after 123 s` and
+      pushed `fix(proxy): install proxy 2.107.81 #ttv-387` as the release App; 55858e2 sets
+      `dependencies.@torrent-tv/proxy` 2.107.80 -> 2.107.81 with the lock and carries the proxy
+      note in `## 0.100.91`; tag `v0.100.91` is on it. Image builds (run 42899540069) passed.
+      Field check on the Home Assistant host: `version_latest` 0.100.91, update `rc=0`,
+      container `aarch64-addon-torrent_tv_proxy:0.100.91 Up`, proxy log `Starting
+      @torrent-tv/proxy v2.107.81` at 21:30:28, a viewer played the film from 21:30:42 with
+      `dropped=0` at 21:34:07 (meta#336 comment 6781047118, AC 3). The `ha store reload` output
+      and a `/healthz` answer were not kept. The `PROXY_VERSION` line of AC 3 was removed by
+      commit 3dfbb91 (`AGENTS.md`).
+- [x] 2.11 The first `Dependencies` run after the merge ends in one of two ways: it logs
       `no updates` and `0 open Dependabot alerts` and pushes nothing, or it pushes its commits as
       the release App with the headers of design.md, each versioned and released. `update` has
       only `contents: read` and `vulnerability-alerts: read`, no environment and no `secrets.`;
       `push` has no `npm`, `npx` or test command. The first run can end red for the `ip` alert
       (design.md, "What changes for the image") until it is dismissed.
+      Shown: the first `Dependencies` run, 42898937642 (2026-11-10 20:49 UTC), ended red on the
+      `ip` alert GHSA-2p57-rm9w-gvfp (`no patched version exists`), the case this item allows;
+      after the alert was dismissed the dispatched runs 42907558589 and 42911275294 were green
+      and pushed `install proxy 2.107.82` and `2.107.85`, each versioned and released
+      (v0.100.92, v0.100.93). `update` has only `contents: read` and `vulnerability-alerts:
+      read`, no environment and no `secrets.`; `push` has no `npm`, `npx` or test command
+      (meta#336 comment 6781047118, AC 9(a) and 9(b)).
 - [ ] 2.12 A `workflow_dispatch` of `dependencies.yml` on a throwaway branch whose
       `scripts/check.sh` exits 1 ends red; its `push` job is skipped and the activity API shows no
       `push`. The branch is deleted afterwards.
+      Not shown in this repository: no failing `workflow_dispatch` was made on an ha-addon
+      branch. The same check passed in infra on 2026-11-10: run 42925258556 on a throwaway
+      branch whose `scripts/check.sh` ended in `&& false` ended red, `Push to main` was skipped
+      and the activity API showed no push (meta#336 comment 6782567095, AC 9(c); the run was
+      deleted afterwards). Archived unticked.
 - [x] 2.14 The proxy's tree stays whole in the image (review of head 61e4a97). Check:
       `node torrent_tv_proxy/self-contained.cjs torrent_tv_proxy/package-lock.json @torrent-tv/proxy`
       exits 0, and exits 1 naming `fastify` and `node-abi` on the lock of 61e4a97
       (`git show 61e4a97:torrent_tv_proxy/package-lock.json`); `bash scripts/check.sh closure` runs it
       in Checks; the Dockerfile runs it before `npm ci`.
-- [ ] 2.15 Plan AC 9(d): a second `workflow_dispatch` of `dependencies.yml` right after a green
+- [x] 2.15 Plan AC 9(d): a second `workflow_dispatch` of `dependencies.yml` right after a green
       run that pushed commits logs `proxy <v> is pinned; <v> is not newer` and `no updates`, and
       pushes nothing; each bot push got one `Main` run plus the run of its force-push, and no
       further one. Check: run URLs, `gh api "repos/torrent-tv/ha-addon/activity?ref=refs/heads/main"`.
-- [ ] 2.16 Plan AC 16, ha-addon half: once the lock holds the proxy tree, the first `Dependencies`
+      Shown: run 42924338206 (23:33 UTC, green) pushed `install proxy 2.107.88` (`push`
+      23:37:56, `force_push` 23:38:10, fe8b608); run 42925428571 dispatched at 23:41:28 logged
+      `proxy 2.107.88 is pinned; 2.107.88 is not newer`, `no updates` and `0 commits passed` and
+      pushed nothing. Each bot push got two `Main` runs (the push and its force-push:
+      42924956703 and 42924986170 for 2.107.88, 42923860269 and 42923903096 for 2.107.87) and no
+      third.
+- [x] 2.16 Plan AC 16, ha-addon half: once the lock holds the proxy tree, the first `Dependencies`
       run after the merge, if the `ip` alert (GHSA-2p57-rm9w-gvfp) is open here, ends red and its
       `result` job names that alert; after the coordinator App dismisses it with reason `not_used`
       (`gh api "repos/torrent-tv/ha-addon/dependabot/alerts?state=dismissed"` lists it with the
       comment) the next dispatched run is green. Check: the run URLs and the API output. If no
       alert appears, the first run's log shows `0 open Dependabot alerts` and the item is closed
       with that line.
-- [ ] 2.13 Every commit on `main` after this change either matches a merged pull request commit
+      Shown: run 42898937642 ended red with `open Dependabot alerts no run can fix: #1
+      GHSA-2p57-rm9w-gvfp ip <= 2.0.1: no patched version exists`; alert #1 was dismissed with
+      reason `not_used` by `torrent-tv-coordinator[bot]` at 2026-11-10 20:53:15 UTC (`gh api
+      "repos/torrent-tv/ha-addon/dependabot/alerts?state=dismissed"` lists it, read again
+      2026-11-11); the next dispatched run, 42907558589, was green (meta#336 comments 6781047118
+      and 6782567095, AC 16).
+- [x] 2.13 Every commit on `main` after this change either matches a merged pull request commit
       or is by `torrent-tv-release[bot]` with a header ending in `#ttv-386` or `#ttv-387` and only
       the paths of design.md. Every `force_push` has actor `torrent-tv-release[bot]`.
+      Shown: every commit after 32ba649 is a merged pull request commit or one of the release
+      App's own commits: `fix(proxy): install proxy <v> #ttv-387` (9 commits, 2.107.81 to
+      2.107.92) and `fix(deps): update dependencies #ttv-386` (0c1f771), each changing
+      `torrent_tv_proxy/package.json`, `package-lock.json`, `config.yaml` and `CHANGELOG.md`
+      only; all 16 `force_push` entries since 2026-11-10 16:03 UTC are by
+      `torrent-tv-release[bot]`, the others are 7 `pr_merge` by the coordinator and 9 `push` by
+      the release App (meta#336 comment 6781047118, AC 5, checked again against `origin/main`
+      9ddc69b).
 - [x] 2.17 The copy check compares each commit of a pull request with the whole history of `main`,
       and a changeset must be one plain sentence. Check: `bash scripts/check.sh changesets-selftest`
       exits 0 (the earlier range comparison passes the copy, `copies` fails it; each format rule fails

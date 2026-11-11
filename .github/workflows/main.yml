@@ -10,7 +10,7 @@ name: Main
 #     builds its image; `publish` tags and releases every new version, and
 #     `rebase-prs` rebases the open pull requests onto the rewritten main.
 # A new proxy arrives from dependencies.yml, never from this workflow.
-# The rules are in openspec/changes/release-with-changesets/design.md.
+# The rules are in openspec/changes/archive/2026-11-11-release-with-changesets/design.md.
 
 on:
   push:
