@@ -1,3 +1,10 @@
+## 0.100.102
+
+### Patch Changes
+
+- Install proxy 2.107.91, which carries:
+  - The install-native script test no longer carries leftovers of the node-datachannel update.
+
 ## 0.100.101
 
 ### Patch Changes
