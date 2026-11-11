@@ -1,3 +1,10 @@
+## 0.100.101
+
+### Patch Changes
+
+- Install proxy 2.107.90, which carries:
+  - The dependency job now refuses a commit whose message the commit-msg hook refuses, and CI checks the exact pins, the tokens and the commit messages of the workflow files.
+
 ## 0.100.100
 
 ### Patch Changes
