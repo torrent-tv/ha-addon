@@ -1,3 +1,10 @@
+## 0.100.107
+
+### Patch Changes
+
+- Install proxy 2.107.95, which carries:
+  - The changelog now says that release 2.107.83 repeats 2.107.82 and changes nothing, and the specifications of three finished changes are archived.
+
 ## 0.100.106
 
 ### Patch Changes
