@@ -71,7 +71,12 @@ What is specific to the add-on, and its OpenSpec change:
   lock, the `CHANGELOG.md` entry and the `version:` line of `config.yaml`. The
   checks of a commit are `scripts/check.sh`: `tools`, `pins`, `config`, `closure`,
   `image`, and the add-on linter runs. A pull request is also checked by `copies`,
-  `changeset-format` and `changesets-selftest` of the same script.
+  `changeset-format` and `changesets-selftest` of the same script. Every commit is also checked by
+  `workflow-pins` (every action, image, Node version and npm or docker install in a workflow is an exact
+  version), `workflow-tokens` (the dependency job `update` gives no token to package code, and each job
+  that pushes holds the App token with the permissions it needs, listed in `WORKFLOW_PUSHES`; it reads the
+  workflows with yq 4.54.1), `commit-msg-bot` (the dependency job runs the commit-msg hook on each commit
+  it prepares), `workflow-selftest` (all three on bad input).
 - `.github/workflows/dependencies.yml` runs daily at 03:27 UTC and on
   `workflow_dispatch` (the proxy's release starts it with `proxy-version=<version>`).
   Before it installs a proxy version it waits until npm serves it
