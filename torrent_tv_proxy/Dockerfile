@@ -40,13 +40,14 @@ ARG BUILD_VERSION
 # NOTE: ip-set (a transitive dependency of webtorrent) ships a hostile
 # `preinstall: npx only-allow pnpm` script that aborts any plain `npm install`
 # (exit code 254).  Install with lifecycle scripts disabled to bypass it; the
-# script below builds the native modules that genuinely need theirs.
+# script below builds utp-native, the one module that needs its own build.
 # The proxy is started with --ffmpeg-bin pointing at the system ffmpeg
 # (installed in the final stage via apk), so ffmpeg-static's bundled binary is
 # not required.
-# The native modules (node-datachannel, our utp-native) and the Node floor are
-# built and checked by the proxy's own scripts/install-native.sh, which ships in
-# the package; see that script for what it does and why. The development tools
+# node-datachannel needs no build: its binary is a per-platform npm package that
+# `npm ci` installs. The proxy's own scripts/install-native.sh, which ships in
+# the package, checks that node-datachannel loads and the Node floor, and builds
+# our utp-native; see that script for what it does and why. The development tools
 # of package.json (changesets and the dependency updater) are left out.
 # The last command compares the installed proxy with the version package.json
 # names, so an image can never carry another proxy than the one it states.
@@ -75,8 +76,8 @@ COPY --from=build /opt/torrent-tv/node_modules/@torrent-tv/proxy /usr/local/lib/
 COPY --from=build /usr/lib/poisonmalloc.so /usr/lib/poisonmalloc.so
 COPY run.sh /run.sh
 # `--help` loads every module of the main thread, node-datachannel's native
-# binding included, so a node here that cannot run what the first stage built
-# fails the build instead of the first start.
+# binding included, so a node here that cannot run what the first stage
+# installed and built fails the build instead of the first start.
 RUN ln -s ../lib/node_modules/@torrent-tv/proxy/bin/cli.js /usr/local/bin/torrent-tv-proxy \
  && chmod a+x /run.sh \
  && torrent-tv-proxy --help > /dev/null
