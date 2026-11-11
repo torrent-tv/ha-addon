@@ -1,3 +1,9 @@
+## 0.100.99
+
+### Patch Changes
+
+- Update dependencies: none directly; 3 package(s) changed in the lock file.
+
 ## 0.100.98
 
 ### Patch Changes
