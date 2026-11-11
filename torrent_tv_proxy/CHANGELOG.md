@@ -1,3 +1,10 @@
+## 0.100.104
+
+### Patch Changes
+
+- Install proxy 2.107.93, which carries:
+  - The OpenSpec changes for the release flow, the ffprobe choice and the node-datachannel package are archived, and their requirements are merged into the specifications.
+
 ## 0.100.103
 
 ### Patch Changes
