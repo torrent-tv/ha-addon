@@ -1,3 +1,10 @@
+## 0.100.112
+
+### Patch Changes
+
+- Install proxy 2.107.100, which carries:
+  - Update dependencies: @biomejs/biome 2.6.6 -> 2.6.7; 12 package(s) changed in the lock file.
+
 ## 0.100.111
 
 ### Patch Changes
