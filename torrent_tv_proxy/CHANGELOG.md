@@ -1,3 +1,10 @@
+## 0.100.115
+
+### Patch Changes
+
+- Install proxy 2.107.101, which carries:
+  - The workflow checks install yq at the pinned version and verify its SHA-256 instead of reading the version the runner image ships.
+
 ## 0.100.114
 
 ### Patch Changes
