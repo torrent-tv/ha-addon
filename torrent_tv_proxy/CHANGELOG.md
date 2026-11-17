@@ -1,3 +1,9 @@
+## 0.100.114
+
+### Patch Changes
+
+- The workflow checks install the pinned yq 4.54.1 from its release and verify its SHA-256 instead of using the yq of the runner image.
+
 ## 0.100.113
 
 ### Patch Changes

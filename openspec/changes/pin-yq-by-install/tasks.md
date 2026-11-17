@@ -4,16 +4,16 @@ Parent: torrent-tv/meta#472, ha-addon part. Branch `fix/ttv-472-pin-yq-by-instal
 
 ## 1. Code
 
-- [ ] 1.1 `scripts/check.sh`: `YQ_SHA256`, `YQ_DOWNLOAD_BASE`, `yq_install`, subcommand and usage
+- [x] 1.1 `scripts/check.sh`: `YQ_SHA256`, `YQ_DOWNLOAD_BASE`, `yq_install`, subcommand and usage
       line `yq-install`, comment of `yq_pinned()`.
-- [ ] 1.2 `main.yml` job `checks` (`bash scripts/check.sh yq-install`) and `dependencies.yml` job `update`
+- [x] 1.2 `main.yml` job `checks` (`bash scripts/check.sh yq-install`) and `dependencies.yml` job `update`
       (`bash "$GITHUB_WORKSPACE/scripts/check.sh" yq-install`, the job runs in `torrent_tv_proxy`): step
       `yq is the pinned version` before the first yq step; replace the "runner image" comment.
-- [ ] 1.3 `AGENTS.md`: the workflow checks use the yq that `check.sh yq-install` installs.
-- [ ] 1.4 `workflow_selftest`: proofs (a) wrong digest, (b) missing file, (c) matching file,
+- [x] 1.3 `AGENTS.md`: the workflow checks use the yq that `check.sh yq-install` installs.
+- [x] 1.4 `workflow_selftest`: proofs (a) wrong digest, (b) missing file, (c) matching file,
       (d) the existing `yq_pinned` cases stay.
-- [ ] 1.5 A changeset for the add-on (`torrent_tv_proxy/.changeset/`, lower-case file name).
-- [ ] 1.6 `main.yml` job `checks`: a step `Yq install checks` running
+- [x] 1.5 A changeset for the add-on (`torrent_tv_proxy/.changeset/`, lower-case file name).
+- [x] 1.6 `main.yml` job `checks`: a step `Yq install checks` running
       `node --test test/check-yq-install.test.js` right after `yq is the pinned version`.
 
 ## 2. Test plan
