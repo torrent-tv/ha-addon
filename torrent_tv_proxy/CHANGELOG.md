@@ -1,3 +1,10 @@
+## 0.100.117
+
+### Patch Changes
+
+- Install proxy 2.107.102, which carries:
+  - Opening a second file in the same page no longer plays the first file's video.
+
 ## 0.100.116
 
 ### Patch Changes
