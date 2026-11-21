@@ -1,3 +1,10 @@
+## 0.100.125
+
+### Patch Changes
+
+- Install proxy 2.107.107, which carries:
+  - Update dependencies: none directly; 5 package(s) changed in the lock file.
+
 ## 0.100.124
 
 ### Patch Changes
