@@ -1,3 +1,10 @@
+## 0.100.135
+
+### Patch Changes
+
+- Install proxy 2.107.112, which carries:
+  - Update dependencies: werift 0.28.0 -> 0.29.0; 3 package(s) changed in the lock file.
+
 ## 0.100.134
 
 ### Patch Changes
